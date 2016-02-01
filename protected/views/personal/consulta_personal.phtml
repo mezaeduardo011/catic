@@ -1,0 +1,117 @@
+
+<div class="page-content ">
+	<div class="page-header">
+		<h1>
+		Consulta de personas:
+		</h1>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-header">
+						Personas registradas.
+					</div>
+					<div>
+						<form action="<?php  echo BASE_URL;?>personal/listing" method="post">
+								<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th class="center">
+												<label class="pos-rel">
+													#
+												</label>
+											</th>
+											<th>Cedula</th>
+											<th>Primer nombre</th>
+											<th class="hidden-480">Segundo nombre</th>
+											<th>Primer apellido</th>
+											<th class="hidden-480">Segundo apellido</th>
+											<th class="center">Acciones</th>
+										</tr>
+									</thead>
+
+									<tbody>
+									<?php foreach ($this->_listado as $persona): ?>
+										<tr>
+											<td class="center">
+												<?php echo $persona['numeracion'];?>
+											</td>
+
+											<td>
+												<?php echo $persona['cedula']; ?>
+											</td>
+											<td><?php echo $persona['nombre']; ?></td>
+											<td class="hidden-480"><?php echo $persona['nombre2']; ?></td>
+											<td><?php echo $persona['apellido']; ?></td>
+
+											<td class="hidden-480">
+												<?php echo $persona['apellido2']; ?>
+											</td>
+
+											<td class="center">
+												<div class="hidden-sm hidden-xs action-buttons">
+												<a class="btn-app  btn-primary  btn-sm" id="detalle_persona" 
+												onclick="pickOpen('prod', 'id_prod', 
+												'<?php echo BASE_URL."personal/update/". $persona['id_persona'] ?>',
+												 90, 80, 70, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
+												style=cursor:pointer; >
+													<i class="glyphicon glyphicon-search"></i>
+													Detalles
+													
+												</a>		
+
+												<a class="btn-app btn-danger btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
+													<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>
+													Eliminar
+												</a>	
+												</div>
+
+											</td>
+										</tr>
+									<?php endforeach ?>
+									</tbody>
+								</table>
+								<hr>
+							<div class="col-sm-4">
+								<div class="widget-box">
+									<div class="widget-header">
+										<h4 class="smaller">Otras opciones</h4>
+									</div>
+									<div class="widget-body">
+										<div class="widget-main">
+											<p>
+												&nbsp;  &nbsp;
+												<a class="btn-app  btn-primary  btn-sm" href="<?php  echo BASE_URL;?>pdf/pdfActividadInstitucional" >
+													<i class="ace-icon fa fa-print bigger-160"></i>
+													Imprimir
+													
+												</a>
+												&nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;
+												<a  class="btn-app  btn-success  btn-sm" href="" >
+													<i class="ace-icon fa fa-users fa-lg"></i>
+													Ver historial del personal.
+													
+												</a>
+											</p>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+								</div><!-- /.col -->
+							</form>
+
+						</div>
+					</div>
+				</div>
+
+
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+
+                    
+					<div id="prod"></div>
+                    <div id="resultado" align="center"></div>
+                    <div  id='id_fondo_opaco' class="fondo_opaco" style="display:none"></div>

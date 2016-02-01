@@ -1,0 +1,505 @@
+<div class    ="page-content" ><!-- /.page-content -->
+	<div class    ="page-header">
+	<h1>Registro del personal.</h1>
+	</div>
+	<form class   ="form-horizontal" role="form"  method="post"  id="registro_persona" name="registro_persona" >
+		
+		<div id="accordion" class="accordion-style1 panel-group"><!-- Acordion -->
+			<div class="panel panel-default" id="divPersona">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+							<i class="ace-icon fa fa-angle-down bigger-110" data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i>
+							&nbsp;Group Item #1
+						</a>
+					</h4>
+				</div>
+						<input type="hidden" name="id" value="0">
+				<div class="panel-collapse collapse in" id="collapseOne">
+					<div class="panel-body">
+							<div class="widget-box"><!-- Datos Personales -->
+								<div class="widget-header widget-header-blue widget-header-flat">
+								<h4 class="widget-title lighter">Datos personales.</h4>
+								</div>
+								<div class="widget-body">
+										<div class="widget-main">
+						<div class="col-sm-13" align="center">								
+								<table align="center">
+									<tr>
+										<td><label>Nombres: &nbsp;</label></td>
+										<td>
+											<span class   ="input-icon">
+											<input type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+											
+											</span>
+											
+											<span class   ="input-icon">
+											<input type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+											</span>
+											
+										</td>
+										<td>&nbsp;&nbsp;&nbsp;<label>Apellidos:</label>&nbsp;</td>
+										<td>
+										<span class   ="input-icon">
+										<input type   ="text" name="apellido" id="apellido" placeholder="Primer Apellido" class="form-control" />
+										
+										</span>
+										
+										<span class   ="input-icon">
+										<input type   ="text" name="apellido2" id="apellido_dos" placeholder="Segundo Apellido" class="form-control" />
+										</span>
+										</td>
+									</tr>
+								</table>
+						</div>
+					<br>	
+					Mezaeduardo22760519
+							<div class="col-sm-13">
+								<table align="center">
+									<!---- Labels ---->
+									<tr><td></td>
+										<td>&nbsp;&nbsp;&nbsp;<label>Sexo:</label>&nbsp;</td>
+										<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+										<td>  &nbsp;<label>Fecha de nacimiento:</label></td>
+										<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+										<td>  &nbsp;<label>Cedula: </label></td>
+										<td></td>
+										<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+										<td>  &nbsp;<label>Fecha de ingreso:</label></td>
+										<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+										</tr>
+										<!-- Fin de los Labels -->
+										<!---------------------->
+										<!---------------------->
+										<!-- Inputs o selects -->
+										<tr>
+										<td>
+												<div>
+													<label>
+													<input name="sexo" type="radio" class="ace" onchange="crearDivHijos('infoHijos',2)" value="16" />
+													<span class="lbl">Masculino</span>
+													</label>								
+												</div>
+										</td>
+										<td> </td>
+										<td>
+												<div>
+													<label>
+													<input name="sexo" type="radio" class="ace" onchange="crearDivHijos('infoHijos',2)" value="17" />
+													<span class="lbl">Femenino</span>
+													</label>&nbsp; &nbsp; &nbsp;								
+												</div>
+										</td>
+										<td>
+										<div class    ="input-group">
+										<span class   ="input-group-addon">
+										<i class      ="fa fa-calendar bigger-110"></i>
+										</span>													
+										<input class  ="form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
+										</div>
+										</td>
+										<td>&nbsp;</td>
+										<td>
+										<div class    ="input-group">
+										<span class   ="input-group-addon">
+										<i class      ="fa 	fa-credit-card "></i>
+										</span>
+										<input type   ="text"  name="cedula" id="cedula" class="form-control">
+										</div>
+										</td>
+										<td></td>
+										<td>&nbsp;</td>
+										<td>
+										<div class    ="input-group">
+										<span class   ="input-group-addon">
+										<i class      ="fa fa-calendar bigger-110"></i>
+										</span>													
+										<input class  ="form-control date-picker" name="fecha_ingreso" type="date" data-date-format="yyyy-mm-dd" />
+										</div>
+										</td>
+										<td>&nbsp;</td>
+										
+										</tr>
+										<!------------Fin de los inputs------------>
+										
+										</table>
+										<br>
+										<table align="center">
+										<tr>
+										<td>&nbsp;<label>Teléfono:</label></td>
+										<td>&nbsp; &nbsp; &nbsp; &nbsp;</td>
+										<td  id="otro_telefonoTd"><label>Otro teléfono:</label></td>
+										<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+										<td><label>Correo personal:</label></td>
+										<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+										<td><label>Correo institucional:</label></td>
+										</tr>
+										<tr>
+										<td>
+										<div class    ="input-group">
+										<span class   ="input-group-addon">
+										<i class      ="ace-icon fa fa-phone"></i>
+										</span>
+										<input class  ="form-control input-mask-phone" type="text" id="telefono" name="telefono" />
+										</div>
+										</td>
+										<td>&nbsp;</td>
+										<td>
+										<div class    ="input-group">
+										<span class   ="input-group-addon">
+										<i class      ="ace-icon fa fa-phone"></i>
+										</span>
+										<input class  ="form-control input-mask-phone" type="text"  name="otro_telefono" />
+										</div>										
+										</td>
+										<td>&nbsp;</td>								
+										<td>
+										<div class    ="input-group">
+										<span class   ="input-group-addon">
+										<i class      ="fa fa-weixin"></i>
+										</span>
+										<input class  ="form-control" type="text"  name="correo" />
+										</div>										
+										</td>
+										<td>&nbsp;</td>
+										<td>
+										<div class    ="input-group">
+										<span class   ="input-group-addon">
+										<i class      ="fa fa-weixin"></i>
+										</span>
+										<input class  ="form-control" type="text"  name="correo_institucional" />
+										</div>			
+										</td>
+										</tr>
+										<tr><td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+							</div>	
+					<br>			
+										</div><!-- /.widget-main --> 
+								</div><!-- /.widget-body -->
+								<div align="center">
+								<table>
+									<tr>
+										<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label for="">¿Posee hijos?</label></td>
+									</tr>
+									<tr>
+										<td>
+										<div>
+													<label>
+													<input name="form-field-radio" type="radio" class="ace" onchange="crearDivHijos('infoHijos',2)" />
+													<span class="lbl">Si</span>
+													</label>								
+										</div>											
+										</td>
+										<td>
+										<div>
+													<label>
+													<input name="form-field-radio" type="radio" class="ace" onchange="cerrarDivHijos('infoHijos',2)"/>
+													<span class="lbl"> No</span>
+													</label>								
+										</div>											
+										</td>
+									</tr>
+								</table>
+								</div>
+							</div> <!-- Fin datos personales -->
+							<hr>
+							<div class="widget-box"> <!-- Direccion -->
+								<div class="widget-header widget-header-blue widget-header-flat">
+								<h4 class="widget-title lighter">Dirección de la persona.</h4>
+								</div>
+									<table align="center">
+									<!---- Labels ---->
+										<tr>
+											<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+											<td>&nbsp;<label for    ="id-date-picker-1">Estado:</label></td>
+											<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+											<td>&nbsp;<label for    ="form-field-mask-2">Municipio:</label></td>
+											<td></td>
+											<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+											<td>&nbsp;<label for    ="form-field-mask-2">Parroquia:</label></td>
+											<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+											<td>&nbsp;<label for    ="form-field-mask-2">Ubicación: </label></td>
+											<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+											<td></td>
+										</tr>
+										<!-- Fin de los Labels -->
+										<!---------------------->
+										<!---------------------->
+										<!-- Inputs o selects -->
+										<tr>
+											<td> </td>
+											<td>
+											<div class    ="input-group">
+											<select  id="estado" name="estado" onclick="search_municipio(this.selectedIndex)">
+											<option value ="" default selected>Seleccione un estado...</option>
+											<?php foreach ($this->_direccionEstado as $estado):?>
+											<?php // if ($estado['estado']==$estado['estado']): ?>
+											<option  value ="<?php  echo $estado['id_referencial']; ?>"><?php  echo $estado['estado']; ?></option>
+											<?php //endif ?>
+											<?php endforeach ?>
+											</select>
+											</div>
+											</td>
+											<td>&nbsp;</td>
+											<td>
+											<div class    ="input-group">
+											<select  id="municipio" name="municipio">
+											<option value ="" default selected>Seleccione un municipio...</option>
+											<?php foreach ($this->_direccionMunicipio as $municipio):?>
+											<option value ="<?php  echo $municipio['id_referencial']; ?>"><?php  echo $municipio['municipio']; ?></option>
+											<?php endforeach ?>
+											</select>
+											</div>
+											</td>
+											<td></td>
+											<td>&nbsp;</td>
+											<td>
+											<div class    ="input-group">
+											<select  id="direccion" name="direccion">
+											<option value ="" default selected>Seleccione una parroquia...</option>
+											<?php foreach ($this->_direccionParroquia as $parroquia):?>
+											<option value ="<?php  echo $parroquia['id_referencial']; ?>"><?php  echo $parroquia['parroquia']; ?></option>
+											<?php endforeach ?>
+											</select>
+											</div>
+											</td>
+											<td>&nbsp;</td>
+											<td>
+											<div class    ="input-group">
+											<span class   ="input-group-addon">
+											<i class      ="fa 	fa-globe "></i>
+											</span>
+											<input type   ="text" name="ubicacion" id="ubicacion" size="50" class="form-control" placeholder="Zona donde vive la persona">
+											</div>
+											</td>
+										</tr>
+									<!----------Fin de los inputs------------>
+									
+									</table>
+							<br>
+							</div><!-- Fin de direccion -->										
+					</div><!-- Acordion Uno -->
+				</div> <!-- Fin acordion Uno -->
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+							<i class="ace-icon fa fa-angle-right bigger-110" data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i>
+							&nbsp;Group Item #2
+						</a>
+					</h4>
+				</div>
+
+				<div class="panel-collapse collapse" id="collapseThree">
+					<div class="panel-body">
+						<div class    ="row"> <!-- Tallas, informacion academica -->
+							<div class    ="col-xs-12 col-sm-4"> <!-- Tallas de vestimenta -->
+								<div class    ="widget-box">
+									<div class    ="widget-header">
+									<h4 class     ="widget-title">Tallas de vestimenta</h4>
+									</div>
+									
+										<div class    ="widget-body">
+											<div class    ="widget-main" align="center">
+												<div>
+												<label for    ="form-field-8">Talla de camisa:</label>
+													<select  id="talla_camisa" name="talla_camisa">
+													<option value="">Seleccione una talla...</option>
+													<?php foreach ($this->_tallas_camisa as $talla_camisa):?>
+													<option value ="<?php  echo $talla_camisa['id_referencial']; ?>"><?php  echo $talla_camisa['referencia']; ?></option>
+													<?php endforeach ?>											
+													</select>
+												</div>
+											
+												<hr />
+											
+												<div>
+												<label for    ="form-field-9">Talla de pantalon:</label>
+													<select  id="talla_pantalon" name="talla_pantalon">
+													<option value="">Seleccione una talla...</option>
+													<?php foreach ($this->_tallas_pantalon as $talla_pantalon):?>
+													<option value ="<?php  echo $talla_pantalon['id_referencial']; ?>"><?php  echo $talla_pantalon['referencia']; ?></option>
+													<?php endforeach ?>											
+													</select>
+												</div>
+											
+												<hr />
+											
+												<div>
+												<label for    ="form-field-9">Talla de zapatos:</label>
+													<select  id="talla_zapatos" name="talla_zapatos">
+													<option value="">Seleccione una talla...</option>
+													<?php foreach ($this->_tallas_pantalon as $talla_zapatos):?>
+													<option value ="<?php  echo $talla_zapatos['id_referencial']; ?>"><?php  echo $talla_zapatos['referencia']; ?></option>
+													<?php endforeach ?>											
+													</select>
+												</div>
+											</div>
+										</div>
+									<br>
+								</div>
+							</div><!-- /.FIn tallas de vestimenta -->							
+							
+							<div class="col-sm-8"><!-- Informacion academica -->
+								<div class="widget-box">
+									<div class="widget-header">
+									<h4 class="widget-title">Información academica</h4>
+									</div>
+								
+										<div class="widget-body">
+											<div class="widget-main">											
+												<div >											
+												<label for="">Nivel academico: </label>
+												&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;
+												<input type="text" size="18" name="nivel_academico"  />
+												&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+												<label for="">Educación primaria: </label>
+												<input type="text" size="18" name="educacion_primaria" />
+												</div>
+												<div>
+												
+												</div>
+												<hr>
+												<div >											
+												<label for="">Educación secundaria: </label>
+												<input type="text" size="18" name="educacion_secundaria" />
+												&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+												<label for="">Educacón superior: </label>
+												<input type="text" size="18" name="educacion_superior" />
+												</div>
+												<hr>	
+												<div >											
+												<label for="">Cursos y tallereres:</label>
+												&nbsp; &nbsp; &nbsp; &nbsp;
+												<input type="text" size="18" name="cursos_talleres" />
+												&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+												<label for="">Post-grado: </label>
+												&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+												<input type="text" size="18" name="post_grado" />
+												</div>
+											</div>																							
+										</div>
+								</div>
+								
+								<div class="space-6"></div>
+							</div><!--  Fin informacion academica -->							
+						</div><!-- /.Fin tallas,informacion academica -->
+						<hr>
+							<div id="infoHijos" class="col-sm-16" hidden><!-- informacion de los hijos -->
+								<div class="widget-box">
+									<div class="widget-header">
+									<h4 class="widget-title">Información de los hijos</h4>
+									</div>
+							
+										<div class="widget-body">
+											<div class="widget-main">											
+												<div  >											
+  																<hr>													
+														<div id="div_hijos" align="center">
+															<table> 
+																<tr>
+																	
+																	<td  align="left"><label for="">Nombres:</label></td>
+																	<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+																	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+																	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+																	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+																	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+																	&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;</td>
+																	<td><label for="">Apellidos:</label></td>																	
+																</tr>
+															</table>
+															<table>
+																<tr>
+																	<td><input type="text" placeholder="Primer nombre" name="nombre_hijo" class="form-control"></td>
+																	<td> &nbsp;</td>
+																	<td><input type="text" placeholder="Segundo nombre" name="nombre2_hijo" class="form-control"></td>
+																	<td>  &nbsp;  &nbsp;  &nbsp;</td>
+																	<td><input type="text" placeholder="Primer apellido" name="apellido_hijo" class="form-control"></td>
+																	<td> &nbsp;</td>
+																	<td><input type="text" placeholder="Segundo apellido" name="apellido2_hijo" class="form-control">	</td>
+																																	
+																</tr>
+																</table>
+																<br>
+																<table>
+																	<tr>
+																	<td><label for="">Fecha de nacimiento:</label></td>
+																	<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+																	<td><label for="">Nivel academico:</label></td>
+																	<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+																	<td></td>
+																	<td><label for="">Sexo:</label></td>														
+																																	
+																</tr>
+																<tr>
+																	<td>
+																		<div class    ="input-group">
+																		<span class   ="input-group-addon">
+																		<i class      ="fa fa-calendar bigger-110"></i>
+																		</span>																		
+																		<input class  ="form-control date-picker" name="fecha_nacimiento_hijo" id="fecha_nacimiento_hijo" type="date" data-date-format="yyyy-mm-dd" />
+																		</div>																		
+																	</td>
+																	<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+																	<td><input type="text" placeholder="Nivel academico" name="nivel_academico_hijo" class="form-control"></td>
+																	<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>																	
+																	<td>
+																			<div>
+																				<label>
+																				<input name="sexo" type="radio" class="ace"value="16" />
+																				<span class="lbl">Masculino</span>
+																				</label>								
+																			</div>
+																	</td>
+																	<td> </td>
+																	<td>
+																			<div>
+																				<label>
+																				<input name="sexo" type="radio" class="ace" value="17" />
+																				<span class="lbl">Femenino</span>
+																				</label>&nbsp; &nbsp; &nbsp;								
+																			</div>
+																	</td>
+																</tr>						
+																</table>
+																<hr>
+																<hr>												
+															</table>
+														</div>
+																																						
+												</div>
+											</div>																							
+										</div>
+								</div>
+								
+								<div class="space-6"></div>
+							</div><!--  Fin informacion de los hijos -->							
+
+					</div>
+				</div> <!-- Acordion dos -->
+			</div> 
+		</div> <!-- Fin acordion -->
+
+		<div class    ="clearfix form-actions" align="center"> <!-- Botonera -->
+			<div>
+				<button class ="btn btn-primary" type="submite" onclick="send_registro_persona()"/>
+				<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+				Guardar
+				</button>				
+				
+				&nbsp; &nbsp; &nbsp;
+				<button class ="btn" type="reset">
+				<i class      ="ace-icon fa fa-undo bigger-110"></i>
+				Restaurar valores
+				</button>
+			</div>
+		</div> <!-- Fin botonera -->													
+	</form>														
+</div><!-- /.page-content -->
+														

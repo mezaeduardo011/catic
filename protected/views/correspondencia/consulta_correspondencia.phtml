@@ -1,0 +1,80 @@
+<div class="page-content">
+	<div class="page-header">
+		<h1>Registro de correspondencias.</h1>
+	</div>
+	
+	
+	<!-- /.page-header -->
+	<div class="row">
+		<div class="col-xs-12">
+			
+			<!-- PAGE CONTENT BEGINS -->
+			<form class="form-horizontal" role="form" action="<?php  echo BASE_URL;?>correspondencia/insert" method="post" >
+				<div>
+					<br>
+					
+					
+					<div class="widget-box">
+						<div class="widget-header widget-header-blue widget-header-flat">
+							<h4 class="widget-title lighter">Correspondencias registradas.</h4>
+						</div>
+						<div class="">
+							<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+								<thead>
+									<tr>
+										<th> N°</th>
+										<th >Asunto</th>
+										<th >Instrucción</th>
+										<th >Oficina</th>
+										<th >Coordinacion Encargada</th>
+										<th >Fecha de recibido</th>
+										<th >Fecha de entrega</th>
+										<th >Estatus</th>
+										<th colspan="100%" align="center"> &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;Acciones</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach ($this->_listado as $persona): ?>
+									<tr>
+										<input type="hidden" value="<?php echo $persona['id_persona'];?>">
+										<td ><?php echo $persona['numero_comunicacion'];?></td>
+										<td ><?php echo $persona['asunto']; ?></td>
+										<td ><?php echo $persona['instruccion']; ?></td>
+										<td ><?php echo $persona['oficina']; ?></td>
+										<td ><?php echo $persona['coordinacion']; ?></td>
+										<td ><?php echo $persona['fecha_recibido']; ?></td>
+										<td ><?php echo $persona['fecha_entregado']; ?></td>
+										<td ><?php echo $persona['status']; ?></td>
+										
+										<th>
+											<a class="btn-app  btn-primary  btn-sm " role="button" class="blue" data-toggle="modal" onclick="send_detalle_persona('<?php echo $persona['id_persona'] ?>')">
+												<i class="glyphicon glyphicon-search"></i>
+												Detalles
+											</a>
+										</th>
+										<th>
+											<a class="btn-app btn-danger btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
+												<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>
+												Eliminar
+											</a>
+										</th>
+									</tr>
+									<?php endforeach ?>
+								</tbody>
+							</table>
+							
+							
+							</div><!-- /.widget-main -->
+							</div><!-- /.widget-body -->
+						</div>
+						
+					</form>
+					<!-- PAGE CONTENT ENDS -->
+					</div><!-- /.col -->
+					</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+				</div><!-- /.main-content -->
+			</body>
+			
+		</html>

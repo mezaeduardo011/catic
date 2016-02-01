@@ -1,0 +1,139 @@
+<head>
+	<link rel="stylesheet" href="<?php echo PUBLIC_URL;?>plantilla/assets/css/bootstrap-timepicker.min.css" />
+</head>
+
+<div class="page-content">
+	<div class="page-header">
+		<h1>Actividad institucional</h1>
+	</div>
+	<form action="<?php  echo BASE_URL;?>actividad_institucional/insert" method="post">
+
+		<br>
+		<br>
+		<table  align="center">
+			<tr>
+				<td>&nbsp; <label class="">Nombre de la actividad: </label><td>
+				<td> &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; <td>
+				<td>Fecha de asignación:<td>
+				<td> &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; <td>
+				<td>Hora:<td>
+				<td> &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; <td>
+				<td>Lugar:<td>
+			</tr>
+			<tr>
+				<td>
+					<input type   ="text" name="nombre_actividad" id="nombre_actividad" placeholder="Nombre de actividad" class="form-control" size="30" />
+				<td>
+				<td> &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; <td>
+				<td>
+				<div class    ="input-group">
+					<input class  ="form-control date-picker" name="fecha_actividad" id="fecha_actividad" type="date" data-date-format="yyyy-mm-dd" />
+					<span class   ="input-group-addon">
+						<i class      ="fa fa-calendar bigger-110"></i>
+					</span>
+				</div>
+				<td>
+				<td> &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; <td>
+				<td>
+				<div class="input-group bootstrap-timepicker">
+					<input id="timepicker1" name="timepicker1" type="text" class="form-control" />
+					<span class="input-group-addon">
+						<i class="fa fa-clock-o bigger-110"></i>
+					</span>
+				</div>
+				<td>
+				<td> &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; 
+				<td>
+				<td>
+				<div class    ="input-group">
+					<span class   ="input-group-addon">
+					<i class      ="fa 	fa-globe "></i>
+					</span>
+					<input type   ="text" name="ubicacion" id="ubicacion" size="30">
+				</div>
+				<td>
+			</tr>
+		</table>
+		<div class="hr hr-18 dotted hr-double"></div>
+			<div class="page-header">
+				<h1>
+					Personal disponible para la actividad
+					<small>
+						<i class="ace-icon fa fa-angle-double-right"></i>
+						Por favor agregue a las personas que asistiran a la actividad.
+					</small>
+				</h1>
+			</div>
+																			
+			<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th >#</th>
+						<th >Cedula</th>
+						<th >Nombre</th>
+						<th >Apellido</th>
+						<th >Telefono</th>
+						<th >Correo</th>
+						<th > 
+						&nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;
+						Asignar
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php if(count($this->_listado) > 1): ?>
+					<?php $cont=0; foreach ($this->_listado as $persona): $cont++;?>
+					<tr>
+						<input type="hidden" value="<?php echo $persona['id_persona'];?>">
+						<td ><?php echo $persona['numeracion'];?></td>
+						<td ><?php echo $persona['cedula']; ?></td>
+						<td ><?php echo $persona['nombre']; ?></td>
+						<td ><?php echo $persona['apellido']; ?></td>
+						<td ><?php echo $persona['telefono']; ?></td>
+						<td ><?php echo $persona['correo']; ?></td>
+						<td> 
+							&nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;
+
+							<a class="btn-app  btn-primary  btn-sm">
+								<label class="pos-rel">												
+									<input type="checkbox" class="ace" value="<?php echo $persona['id_persona']; ?>" name="<?php echo 'check'.$cont ?>"/>
+									<span class="lbl"></span>
+								</label>
+							</a>
+
+						</td>
+					</tr>
+					<?php endforeach ?>
+					<input type="hidden" value="<?php echo $cont?>" name="contador"  >
+					<?php else: ?>
+					<tr>
+						<td colspan="8" align="center">
+							<div class="alert alert-danger">
+								<b>
+									<font size="5">
+										No hay Personal Disponible
+									</font>
+								</b>
+							</div>
+						</td>
+
+					</tr>
+					<?php endif; ?> 
+				</tbody>
+			</table>
+			<div class    ="clearfix form-actions" align="center">
+				<div>
+					<button class ="btn btn-primary" type="submit">
+						<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+						Guardar
+					</button>
+																					
+					&nbsp; &nbsp; &nbsp;
+					<button class ="btn" type="reset">
+						<i class      ="ace-icon fa fa-undo bigger-110"></i>
+						Restaurar valores
+					</button>
+				</div>
+			</div>
+	</form>
+</div>
