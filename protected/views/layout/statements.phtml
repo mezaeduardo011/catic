@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <?php  if (isset($_view_params['css']) && count($_view_params['css'])): ?>
+        <?php   for ($i = 0; $i < count($_view_params['css']); $i++):  ?>
+        <link rel="stylesheet" href="<?php echo $_view_params['css'][$i]; ?>" type="text/css" />
+        <?php   endfor; ?>
+        <?php  endif;?>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta charset="utf-8" />
+        <title>CATIC</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        
+        <!-- css para fechas -->
+        <link rel="stylesheet" href="<?php echo CSS_PATH;?>datepicker.min.css" />
+        <link rel="stylesheet" href="<?php echo CSS_PATH;?>bootstrap-timepicker.min.css" />
+        <link rel="stylesheet" href="<?php echo CSS_PATH;?>daterangepicker.min.css" />
+        <link rel="stylesheet" href="<?php echo CSS_PATH;?>bootstrap-datetimepicker.min.css" />
+        <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>css/form.css" />
+             
+        <!-- bootstrap & fontawesome -->
+        <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>plantilla/assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>plantilla/assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+        <!-- alert personalizado -->
+        <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>css/wow-alert.css" />   
+
+
+        <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>plantilla/assets/fonts/fonts.googleapis.com.css" />
+        <!-- ace styles -->
+        <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>plantilla/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+ 
+        <script src="<?php echo PUBLIC_URL;?>/js/Librerias/jquery.js"></script> 
+        <script src="<?php echo PUBLIC_URL;?>/js/Librerias/fuelux.wizard.js"></script>
+        <script src="<?php echo PUBLIC_URL;?>/js/form-wizard.js"></script>
+        
+        <script src="<?php echo PUBLIC_URL;?>/plantilla/assets/js/jquery.dataTables.min.js"></script>
+        <script src="<?php echo PUBLIC_URL;?>/plantilla/assets/js/jquery.dataTables.bootstrap.min.js"></script>
+        <script src="<?php echo PUBLIC_URL;?>/plantilla/assets/js/dataTables.tableTools.min.js"></script>
+        <script src="<?php echo PUBLIC_URL;?>/plantilla/assets/js/dataTables.colVis.min.js"></script>
+        <script src="<?php echo PUBLIC_URL;?>js/tables.js"></script>
+        <script src="<?php echo PUBLIC_URL;?>/js/consultarPersonas/reqs.js"></script>
+        <script src="<?php echo PUBLIC_URL;?>/js/ajax.js"></script>
+        <script src="<?php echo PUBLIC_URL;?>/js/consultarPersonas/tabla.js"></script>
+        <script src="<?php echo PUBLIC_URL;?>/js/tabla.js"></script>
+        <script src="<?php echo PUBLIC_URL;?>/js/pickList.js"></script>
+        <script src="<?php echo PUBLIC_URL;?>/js/registroPersona/registroPersona.js"></script>  
+
+
+    </head>
+    <body class="no-skin">
+        <div id="navbar" class="navbar navbar-default">
+            
+            <div class="navbar-container" id="navbar-container">
+                <div class="navbar-header pull-left">
+                    <a href="index" class="navbar-brand">
+                        <small>
+                        <i class="fa fa-folder "></i>
+                        Control administrativo de tecnóloga información y comunicación.
+                        </small>
+                    </a>
+                </div>
+                
+                <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                    <ul class="nav ace-nav">
+                        <!-- li para las notificaciones -->
+                        <li class="green">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                                <span class="badge badge-important">2</span>
+                            </a>
+                            <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                                <li class="dropdown-header">
+                                    <i class=""></i>
+                                    Ejemplo de notificaciones.
+                                </li>
+                                <li class="dropdown-content">
+                                    <ul class="dropdown-menu dropdown-navbar navbar-pink">
+                                        <li>
+                                            <a href="#">
+                                                <div class="clearfix">
+                                                    <span class="pull-left">
+                                                        <i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+                                                        Retardos del dia.
+                                                    </span>
+                                                    <span class="pull-right badge badge-info">+4</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="clearfix">
+                                                    <span class="pull-left">Seguimiento de una correspondencia.</span>
+                                                    <span class="pull-right">65%</span>
+                                                </div>
+                                                <div class="progress progress-mini">
+                                                    <div style="width:65%" class="progress-bar"></div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- fin de las notificaciones -->
+                        
+                        <!-- menu de login -->
+                        <li class="light-blue">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                <img class="nav-user-photo" src="<?php echo PUBLIC_URL;?>plantilla/assets/avatars/avatar2.png" alt="Jason's Photo" />
+                                <span class="user-info">
+                                    <small>Nombre de usuario</small>
+                                </span>
+                                <i class="ace-icon fa fa-caret-down"></i>
+                            </a>
+                            <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                <li>
+                                    <a href="#">
+                                        <i class="ace-icon fa fa-cog"></i>
+                                        Configuraciones.
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="profile.html">
+                                        <i class="ace-icon fa fa-user"></i>
+                                        Perfil.
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="<?php  session_destroy(); echo BASE_URL;?>login/close">
+                                        <i class="ace-icon fa fa-power-off"></i>
+                                        Salir
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- fin menu de login -->
+                    </ul>
+                </div>
+                </div><!-- /.navbar-container -->
+            </div>
+            <div class="main-container" id="main-container">
+                <script type="text/javascript">
+                try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+                </script>
+                <div id="sidebar" class="sidebar                  responsive">
+                    <script type="text/javascript">
+                    try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+                    </script>
+                    
+                    <ul class="nav nav-list">
+                        
+                        <li class="">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="menu-icon fa fa-list-alt"></i>
+                                <span class="menu-text">
+                                    Personal
+                                </span>
+                                <b class="arrow fa fa-angle-down"></b>
+                            </a>
+                            <b class="arrow"></b>
+                            
+                            <ul class="submenu">
+                                <li class="">
+                                    <a href="<?php  echo BASE_URL;?>personal">
+                                        <i class="menu-icon fa fa-caret-right"></i>
+                                        Registrar personal nuevo
+                                    </a>
+                                    <b class="arrow"></b>
+                                </li>
+                                <li class="">
+                                    <a href="<?php  echo BASE_URL;?>personal/listing">
+                                        <i class="menu-icon fa fa-caret-right"></i>
+                                        Consultar personal
+                                    </a>
+                                    <b class="arrow"></b>
+                                </li>
+                                <li class="">
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="menu-icon fa fa-caret-right"></i>
+                                        Vacaciones
+                                        <b class="arrow fa fa-angle-down"></b>
+                                    </a>
+                                    <b class="arrow"></b>
+                                    <ul class="submenu">
+                                        <li class="">
+                                            <a href="<?php  echo BASE_URL;?>personal/registro_vacaciones">
+                                                <i class="menu-icon fa fa-pencil orange"></i>
+                                                Registro de vacaciones.
+                                            </a>
+                                            <b class="arrow"></b>
+                                        </li>
+                                        <li class="">
+                                            <a href="#" class="dropdown-toggle">
+                                                <i class="menu-icon fa fa-pencil orange"></i>
+                                                Consulta de vacaciones.
+                                                
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="menu-icon fa fa-list"></i>
+                                <span class="menu-text"> Actividades </span>
+                                <b class="arrow fa fa-angle-down"></b>
+                            </a>
+                            <b class="arrow"></b>
+                            <ul class="submenu">
+                                <li class="">
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="menu-icon fa fa-caret-right"></i>
+                                        Institucionales.
+                                        <b class="arrow fa fa-angle-down"></b>
+                                    </a>
+                                    <b class="arrow"></b>
+                                    <ul class="submenu">
+                                        <li class="">
+                                            <a href="<?php  echo BASE_URL;?>actividad_institucional/index">
+                                                <i class="menu-icon fa fa-pencil orange"></i>
+                                                Registrar actividad.
+                                            </a>
+                                            <b class="arrow"></b>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php  echo BASE_URL;?>actividad_institucional/consultaDeActividad">
+                                                <i class="menu-icon fa fa-pencil orange"></i>
+                                                  Consultar/ Modificar actividad.
+                                            </a>
+                                            <b class="arrow"></b>
+                                        </li>                                        
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <a href="<?php  echo BASE_URL;?>actividades_extras/index">
+                                        <i class="menu-icon fa fa-caret-right"></i>
+                                        Extras a los ODI.
+                                    </a>
+                                    <b class="arrow"></b>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="menu-icon fa fa-tachometer"></i>
+                                <span class="menu-text"> Horario laboral </span>
+                                <b class="arrow fa fa-angle-down"></b>
+                            </a>
+                            <b class="arrow"></b>
+                            <ul class="submenu">
+                                <li class="">
+                                    <a href="form-elements.html">
+                                        <i class="menu-icon fa fa-caret-right"></i>
+                                        Consultar horarios
+                                    </a>
+                                    <b class="arrow"></b>
+                                </li>
+                                <li class="">
+                                    <a href="form-elements-2.html">
+                                        <i class="menu-icon fa fa-caret-right"></i>
+                                        ......
+                                    </a>
+                                    <b class="arrow"></b>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li class="">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="menu-icon fa fa-envelope"></i>
+                                <span class="menu-text"> Correspondencia </span>
+                                <b class="arrow fa fa-angle-down"></b>
+                            </a>
+                            <b class="arrow"></b>
+                            <ul class="submenu">
+                                <li class="">
+                                    <a href="<?php  echo BASE_URL;?>correspondencia/registro_correspondencia">
+                                        <i class="menu-icon fa fa-pencil orange"></i>
+                                        Registrar correspondencia
+                                    </a>
+                                    <b class="arrow"></b>
+                                </li>
+                                <li class="">
+                                    <a href="form-elements-2.html">
+                                        <i class="menu-icon fa fa-caret-right"></i>
+                                        Consultar Correspondencia
+                                    </a>
+                                    <b class="arrow"></b>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li class="">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="menu-icon fa fa-eye"></i>
+                                <span class="menu-text"> Amonestaciones </span>
+                                <b class="arrow fa fa-angle-down"></b>
+                            </a>
+                            <b class="arrow"></b>
+                            <ul class="submenu">
+                                <li class="">
+                                    <a href="<?php  echo BASE_URL;?>amonestacion/">
+                                        <i class="menu-icon fa fa-pencil orange"></i>
+                                        Registro de Amonestacion
+                                    </a>
+                                    <b class="arrow"></b>
+                                </li>
+                                <li class="">
+                                    <a href="form-elements-2.html">
+                                        <i class="menu-icon fa fa-caret-right"></i>
+                                        Historial de Amonestacion
+                                    </a>
+                                    <b class="arrow"></b>
+                                </li>
+                                <li class="">
+                                    <a href="form-elements-2.html">
+                                        <i class="menu-icon fa fa-caret-right"></i>
+                                        Reportes de Amonestaciones
+                                    </a>
+                                    <b class="arrow"></b>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="widgets.html">
+                                <i class="menu-icon fa  fa-cogs "></i>
+                                <span class="menu-text"> Administrar sistema </span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                        </ul><!-- /.nav-list -->
+                        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                            <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+                        </div>
+                        <script type="text/javascript">
+                        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+                        </script>
+                    </div>
+                    <div class="main-content">
+                        <div class="main-content-inner">
+                            <div class="breadcrumbs" id="breadcrumbs">
+                                <script type="text/javascript">
+                                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                                </script>
+                                <ul class="breadcrumb">
+                                    <li>
+                                        <i class="ace-icon fa fa-home home-icon"></i>
+                                        <a href="index" >Principal</a>
+                                    </li>
+                                    
+                                    </ul><!-- /.breadcrumb --><!-- /.nav-search -->
+                                </div>

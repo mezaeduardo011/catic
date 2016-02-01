@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+  <meta charset="utf-8" />
+  <title>Inicio de sesion.</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="" name="description" />
+  <meta content="" name="author" />
+  <!-- BEGIN GLOBAL MANDATORY STYLES -->
+  <link href="<?php echo PUBLIC_URL;?>login/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+  <link href="<?php echo PUBLIC_URL;?>login/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+  <link href="<?php echo PUBLIC_URL;?>login/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <link href="<?php echo PUBLIC_URL;?>login/css/style-metro.css" rel="stylesheet" type="text/css"/>
+  <link href="<?php echo PUBLIC_URL;?>login/css/style.css" rel="stylesheet" type="text/css"/>
+  <link href="<?php echo PUBLIC_URL;?>login/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+  <link href="<?php echo PUBLIC_URL;?>login/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+  <link href="<?php echo PUBLIC_URL;?>login/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" type="text/css" href="<?php echo PUBLIC_URL;?>login/plugins/select2/select2_metro.css" />
+  <!-- END GLOBAL MANDATORY STYLES -->
+  <!-- BEGIN PAGE LEVEL STYLES -->
+  <link href="<?php echo PUBLIC_URL;?>login/css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
+  <!-- END PAGE LEVEL STYLES -->
+  <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="login" background="<?php echo PUBLIC_URL;?>login/img/bg/4.jpg">
+  <!-- BEGIN LOGO -->
+  <div class="logo">
+    <!-- PUT YOUR LOGO HERE -->
+  </div>
+  <!-- END LOGO -->
+  <!-- BEGIN LOGIN -->
+  <div class="content">
+    <!-- BEGIN LOGIN FORM -->
+    <form class="form-vertical login-form" action='<?php echo BASE_URL . 'login/signIn'?>' method="post">
+      <?php if (isset($this->_error)) echo $this->_error; ?>
+      <h3 class="form-title">Por favor introduzca sus datos para iniciar sesion</h3>
+      <div class="alert alert-error hide">
+        <button class="close" data-dismiss="alert"></button>
+        <span>Debe introducir un usuario y contraseña para inisiar la sesion.</span>
+      </div>
+      <div class="control-group">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <label class="control-label visible-ie8 visible-ie9">Usuario</label>
+        <div class="controls">
+          <div class="input-icon left">
+            <i class="icon-user"></i>
+            <input class="m-wrap placeholder-no-fix" type="text" autocomplete="off" placeholder="Usuario" name="user_name" id="user_name" />
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
+        <div class="controls">
+          <div class="input-icon left">
+            <i class="icon-lock"></i>
+            <input class="m-wrap placeholder-no-fix" type="password" autocomplete="off" placeholder="Contraseña" name="password" id="password" />
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <label class="checkbox">
+          <input type="checkbox" name="remember" value="1"/> Recordar mis datos
+        </label>
+        <button type="submit" class="btn blue pull-right">
+        Ingresar <i class="m-icon-swapright m-icon-white"></i>
+        </button>
+      </div>
+      <div class="forget-password">
+        <h4>¿Olvido su contraseña?</h4>
+        <p>
+          Haga click <a href="javascript:;"  id="forget-password">aqui</a>
+          para reiniciar su contraseña.
+        </p>
+      </div>
+    </form>
+    <!-- END LOGIN FORM -->
+    <!-- BEGIN FORGOT PASSWORD FORM -->
+    <form class="form-vertical forget-form" action="index.html" method="post">
+      <h3 >Reinicio de contraseña</h3>
+      <p>Ingrese su correo para resetear su contraseña</p>
+      <div class="control-group">
+        <div class="controls">
+          <div class="input-icon left">
+            <i class="icon-envelope"></i>
+            <input class="m-wrap placeholder-no-fix" type="text" placeholder="Correo" autocomplete="off" name="email" />
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="button" id="back-btn" class="btn">
+        <i class="m-icon-swapleft"></i> Regresar
+        </button>
+        <button type="submit" class="btn blue pull-right">
+        Enviar <i class="m-icon-swapright m-icon-white"></i>
+        </button>
+      </div>
+    </form>
+    <!-- END FORGOT PASSWORD FORM -->
+  </div>
+  <!-- END LOGIN -->
+  <!-- BEGIN COPYRIGHT -->
+  <div class="copyright">
+    2014 &copy; <a href="http://www.mppi.gob.ve/">Ministerio de industria y comercio.</a>
+  </div>
+  <!-- END COPYRIGHT -->
+  <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+  <!-- BEGIN CORE PLUGINS -->   <script src="<?php echo PUBLIC_URL;?>login/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+  <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
+  <!--[if lt IE 9]>
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/excanvas.min.js"></script>
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/respond.min.js"></script>
+  <![endif]-->
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+  <!-- END CORE PLUGINS -->
+  <!-- BEGIN PAGE LEVEL PLUGINS -->
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+  <script src="<?php echo PUBLIC_URL;?>login/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="<?php echo PUBLIC_URL;?>login/plugins/select2/select2.min.js"></script>
+  <!-- END PAGE LEVEL PLUGINS -->
+  <!-- BEGIN PAGE LEVEL SCRIPTS -->
+  <script src="<?php echo PUBLIC_URL;?>login/scripts/app.js" type="text/javascript"></script>
+  <script src="<?php echo PUBLIC_URL;?>login/scripts/login-soft.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL SCRIPTS -->
+  <script>
+  jQuery(document).ready(function() {
+  App.init();
+  Login.init();
+  });
+  </script>
+  <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

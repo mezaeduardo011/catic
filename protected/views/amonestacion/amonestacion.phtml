@@ -1,0 +1,136 @@
+<body class="no-skin">
+	<div class="page-content">
+		<div class="page-header"><h1>Amonestaciones</h1></div>
+		<form
+			class="form-horizontal"
+			role="form"
+			action="<?php echo BASE_URL;?>personal/insert"
+			method="post">
+			<div class="widget-box">
+				<div class="widget-header widget-header-blue widget-header-flat">
+					<!-- Header del Primer Recuadro-->
+					<h4 class="widget-title lighter">Registro de la Amonestacion</h4>
+				</div>
+				<!-- Body del Primer Recuadro -->
+				<div class="widget-body">
+					<div class="widget-main">
+						<!-- Primer Segmento del Formulario: Numero.A & Fecha.A -->
+						<table align="center">
+							<!-- Primera Columna -->
+							<tr>
+								<!-- Fin del Primer Input -->
+								<!-- Segundo Input con su respectivo Label -->
+								<td>&nbsp;&nbsp;&nbsp;<label>Fecha de Registro:</label>&nbsp;</td>
+								<td>
+									<div class="input-group">
+										<input
+										type="date"
+										name="fecha_amonestacion"
+										id="fecha_amonestacion"
+										class="form-control date-picker"
+										data-date-formar="yyy-md-dd"
+										required/>
+										<span class="input-group-addon">
+											<i class="fa fa-calendar bigger-110"></i>
+										</span>
+									</div>
+								</td>
+								<!-- Fin del Segundo Input -->
+							</tr>
+							<!-- Fin de la Primera Columna -->
+						</table>
+						<!-- Fin del Primer Segmento -->
+						<br>
+						<!-- Comienzo del Segundo Segmento: Nombre y Apellido del Afectado -->
+						<table align="center">
+							<tr>
+								<!-- Labels de los Input Correspondientes -->
+								<td><label>Nombre:</label></td>
+								<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+								<td><label>Apellido:</label></td>
+							</tr>
+							<tr>
+								<!-- Comienzo de los Inputs -->
+								<!-- Primer Input -->
+								<td>
+									<div class="input-group">
+										<input type="text" id="nombre_persona" name="nombre_persona" required/>
+									</div>
+								</td>
+								<td>&nbsp;</td>
+								<!-- Segundo Input -->
+								<td>
+									<div class="input-group">
+										<input type="text" id="apellido_persona" name="apellido_persona" required/>
+									</div>
+								</td>
+								<!-- Fin de los Inputs -->
+							</tr>
+						</table>
+						<!-- Final del Segundo Segmento -->
+						<br>
+						<!-- Comienzo del Tercer Segmento -->
+						<table align="center">
+							<tr>
+								<!--Textarea -->
+								<td><label>Motivo de Amonestacion:</label></td>
+								<td>&nbsp;</td>
+								<td>
+									<textarea
+									type="textarea"
+									id="motivo_amonestacion"
+									name="motivo_amonestacion"
+									required>
+									</textarea>
+								</td>
+								<!-- Fin del Textarea -->
+							</tr>
+						</table>
+						<!-- Final del Tercer Segmento -->
+						<br>
+						<table align="center">
+							<tr>
+								<td><label>Direccion del Empleado:</label></td>
+								<td>&nbsp;</td>
+								<td>
+									<div>
+										<select name="direccion_linea" id="direccion_linea">
+											<option value="">Seleccion de Direccion</option>
+											<option value="General">General</option>
+											<option value="Gestion Tecnologica">Gestion Tecnologica</option>
+											<option value="Soporte">Soporte,Redes y Telecomunicaciones</option>
+											<option value="Administracion">Administracion y Seguridad de Datos</option>
+											<option value="Desarrollo">Desarrollo de Sistemas</option>
+										</select>
+									</div>
+								</td>
+								<td>&nbsp;</td>
+								<td><label>Tipo de Amonestacion:</label></td>
+								<td>&nbsp;</td>
+								<td>
+								<script>
+	
+	window.addEventListener('load', alert, false);
+function alert() {
+alert("Aviso: Desde esta misma ventana usted podra editar los datos de la persona.");
+}
+</script>
+									<div>
+										<select name="motivo_amonestacion" id="motivo_amonestacion">
+											<option value="">Seleccion de Motivo</option>
+											<option value="General">Llamado de Atencion</option>
+											<option value="Gestion Tecnologica">Recordatorio de Deberes</option>
+											<option value="Soporte">Acta: Abandono de Puesto</option>
+											<option value="Administracion">Acta: Trabajador se niega a recibir comunicacion</option>
+											<option value="Desarrollo">Acta: Inasistencia Justificada</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+			</div></form>
+			</div>
+
