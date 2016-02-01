@@ -144,11 +144,12 @@
 			}
 
 			function insertPerson(){
-
+					//$_POST=$_GET;
 					unset($_POST['url']);
 					unset($_POST['estado']);
 					unset($_POST['municipio']);
 					$persona= $this->ConvertirArray($_POST);
+					//$this->imprimirArreglo($persona);
 					$this->_personal->insertPersonModel($persona);
 	
 			}	

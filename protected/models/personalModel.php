@@ -14,7 +14,7 @@
 		public function insertPersonModel($persona){
 
 			//Se le pasa el arreglo desde el controlador, se le asignan los valores segun lo que dicta la asociacion
-			$this->query = "SELECT registro_persona(:id,:nombre,:nombre2,:apellido,:apellido2,:sexos,:fecha_nacimiento,:cedula,:fecha_ingreso,:telefono,:correo,:correo_institucional,:direccion,:ubicacion,:otro_telefono);";
+			$this->query = "SELECT registro_persona(:nombre,:nombre2,:apellido,:apellido2,:sexos,:fecha_nacimiento,:cedula,:fecha_ingreso,:telefono,:correo,:direccion,:ubicacion,:otro_telefono);";
 			
 			//Cuando esta construido el query se envia para que empieze la transaccion.
 			try {
@@ -90,9 +90,10 @@
 		//Retorna un listado del personal a traves de un select
 		public function getHijosModel(){
 	
-				$query = "SELECT  ROW_NUMBER() OVER (ORDER BY id_persona) AS numeracion, *
-				  				FROM persona
-				  						WHERE tipo_persona ='Familiar - Hijo';";
+				$query = "SELECT  ROW_NUMBER() OVER (ORDER BY P.id_persona) AS numeracion,S.referencia AS sexo,(SELECT date_part('year',age( fecha_nacimiento )) ) as edad,*
+				  				FROM persona P,referencial S
+				  						WHERE P.tipo_persona_referencial =65
+				  						AND P.sexo_referencial = S.id_referencial;";
 				$auxiliar = $this->_db->query($query);
 				try {
 				$this->_db->beginTransaction();

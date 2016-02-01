@@ -28,6 +28,6 @@
 	define("DB_USER", "postgres"); // Usuario de la BD
 
 	define("DB_PASS", "1234"); // Clave
-	define("DB_NAME", "catic"); // Nombre de la base de datos.
+	define("DB_NAME", "tesis"); // Nombre de la base de datos.
 
 ?>
