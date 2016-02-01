@@ -43,7 +43,6 @@
 
 
 	<div class="form-group">
-	<input type="hidden" name="id" value="0">
 	<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
 
 	<div class="col-xs-12 col-sm-7">
@@ -255,147 +254,138 @@
 
 	<div class="step-pane" data-step="2">
 	<div>
-
+	<div id="preguntaHijos">
 	<table align="center">
-	<tr>
-	<td>
-	<label for="">¿Esta persona tiene hijos?</label>
-	</td>
-	</tr>
-	<tr>
-	<td>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-	&nbsp; 
+		<tr>
+		<td>
+		<label for="">¿Esta persona tiene hijos?</label>
+		</td>
+		</tr>
+		<tr>
+		<td>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		&nbsp; 
 
-	<label class="blue">
-	<input  value="16" type="radio" class="ace" name="hijos" 
-	onchange="showElementos('infoHijos')" value="16" />
-	<span class="lbl"> Si</span>
-	</label>
-	&nbsp; 
-	<label class="blue">
-	<input onchange="cerrarDivHijos('infoHijos')" value="16" type="radio" class="ace" name="hijos" />
-	<span class="lbl"> No</span>
-	</label>																														
-	</td>
+		<label class="blue">
+		<input  value="16" type="radio" class="ace" name="hijos" 
+		onchange="showElementos('infoHijos');showElementos('infoExtra');hiddenElementos('preguntaHijos');" value="16" />
+		<span class="lbl"> Si</span>
+		</label>
+		&nbsp; 
+		<label class="blue">
+		<input  value="16" type="radio" class="ace" name="hijos" onchange="hiddenElementos('infoHijos')"/>
+		<span class="lbl"> No</span>
+		</label>																														
+		</td>
 
-	</tr>
+		</tr>
 	</table>
-
+	</div>
 	<hr>
-
-	<div id="infoHijos" class="col-sm-16" hidden><!-- informacion de los hijos -->
+	<div id="infoExtra" hidden>
 	<h3 align="center" class="lighter block blue">Ahora podra registrar un maximo de 5 hijos</h3>
-	<br>
+	</div>
+	<div id="infoHijos" class="col-sm-16" hidden><!-- informacion de los hijos -->
 
-	<div class="form-group">
-	<input type="hidden" name="id" value="0">
-	<input type="hidden" name="cedula" value="-">
-	<input type="hidden" name="fecha_nacimiento" value="2016-01-01">
-	<input type="hidden" name="fecha_ingreso" value="2016-01-01">
-	<input type="hidden" name="telefono" value="-">
-	<input type="hidden" name="otro_telefono" value="-">
-	<input type="hidden" name="correo" value="-">
-	<input type="hidden" name="correo_institucional" value="-">
-	<input type="hidden" name="direccion" value="0">
-	<input type="hidden" name="ubicacion" value="-">
+		<br>
 
-	<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
+		<div class="form-group">
+		<input type="hidden" name="cedula" value="-">
+		<input type="hidden" name="fecha_nacimiento" value="2016-01-01">
+		<input type="hidden" name="fecha_ingreso" value="2016-01-01">
+		<input type="hidden" name="telefono" value="-">
+		<input type="hidden" name="otro_telefono" value="-">
+		<input type="hidden" name="correo" value="-">
+		<input type="hidden" name="correo_institucional" value="-">
+		<input type="hidden" name="direccion" value="0">
+		<input type="hidden" name="ubicacion" value="-">
 
-	<div class="col-xs-12 col-sm-7">
-	<div class="col-sm-6">
-	<input type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
-	</div>
-	<div class="col-sm-6">
-	<input type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
-	</div>										
-	</div>
-	</div>
+		<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
 
-	<div class="space-2"></div>
+		<div class="col-xs-12 col-sm-7">
+		<div class="col-sm-6">
+		<input type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+		</div>
+		<div class="col-sm-6">
+		<input type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+		</div>										
+		</div>
+		</div>
 
-	<div class="form-group">
-	<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
+		<div class="space-2"></div>
 
-	<div class="col-xs-12 col-sm-7">
-	<div class="col-sm-6">
-	<input type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
-	</div>
-	<div class="col-sm-6">
-	<input type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
-	</div>										
-	</div>
-	</div>									
-	<div class="form-group" align="center">	
-	<div>
-	<label class="control-label col-sm-3 no-padding-right" for="sexo">Sexo:</label>
-	</div>
-	<div class="col-sm-1">
-	<div class="clearfix">
-	<div>
-	<label class="line-height-1 blue">
-	<input  value="16" type="radio" class="ace" name="sexos" />
-	<span class="lbl"> Masculino</span>
-	</label>
-	</div>
-	</div>
-	</div>
-	<div class="col-sm-1">
-	<div class="clearfix">
-	<div>
-	<label class="line-height-1 blue">
-	<input  value="17" type="radio" class="ace" name="sexos" />
-	<span class="lbl"> Femenino</span>
-	</label>
-	</div>
-	</div>
-	</div>																			
+		<div class="form-group">
+		<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
+
+		<div class="col-xs-12 col-sm-7">
+		<div class="col-sm-6">
+		<input type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
+		</div>
+		<div class="col-sm-6">
+		<input type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
+		</div>										
+		</div>
+		</div>									
+		<div class="form-group" align="center">	
+		<div>
+		<label class="control-label col-sm-3 no-padding-right" for="sexo">Sexo:</label>
+		</div>
+		<div class="col-sm-1">
+		<div class="clearfix">
+		<div>
+		<label class="line-height-1 blue">
+		<input  value="16" type="radio" class="ace" name="sexos" />
+		<span class="lbl"> Masculino</span>
+		</label>
+		</div>
+		</div>
+		</div>
+		<div class="col-sm-1">
+		<div class="clearfix">
+		<div>
+		<label class="line-height-1 blue">
+		<input  value="17" type="radio" class="ace" name="sexos" />
+		<span class="lbl"> Femenino</span>
+		</label>
+		</div>
+		</div>
+		</div>																			
 	</div>	
 	<div align="center">
-	<button class="btn btn-primary" onclick="send_consulta_hijo();showElementos('tablaHijos');">
+	<button class="btn btn-primary" onclick="send_consulta_hijo();
+	showElementos('tablaHijos');hiddenElementos('infoHijos');hiddenElementos('infoExtra');showElementos('AgregarOtro');
+	send_registro_persona()">
 	<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
 	Registrar
 	</button>
 	</div>
 	</div><!--  Fin informacion de los hijos -->			
 	<hr>
+	<div align="center" id="AgregarOtro" hidden>
+	<button class="btn btn-primary" onclick="showElementos('infoHijos');hiddenElementos('AgregarOtro');">
+	<i class      ="glyphicon glyphicon-plus"></i>
+	Agregar otro hijo
+	</button>
+	</div>	
 	<div id="tablaHijos" hidden>
-	<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+	<br>
+	<table id="tablaHijosAdd" class="table table-striped table-bordered table-hover">
 	<thead>
 	<tr>
-	<th class="center">
-	<label class="pos-rel">
-	#
-	</label>
-	</th>
-	<th>Cedula</th>
 	<th>Primer nombre</th>
 	<th class="hidden-480">Segundo nombre</th>
 	<th>Primer apellido</th>
 	<th class="hidden-480">Segundo apellido</th>
-	<th class="center">Acciones</th>
+	<th class="center">Sexo</th>
+	<th class="center">Edad</th>
 	</tr>
 	</thead>
 
 	<tbody>
 	<?php foreach ($this->_listado as $persona): ?>
 	<tr>
-	<td class="center">
-	<?php echo $persona['numeracion'];?>
-	</td>
-
-	<td>
-	<?php echo $persona['cedula']; ?>
-	</td>
-	<td><?php echo $persona['nombre']; ?></td>
-	<td class="hidden-480"><?php echo $persona['nombre2']; ?></td>
-	<td><?php echo $persona['apellido']; ?></td>
-
-	<td class="hidden-480">
-	<?php echo $persona['apellido2']; ?>
-	</td>
-
-	<td class="center">
+	
+<!-- 	<td class="center">
 	<div class="hidden-sm hidden-xs action-buttons">
 	<a class="btn-app  btn-primary  btn-sm" id="detalle_persona" 
 	onclick="pickOpen('prod', 'id_prod', 
@@ -413,7 +403,7 @@
 	</a>	
 	</div>
 
-	</td>
+	</td> -->
 	</tr>
 	<?php endforeach ?>
 	</tbody>  <!-- div tabla  -->
@@ -443,7 +433,7 @@
 	<hr />
 	<div class="wizard-actions">
 	<button class="btn btn-prev">
-	<i class="glyphicon-plus"></i>
+	<i class="fa fa-user fa-lg"></i> 
 	Registrar a otra persona.
 	</button>
 
@@ -458,4 +448,3 @@
 
 </form>											
 </div><!-- /.page-content -->
-
