@@ -62,16 +62,49 @@ $('#registro_persona').formValidation({
          },   
           cedula: {
              validators: {
+
                  regexp: { // Solo estos caracteres pueden ser usados
                      regexp: /^[0-9]+$/,
                      message: 'La cedula solo puede contener numeros.'
+                 },
+                 notEmpty: { // No puede ser vacio
+                     message: 'Debe introducir una cédula.'
                  },
                  stringLength: {
                      max: 8,
                      message: 'La cédula no debe tener mas de 8 numeros'
                  }                 
              }
-         }
+         },
+        fecha_ingreso: {
+             validators: {
+                 notEmpty: { // No puede ser vacio
+                     message: 'Debe introducir una fecha de ingreso en el ministerio.'
+                 }               
+             }
+         },
+        estado: {
+             validators: {
+                 notEmpty: { // No puede ser vacio
+                     message: 'Por favor seleccione un estado.'
+                 }               
+             }
+         },
+        direccion: {
+             validators: {
+                 notEmpty: { // No puede ser vacio
+                     message: 'Por favor seleccione una parroquia.'
+                 }               
+             }
+         },
+        ubicacion: {
+             validators: {
+                 notEmpty: { // No puede ser vacio
+                     message: 'Debe introducir una ubicación.'
+                 }               
+             }
+         }                   
+
 }
 });
 //esto captura el ID del formulario al cual se le aplicaran las validaciones.
@@ -152,7 +185,7 @@ $('#registro_hijo').formValidation({
 });
 
 $('#my-wizard')
-.ace_wizard({
+.ace_wizard({s
   //step: 2 //optional argument. wizard will jump to step "2" at first
   //buttons: '.my-action-buttons' //which is possibly located somewhere else and is not a sibling of wizard
 })
@@ -190,6 +223,24 @@ $('#my-wizard')
 
    //e.preventDefault();//this will prevent clicking and selecting steps
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function show(idObj, effectType, time){//effectType can be:'blind','bounce','clip','drop','explode','fold','highlight','puff','pulsate','scale','shake','size' ó 'slide'
     if (effectType=='slow' || IsNumeric(effectType))//The function 'IsNumeric' are in FDSoil/js/numero.js

@@ -72,10 +72,10 @@
 
 	<div class="col-xs-12 col-sm-7">
 	<div class="col-sm-6">
-	<input type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+	<input onkeypress="return validarn(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
 	</div>
 	<div class="col-sm-6">
-	<input type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+	<input onkeypress="return validarn(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
 	</div>										
 	</div>
 	</div>
@@ -87,10 +87,10 @@
 
 	<div class="col-xs-12 col-sm-7">
 	<div class="col-sm-6">
-	<input type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
+	<input onkeypress="return validarn(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
 	</div>
 	<div class="col-sm-6">
-	<input type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
+	<input onkeypress="return validarn(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
 	</div>										
 	</div>
 	</div>
@@ -101,7 +101,7 @@
 	<div class="col-sm-8">
 	<div class="col-sm-4">
 	<div class="input-group">
-	<input type   ="text" name="cedula" id="cedula" class="form-control" />
+	<input onkeypress="return isNumber(event);" autocomplete="off" type   ="text" name="cedula" id="cedula" class="form-control" />
 	<span class   ="input-group-addon">
 	<i class      ="fa 	fa-credit-card "></i>
 	</span>
@@ -115,7 +115,7 @@
 	<div class="clearfix">
 	<div>
 	<label class="line-height-1 blue">
-	<input  value="16" type="radio" class="ace" name="sexos" />
+	<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
 	<span class="lbl"> Masculino</span>
 	</label>
 	</div>
@@ -125,7 +125,7 @@
 	<div class="clearfix">
 	<div class="col-sm-12">
 	<label class="line-height-1 blue">
-	<input  value="17" type="radio" class="ace" name="sexos" />
+	<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
 	<span class="lbl"> Femenino</span>
 	</label>
 	</div>
@@ -145,7 +145,7 @@
 	<div class="col-sm-8">
 	<div class="col-sm-5">
 	<div class="input-group">
-	<input class  ="form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
+	<input onkeypress="return validarn(event)" autocomplete="off" class  ="form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
 	<span class   ="input-group-addon">
 	<i class      ="fa fa-calendar bigger-110"></i>
 	</span>		
@@ -156,7 +156,7 @@
 	<div class="col-sm-9">
 	<div class="col-sm-12">
 	<div class="input-group">
-	<input class  ="form-control input-mask-phone" type="text" id="telefono" name="telefono" />
+	<input autocomplete="off" class  ="form-control input-mask-phone" type="text" id="telefono" name="telefono" />
 	<span class   ="input-group-addon">
 	<i class      ="ace-icon fa fa-phone"></i>
 	</span>
@@ -173,7 +173,7 @@
 	<div class="col-sm-9">
 	<div class="col-sm-3">
 	<div class="input-group">
-	<input class  ="form-control input-mask-phone" type="text" id="otro_telefono" name="otro_telefono" />
+	<input autocomplete="off" class  ="form-control input-mask-phone" type="text" id="otro_telefono" name="otro_telefono" />
 	<span class   ="input-group-addon">
 	<i class      ="ace-icon fa fa-phone"></i>
 	</span>
@@ -184,7 +184,7 @@
 	<div class="col-sm-7">
 	<div class="col-sm-12">
 	<div class="input-group">
-	<input class  ="form-control date-picker" name="fecha_ingreso" id="fecha_ingreso" type="date" data-date-format="yyyy-mm-dd" />
+	<input onkeypress="return validarn(event)" autocomplete="off" class  ="form-control date-picker" name="fecha_ingreso" id="fecha_ingreso" type="date" data-date-format="yyyy-mm-dd" />
 	<span class   ="input-group-addon">
 	<i class      ="fa fa-calendar bigger-110"></i>
 	</span>		
@@ -200,7 +200,7 @@
 	<div class="col-sm-8">
 	<div class="col-sm-5">
 	<div class="input-group">
-	<input class  ="form-control" type="text"  name="correo" />
+	<input autocomplete="off" class  ="form-control" type="text"  name="correo" />
 	<span class   ="input-group-addon">
 	<i class      ="fa fa-weixin"></i>
 	</span>
@@ -215,8 +215,7 @@
 	<div class="col-sm-6">
 	</div>										
 	</div>										
-	</div>	
-																					
+	</div>																			
 
 	<div class="hr hr-dotted"></div>		
 	<div align="center" class="col-sm-4">
@@ -264,7 +263,7 @@
 	<div class="col-sm-9">
 	<div class="col-sm-9">
 	<div class="input-group">
-	<input class  ="form-control" type="text"  name="ubicacion" placeholder="Zona donde vive la persona"/>
+	<input autocomplete="off" class  ="form-control" type="text"  name="ubicacion" placeholder="Zona donde vive la persona"/>
 	<span class   ="input-group-addon">
 	<i class      ="fa 	fa-globe "></i>
 	</span>
@@ -292,13 +291,13 @@
 				&nbsp; 
 
 				<label class="blue">
-				<input  value="16" type="radio" class="ace" name="hijos" 
+				<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos" 
 				onchange="showElementos('infoHijos');showElementos('infoExtra');hiddenElementos('preguntaHijos');" value="16" />
 				<span class="lbl"> Si</span>
 				</label>
 				&nbsp; 
 				<label class="blue">
-				<input  value="16" type="radio" class="ace" name="hijos" onchange="hiddenElementos('infoHijos')"/>
+				<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos" onchange="hiddenElementos('infoHijos')"/>
 				<span class="lbl"> No</span>
 				</label>																														
 				</td>
@@ -315,22 +314,22 @@
 							<br>
 
 							<div class="form-group">
-							<input type="hidden" name="cedula" value="-">
-							<input type="hidden" name="fecha_ingreso" value="2016-01-01">
-							<input type="hidden" name="telefono" value="-">
-							<input type="hidden" name="otro_telefono" value="-">
-							<input type="hidden" name="correo" value="-">
-							<input type="hidden" name="direccion" value="0">
-							<input type="hidden" name="ubicacion" value="-">
+							<input autocomplete="off" type="hidden" name="cedula" value="-">
+							<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
+							<input autocomplete="off" type="hidden" name="telefono" value="-">
+							<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
+							<input autocomplete="off" type="hidden" name="correo" value="-">
+							<input autocomplete="off" type="hidden" name="direccion" value="0">
+							<input autocomplete="off" type="hidden" name="ubicacion" value="-">
 
 							<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
 
 							<div class="col-xs-12 col-sm-7">
 							<div class="col-sm-6">
-							<input type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+							<input autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
 							</div>
 							<div class="col-sm-6">
-							<input type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+							<input autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
 							</div>										
 							</div>
 							</div>
@@ -342,10 +341,10 @@
 
 							<div class="col-xs-12 col-sm-7">
 							<div class="col-sm-6">
-							<input type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
+							<input autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
 							</div>
 							<div class="col-sm-6">
-							<input type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
+							<input autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
 							</div>										
 							</div>
 							</div>									
@@ -354,7 +353,7 @@
 						<div class="col-sm-8">
 						<div class="col-sm-4">
 						<div class="input-group">
-						<input class  ="form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
+						<input autocomplete="off" class  ="form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
 						<span class   ="input-group-addon">
 						<i class      ="fa fa-calendar bigger-110"></i>
 						</span>		
@@ -368,7 +367,7 @@
 						<div class="clearfix">
 						<div>
 						<label class="line-height-1 blue">
-						<input  value="16" type="radio" class="ace" name="sexos" />
+						<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
 						<span class="lbl"> Masculino</span>
 						</label>
 						</div>
@@ -378,7 +377,7 @@
 						<div class="clearfix">
 						<div class="col-sm-12">
 						<label class="line-height-1 blue">
-						<input  value="17" type="radio" class="ace" name="sexos" />
+						<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
 						<span class="lbl"> Femenino</span>
 						</label>
 						</div>
@@ -467,13 +466,13 @@
 				&nbsp; 
 
 				<label class="blue">
-				<input  value="16" type="radio" class="ace" name="Padres" 
+				<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" 
 				onchange="showElementos('infoPadres');showElementos('infoExtra');hiddenElementos('preguntaPadres');" value="16" />
 				<span class="lbl"> Si</span>
 				</label>
 				&nbsp; 
 				<label class="blue">
-				<input  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoPadres')"/>
+				<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoPadres')"/>
 				<span class="lbl"> No</span>
 				</label>																														
 				</td>
@@ -490,22 +489,22 @@
 				<br>
 
 				<div class="form-group">
-				<input type="hidden" name="cedula" value="-">
-				<input type="hidden" name="fecha_ingreso" value="2016-01-01">
-				<input type="hidden" name="telefono" value="-">
-				<input type="hidden" name="otro_telefono" value="-">
-				<input type="hidden" name="correo" value="-">
-				<input type="hidden" name="direccion" value="0">
-				<input type="hidden" name="ubicacion" value="-">
+				<input autocomplete="off" type="hidden" name="cedula" value="-">
+				<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
+				<input autocomplete="off" type="hidden" name="telefono" value="-">
+				<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
+				<input autocomplete="off" type="hidden" name="correo" value="-">
+				<input autocomplete="off" type="hidden" name="direccion" value="0">
+				<input autocomplete="off" type="hidden" name="ubicacion" value="-">
 
 				<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
 
 				<div class="col-xs-12 col-sm-7">
 				<div class="col-sm-6">
-				<input type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+				<input autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
 				</div>
 				<div class="col-sm-6">
-				<input type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+				<input autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
 				</div>										
 				</div>
 				</div>
@@ -517,10 +516,10 @@
 
 				<div class="col-xs-12 col-sm-7">
 				<div class="col-sm-6">
-				<input type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
+				<input autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
 				</div>
 				<div class="col-sm-6">
-				<input type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
+				<input autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
 				</div>										
 				</div>
 				</div>									
@@ -529,7 +528,7 @@
 			<div class="col-sm-8">
 			<div class="col-sm-4">
 			<div class="input-group">
-			<input class  ="form-control input-mask-phone" type="text" id="telefono" name="telefono" />
+			<input autocomplete="off" class  ="form-control input-mask-phone" type="text" id="telefono" name="telefono" />
 			<span class   ="input-group-addon">
 			<i class      ="ace-icon fa fa-phone"></i>
 			</span>
@@ -630,3 +629,24 @@
 
 </form>											
 </div><!-- /.page-content -->
+
+     
+     <script>
+    function validarn(e) { // 1
+        tecla = (document.all) ? e.keyCode : e.which; // 2
+        if (tecla==8) return true; // 3
+    	 if (tecla==9) return true; // 3
+    	 if (tecla==11) return true; // 3
+        patron = /[A-Za-zñÑ'áéíóúÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛÑñäëïöüÄËÏÖÜ\s\t]/; // 4
+     
+        te = String.fromCharCode(tecla); // 5
+        return patron.test(te); // 6
+    } 
+function isNumber(e) {
+k = (document.all) ? e.keyCode : e.which;
+if (k==8 || k==0) return true;
+patron = /\d/;
+n = String.fromCharCode(k);
+return patron.test(n);
+}    
+     </script>

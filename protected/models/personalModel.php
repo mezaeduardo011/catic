@@ -42,7 +42,8 @@
 				if(is_bool($actividad)){
 
 				$query = "SELECT ROW_NUMBER() OVER (ORDER BY id_persona) AS numeracion,*,S.referencia AS sexo from persona P, referencial S
-							WHERE p.sexo_referencial= S.id_referencial";
+							WHERE p.sexo_referencial= S.id_referencial
+							AND tipo_persona_referencial=63";
 				}else{
 
 				$query = "SELECT ROW_NUMBER() OVER (ORDER BY id_persona) AS numeracion,*,S.referencia AS sexo from persona P, referencial S
@@ -52,11 +53,11 @@
 
 			}else{
 
-				$query = "SELECT cedula,nombre,nombre2,apellido,apellido2,(SELECT date_part('year',age( fecha_nacimiento )) ) as edad,S.referencia AS sexo,telefono,correo,correo_institucional
-					FROM persona P, referencial S
+				$query = "SELECT (SELECT date_part('year',age( fecha_nacimiento )) ) as edad,S.referencia AS sexo,*
+					FROM persona P, referencial S, persona_empleada P2
 					WHERE p.sexo_referencial= S.id_referencial
 					AND
-					id_persona = $id";
+					P.id_persona = $id";
 
 			}
 
@@ -150,10 +151,10 @@
 
 		public function getUnicaPersona($id){
 
-		$query = "SELECT * from persona P, referencial S
+		$query = "SELECT * from persona P, referencial S, persona_empleada P2
 					WHERE p.sexo_referencial= S.id_referencial
 					AND
-					id_persona = $id";
+					P.id_persona = 162";
 			
 			$auxiliar = $this->_db->query($query);
 				try {
