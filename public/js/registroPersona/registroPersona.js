@@ -4,11 +4,11 @@ function showElementos(divName){
 }
 
 function hiddenElementos(divName){
-	hide(divName,500);
+	hide(divName,0);
 }
 
 function send_registro_persona() {
-            //alert("/catic/personal/insertPerson?"+request(document.getElementById('divPersona')));
+          //alert("/catic/personal/insertPerson?"+request(document.getElementById('infoHijos')));
 
      if (request(document.getElementById('divPersona'))!="") {
      	 send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona',  request(document.getElementById('divPersona')), null,true);
@@ -30,10 +30,11 @@ function send_consulta_hijo(id) {
 
 
 function response_consulta_hijo(response) {
-	//alert(response[0]['nombre']);
+	alert(response[0]['nombre']);
 	 var tbl = document.getElementById('tablaHijosAdd');
 	 	 var len= response.length;
 		 var lastRow, row, nombre, nombre2, apellido, apellido2, sexo, edad;
+		 //if (borrar_datos_tabla('tablaHijosAdd')) {
         for (var i = 0; i < len; i++) {
 		    lastRow = tbl.rows.length;
             row = tbl.insertRow(lastRow);
@@ -49,9 +50,48 @@ function response_consulta_hijo(response) {
 		    apellido2.innerHTML = response[i]['apellido2'];
 		    sexo.innerHTML = response[i]['sexo'];	 
 		    edad.innerHTML = response[i]['edad'];	 
-    }
+    	}
+	//};
 	 return false;
 }
 
+
+
+function send_consulta_info(id) {
+     	   send_ajax('POST', '../../catic/personal/getInfoDatos', 'response_consulta_info','Familiar - Hijo', null,true);
+}
+
+
+function response_consulta_info(response) {
+	//alert(response[0]['nombre']);
+	 var tbl = document.getElementById('infoDatos');
+	 	 var len= response.length;
+		 var lastRow, row, nombre,apellido,espacio;
+     
+		    lastRow = tbl.rows.length;
+            row = tbl.insertRow(lastRow);
+         	nombre = row.insertCell(0);
+         	espacio = row.insertCell(1);
+         	apellido = row.insertCell(2);
+		    nombre.innerHTML = response[i]['nombre']; 
+		    espacio.innerHTML = '&nbsp;&nbsp;&nbsp;'
+		    apellido.innerHTML = response[i]['apellido']; 
+	 return false;
+}
+
+
+function deleteRow(rowIndex) {
+ var table = document.getElementById('tablaHijosAdd')
+ table.deleteRow(rowIndex);
+ return true;
+}
+
+function borrar_datos_tabla(id_tabla) {
+    var tbl = document.getElementById(id_tabla);
+    for (var i = 0; i < tbl.rows.length;) {
+        tbl.deleteRow(tbl.rows[i].rowIndex);
+    }
+    return true;
+}
 
 

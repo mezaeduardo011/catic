@@ -86,6 +86,34 @@
 			
 		}
 
+		public function getInfoDatosModel(){
+	
+				$query = " SELECT nombre,apellido FROM persona ORDER BY id_persona DESC LIMIT 1;";
+				$auxiliar = $this->_db->query($query);
+				try {
+				$this->_db->beginTransaction();
+				$result= $auxiliar->fetchAll();
+				$this->_db->commit();
+				}
+				catch (Exception $e){
+					
+					$this->_db-rollBack();
+					echo "Error :: ".$e->getMessage();
+					exit();
+					
+				}
+
+				if(empty($result)){
+
+					$result[0] = "No hay Personal Disponible para asignar";
+					return $result;
+
+				}else{
+
+					return $result;
+				}
+			
+		}
 
 		//Retorna un listado del personal a traves de un select
 		public function getHijosModel(){

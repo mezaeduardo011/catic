@@ -7,6 +7,11 @@ jQuery(function($) {
 })
 .on('actionclicked.fu.wizard' , function(e, info) {
    //info.step
+   if (info.step==1) {
+   	showElementos('infoDatosDiv');
+   }else{
+   	
+   };
    //info.direction
    
    //use e.preventDefault to cancel
@@ -18,6 +23,7 @@ jQuery(function($) {
    //do something when finish button is clicked
 
 }).on('stepclick.fu.wizard', function(e) {
-   //e.preventDefault();//this will prevent clicking and selecting steps
+  alert('ass');
+   e.preventDefault();//this will prevent clicking and selecting steps
 });
 })

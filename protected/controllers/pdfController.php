@@ -4,7 +4,7 @@
 		public function __construct(){
 	
 			parent::__construct();
-			$this->_pdf = $this->getLibrary('fpdf','fpdf');
+			$this->_pdf = $this->getLibrary('dompdf','dompdf_config.inc');
 			$this->_personal = $this->loadModel('personal');
 	
 		}

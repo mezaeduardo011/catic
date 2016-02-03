@@ -154,6 +154,17 @@
 	
 			}	
 
+		function getInfoDatos(){
+		
+			$datosPersona = $this->_personal->getInfoDatosModel();
+			$this->_view->_datosPersona = $datosPersona;
+
+			echo json_encode($datosPersona);
+
+
+		}
+
+
 		function getHijos(){
 		
 			$listado = $this->_personal->getHijosModel();
