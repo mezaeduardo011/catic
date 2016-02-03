@@ -16,7 +16,7 @@
 	
 
 				$this->_view->setJs(array(
-				"Librerias/jquery.validate.min","Librerias/additional-methods","Librerias/bootstrapValidator.min","validaciones",
+				"Librerias/formValidation","Librerias/bootstrapValidator.min","validaciones",
 				"Librerias/fuelux.wizard","form-wizard",
 				"Librerias/bootstrap-datepicker",
 				"Librerias/jquery.maskedinput",
