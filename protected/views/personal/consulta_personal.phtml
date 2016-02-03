@@ -2,25 +2,10 @@
 <div class="page-content ">
 	<div class="page-header">
 		<h1>
-		Consulta de personas:
+		Consulta de personal:
 		</h1>
 	</div>
 				
-						<div class="widget-body" align="right">
-							<div class="widget-main">
-								<p>
-									&nbsp;  &nbsp;
-									<a class="btn-app  btn-primary  btn-sm" 
-									href="<?php  echo BASE_URL;?>pdf/pdfActividadInstitucional" >
-										<i class="ace-icon fa fa-print bigger-160"></i>
-										Imprimir
-										
-									</a>
-							</div>
-						</div>
-					
-
-
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="row">
@@ -67,15 +52,22 @@
 
 											<td class="center">
 												<div class="hidden-sm hidden-xs action-buttons">
-												<a class="btn-app  btn-primary  btn-sm" id="detalle_persona" 
+												<a class="btn-app  btn-success  btn-sm" id="detalle_persona" 
 												onclick="pickOpen('prod', 'id_prod', 
 												'<?php echo BASE_URL."personal/update/". $persona['id_persona'] ?>',
-												 90, 80, 70, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
+												 90, 80, 90, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
 												style=cursor:pointer; >
 													<i class="glyphicon glyphicon-search"></i>
 													Detalles
 													
-												</a>		
+												</a>
+
+												<a class="btn-app  btn-primary  btn-sm" id="detalle_persona" 
+												href="<?php  echo BASE_URL;?>pdf/pdfActividadInstitucional" >
+													<i class="ace-icon fa fa-print bigger fa-lg"></i>
+													Imprimir 
+													
+												</a>															
 
 												<a class="btn-app btn-danger btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
 													<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>

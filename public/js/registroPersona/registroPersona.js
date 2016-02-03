@@ -22,6 +22,7 @@ function send_registro_persona() {
 
 function response_registro_persona(response) {
     alert("Registro exitoso");
+
 }
 
 function send_consulta_hijo(id) {
@@ -30,7 +31,7 @@ function send_consulta_hijo(id) {
 
 
 function response_consulta_hijo(response) {
-	alert(response[0]['nombre']);
+	//alert(response[0]['nombre']);
 	 var tbl = document.getElementById('tablaHijosAdd');
 	 	 var len= response.length;
 		 var lastRow, row, nombre, nombre2, apellido, apellido2, sexo, edad;
@@ -59,23 +60,27 @@ function response_consulta_hijo(response) {
 
 function send_consulta_info(id) {
      	   send_ajax('POST', '../../catic/personal/getInfoDatos', 'response_consulta_info','Familiar - Hijo', null,true);
+     	   showElementos('infoDatosDiv');
 }
 
 
 function response_consulta_info(response) {
-	//alert(response[0]['nombre']);
-	 var tbl = document.getElementById('infoDatos');
+
+	 	 var tbl = document.getElementById('infoDatos');
+
+		 if (borrar_datos_tabla('infoDatos')){
 	 	 var len= response.length;
-		 var lastRow, row, nombre,apellido,espacio;
-     
-		    lastRow = tbl.rows.length;
-            row = tbl.insertRow(lastRow);
-         	nombre = row.insertCell(0);
-         	espacio = row.insertCell(1);
-         	apellido = row.insertCell(2);
-		    nombre.innerHTML = response[i]['nombre']; 
-		    espacio.innerHTML = '&nbsp;&nbsp;&nbsp;'
-		    apellido.innerHTML = response[i]['apellido']; 
+		 var lastRow, row, nombre,apellido,espacio;     
+	    lastRow = tbl.rows.length;
+        row = tbl.insertRow(lastRow);
+     	nombre = row.insertCell(0);
+     	espacio = row.insertCell(1);
+     	apellido = row.insertCell(2);
+	    nombre.innerHTML = response[i]['nombre']; 
+	    espacio.innerHTML = '&nbsp;&nbsp;&nbsp;'
+	    apellido.innerHTML = response[i]['apellido']; 
+		}
+
 	 return false;
 }
 

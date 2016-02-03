@@ -15,8 +15,16 @@
 		function index(){
 	
 
-	$this->_view->setJs(array('/Librerias/ace-elements.min','/Librerias/ace.min','/Librerias/jquery.2.1.1.min','persons','/Librerias/jquery.validate.min','/Librerias/bootstrapValidator.min','validaciones'));
-	$this->_view->setCss(array('bootstrapValidator.min'));
+				$this->_view->setJs(array(
+				"Librerias/formValidation","Librerias/bootstrapValidator.min","validaciones",
+				"Librerias/fuelux.wizard","form-wizard",
+				"Librerias/bootstrap-datepicker",
+				"Librerias/jquery.maskedinput",
+				"registroPersona/registroPersona"));
+
+				$this->_view->setCss(array("datepicker","bootstrapValidator.min"));
+
+
 				$direccionEstado = $this->_personal->getDireccionEstado();
 				$this->_view->_direccionEstado = $direccionEstado;
 				//$direccionMunicipio = $this->_personal->getDireccionMunicipio();
@@ -31,8 +39,6 @@
 				$this->_view->_tallas_zapatos = $tallas_zapatos;
 				$listado = $this->_personal->getHijosModel();
 				$this->_view->_listado = $listado;
-
-
 				//Se pinta la vista con el metodo render.
 				$this->_view->render('personal');
 	
@@ -54,7 +60,7 @@
 		function insert($id=false){
 				$_POST=$_GET;
 				//Con el metodo setJs de la vista asignamos en el html correspondiente los js necesarios y unicos para esta funcion
-				$this->_view->setJs(array('insertPerson'));
+				//$this->_view->setJs(array());
 
 	
 				if ($_SERVER['REQUEST_METHOD']=='POST') {
@@ -143,14 +149,15 @@
 				}
 			}
 
-			function insertPerson(){
-					//$_POST=$_GET;
-					unset($_POST['url']);
-					unset($_POST['estado']);
-					unset($_POST['municipio']);
-					$persona= $this->ConvertirArray($_POST);
-					//$this->imprimirArreglo($persona);
-					$this->_personal->insertPersonModel($persona);
+
+		function insertPerson(){
+				//$_POST=$_GET;
+				unset($_POST['url']);
+				unset($_POST['estado']);
+				unset($_POST['municipio']);
+				$persona= $this->ConvertirArray($_POST);
+				//$this->imprimirArreglo($persona);
+				$this->_personal->insertPersonModel($persona);
 	
 			}	
 
@@ -178,54 +185,58 @@
 
 	
 
-			function listing(){
+		function listing(){
 
+			$this->_view->setJs(array(
+			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools","Librerias/dataTables.colVis","tables",
+			"pickList"));
 
-				$listado = $this->_personal->getPersonal();
+			$listado = $this->_personal->getPersonal();
 
-				$this->_view->_listado = $listado;
+			$this->_view->_listado = $listado;
 
-				$this->_view->render('consulta_personal');
-			}
+			$this->_view->render('consulta_personal');
+		}
 
-			function update($id = false){
+		function update($id = false){
 				
-				//Si le damos al boton modificar.
-				if ($_SERVER['REQUEST_METHOD']=='POST') {
-					
-					/*Guardamos en un arreglo los valores enviados desde la vista
-					para luego enviarlos a la funcion UpdatePersonal*/
+			//Si le damos al boton modificar.
+			if ($_SERVER['REQUEST_METHOD']=='POST') {
+				
+				/*Guardamos en un arreglo los valores enviados desde la vista
+				para luego enviarlos a la funcion UpdatePersonal*/
 
-					$persona = array(
-							':id' => $_POST['id'] ,
-							':cedula' => $_POST['cedula'] ,
-							':nombre' => $_POST['nombre'] ,
-							':apellido' => $_POST['apellido'] ,
-							':sexo' => $_POST['sexo'] ,
-							':fecha_nacimiento' => $_POST['fecha_nacimiento'] ,
-							':telefono' => $_POST['telefono'],
-							':correo' => $_POST['correo'],
-							':fecha_ingreso' => $_POST['fecha_ingreso']
+				$persona = array(
+						':id' => $_POST['id'] ,
+						':cedula' => $_POST['cedula'] ,
+						':nombre' => $_POST['nombre'] ,
+						':apellido' => $_POST['apellido'] ,
+						':sexo' => $_POST['sexo'] ,
+						':fecha_nacimiento' => $_POST['fecha_nacimiento'] ,
+						':telefono' => $_POST['telefono'],
+						':correo' => $_POST['correo'],
+						':fecha_ingreso' => $_POST['fecha_ingreso']
 
-						);
+			);
 
-					//Se envia el arreglo con los datos organizados en un asociativo						 
-					$this->_personal->updatePersonal($persona);	
+				//Se envia el arreglo con los datos organizados en un asociativo						 
+				$this->_personal->updatePersonal($persona);	
 
-					//Me redirecciona a la pagina de la persona en especifico con los cambios realizadosl.
-					$this->_view->redirect('personal/actualizar_persona/'.$persona[':id']);
-					//OJO redireccionamos a persona update MAS EL ID de la persona,para que vea los cambios
+				//Me redirecciona a la pagina de la persona en especifico con los cambios realizadosl.
+				$this->_view->redirect('personal/actualizar_persona/'.$persona[':id']);
+				//OJO redireccionamos a persona update MAS EL ID de la persona,para que vea los cambios
 
-					}else{
+				}else{
 
-					//Se muestra la pagina de la persona con sus datos prederterminados sin cambios
-					$persona = $this->_personal->getUnicaPersona($id);
+				//Se muestra la pagina de la persona con sus datos prederterminados sin cambios
+				$persona = $this->_personal->getUnicaPersona($id);
 
-					//Se crea el objeto para la clase vista
-					$this->_view->_persona = $persona;
+				//Se crea el objeto para la clase vista
+				$this->_view->_persona = $persona;
 
-					//Se pinta la vista
-					$this->_view->render('actualizar_persona','','pickList');
+				//Se pinta la vista
+				$this->_view->render('actualizar_persona','','pickList');
+				
 				}
 		}
 
@@ -257,7 +268,7 @@
 		function selectMun(){
 
 				
-				 	unset($_POST['url']);
+				 unset($_POST['url']);
 				 $id_post=$this->ConvertirArray($_POST);
 				 $id_estado = $id_post[':id_estado'];
 			 	 $direccionMunicipio = $this->_personal->getDireccionMunicipio($id_estado);
