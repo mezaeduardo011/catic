@@ -36,7 +36,7 @@
 
 					$check = $this->valCheckbox($contador);
 
-					$arregloPost = $this->phpToPostgresArray($check);
+					$arregloPost = $this->ConvertirArraySql($check);
 
 				 	$this->_actividad->insertActividad($actividad,$arregloPost);	
 					$this->_view->render('actividad_institucional');

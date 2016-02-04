@@ -44,6 +44,18 @@
 	
 		}
 
+		function prueba($id=false){
+			//print_r($id);
+			$persona = $this->_personal->getUnicaPersona($id);
+			//$this->imprimirArreglo($persona);
+			$this->_view->_persona  = $persona;
+
+
+
+			$this->_view->render('personaPrueba');
+	
+		}		
+
 		function registro_vacaciones(){
 
 				//Me manda el listado del personal para seleccionar la asignacion de Vacaciones de forma masiva.
@@ -57,60 +69,11 @@
 		}
 
 
-		function insert($id=false){
-				$_POST=$_GET;
-				//Con el metodo setJs de la vista asignamos en el html correspondiente los js necesarios y unicos para esta funcion
-				//$this->_view->setJs(array());
-
+		function insert(){
 	
 				if ($_SERVER['REQUEST_METHOD']=='POST') {
 			
 
-				$persona = array(
-					':nombre' => $_POST['nombre'],
-					':nombre2' => $_POST['nombre2'], 
-					':apellido' => $_POST['apellido'],
-					':apellido2' => $_POST['apellido2'],
-					':cedula' => $_POST['cedula'],
-					':fecha_nacimiento' => $_POST['fecha_nacimiento'],
-					':telefono' => $_POST['telefono'],
-					':fecha_ingreso' => $_POST['fecha_ingreso'],
-					':correo' => $_POST['correo'],
-					':sexo' => $_POST['sexo'],
-					':direccion' => $_POST['parroquia'],
-					':correo_institucional' => $_POST['correo_institucional'],
-					':otro_telefono' => $_POST['otro_telefono'],
-					':ubicacion' => $_POST['ubicacion']
-					);
-
-				$hijo = array(
-
-					':nombre_hijo' => $_POST['nombre_hijo'],
-					':nombre2_hijo' => $_POST['nombre2_hijo'],
-					':apellido_hijo' => $_POST['apellido_hijo'],
-					':apellido2_hijo' => $_POST['apellido2_hijo'],
-					':fecha_nacimiento_hijo' => $_POST['fecha_nacimiento_hijo'],
-					':nivel_academico_hijo' => $_POST['nivel_academico_hijo']
-
-					);
-
-				$hijos = array(
-
-					':nombre_primer_hijo' => $_POST['nombre_primer_hijo'],
-					':nombre2_primer_hijo' => $_POST['nombre2_primer_hijo'],
-					':apellido_primer_hijo' => $_POST['apellido_primer_hijo'],
-					':apellido2_primer_hijo' => $_POST['apellido2_primer_hijo'],
-					':fecha_nacimiento_primer_hijo' => $_POST['fecha_nacimiento_primer_hijo'],
-					':nivel_academico_primer_hijo' => $_POST['nivel_academico_primer_hijo'],
-					':nombre_segundo_hijo' => $_POST['nombre_segundo_hijo'],
-					':nombre2_segundo_hijo' => $_POST['nombre2_segundo_hijo'],
-					':apellido_segundo_hijo' => $_POST['apellido_segundo_hijo'],
-					':apellido2_segundo_hijo' => $_POST['apellido2_segundo_hijo'],
-					':fecha_nacimiento_segundo_hijo' => $_POST['fecha_nacimiento_segundo_hijo'],
-					':nivel_academico_segundo_hijo' => $_POST['nivel_academico_segundo_hijo']				
-
-
-					);
 
 				$informacion_vestimenta = array(
 
@@ -131,13 +94,6 @@
 
 					);
 
-				
-				if ($id!=false) {
-							$this->imprimirArreglo($persona);
-							//$this->_personal->insertPerson($persona);
-
-
-						}
 					
 					$this->_view->redirect('personal/listing');
 

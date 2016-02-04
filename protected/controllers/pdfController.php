@@ -13,10 +13,12 @@
 	
 		}
 
-		function pdfActividadInstitucional(){
+		function pdfDetallePersona($id=false){
 
-				$listado = $this->_personal->getPersonal();
-				$this->_view->_listado = $listado;				
+			$persona = $this->_personal->getUnicaPersona($id);
+			//$this->imprimirArreglo($persona);
+			$this->_view->_persona  = $persona;
+
 				$this->_view->render('pdfActividadInstitucional', 'personal', 'pdf','');
 			// clase  metodo 	  vista    carpeta dentro de views 
 

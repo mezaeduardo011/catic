@@ -14,7 +14,8 @@
 		public function insertPersonModel($persona){
 
 			//Se le pasa el arreglo desde el controlador, se le asignan los valores segun lo que dicta la asociacion
-			$this->query = "SELECT registro_persona(:nombre,:nombre2,:apellido,:apellido2,:sexos,:fecha_nacimiento,:cedula,:fecha_ingreso,:telefono,:correo,:direccion,:ubicacion,:otro_telefono);";
+			$this->query = "SELECT registro_persona(:nombre,:nombre2,:apellido,:apellido2,:sexos,
+				:fecha_nacimiento,:cedula,:fecha_ingreso,:telefono,:correo,:direccion,:ubicacion,:otro_telefono);";
 			
 			//Cuando esta construido el query se envia para que empieze la transaccion.
 			try {
@@ -154,7 +155,7 @@
 		$query = "SELECT * from persona P, referencial S, persona_empleada P2
 					WHERE p.sexo_referencial= S.id_referencial
 					AND
-					P.id_persona = 162";
+					P.id_persona = $id";
 			
 			$auxiliar = $this->_db->query($query);
 				try {
