@@ -98,7 +98,7 @@
 	<div class="space-2"></div>
 	<div class="form-group">
 	<label class="control-label col-sm-3 no-padding-right" for="cedula">Cédula: </label>
-	<div class="col-sm-8">
+	<div class="col-sm-7">
 	<div class="col-sm-4">
 	<div class="input-group">
 	<input autocomplete="off" type   ="text" name="cedula" id="cedula" class="form-control" value="<?php echo $this->_persona[0]['cedula'] ?>"/>
@@ -107,35 +107,49 @@
 	</span>
 	</div>
 	</div>
-	<div class="col-sm-8">
+	<div class="col-sm-8" id="sexoActual">
 	<div>
-	<label class="control-label col-sm-3 no-padding-right" for="sexo">Sexo:</label>
+	<label class="control-label col-sm-4 no-padding-right">Sexo:</label>
 	</div>
-	<div class="col-sm-2">
-	<div class="clearfix">
-	<div>
-	<label class="line-height-1 blue">
-	<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos"  />
+	<div class="form-group">
+	<div class="col-xs-7 col-sm-7">
+	<div class="col-sm-4">
+	<a class="btn" id="detalle_persona" 
+	style=cursor:pointer; onclick="showElementos('cambiarSexo');hiddenElementos('sexoActual');">
+
+		<?php echo $this->_persona[0]['sexo'] ?>					
+		<span class="help-button" data-rel="popover" data-trigger="hover" data-placement="left" data-content="Para cambiar este valor por favor haga click encima del sexo." title="Cambiar sexo seleccionado">?</span>	
+	</a>											
+	</div>			
+	</div>									
+	</div>
+	</div>
+	<div id="cambiarSexo" hidden>
+	<table align="center">
+	<tr>
+	<td class="center">
+	<label for="">Sexo:</label>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<label class="blue">
+	<input value="16" type="radio" class="ace" name="sexo" value="16" />
 	<span class="lbl"> Masculino</span>
 	</label>
-	</div>
-	</div>
-	</div>
-	<div class="col-sm-2">
-	<div class="clearfix">
-	<div class="col-sm-12">
-	<label class="line-height-1 blue">
-	<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
+	&nbsp; 
+	<label class="blue">
+	<input value="17" type="radio" class="ace" name="sexo" />
 	<span class="lbl"> Femenino</span>
-	</label>
-	</div>
-	</div>
-	</div>
+	</label>																														
+	</td>
+	
+	</tr>
+	</table>
 	</div>											
 	</div>										
 																		
 	</div>	
-
 
 	<div class="hr hr-dotted"></div>	
 
@@ -650,7 +664,16 @@
 
 	
 function alert() {
-alert("Aviso: Desde esta misma ventana usted podra editar los datos de la persona.");
+//alert("Aviso: Desde esta misma ventana usted podra editar los datos de la persona.");
+}
+
+function showElementos(divName){
+    hide(divName,0);
+        show(divName, 1000);    
+}
+
+function hiddenElementos(divName){
+    hide(divName,0);
 }
 </script>							
 

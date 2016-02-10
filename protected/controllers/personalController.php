@@ -20,7 +20,8 @@
 				"Librerias/fuelux.wizard","form-wizard",
 				"Librerias/bootstrap-datepicker",
 				"Librerias/jquery.maskedinput",
-				"registroPersona/registroPersona"));
+				"registroPersona/registroPersona",
+				"utilidades"));
 
 				$this->_view->setCss(array("datepicker","bootstrapValidator.min"));
 
@@ -70,41 +71,7 @@
 		}
 
 
-		function insert(){
-	
-				if ($_SERVER['REQUEST_METHOD']=='POST') {
-			
 
-
-				$informacion_vestimenta = array(
-
-					':talla_camisa' => $_POST['talla_camisa'],
-					':talla_pantalon' => $_POST['talla_pantalon'],
-					':talla_zapatos' => $_POST['talla_zapatos']					
-
-					);
-
-				$informacion_academica = array(
-
-					':nivel_academico' => $_POST['nivel_academico'],
-					':educacion_primaria' => $_POST['educacion_primaria'],
-					':educacion_secundaria' => $_POST['educacion_secundaria'],
-					':educacion_superior' => $_POST['educacion_superior'],
-					':cursos_talleres' => $_POST['cursos_talleres'],
-					':post_grado' => $_POST['post_grado'],										
-
-					);
-
-					
-					$this->_view->redirect('personal/listing');
-
-			
-				}else{ 
-			
-					$this->_view->render('personal');
-			
-				}
-			}
 
 
 		function insertPerson(){
@@ -156,7 +123,7 @@
 		}
 
 		function update($id = false){
-				
+			
 			//Si le damos al boton modificar.
 			if ($_SERVER['REQUEST_METHOD']=='POST') {
 				
@@ -184,7 +151,7 @@
 				//OJO redireccionamos a persona update MAS EL ID de la persona,para que vea los cambios
 
 				}else{
-
+							$this->_view->setJs(array("utilidades"));	
 				//Se muestra la pagina de la persona con sus datos prederterminados sin cambios
 				$persona = $this->_personal->getUnicaPersona($id);
 
