@@ -27,7 +27,7 @@
 	define("DB_HOST", "localhost"); //Servidor con el cual tenemos conexion a BD.
 	define("DB_USER", "postgres"); // Usuario de la BD
 
-	define("DB_PASS", "1234"); // Clave
+	define("DB_PASS", "123456"); // Clave
 	define("DB_NAME", "tesis"); // Nombre de la base de datos.
 
 ?>
