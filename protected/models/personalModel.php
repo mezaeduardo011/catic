@@ -157,7 +157,7 @@
 
 		public function getUnicaPersona($id){
 
-		$query = "SELECT (SELECT date_part('year',age( fecha_nacimiento )) ) as edad,* from persona P, referencial S, persona_empleada P2
+		$query = "SELECT (SELECT date_part('year',age( fecha_nacimiento )) ) as edad,S.referencia as sexo,* from persona P, referencial S, persona_empleada P2
 					WHERE p.sexo_referencial= S.id_referencial
 					AND
 					P.id_persona = $id";
