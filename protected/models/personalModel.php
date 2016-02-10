@@ -121,11 +121,14 @@
 		public function getHijosModel(){
 	
 				$query = "SELECT
-							 ROW_NUMBER() OVER (ORDER BY P.id_persona) AS numeracion,P.* 
-								 FROM persona P,familiar F 
-									 WHERE F.tipo_persona_referencial = 65 
-										 AND F.id_persona_empleada = 20 
-										 	AND F.id_persona= P.id_persona;";
+							 ROW_NUMBER() OVER (ORDER BY P.id_persona) AS numeracion,
+							     (SELECT date_part('year',age( P.fecha_nacimiento )) ) as edad,
+								P.* ,S.referencia as sexo
+								FROM persona P,familiar F , referencial S
+							        WHERE S.id_referencial=P.sexo_referencial
+								AND F.tipo_persona_referencial = 65 
+								AND F.id_persona_empleada = 20 
+								AND F.id_persona= P.id_persona;";
 				$auxiliar = $this->_db->query($query);
 				try {
 				$this->_db->beginTransaction();

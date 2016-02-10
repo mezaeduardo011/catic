@@ -418,10 +418,8 @@
 	<table id="tablaHijosAdd" class="table table-striped table-bordered table-hover">
 	<thead>
 	<tr>
-	<th>Primer nombre</th>
-	<th class="hidden-480">Segundo nombre</th>
-	<th>Primer apellido</th>
-	<th class="hidden-480">Segundo apellido</th>
+	<th>Nombres</th>
+	<th class="hidden-480">Apellidos</th>
 	<th class="center">Sexo</th>
 	<th class="center">Edad</th>
 	</tr>
@@ -755,60 +753,171 @@
 	
 	<div class="step-pane" data-step="4">
 	<div class="center">
-	<div align="center"><h3 align="center" class="lighter block blue">Información academica de la persona</h3></div>
-	<div class="form-group">
-	<label class="control-label col-sm-3 no-padding-right" for="cedula">Nivel academico: </label>
-	<div class="col-sm-8">
-	<div class="col-sm-5">
-	<div class="input-group">
-	<input onkeypress="return letras(event)" autocomplete="off" 
-	type   ="text" name="nivel_academico" id="nivel_academico" placeholder="Primer Nombre" class="form-control" />
-	<span class   ="input-group-addon">
-	</span>		
+	<div>
+		<table align="center">
+		<tr>
+		<td>
+		<label for="">¿Esta persona tiene vehiculos?</label>
+		</td>
+		<td><label for="">Tipo de vivienda</label></td>
+		</tr>
+		<tr>
+		<td>
+		&nbsp; &nbsp; &nbsp;
+		
+		<label class="blue">
+		<input autocomplete="off" type="radio" class="ace" name="vehiculos" 
+		onchange="" value="si" />
+		<span class="lbl"> Si</span>
+		</label>
+		&nbsp; 
+		<label class="blue">
+		<input autocomplete="off" value="no" type="radio" class="ace" name="vehiculos" onchange=""/>
+		<span class="lbl"> No</span>
+		</label>																														
+		</td>
+		<td>
+		&nbsp; &nbsp; &nbsp;  
+		
+		<label class="blue">
+		<input autocomplete="off" type="radio" class="ace" name="vivienda" 
+		onchange="" value="si" />
+		<span class="lbl"> Alquilada</span>
+		</label>
+		&nbsp; 
+		<label class="blue">
+		<input autocomplete="off" value="no" type="radio" class="ace" name="vivienda" onchange=""/>
+		<span class="lbl"> Propia</span>
+		</label>			
+		</td>
+		</table>
 	</div>
+	<hr>
+	<div>
+		<table align="center">
+		<tr>
+		<td>
+		<label for="">¿Practica algun deporte?</label>
+		</td>
+		</tr>
+		<tr>
+		<td>
+		&nbsp; &nbsp; &nbsp;
+		
+		<label class="blue">
+		<input autocomplete="off" type="radio" class="ace" name="deporte" 
+		onchange="showElementos('deporteSelect');" value="si" />
+		<span class="lbl"> Si</span>
+		</label>
+		&nbsp; 
+		<label class="blue">
+		<input autocomplete="off" value="no" type="radio" class="ace" name="deporte" onchange="hiddenElementos('deporteSelect');"/>
+		<span class="lbl"> No</span>
+		</label>																														
+		</td>
+		
+		</tr>
+		</table>
+
 	</div>
-	<div class="col-sm-6">
-	<label class="control-label col-sm-3 no-padding-right" for="cedula">Post-grado: </label>
-	<div class="col-sm-9">
-	<div class="col-sm-12">
-	<div class="input-group">
-	<input onkeypress="return letras(event)" autocomplete="off" 
-	type   ="text" name="post_grado" id="post_grado" placeholder="" class="form-control" />
-	<span class   ="input-group-addon">
-	</span>
+	<div class="space-2"></div>
+	<div id="deporteSelect" hidden>
+		<table align="center">
+		<tr>
+		<td>
+		<label for="">Deportes que practica</label>
+		</td>
+		</tr>
+		<tr>
+		<td>
+		&nbsp; &nbsp; &nbsp;
+		
+		<label class="blue">
+		<input autocomplete="off" type="checkbox" class="ace" name="deporteSeleccionado" 
+		onchange="" value="si" />
+		<span class="lbl"> Futbol</span>
+		</label>
+		&nbsp; 
+		<label class="blue">
+		<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
+		<span class="lbl"> Basquet</span>
+		</label>
+		&nbsp; 
+		<label class="blue">
+		<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
+		<span class="lbl"> Boleyball</span>
+		</label>																													
+		&nbsp; 
+		<label class="blue">
+		<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
+		<span class="lbl"> Beisbol</span>
+		</label>
+		&nbsp; 
+		<label class="blue">
+		<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
+		<span class="lbl"> Softball</span>
+		</label>
+		&nbsp; 
+		<label class="blue">
+		<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
+		<span class="lbl"> Ajedrez</span>
+		</label>
+		&nbsp; 
+		<label class="blue">
+		<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
+		<span class="lbl"> Otro</span>
+		</label>									
+		</td>
+		
+		</tr>
+		</table>
 	</div>
+	<hr>
+	<div>
+		<table align="center">
+		<tr>
+		<td>
+		<label for="">¿Esta persona toma algún medicamento de por vida?</label>
+		</td>
+		</tr>
+		<tr>
+		<td>
+		&nbsp; &nbsp; &nbsp;
+		
+		<label class="blue">
+		<input autocomplete="off" type="radio" class="ace" name="deporte" 
+		onchange="showElementos('medicamentos');" value="si" />
+		<span class="lbl"> Si</span>
+		</label>
+		&nbsp; 
+		<label class="blue">
+		<input autocomplete="off" value="no" type="radio" class="ace" name="deporte" onchange="hiddenElementos('medicamentos');"/>
+		<span class="lbl"> No</span>
+		</label>																														
+		</td>
+		
+		</tr>
+		</table>
+
 	</div>
-	</div>										
-	</div>										
-	</div>																	
+		<div id="medicamentos" hidden>
+			<hr>
+		<table align="center">
+		<tr>
+		<td>
+		<label for="">Medicamentos que toma esta persona:</label>
+		</td>
+		</tr>
+		<tr>
+		<td>
+		<textarea id="form-field-11" align"center" class="autosize-transition form-control"></textarea>																														
+		</td>
+		
+		</tr>
+		</table>
+
 	</div>
-		<div class="form-group">
-	<label class="control-label col-sm-3 no-padding-right" for="cedula">Cursos y talleres: </label>
-	<div class="col-sm-8">
-	<div class="col-sm-5">
-	<div class="input-group">
-	<input onkeypress="return letras(event)" autocomplete="off" 
-	type   ="text" name="cursos_talleres" id="cursos_talleres" placeholder="" class="form-control" />
-	<span class   ="input-group-addon">
-	</span>		
-	</div>
-	</div>
-	<div class="col-sm-6">
-	<label class="control-label col-sm-3 no-padding-right" for="cedula">Otros: </label>
-	<div class="col-sm-9">
-	<div class="col-sm-12">
-	<div class="input-group">
-	<input onkeypress="return letras(event)" autocomplete="off" 
-	type   ="text" name="otros" id="otros" placeholder="" class="form-control" />
-	<span class   ="input-group-addon">
-	</span>
-	</div>
-	</div>
-	</div>										
-	</div>										
-	</div>																	
-	</div>
-	
+		
 	</div>
 	</div>
 	</div>
