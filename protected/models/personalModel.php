@@ -120,10 +120,12 @@
 		//Retorna un listado del personal a traves de un select
 		public function getHijosModel(){
 	
-				$query = "SELECT  ROW_NUMBER() OVER (ORDER BY P.id_persona) AS numeracion,S.referencia AS sexo,(SELECT date_part('year',age( fecha_nacimiento )) ) as edad,*
-				  				FROM persona P,referencial S
-				  						WHERE P.tipo_persona_referencial =65
-				  						AND P.sexo_referencial = S.id_referencial;";
+				$query = "SELECT
+							 ROW_NUMBER() OVER (ORDER BY P.id_persona) AS numeracion,P.* 
+								 FROM persona P,familiar F 
+									 WHERE F.tipo_persona_referencial = 65 
+										 AND F.id_persona_empleada = 20 
+										 	AND F.id_persona= P.id_persona;";
 				$auxiliar = $this->_db->query($query);
 				try {
 				$this->_db->beginTransaction();
@@ -152,7 +154,7 @@
 
 		public function getUnicaPersona($id){
 
-		$query = "SELECT * from persona P, referencial S, persona_empleada P2
+		$query = "SELECT (SELECT date_part('year',age( fecha_nacimiento )) ) as edad,* from persona P, referencial S, persona_empleada P2
 					WHERE p.sexo_referencial= S.id_referencial
 					AND
 					P.id_persona = $id";
@@ -314,6 +316,29 @@
 				return $result;
 			
 		}
+
+
+		public function getCoordinaciones(){
+
+		$query = "SELECT * FROM referencial WHERE referencial_id = 9 AND id_referencial !=9;";
+			
+			$auxiliar = $this->_db->query($query);
+				try {
+				$this->_db->beginTransaction();
+				$result= $auxiliar->fetchAll();
+				$this->_db->commit();
+				}
+				catch (Exception $e){
+					
+					$this->_db-rollBack();
+					echo "Error :: ".$e->getMessage();
+					exit();
+					
+				}
+				
+				return $result;
+			
+		}		
 
 		public function getTallasCamisas(){
 

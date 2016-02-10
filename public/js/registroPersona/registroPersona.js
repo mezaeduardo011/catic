@@ -31,7 +31,7 @@ function send_registro_persona() {
 
 
 function response_registro_persona(response) {
-    alert("Registro exitoso");
+   // alert("Registro exitoso");
 
 }
 

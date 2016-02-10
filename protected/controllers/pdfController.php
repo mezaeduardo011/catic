@@ -19,7 +19,7 @@
 			//$this->imprimirArreglo($persona);
 			$this->_view->_persona  = $persona;
 
-				$this->_view->render('pdfActividadInstitucional', 'personal', 'pdf','');
+				$this->_view->render('pdfDetallePersona', 'personal', 'pdf','');
 			// clase  metodo 	  vista    carpeta dentro de views 
 
 		}

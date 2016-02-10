@@ -109,16 +109,6 @@ body {
   margin: 20mm 8mm 22mm 8mm;
 }
 </style>
-<script type="text/php">
-
-        if ( isset($pdf) ) {
-
-          $font = Font_Metrics::get_font("helvetica", "bold");
-          $pdf->page_text(72, 18, "Header: {PAGE_NUM} of {PAGE_COUNT}", $font, 6, array(0,0,0));
-
-        }
-
-</script>  
     <div class="page-header" align="center">
         <h2>
         Datos completos de la persona

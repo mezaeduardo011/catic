@@ -30,7 +30,9 @@
 				//$direccionMunicipio = $this->_personal->getDireccionMunicipio();
 				//$this->_view->_direccionMunicipio = $direccionMunicipio;
 				$direccionParroquia = $this->_personal->getDireccionParroquia();
-				$this->_view->_direccionParroquia = $direccionParroquia;
+				$this->_view->_direccionParroquia = $direccionParroquia;				
+				$coordinaciones = $this->_personal->getCoordinaciones();
+				$this->_view->_coordinaciones = $coordinaciones;
 				$tallas_camisa = $this->_personal->getTallasCamisas();
 				$this->_view->_tallas_camisa = $tallas_camisa;
 				$tallas_pantalon = $this->_personal->getTallasPantalon();

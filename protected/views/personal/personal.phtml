@@ -72,10 +72,12 @@
 	
 	<div class="col-xs-12 col-sm-7">
 	<div class="col-sm-6">
-	<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+	<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" 
+	type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
 	</div>
 	<div class="col-sm-6">
-	<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+	<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" 
+	type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
 	</div>										
 	</div>
 	</div>
@@ -87,10 +89,12 @@
 	
 	<div class="col-xs-12 col-sm-7">
 	<div class="col-sm-6">
-	<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
+	<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" 
+	type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
 	</div>
 	<div class="col-sm-6">
-	<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
+	<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" 
+	type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
 	</div>										
 	</div>
 	</div>
@@ -101,7 +105,7 @@
 	<div class="col-sm-8">
 	<div class="col-sm-4">
 	<div class="input-group">
-	<input onkeypress="return numeros(event);" autocomplete="off" type   ="text" name="cedula" id="cedula" class="form-control" />
+	<input onkeypress="return numeros(event);" onkeyup="format(this)" onchange="format(this)" autocomplete="off" type   ="text" name="cedula" id="cedula" class="form-control" />
 	<span class   ="input-group-addon">
 	<i class      ="fa 	fa-credit-card "></i>
 	</span>
@@ -206,16 +210,10 @@
 	</span>
 	</div>
 	</div>												
-	</div>																	
-	</div>
-	
-	
-	<div class="form-group">
-	<div class="col-sm-6">
-	<div class="col-sm-6">
-	</div>										
-	</div>										
-	</div>																			
+	</div>																
+	</div>	
+
+																			
 	
 	<div class="hr hr-dotted"></div>		
 	<div align="center" class="col-sm-4">
@@ -271,8 +269,18 @@
 	</div>										
 	</div>										
 	</div>								
-	
-	
+	<hr>
+	<div align="center" >
+	<label class="control-label no-padding-right" for="parroquia">Coordinacion a la cual pertenecera esta persona: </label>											
+	<div class    ="input-group">
+	<select  id="coordinacion" name="coordinacion">
+	<option value ="" default selected>Seleccione una coordinacion...</option>
+	<?php foreach ($this->_coordinaciones as $parroquia):?>
+	<option value ="<?php  echo $parroquia['id_referencial']; ?>"><?php  echo $parroquia['referencia']; ?></option>
+	<?php endforeach ?>
+	</select>
+	</div>									
+	</div>
 	</form>
 	</div>
 	
@@ -326,10 +334,12 @@
 	
 	<div class="col-xs-12 col-sm-7">
 	<div class="col-sm-6">
-	<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+	<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" 
+	type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
 	</div>
 	<div class="col-sm-6">
-	<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+	<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" 
+	type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
 	</div>										
 	</div>
 	</div>
@@ -341,10 +351,10 @@
 	
 	<div class="col-xs-12 col-sm-7">
 	<div class="col-sm-6">
-	<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
+	<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
 	</div>
 	<div class="col-sm-6">
-	<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
+	<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
 	</div>										
 	</div>
 	</div>									
@@ -523,10 +533,10 @@
 			
 			<div class="col-xs-12 col-sm-7">
 			<div class="col-sm-6">
-			<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+			<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
 			</div>
 			<div class="col-sm-6">
-			<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+			<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
 			</div>										
 			</div>
 			</div>
@@ -536,10 +546,10 @@
 			
 			<div class="col-xs-12 col-sm-7">
 			<div class="col-sm-6">
-			<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
+			<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
 			</div>
 			<div class="col-sm-6">
-			<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
+			<input  style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
 			</div>										
 			</div>
 			</div>									
@@ -575,10 +585,10 @@
 			
 			<div class="col-xs-12 col-sm-7">
 			<div class="col-sm-6">
-			<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+			<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
 			</div>
 			<div class="col-sm-6">
-			<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+			<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
 			</div>										
 			</div>
 		</div>
@@ -588,10 +598,10 @@
 			
 			<div class="col-xs-12 col-sm-7">
 			<div class="col-sm-6">
-			<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
+			<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
 			</div>
 			<div class="col-sm-6">
-			<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
+			<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
 			</div>										
 			</div>
 		</div>									
@@ -639,10 +649,10 @@
 				
 				<div class="col-xs-12 col-sm-7">
 				<div class="col-sm-6">
-				<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+				<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
 				</div>
 				<div class="col-sm-6">
-				<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+				<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
 				</div>										
 				</div>
 		</div>
@@ -654,10 +664,10 @@
 				
 				<div class="col-xs-12 col-sm-7">
 				<div class="col-sm-6">
-				<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
+				<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
 				</div>
 				<div class="col-sm-6">
-				<input onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
+				<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
 				</div>										
 				</div>
 		</div>									
@@ -745,8 +755,60 @@
 	
 	<div class="step-pane" data-step="4">
 	<div class="center">
-	<h3 class="green">Congrats!</h3>
-	Your product is ready to ship! Click finish to continue!
+	<div align="center"><h3 align="center" class="lighter block blue">Información academica de la persona</h3></div>
+	<div class="form-group">
+	<label class="control-label col-sm-3 no-padding-right" for="cedula">Nivel academico: </label>
+	<div class="col-sm-8">
+	<div class="col-sm-5">
+	<div class="input-group">
+	<input onkeypress="return letras(event)" autocomplete="off" 
+	type   ="text" name="nivel_academico" id="nivel_academico" placeholder="Primer Nombre" class="form-control" />
+	<span class   ="input-group-addon">
+	</span>		
+	</div>
+	</div>
+	<div class="col-sm-6">
+	<label class="control-label col-sm-3 no-padding-right" for="cedula">Post-grado: </label>
+	<div class="col-sm-9">
+	<div class="col-sm-12">
+	<div class="input-group">
+	<input onkeypress="return letras(event)" autocomplete="off" 
+	type   ="text" name="post_grado" id="post_grado" placeholder="" class="form-control" />
+	<span class   ="input-group-addon">
+	</span>
+	</div>
+	</div>
+	</div>										
+	</div>										
+	</div>																	
+	</div>
+		<div class="form-group">
+	<label class="control-label col-sm-3 no-padding-right" for="cedula">Cursos y talleres: </label>
+	<div class="col-sm-8">
+	<div class="col-sm-5">
+	<div class="input-group">
+	<input onkeypress="return letras(event)" autocomplete="off" 
+	type   ="text" name="cursos_talleres" id="cursos_talleres" placeholder="" class="form-control" />
+	<span class   ="input-group-addon">
+	</span>		
+	</div>
+	</div>
+	<div class="col-sm-6">
+	<label class="control-label col-sm-3 no-padding-right" for="cedula">Otros: </label>
+	<div class="col-sm-9">
+	<div class="col-sm-12">
+	<div class="input-group">
+	<input onkeypress="return letras(event)" autocomplete="off" 
+	type   ="text" name="otros" id="otros" placeholder="" class="form-control" />
+	<span class   ="input-group-addon">
+	</span>
+	</div>
+	</div>
+	</div>										
+	</div>										
+	</div>																	
+	</div>
+	
 	</div>
 	</div>
 	</div>
@@ -771,4 +833,3 @@
 	
 	</form>											
 	</div><!-- /.page-content -->
-	

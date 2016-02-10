@@ -138,7 +138,7 @@ $pdf->page_text($w - 120, $h - 40, "Pagina: {PAGE_NUM} de {PAGE_COUNT}", $font, 
 </tr>
 
 <tr>
-<td align="center"><script type="text/php">echo $this->_persona[0]["cedula"];</script></td>
+<td align="center"><script type="text/php">'$persona[0]["cedula"];'</script></td>
 <td align="center" ><script type="text/php">echo $this->_persona[0]["nombre"]; echo $this->_persona[0]["nombre2"];</script></td>
 <td align="center" ><script type="text/php">echo $this->_persona[0]["apellido"]; echo $this->_persona[0]["apellido2"];</script></td>
 </tr>

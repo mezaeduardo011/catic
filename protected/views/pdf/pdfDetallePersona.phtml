@@ -1,0 +1,261 @@
+<?php ob_start(); ?>
+<style>.CSSTableGenerator {
+    margin:0px;padding:0px;
+    width:100%;
+    box-shadow: 10px 10px 5px #888888;
+    border:1px solid #000000;
+    
+    -moz-border-radius-bottomleft:2px;
+    -webkit-border-bottom-left-radius:2px;
+    border-bottom-left-radius:2px;
+    
+    -moz-border-radius-bottomright:2px;
+    -webkit-border-bottom-right-radius:2px;
+    border-bottom-right-radius:2px;
+    
+    -moz-border-radius-topright:2px;
+    -webkit-border-top-right-radius:2px;
+    border-top-right-radius:2px;
+    
+    -moz-border-radius-topleft:2px;
+    -webkit-border-top-left-radius:2px;
+    border-top-left-radius:2px;
+}.CSSTableGenerator table{
+    border-collapse: collapse;
+        border-spacing: 0;
+    width:100%;
+    height:100%;
+    margin:0px;padding:0px;
+}.CSSTableGenerator tr:last-child td:last-child {
+    -moz-border-radius-bottomright:2px;
+    -webkit-border-bottom-right-radius:2px;
+    border-bottom-right-radius:2px;
+}
+.CSSTableGenerator table tr:first-child td:first-child {
+    -moz-border-radius-topleft:2px;
+    -webkit-border-top-left-radius:2px;
+    border-top-left-radius:2px;
+}
+.CSSTableGenerator table tr:first-child td:last-child {
+    -moz-border-radius-topright:2px;
+    -webkit-border-top-right-radius:2px;
+    border-top-right-radius:2px;
+}.CSSTableGenerator tr:last-child td:first-child{
+    -moz-border-radius-bottomleft:2px;
+    -webkit-border-bottom-left-radius:2px;
+    border-bottom-left-radius:2px;
+}.CSSTableGenerator tr:hover td{
+    
+}
+.CSSTableGenerator tr:nth-child(odd){ background-color:#b5babf; }
+.CSSTableGenerator tr:nth-child(even)    { background-color:#ffffff; }.CSSTableGenerator td{
+    vertical-align:middle;
+    
+    
+    border:1px solid #000000;
+    border-width:0px 1px 1px 0px;
+    text-align:center;
+    padding:4px;
+    font-size:12px;
+    font-family:Times New Roman;
+    font-weight:bold;
+    color:#000000;
+}.CSSTableGenerator tr:last-child td{
+    border-width:0px 1px 0px 0px;
+}.CSSTableGenerator tr td:last-child{
+    border-width:0px 0px 1px 0px;
+}.CSSTableGenerator tr:last-child td:last-child{
+    border-width:0px 0px 0px 0px;
+}
+.CSSTableGenerator tr:first-child td{
+        background:-o-linear-gradient(bottom, #bfbfbf 5%, #f2f4f7 100%);    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bfbfbf), color-stop(1, #f2f4f7) );
+    background:-moz-linear-gradient( center top, #bfbfbf 5%, #f2f4f7 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#bfbfbf", endColorstr="#f2f4f7");  background: -o-linear-gradient(top,#bfbfbf,f2f4f7);
+
+    background-color:#bfbfbf;
+    border:0px solid #000000;
+    text-align:center;
+    border-width:0px 0px 1px 1px;
+    font-size:20px;
+    font-family:Arial;
+    font-weight:bold;
+    color:#050202;
+}
+.CSSTableGenerator tr:first-child:hover td{
+    background:-o-linear-gradient(bottom, #bfbfbf 5%, #f2f4f7 100%);    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bfbfbf), color-stop(1, #f2f4f7) );
+    background:-moz-linear-gradient( center top, #bfbfbf 5%, #f2f4f7 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#bfbfbf", endColorstr="#f2f4f7");  background: -o-linear-gradient(top,#bfbfbf,f2f4f7);
+
+    background-color:#bfbfbf;
+}
+.CSSTableGenerator tr:first-child td:first-child{
+    border-width:0px 0px 1px 0px;
+}
+.CSSTableGenerator tr:first-child td:last-child{
+    border-width:0px 0px 1px 1px;
+}
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+html {
+  margin: 0;
+}
+/*body {
+  font-family: "Times New Roman", serif;
+  margin: 20mm 8mm 22mm 8mm;
+}*/
+.cintillo{
+  font-family: "Times New Roman", serif;
+  margin: 0mm 0mm 0mm 0mm;
+}
+.cuerpo {
+  font-family: "Times New Roman", serif;
+  margin: 20mm 8mm 22mm 8mm;
+}
+</style>
+<body>
+<script type="text/php">
+
+        if ( isset($pdf) ) {
+                $w = $pdf->get_width();
+                $h = $pdf->get_height();
+                $font = Font_Metrics::get_font("helvetica", "bold");
+                $pdf->page_text($w - 120, $h - 40, "Pagina: {PAGE_NUM} de {PAGE_COUNT}", $font, 11, array(0,0,0));  
+
+        }
+
+</script> 
+<div class="cintillo">
+        <img src="/var/www/catic/public/img/cintillo.jpg" width="100%" height="80">
+</div> 
+<div class="cuerpo">
+    <div class="page-header" align="center">
+        <h2>
+        Datos completos de la persona
+        </h2>
+    </div>
+    <table id="dynamic-table" align="center" class="CSSTableGenerator">
+
+        <tr >
+        <th class="center" >Cedula</th>
+        <th class="center">Nombres</th>
+        <th class="center">Apellidos</th>
+        </tr>
+
+        <tr>
+        <td align="center"><?php echo $this->_persona[0]['cedula'] ?></td>
+        <td align="center" ><?php echo $this->_persona[0]['nombre'] ?>&nbsp;<?php echo $this->_persona[0]['nombre2'] ?></td>
+        <td align="center" ><?php echo $this->_persona[0]['apellido'] ?>&nbsp;<?php echo $this->_persona[0]['apellido2'] ?></td>
+        </tr>
+
+        <tr >
+        <th class="center" >Dirección</th>
+        <th class="center">Telefonos</th>
+        <th class="center">Correo</th>
+        </tr>
+
+        <tr>
+        <td align="center"><?php echo $this->_persona[0]['ubicacion'] ?></td>
+        <td align="center" ><?php echo $this->_persona[0]['telefono'] ?>////<?php echo $this->_persona[0]['otro_telefono'] ?></td>
+        <td align="center" ><?php echo $this->_persona[0]['correo'] ?>></td>
+        </tr>
+
+
+        <tr>
+        <th class="center">Fecha de nacimiento</th>
+        <th class="center">Edad</th>
+        <th class="center">Estado civil</th>
+        </tr>
+        <tr>
+        <td align="center"><?php echo $this->_persona[0]['fecha_nacimiento'] ?></td>
+        <td align="center"><?php echo $this->_persona[0]['edad'] ?></td>
+        <td align="center">FALTA</td>
+        </tr>
+
+        <tr>
+        <th class="center">Nivel academico</th>
+        <th class="center">Educación primaria</th>
+        <th class="center">Educación secundaria</th>
+        </tr>
+        <tr>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        </tr>
+
+        <tr>
+        <th class="center">Educación superior</th>
+        <th class="center">Cursos y talleres</th>
+        <th class="center">Post-grado</th>
+        </tr>
+        <tr>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        </tr>
+
+        <tr>
+        <th class="center">Cantidad de hijos</th>
+        <th class="center">Nombres y apellidos de los hijos</th>
+        <th class="center">Nivel academico de los hijos</th>
+        </tr>
+        <tr>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        </tr>
+
+        <tr>
+        <th class="center">Sexo de los hijos</th>
+        <th class="center">Nombres y apellidos de los padres</th>
+        <th class="center">Direccion de los padres</th>
+        </tr>
+        <tr>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        </tr>
+
+        <tr>
+        <th class="center">Telefono de los padres</th>
+        <th class="center">¿Posee vehiculo?</th>
+        <th class="center">Tipo de vivienda</th>
+        </tr>
+        <tr>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        </tr>
+
+        <tr>
+        <th class="center" >Medicamento de por vida</th>
+        <th class="center">Factor RH</th>
+        <th class="center">Practica algún deporte</th>
+        </tr>
+        <tr>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        <td align="center">FALTA</td>
+        </tr>
+    </table>
+</div>
+</body>
+
+
+    
+
+<?php
+//require_once("dompdf/dompdf_config.inc.php");
+$dompdf = new DOMPDF();
+$dompdf->load_html(ob_get_clean());
+$dompdf->render();
+$pdf = $dompdf->output();
+$filename = "listaDelPersonal";
+file_put_contents($filename, $pdf);
+$dompdf->stream($filename);
+
+?>
