@@ -12,39 +12,36 @@
 		}
 		
 		public function signIn() {
-			
-						
+
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 				$data = $this->_login->getUser($_POST['user_name'], $_POST['password']);
-		
 						
-				if (!$data) {
-					$this->_view->_error = Controller::getBoxAlert(
-							'Usuario no Existente O Contrase&ntilde;a Incorrecta'
-					);
-					$this->_view->render('access', '','login');
-					exit();
-				}
+				// if ($data==null || $data=="") {
+				// 	$this->_view->_error = 'Usuario o contraseña no existen';
+				// 	$this->_view->render('access', '','login');
+				// 	exit();
+				// }
 			    
 
 				Session::set('authenticated', true);
-				Session::set('level', $data['perfil']);
+				Session::set('level', $data['perfil_referencial']);
 			
 				
 				Session::set('time', time());
-				
-				switch ($data['perfil']) {
-					case 'Admin':
-						Session::set('user', 'Sr(a). '.$data['nombre1'].', '.$data['apellido1']);
-						$this->_view->redirect('index');
+
+				 switch ($data['perfil_referencial']) {
+					case 68:
+						$usuario=Session::set('user', 'Sr(a). '.$data['nombre'].', '.$data['apellido']);
+						$this->_view->redirect('personal');
+
 					break;
 					
-					default:
-						Session::set('user', $data['nombres'].', '.$data['apellidos']);
-						$this->_view->redirect();
-					break;
-				}
+				// 	default:
+				// 		Session::set('user', $data['nombres'].', '.$data['apellidos']);
+				// 		$this->_view->redirect();
+				// 	break;
+				 }
 			}else {
 		
 				$this->_view->render('access', '','login');

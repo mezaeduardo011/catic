@@ -17,7 +17,7 @@
 				}
 
 
-				function phpToPostgresArray($arregloPhp){
+				function ConvertirArraySql($arregloPhp){
 					return ("{".join(",",$arregloPhp)."}");
 				}
 

@@ -13,19 +13,15 @@
 		}
 		
 		public function getUser($user, $pass) {
-			$contraseña=md5($pass);
-
-			
+			$contraseña=md5($pass);	
 			$data = $this->_db->query(
-				"SELECT per.nombre,per.apellido,Use.usuario
-					FROM
-					persona Per
-					INNER JOIN usuario Use on Use.id_usuario=Per.id_persona
+				"SELECT  *,P.nombre,P.apellido
+					FROM usuario U
+					INNER JOIN persona as P ON P.id_persona=U.id_persona
 					WHERE 
-						Use.usuario = '$user'
+						usuario = "."'".$user."'"."
 					AND 
-						Use.contraseña = '$contraseña'
-						"
+						contraseña = "."'".$contraseña."'".""
 			);
 			
 			return $data->fetch();

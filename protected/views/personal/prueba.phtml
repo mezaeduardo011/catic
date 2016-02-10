@@ -108,11 +108,11 @@ table, th, td {
 <thead>
 <tr >
 <th > # </th>
-<th >Cedula</th>
 <th>Primer nombre</th>
 <th >Segundo nombre</th>
 <th>Primer apellido</th>
 <th >Segundo apellido</th>
+<th >Cedula</th>
 </tr>
 </thead>
 
@@ -123,13 +123,10 @@ table, th, td {
 <?php echo $persona['numeracion'];?>
 </td>
 
-<td align="center">
-<?php echo $persona['cedula']; ?>
-</td>
 <td align="center"><?php echo $persona['nombre']; ?></td>
 <td align="center"><?php echo $persona['nombre2']; ?></td>
 <td align="center"><?php echo $persona['apellido']; ?></td>
-
+<td align="center"><?php echo $persona['cedula']; ?></td>
 <td align="center">
 <?php echo $persona['apellido2']; ?>
 </td>
@@ -142,12 +139,12 @@ table, th, td {
 
 <?php
 //require_once("dompdf/dompdf_config.inc.php");
-$dompdf = new DOMPDF();
-$dompdf->load_html(ob_get_clean());
-$dompdf->render();
-$pdf = $dompdf->output();
-$filename = "listaDelPersonal";
-file_put_contents($filename, $pdf);
-$dompdf->stream($filename);
+// $dompdf = new DOMPDF();
+// $dompdf->load_html(ob_get_clean());
+// $dompdf->render();
+// $pdf = $dompdf->output();
+// $filename = "listaDelPersonal";
+// file_put_contents($filename, $pdf);
+// $dompdf->stream($filename);
 
 ?>
