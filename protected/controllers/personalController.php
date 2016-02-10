@@ -24,7 +24,6 @@
 
 				$this->_view->setCss(array("datepicker","bootstrapValidator.min"));
 
-
 				$direccionEstado = $this->_personal->getDireccionEstado();
 				$this->_view->_direccionEstado = $direccionEstado;
 				//$direccionMunicipio = $this->_personal->getDireccionMunicipio();

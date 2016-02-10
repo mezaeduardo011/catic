@@ -63,15 +63,11 @@ $('#registro_persona').formValidation({
           cedula: {
              validators: {
 
-                 regexp: { // Solo estos caracteres pueden ser usados
-                     regexp: /^[0-9]+$/,
-                     message: 'La cedula solo puede contener numeros.'
-                 },
                  notEmpty: { // No puede ser vacio
                      message: 'Debe introducir una cédula.'
                  },
                  stringLength: {
-                     max: 8,
+                     max: 10,
                      message: 'La cédula no debe tener mas de 8 numeros'
                  }                 
              }

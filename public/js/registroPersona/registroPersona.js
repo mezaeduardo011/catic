@@ -31,7 +31,7 @@ function send_registro_persona() {
 
 
 function response_registro_persona(response) {
-   // alert("Registro exitoso");
+    alert("Registro exitoso");
 
 }
 
@@ -95,76 +95,6 @@ function response_consulta_info(response) {
 }
 
 
-function response_detalle_solicitud(response) {
-    var tbl = document.getElementById('tabla_detalle_solicitud');
-
-    if (response == '') {
-        if (borrar_tabla_detalle('tabla_detalle_solicitud')) {
-            var tr = document.createElement('tr');
-            tr.style.align = 'center';
-            var cell = document.createElement('td');
-            cell.align = 'center';
-            cell.width = 'auto';
-            cell.setAttribute('colspan', '11');
-            var node = document.createTextNode('No se encontro el producto solicitado');
-            cell.appendChild(node);
-            tr.appendChild(cell);
-            tbl.tBodies[0].appendChild(tr);
-
-        }
-    } else {
-
-        if (borrar_tabla_detalle('tabla_detalle_solicitud')) {
-            var i = 0;
-            var lista = response.split('|%');
-            for (i = 0; i < lista.length; i++) {
-                var campos = lista[i].split('#');
-                tbl.tBodies[0].appendChild(addRowDatosSeleccion2(campos));
-                 paintTRsClearDark('tabla_detalle_solicitud');
-            }
-
-        }
-    }
-    vista_preliminar();
-}
-
-
-
-function addRowDatosSeleccion2(row) {
-    var tam = new Array();
-        tam[0]='25px';
-        tam[1]='191px';
-        tam[2]='310px';
-        tam[3]='325px';
-        tam[4]='350px';
-        tam[5]='102px';
-        tam[6]='102px';
-    
-
-    var tr = document.createElement('tr');
-   
-    tr.style.align = 'center';
-    var cell = new Array();
-    var node = new Array();
-    tr.setAttribute('id',row[0]);
-    
-    
-    var j=0;
-    for (var i = 1; i < row.length; i++) {
-        cell[j] = document.createElement('td');
-        cell[j].align = 'center';
-        cell[j].setAttribute('style','min-width: '+tam[j]+'; max-width: '+tam[j]/*+'color: BA3131;'+' color: BA3131'*/);
-
-        
-        
-            node[j] = document.createTextNode(row[i]);
-            cell[j].appendChild(node[j]);
-            tr.appendChild(cell[j]);  
-            j++;
-     
-    }
-    return tr;
-}
 
 
 function deleteRow(rowIndex) {
@@ -197,4 +127,18 @@ function borrar_datos_tabla(id_tabla) {
   patron = /\d/;
   n = String.fromCharCode(k);
   return patron.test(n);
-  }    
+  }
+
+    function format(input)
+{
+var num = input.value.replace(/\./g,'');
+if(!isNaN(num)){
+num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+num = num.split('').reverse().join('').replace(/^[\.]/,'');
+input.value = num;
+}
+  
+else{ alert('Solo se permiten numeros');
+input.value = input.value.replace(/[^\d\.]*/g,'');
+}
+}   
