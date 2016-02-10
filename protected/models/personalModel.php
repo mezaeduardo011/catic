@@ -126,9 +126,9 @@
 								P.* ,S.referencia as sexo
 								FROM persona P,familiar F , referencial S
 							        WHERE S.id_referencial=P.sexo_referencial
-								AND F.tipo_persona_referencial = 65 
-								AND F.id_persona_empleada = 20 
-								AND F.id_persona= P.id_persona;";
+								AND P.tipo_persona_referencial = 65 
+								--AND F.id_persona_empleada = 20 
+								--AND F.id_persona= P.id_persona;";
 				$auxiliar = $this->_db->query($query);
 				try {
 				$this->_db->beginTransaction();
@@ -157,10 +157,16 @@
 
 		public function getUnicaPersona($id){
 
-		$query = "SELECT (SELECT date_part('year',age( fecha_nacimiento )) ) as edad,S.referencia as sexo,* from persona P, referencial S, persona_empleada P2
-					WHERE p.sexo_referencial= S.id_referencial
+		$query = "SELECT (SELECT date_part('year',age( fecha_nacimiento )) ) as edad,S.referencia as sexo,
+					 E.direccion as Estado, M.direccion as Municipio,P.direccion as Parroquia,* 
+					 from persona PER, referencial S, persona_empleada P2, direccion E, direccion M, direccion P
+					WHERE pER.sexo_referencial= S.id_referencial
+					AND  E.id_direccion=M.id_padre 
+					AND M.id_direccion=P.id_padre
+					AND P.id_direccion=direccion_referencial
 					AND
-					P.id_persona = $id";
+					PER.id_persona = $id;
+					";
 			
 			$auxiliar = $this->_db->query($query);
 				try {

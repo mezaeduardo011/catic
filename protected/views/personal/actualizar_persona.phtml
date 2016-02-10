@@ -236,40 +236,23 @@
 
 	<div class="hr hr-dotted"></div>		
 	<div align="center" class="col-sm-4">
-	<label class="control-label col-sm-2 no-padding-right" for="estado">Estado: </label>								
-	<div class    ="input-group">
-	<select  id="estado" name="estado" onclick="search_municipio(this.selectedIndex)">
-	<option value ="" default selected>Seleccione un estado...</option>
-	<?php foreach ($this->_direccionEstado as $estado):?>
-	<?php // if ($estado['estado']==$estado['estado']): ?>
-	<option  value ="<?php  echo $estado['id_referencial']; ?>"><?php  echo $estado['estado']; ?></option>
-	<?php //endif ?>
-	<?php endforeach ?>
-	</select>
+	<label class="control-label col-sm-4 no-padding-right" for="estado">Estado: </label>								
+	<div class    ="form-group col-sm-7">
+	<input autocomplete="off" class  ="form-control" type="text"  name="correo" value="<?php echo $this->_persona[0]['estado'] ?>" disabled/>
 	</div>									
 	</div>
 
 	<div align="center" class="col-sm-4">
-	<label class="control-label col-sm-2 no-padding-right" for="municipio">Municipio: </label>											
-	<div class    ="input-group">
-	<select  id="municipio" name="municipio">
-	<option value ="" default selected>Seleccione un municipio...</option>
-	<?php foreach ($this->_direccionMunicipio as $municipio):?>
-	<option value ="<?php  echo $municipio['id_referencial']; ?>"><?php  echo $municipio['municipio']; ?></option>
-	<?php endforeach ?>
-	</select>
+	<label class="control-label col-sm-4 no-padding-right" for="municipio">Municipio: </label>											
+	<div class    ="form-group col-sm-7">
+<input autocomplete="off" class  ="form-control" type="text"  name="correo" value="<?php echo $this->_persona[0]['municipio'] ?>" disabled/>
 	</div>								
 	</div>
 
 	<div align="center" class="col-sm-4">
-	<label class="control-label col-sm-2 no-padding-right" for="parroquia">Parroquia: </label>											
-	<div class    ="input-group">
-	<select  id="direccion" name="direccion">
-	<option value ="" default selected>Seleccione una parroquia...</option>
-	<?php foreach ($this->_direccionParroquia as $parroquia):?>
-	<option value ="<?php  echo $parroquia['id_referencial']; ?>"><?php  echo $parroquia['parroquia']; ?></option>
-	<?php endforeach ?>
-	</select>
+	<label class="control-label col-sm-4 no-padding-right" for="parroquia">Parroquia: </label>											
+	<div class    ="form-group col-sm-7">
+	<input autocomplete="off" class  ="form-control" type="text"  name="correo" value="<?php echo $this->_persona[0]['parroquia'] ?>" disabled/>
 	</div>									
 	</div>											
 	<br><br>

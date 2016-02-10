@@ -23,7 +23,7 @@ function send_registro_persona() {
 
 
 function response_registro_persona(response) {
-    alert("Registro exitoso");
+    //alert("Registro exitoso");
 
 }
 
@@ -36,25 +36,21 @@ function response_consulta_hijo(response) {
 	//alert(response[0]['nombre']);
 	 var tbl = document.getElementById('tablaHijosAdd');
 	 	 var len= response.length;
-		 var lastRow, row, nombre, nombre2, apellido, apellido2, sexo, edad;
-		 if (borrar_datos_tabla('tablaHijosAdd')) {
+		 var lastRow, row, nombres,apellidos,sexo, edad;
+		if (borrar_datos_tabla('tablaHijosAdd')==true) {
         for (var i = 0; i < len; i++) {
 		    lastRow = tbl.rows.length;
             row = tbl.insertRow(lastRow);
-         	nombre = row.insertCell(0);
-			nombre2 = row.insertCell(1);
-			apellido = row.insertCell(2);
-			apellido2 = row.insertCell(3);
-			sexo = row.insertCell(4);
-			edad = row.insertCell(5);
-		    nombre.innerHTML = response[i]['nombre'];
-		    nombre2.innerHTML = response[i]['nombre2'];
-		    apellido.innerHTML = response[i]['apellido'];
-		    apellido2.innerHTML = response[i]['apellido2'];
+         	nombres = row.insertCell(0);
+			apellidos = row.insertCell(1);
+			sexo = row.insertCell(2);
+			edad = row.insertCell(3);
+		    nombres.innerHTML = response[i]['nombre']+response[i]['nombre2'];
+		    apellidos.innerHTML = response[i]['apellido']+response[i]['apellido2'];
 		    sexo.innerHTML = response[i]['sexo'];	 
 		    edad.innerHTML = response[i]['edad'];	 
     	}
-	};
+};
 	 return false;
 }
 
@@ -87,13 +83,10 @@ function response_consulta_info(response) {
 }
 
 
-
-
-function deleteRow(rowIndex) {
- var table = document.getElementById('tablaHijosAdd')
- table.deleteRow(rowIndex);
- return true;
-}
+function deleteBodyTablaHijos() {
+           alert(document.getElementById("bodyTablaHijos"));
+            return true;
+        }
 
 function borrar_datos_tabla(id_tabla) {
     var tbl = document.getElementById(id_tabla);
