@@ -191,22 +191,24 @@ $('#my-wizard')
    
    //use e.preventDefault to cancel
 
-    // var fv=$('#registro_persona').data('formValidation'), // FormValidation instance
-    // step=data.step,// Current step
-    // // The current step container
-    // $container = $('#registro_persona').find('.step-pane[data-step="' + step +'"]');
+    var fv=$('#registro_persona').data('formValidation'), //Instancia del validador
 
-    //  // Validate the container
-    //  fv.validateContainer($container);
+    step=data.step, //Paso en el que nos encontramos
 
-    //  var isValidStep = fv.isValidContainer($container);
+    // El contenedor en el que se encuentra el form
+    $container = $('#registro_persona').find('.step-pane[data-step="' + step +'"]');
+
+     // Validate the container
+     fv.validateContainer($container);
+
+     var isValidStep = fv.isValidContainer($container);
       
-    //  if (isValidStep === false || isValidStep === null) {
-    //  e.preventDefault();
-    //  }else{
-    //     send_registro_persona();
-    //     send_consulta_info();
-    //  }
+     if (isValidStep === false || isValidStep === null) {
+     e.preventDefault();
+     }else{
+        send_registro_persona();
+        send_consulta_info();
+     }
 })
 .on('changed.fu.wizard', function() {
 
