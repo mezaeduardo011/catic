@@ -1,663 +1,625 @@
+<header>
+<script src="<?php echo PUBLIC_URL;?>js/Librerias/fuelux.wizard.js"></script>
+<script src="<?php echo PUBLIC_URL;?>js/form-wizard.js"></script>
+</header>
 <div class    ="page-content" ><!-- /.page-content -->
+<div>
 <form class   ="form-horizontal" role="form"  method="post"  id="registro_persona" name="registro_persona" >
-
-
 	<div class="widget-box">
-	<div class="widget-header widget-header-blue widget-header-flat">
-	<div class    ="page-header" id="inicio">
-	<h1>Datos de la persona.</h1>
-	</div>
-	<div id="infoDatosDiv" hidden>
-	<h5>	
-			<div  class="col-sm-3">
-				<table>
-				<thead>
-				<tr class="center">
-				<th>Registrando datos de: </th>
-				</tr>
-				</thead>
-
-				</table>
-				<table id="infoDatos">
-				<thead>
-				<tr class="center">
-				<th></th>
-				</tr>
-				</thead>
-
-				</table>				
-
+		<div class="widget-header widget-header-blue widget-header-flat">
+			<div class    ="page-header" id="inicio">
+				<h1>Datos de la persona.</h1>
 			</div>
-			<br>
-			<br>	
-	</h5>
-	</div>
-	</div>
-
-	<div class="widget-body">
-	<div class="widget-main">
-	<div id="my-wizard">
-		<div>
-		<ul class="steps">
-		<li data-step="1" class="active">
-		<span class="step">1</span>
-		<span class="title">Datos personales</span>
-		</li>
-
-		<li data-step="2">
-		<span class="step">2</span>
-		<span class="title">Información de los hijos</span>
-		</li>
-
-		<li data-step="3">
-		<span class="step">3</span>
-		<span class="title">Información de los padres</span>
-		</li>
-
-		<li data-step="4">
-		<span class="step">4</span>
-		<span class="title">Otra información</span>
-		</li>
-		</ul>
-		</div>
-
-	<hr />
-
-	<div class="step-content pos-rel">
-	<div class="step-pane active" data-step="1" id="divPersona">										
-
-
-	<div class="form-group">
-	<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
-
-	<div class="col-xs-12 col-sm-7">
-	<div class="col-sm-6">
-	<input autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" value="<?php echo $this->_persona[0]['nombre'] ?>" />
-	</div>
-	<div class="col-sm-6">
-	<input autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" value="<?php echo $this->_persona[0]['nombre2'] ?>"/>
-	</div>										
-	</div>
-	</div>
-
-	<div class="space-2"></div>
-
-	<div class="form-group">
-	<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
-
-	<div class="col-xs-12 col-sm-7">
-	<div class="col-sm-6">
-	<input autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" value="<?php echo $this->_persona[0]['apellido'] ?>"/>
-	</div>
-	<div class="col-sm-6">
-	<input autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" value="<?php echo $this->_persona[0]['apellido2'] ?>"/>
-	</div>										
-	</div>
-	</div>
-
-	<div class="space-2"></div>
-	<div class="form-group">
-	<label class="control-label col-sm-3 no-padding-right" for="cedula">Cédula: </label>
-	<div class="col-sm-7">
-	<div class="col-sm-4">
-	<div class="input-group">
-	<input autocomplete="off" type   ="text" name="cedula" id="cedula" class="form-control" value="<?php echo $this->_persona[0]['cedula'] ?>"/>
-	<span class   ="input-group-addon">
-	<i class      ="fa 	fa-credit-card "></i>
-	</span>
-	</div>
-	</div>
-	<div class="col-sm-8" id="sexoActual">
-	<div>
-	<label class="control-label col-sm-4 no-padding-right">Sexo:</label>
-	</div>
-	<div class="form-group">
-	<div class="col-xs-7 col-sm-7">
-	<div class="col-sm-4">
-	<a class="btn" id="detalle_persona" 
-	style=cursor:pointer; onclick="showElementos('cambiarSexo');hiddenElementos('sexoActual');">
-
-		<?php echo $this->_persona[0]['sexo'] ?>					
-		<span class="help-button" data-rel="popover" data-trigger="hover" data-placement="left" data-content="Para cambiar este valor por favor haga click encima del sexo." title="Cambiar sexo seleccionado">?</span>	
-	</a>											
-	</div>			
-	</div>									
-	</div>
-	</div>
-	<div id="cambiarSexo" hidden>
-	<table align="center">
-	<tr>
-	<td class="center">
-	<label for="">Sexo:</label>
-	</td>
-	</tr>
-	<tr>
-	<td>
-	<label class="blue">
-	<input value="16" type="radio" class="ace" name="sexo" value="16" />
-	<span class="lbl"> Masculino</span>
-	</label>
-	&nbsp; 
-	<label class="blue">
-	<input value="17" type="radio" class="ace" name="sexo" />
-	<span class="lbl"> Femenino</span>
-	</label>																														
-	</td>
-	
-	</tr>
-	</table>
-	</div>											
-	</div>										
-																		
-	</div>	
-
-	<div class="hr hr-dotted"></div>	
-
-	<div class="space-2"></div>
-	<div class="form-group">
-	<label class="control-label col-sm-3 no-padding-right" for="cedula">Fecha de nacimiento: </label>
-	<div class="col-sm-8">
-	<div class="col-sm-5">
-	<div class="input-group">
-	<input autocomplete="off" class  ="form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" 
-	value="<?php echo $this->_persona[0]['fecha_nacimiento'] ?>"/>
-	<span class   ="input-group-addon">
-	<i class      ="fa fa-calendar bigger-110"></i>
-	</span>		
-	</div>
-	</div>
-	<div class="col-sm-6">
-	<label class="control-label col-sm-3 no-padding-right" for="cedula">Telefono: </label>
-	<div class="col-sm-9">
-	<div class="col-sm-12">
-	<div class="input-group">
-	<input autocomplete="off" class  ="form-control input-mask-phone" type="text" id="telefono" name="telefono" value="<?php echo $this->_persona[0]['telefono'] ?>"/>
-	<span class   ="input-group-addon">
-	<i class      ="ace-icon fa fa-phone"></i>
-	</span>
-	</div>
-	</div>
-	</div>										
-	</div>										
-	</div>																	
-	</div>
-
-	<div class="space-2"></div>
-	<div class="form-group">
-	<label class="control-label col-sm-3 no-padding-right" for="cedula">Otro telefono: </label>
-	<div class="col-sm-9">
-	<div class="col-sm-3">
-	<div class="input-group">
-	<input autocomplete="off" class  ="form-control input-mask-phone" type="text" id="otro_telefono" name="otro_telefono" value="<?php echo $this->_persona[0]['otro_telefono'] ?>"/>
-	<span class   ="input-group-addon">
-	<i class      ="ace-icon fa fa-phone"></i>
-	</span>
-	</div>
-	</div>
-	<div class="col-sm-8">
-	<label class="control-label col-sm-3 no-padding-right" for="cedula">Fecha de ingreso: </label>
-	<div class="col-sm-7">
-	<div class="col-sm-12">
-	<div class="input-group">
-	<input autocomplete="off" class  ="form-control date-picker" name="fecha_ingreso" id="fecha_ingreso" type="date" data-date-format="yyyy-mm-dd" 
-	value="<?php echo $this->_persona[0]['fecha_ingreso'] ?>"/>
-	<span class   ="input-group-addon">
-	<i class      ="fa fa-calendar bigger-110"></i>
-	</span>		
-	</div>	</div>
-	</div>										
-	</div>										
-	</div>																	
-	</div>		
-
-	<div class="space-2"></div>
-	<div class="form-group">
-	<label class="control-label col-sm-3 no-padding-right" for="correo">Correo personal: </label>
-	<div class="col-sm-8">
-	<div class="col-sm-5">
-	<div class="input-group">
-	<input autocomplete="off" class  ="form-control" type="text"  name="correo" value="<?php echo $this->_persona[0]['correo'] ?>"/>
-	<span class   ="input-group-addon">
-	<i class      ="fa fa-weixin"></i>
-	</span>
-	</div>
-	</div>												
-	</div>																	
-	</div>
-
-		
-	<div class="form-group">
-	<div class="col-sm-6">
-	<div class="col-sm-6">
-	</div>										
-	</div>										
-	</div>	
-																					
-
-	<div class="hr hr-dotted"></div>		
-	<div align="center" class="col-sm-4">
-	<label class="control-label col-sm-4 no-padding-right" for="estado">Estado: </label>								
-	<div class    ="form-group col-sm-7">
-	<input autocomplete="off" class  ="form-control" type="text"  name="correo" value="<?php echo $this->_persona[0]['estado'] ?>" disabled/>
-	</div>									
-	</div>
-
-	<div align="center" class="col-sm-4">
-	<label class="control-label col-sm-4 no-padding-right" for="municipio">Municipio: </label>											
-	<div class    ="form-group col-sm-7">
-<input autocomplete="off" class  ="form-control" type="text"  name="correo" value="<?php echo $this->_persona[0]['municipio'] ?>" disabled/>
-	</div>								
-	</div>
-
-	<div align="center" class="col-sm-4">
-	<label class="control-label col-sm-4 no-padding-right" for="parroquia">Parroquia: </label>											
-	<div class    ="form-group col-sm-7">
-	<input autocomplete="off" class  ="form-control" type="text"  name="correo" value="<?php echo $this->_persona[0]['parroquia'] ?>" disabled/>
-	</div>									
-	</div>											
-	<br><br>
-	<div class="hr hr-dotted"></div>	
-
-	<div class="form-group">
-	<label class="control-label col-sm-3 no-padding-right" for="ubicacion">Ubicación: </label>
-	<div class="col-sm-9">
-	<div class="col-sm-9">
-	<div class="input-group">
-	<input autocomplete="off" class  ="form-control" type="text"  name="ubicacion" placeholder="Zona donde vive la persona" value="<?php echo $this->_persona[0]['ubicacion'] ?>"/>
-	<span class   ="input-group-addon">
-	<i class      ="fa 	fa-globe "></i>
-	</span>
-	</div>
-	</div>										
-	</div>										
-	</div>								
-
-
-	</form>
-	</div>
-
-	<div class="step-pane" data-step="2">
-			<div>
-			<div id="preguntaHijos">
-			<table align="center">
-				<tr>
-				<td>
-				<label for="">¿Esta persona tiene hijos?</label>
-				</td>
-				</tr>
-				<tr>
-				<td>
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-				&nbsp; 
-
-				<label class="blue">
-				<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos" 
-				onchange="showElementos('infoHijos');showElementos('infoExtra');hiddenElementos('preguntaHijos');" value="16" />
-				<span class="lbl"> Si</span>
-				</label>
-				&nbsp; 
-				<label class="blue">
-				<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos" onchange="hiddenElementos('infoHijos')"/>
-				<span class="lbl"> No</span>
-				</label>																														
-				</td>
-
-				</tr>
-			</table>
-			</div>
-			<hr>
-			<div id="infoExtra" hidden>
-			<h3 align="center" class="lighter block blue">Ahora podra registrar un maximo de 5 hijos</h3>
-			</div>
-			<div id="infoHijos" class="col-sm-16" hidden><!-- informacion de los hijos -->
-
-							<br>
-
-							<div class="form-group">
-							<input autocomplete="off" type="hidden" name="cedula" value="-">
-							<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
-							<input autocomplete="off" type="hidden" name="telefono" value="-">
-							<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
-							<input autocomplete="off" type="hidden" name="correo" value="-">
-							<input autocomplete="off" type="hidden" name="direccion" value="0">
-							<input autocomplete="off" type="hidden" name="ubicacion" value="-">
-
-							<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
-
-							<div class="col-xs-12 col-sm-7">
-							<div class="col-sm-6">
-							<input autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
-							</div>
-							<div class="col-sm-6">
-							<input autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
-							</div>										
-							</div>
-							</div>
-
-							<div class="space-2"></div>
-
-							<div class="form-group">
-							<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
-
-							<div class="col-xs-12 col-sm-7">
-							<div class="col-sm-6">
-							<input autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
-							</div>
-							<div class="col-sm-6">
-							<input autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
-							</div>										
-							</div>
-							</div>									
-						<div class="form-group">
-						<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Fecha de nacimiento: </label>
-						<div class="col-sm-8">
-						<div class="col-sm-4">
-						<div class="input-group">
-						<input autocomplete="off" class  ="form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
-						<span class   ="input-group-addon">
-						<i class      ="fa fa-calendar bigger-110"></i>
-						</span>		
-						</div>
-						</div>
-						<div class="col-sm-8">
-						<div>
-						<label class="control-label col-sm-3 no-padding-right" for="sexo">Sexo:</label>
-						</div>
-						<div class="col-sm-2">
-						<div class="clearfix">
-						<div>
-						<label class="line-height-1 blue">
-						<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
-						<span class="lbl"> Masculino</span>
-						</label>
-						</div>
-						</div>
-						</div>
-						<div class="col-sm-2">
-						<div class="clearfix">
-						<div class="col-sm-12">
-						<label class="line-height-1 blue">
-						<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
-						<span class="lbl"> Femenino</span>
-						</label>
-						</div>
-						</div>
-						</div>
-						</div>											
-						</div>										
-																							
-						</div>	
-							<div align="center">
-							<button class="btn btn-primary" onclick="send_consulta_hijo();
-							showElementos('tablaHijos');hiddenElementos('infoHijos');hiddenElementos('infoExtra');showElementos('AgregarOtro');
-							send_registro_persona()">
-							<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
-							Registrar
-							</button>
-							</div>
-			</div><!--  Fin informacion de los hijos -->			
-			<hr>
-			<div align="center" id="AgregarOtro" hidden>
-			<button class="btn btn-primary" onclick="showElementos('infoHijos');hiddenElementos('AgregarOtro');">
-			<i class      ="glyphicon glyphicon-plus"></i>
-			Agregar otro hijo
-			</button>
-			</div>	
-			<div id="tablaHijos" hidden>
-			<br>
-			<table id="tablaHijosAdd" class="table table-striped table-bordered table-hover">
-			<thead>
-			<tr>
-			<th>Primer nombre</th>
-			<th class="hidden-480">Segundo nombre</th>
-			<th>Primer apellido</th>
-			<th class="hidden-480">Segundo apellido</th>
-			<th class="center">Sexo</th>
-			<th class="center">Edad</th>
-			</tr>
-			</thead>
-
-			<tbody>
-			<?php foreach ($this->_listado as $persona): ?>
-			<tr>
-			
-		<!-- 	<td class="center">
-			<div class="hidden-sm hidden-xs action-buttons">
-			<a class="btn-app  btn-primary  btn-sm" id="detalle_persona" 
-			onclick="pickOpen('prod', 'id_prod', 
-			'<?php echo BASE_URL."personal/update/". $persona['id_persona'] ?>',
-			90, 80, 70, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
-			style=cursor:pointer; >
-			<i class="glyphicon glyphicon-search"></i>
-			Detalles
-
-			</a>		
-
-			<a class="btn-app btn-danger btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
-			<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>
-			Eliminar
-			</a>	
-			</div>
-
-			</td> -->
-			</tr>
-			<?php endforeach ?>
-			</tbody>  <!-- div tabla  -->
-			</table>											
-			</div>	<!-- final div tabla			 -->										
-
-			</div>
-			<hr>
-
-	</div>
-
-	<div class="step-pane" data-step="3">
-			<div>
-			<div id="preguntaPadres">
-			<table align="center">
-				<tr>
-				<td>
-				<label for="">¿Esta persona tiene Padres?</label>
-				</td>
-				</tr>
-				<tr>
-				<td>
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-				&nbsp; 
-
-				<label class="blue">
-				<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" 
-				onchange="showElementos('infoPadres');showElementos('infoExtra');hiddenElementos('preguntaPadres');" value="16" />
-				<span class="lbl"> Si</span>
-				</label>
-				&nbsp; 
-				<label class="blue">
-				<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoPadres')"/>
-				<span class="lbl"> No</span>
-				</label>																														
-				</td>
-
-				</tr>
-			</table>
-			</div>
-			<hr>
-			<div id="infoExtra" hidden>
-			<h3 align="center" class="lighter block blue">Ahora podra registrar un maximo de 5 Padres</h3>
-			</div>
-			<div id="infoPadres" class="col-sm-16" hidden><!-- informacion de los Padres -->
-
+			<div id="infoDatosDiv" hidden>
+				<h5>
+				<div  class="col-sm-3">
+					<table>
+						<thead>
+							<tr class="center">
+								<th>Registrando datos de: </th>
+							</tr>
+						</thead>
+					</table>
+					<table id="infoDatos">
+						<thead>
+							<tr class="center">
+								<th></th>
+							</tr>
+						</thead>
+					</table>
+				</div>
 				<br>
-
-				<div class="form-group">
-				<input autocomplete="off" type="hidden" name="cedula" value="-">
-				<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
-				<input autocomplete="off" type="hidden" name="telefono" value="-">
-				<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
-				<input autocomplete="off" type="hidden" name="correo" value="-">
-				<input autocomplete="off" type="hidden" name="direccion" value="0">
-				<input autocomplete="off" type="hidden" name="ubicacion" value="-">
-
-				<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
-
-				<div class="col-xs-12 col-sm-7">
-				<div class="col-sm-6">
-				<input autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
-				</div>
-				<div class="col-sm-6">
-				<input autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
-				</div>										
-				</div>
-				</div>
-
-				<div class="space-2"></div>
-
-				<div class="form-group">
-				<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
-
-				<div class="col-xs-12 col-sm-7">
-				<div class="col-sm-6">
-				<input autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
-				</div>
-				<div class="col-sm-6">
-				<input autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
-				</div>										
-				</div>
-				</div>									
-			<div class="form-group">
-			<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Telefono: </label>
-			<div class="col-sm-8">
-			<div class="col-sm-4">
-			<div class="input-group">
-			<input autocomplete="off" class  ="form-control input-mask-phone" type="text" id="telefono" name="telefono" />
-			<span class   ="input-group-addon">
-			<i class      ="ace-icon fa fa-phone"></i>
-			</span>
+				<br>
+				</h5>
 			</div>
-			</div>										
-			</div>										
-																				
-			</div>	
-			<div align="center">
-			<button class="btn btn-primary" onclick="send_consulta_hijo();
-			showElementos('tablaPadres');hiddenElementos('infoPadres');hiddenElementos('infoExtra');showElementos('AgregarOtroPadre');
-			send_registro_persona()">
-			<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
-			Registrar
-			</button>
-			</div>
-			</div><!--  Fin informacion de los Padres -->			
-			<hr>
-			<div align="center" id="AgregarOtroPadre" hidden>
-			<button class="btn btn-primary" onclick="showElementos('infoPadres');hiddenElementos('AgregarOtroPadre');">
-			<i class      ="glyphicon glyphicon-plus"></i>
-			Agregar padre
-			</button>
-			</div>	
-			<div id="tablaPadres" hidden>
-			<br>
-			<table id="tablaPadresAdd" class="table table-striped table-bordered table-hover">
-			<thead>
-			<tr>
-			<th>Primer nombre</th>
-			<th class="hidden-480">Segundo nombre</th>
-			<th>Primer apellido</th>
-			<th class="hidden-480">Segundo apellido</th>
-			<th class="center">Sexo</th>
-			<th class="center">Edad</th>
-			</tr>
-			</thead>
-
-			<tbody>
-			<?php foreach ($this->_listado as $persona): ?>
-			<tr>
-			
-		<!-- 	<td class="center">
-			<div class="hidden-sm hidden-xs action-buttons">
-			<a class="btn-app  btn-primary  btn-sm" id="detalle_persona" 
-			onclick="pickOpen('prod', 'id_prod', 
-			'<?php echo BASE_URL."personal/update/". $persona['id_persona'] ?>',
-			90, 80, 70, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
-			style=cursor:pointer; >
-			<i class="glyphicon glyphicon-search"></i>
-			Detalles
-
-			</a>		
-
-			<a class="btn-app btn-danger btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
-			<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>
-			Eliminar
-			</a>	
-			</div>
-
-			</td> -->
-			</tr>
-			<?php endforeach ?>
-			</tbody>  <!-- div tabla  -->
-			</table>											
-			</div>	<!-- final div tabla			 -->										
-
-			</div>
-			<hr>
-
-	</div>
-
-	<div class="step-pane" data-step="4">
-	<div class="center">
-	<h3 class="green">Congrats!</h3>
-	Your product is ready to ship! Click finish to continue!
-	</div>
-	</div>
-	</div>
-	</div>
-
-	<hr />
-	<div align="center">
-		<a class ="btn btn-danger" 
-		onclick="closePickList()">
-		<i class      ="fa fa-reply-all"></i>
-		Salir
-		</a>
-	</div>
-	</div><!-- /.widget-main -->
-	</div><!-- /.widget-body -->
-	</div>
-
-</form>											
+		</div>
+		<div class="widget-body">
+			<div class="widget-main">
+				<div id="my-wizard">
+					<div>
+						<ul class="steps">
+							<li data-step="1" class="active">
+								<span class="step">1</span>
+								<span class="title">Datos personales</span>
+							</li>
+							<li data-step="2">
+								<span class="step">2</span>
+								<span class="title">Información de los hijos</span>
+							</li>
+							<li data-step="3">
+								<span class="step">3</span>
+								<span class="title">Información de los padres</span>
+							</li>
+							<li data-step="4">
+								<span class="step">4</span>
+								<span class="title">Otra información</span>
+							</li>
+						</ul>
+					</div>
+					<hr />
+					<div class="step-content pos-rel">
+						<div class="step-pane active" data-step="1" id="divPersona">
+							<div class="form-group">
+								<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
+								<div class="col-xs-12 col-sm-7">
+									<div class="col-sm-6">
+										<input autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" value="<?php echo $this->_persona[0]['nombre'] ?>" />
+									</div>
+									<div class="col-sm-6">
+										<input autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" value="<?php echo $this->_persona[0]['nombre2'] ?>"/>
+									</div>
+								</div>
+							</div>
+							<div class="space-2"></div>
+							<div class="form-group">
+								<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
+								<div class="col-xs-12 col-sm-7">
+									<div class="col-sm-6">
+										<input autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" value="<?php echo $this->_persona[0]['apellido'] ?>"/>
+									</div>
+									<div class="col-sm-6">
+										<input autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" value="<?php echo $this->_persona[0]['apellido2'] ?>"/>
+									</div>
+								</div>
+							</div>
+							<div class="space-2"></div>
+							<div class="form-group">
+								<label class="control-label col-sm-3 no-padding-right" for="cedula">Cédula: </label>
+								<div class="col-sm-7">
+									<div class="col-sm-4">
+										<div class="input-group">
+											<input autocomplete="off" type   ="text" name="cedula" id="cedula" class="form-control" value="<?php echo $this->_persona[0]['cedula'] ?>"/>
+											<span class   ="input-group-addon">
+												<i class      ="fa 	fa-credit-card "></i>
+											</span>
+										</div>
+									</div>
+									<div class="col-sm-8" id="sexoActual">
+										<div>
+											<label class="control-label col-sm-4 no-padding-right">Sexo:</label>
+										</div>
+										<div class="form-group">
+											<div class="col-xs-7 col-sm-7">
+												<div class="col-sm-4">
+													<a class="btn" id="detalle_persona"
+														style=cursor:pointer; onclick="showElementos('cambiarSexo');hiddenElementos('sexoActual');">
+														<?php echo $this->_persona[0]['sexo'] ?>
+														<span class="help-button" data-rel="popover" data-trigger="hover" data-placement="left" data-content="Para cambiar este valor por favor haga click encima del sexo." title="Cambiar sexo seleccionado">?</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div id="cambiarSexo" hidden>
+										<table align="center">
+											<tr>
+												<td class="center">
+													<label for="">Sexo:</label>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<label class="blue">
+														<input value="16" type="radio" class="ace" name="sexo" value="16" />
+														<span class="lbl"> Masculino</span>
+													</label>
+													&nbsp;
+													<label class="blue">
+														<input value="17" type="radio" class="ace" name="sexo" />
+														<span class="lbl"> Femenino</span>
+													</label>
+												</td>
+												
+											</tr>
+										</table>
+									</div>
+								</div>
+								
+							</div>
+							<div class="hr hr-dotted"></div>
+							<div class="space-2"></div>
+							<div class="form-group">
+								<label class="control-label col-sm-3 no-padding-right" for="cedula">Fecha de nacimiento: </label>
+								<div class="col-sm-8">
+									<div class="col-sm-5">
+										<div class="input-group">
+											<input autocomplete="off" class  ="form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd"
+											value="<?php echo $this->_persona[0]['fecha_nacimiento'] ?>"/>
+											<span class   ="input-group-addon">
+												<i class      ="fa fa-calendar bigger-110"></i>
+											</span>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<label class="control-label col-sm-3 no-padding-right" for="cedula">Telefono: </label>
+										<div class="col-sm-9">
+											<div class="col-sm-12">
+												<div class="input-group">
+													<input autocomplete="off" class  ="form-control input-mask-phone" type="text" id="telefono" name="telefono" value="<?php echo $this->_persona[0]['telefono'] ?>"/>
+													<span class   ="input-group-addon">
+														<i class      ="ace-icon fa fa-phone"></i>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="space-2"></div>
+							<div class="form-group">
+								<label class="control-label col-sm-3 no-padding-right" for="cedula">Otro telefono: </label>
+								<div class="col-sm-9">
+									<div class="col-sm-3">
+										<div class="input-group">
+											<input autocomplete="off" class  ="form-control input-mask-phone" type="text" id="otro_telefono" name="otro_telefono" value="<?php echo $this->_persona[0]['otro_telefono'] ?>"/>
+											<span class   ="input-group-addon">
+												<i class      ="ace-icon fa fa-phone"></i>
+											</span>
+										</div>
+									</div>
+									<div class="col-sm-8">
+										<label class="control-label col-sm-3 no-padding-right" for="cedula">Fecha de ingreso: </label>
+										<div class="col-sm-7">
+											<div class="col-sm-12">
+												<div class="input-group">
+													<input autocomplete="off" class  ="form-control date-picker" name="fecha_ingreso" id="fecha_ingreso" type="date" data-date-format="yyyy-mm-dd"
+													value="<?php echo $this->_persona[0]['fecha_ingreso'] ?>"/>
+													<span class   ="input-group-addon">
+														<i class      ="fa fa-calendar bigger-110"></i>
+													</span>
+												</div>	</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="space-2"></div>
+								<div class="form-group">
+									<label class="control-label col-sm-3 no-padding-right" for="correo">Correo personal: </label>
+									<div class="col-sm-8">
+										<div class="col-sm-5">
+											<div class="input-group">
+												<input autocomplete="off" class  ="form-control" type="text"  name="correo" value="<?php echo $this->_persona[0]['correo'] ?>"/>
+												<span class   ="input-group-addon">
+													<i class      ="fa fa-weixin"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<div class="col-sm-6">
+										<div class="col-sm-6">
+										</div>
+									</div>
+								</div>
+								
+								<div class="hr hr-dotted"></div>
+								<div align="center" class="col-sm-4">
+									<label class="control-label col-sm-4 no-padding-right" for="estado">Estado: </label>
+									<div class    ="form-group col-sm-7">
+										<input autocomplete="off" class  ="form-control" type="text"  name="correo" value="<?php echo $this->_persona[0]['estado'] ?>" disabled/>
+									</div>
+								</div>
+								<div align="center" class="col-sm-4">
+									<label class="control-label col-sm-4 no-padding-right" for="municipio">Municipio: </label>
+									<div class    ="form-group col-sm-7">
+										<input autocomplete="off" class  ="form-control" type="text"  name="correo" value="<?php echo $this->_persona[0]['municipio'] ?>" disabled/>
+									</div>
+								</div>
+								<div align="center" class="col-sm-4">
+									<label class="control-label col-sm-4 no-padding-right" for="parroquia">Parroquia: </label>
+									<div class    ="form-group col-sm-7">
+										<input autocomplete="off" class  ="form-control" type="text"  name="correo" value="<?php echo $this->_persona[0]['parroquia'] ?>" disabled/>
+									</div>
+								</div>
+								<br><br>
+								<div class="hr hr-dotted"></div>
+								<div class="form-group">
+									<label class="control-label col-sm-3 no-padding-right" for="ubicacion">Ubicación: </label>
+									<div class="col-sm-9">
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input autocomplete="off" class  ="form-control" type="text"  name="ubicacion" placeholder="Zona donde vive la persona" value="<?php echo $this->_persona[0]['ubicacion'] ?>"/>
+												<span class   ="input-group-addon">
+													<i class      ="fa 	fa-globe "></i>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="step-pane" data-step="2">
+							<div>
+								<div id="preguntaHijos">
+									<table align="center">
+										<tr>
+											<td>
+												<label for="">¿Esta persona tiene hijos?</label>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+												&nbsp;
+												<label class="blue">
+													<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos"
+													onchange="showElementos('infoHijos');showElementos('infoExtra');hiddenElementos('preguntaHijos');" value="16" />
+													<span class="lbl"> Si</span>
+												</label>
+												&nbsp;
+												<label class="blue">
+													<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos" onchange="hiddenElementos('infoHijos')"/>
+													<span class="lbl"> No</span>
+												</label>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<hr>
+								<div id="infoExtra" hidden>
+									<h3 align="center" class="lighter block blue">Ahora podra registrar un maximo de 5 hijos</h3>
+								</div>
+								<div id="infoHijos" class="col-sm-16" hidden><!-- informacion de los hijos -->
+								<br>
+								<div class="form-group">
+									<input autocomplete="off" type="hidden" name="cedula" value="-">
+									<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
+									<input autocomplete="off" type="hidden" name="telefono" value="-">
+									<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
+									<input autocomplete="off" type="hidden" name="correo" value="-">
+									<input autocomplete="off" type="hidden" name="direccion" value="0">
+									<input autocomplete="off" type="hidden" name="ubicacion" value="-">
+									<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
+									<div class="col-xs-12 col-sm-7">
+										<div class="col-sm-6">
+											<input autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+										</div>
+										<div class="col-sm-6">
+											<input autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+										</div>
+									</div>
+								</div>
+								<div class="space-2"></div>
+								<div class="form-group">
+									<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
+									<div class="col-xs-12 col-sm-7">
+										<div class="col-sm-6">
+											<input autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
+										</div>
+										<div class="col-sm-6">
+											<input autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Fecha de nacimiento: </label>
+									<div class="col-sm-8">
+										<div class="col-sm-4">
+											<div class="input-group">
+												<input autocomplete="off" class  ="form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
+												<span class   ="input-group-addon">
+													<i class      ="fa fa-calendar bigger-110"></i>
+												</span>
+											</div>
+										</div>
+										<div class="col-sm-8">
+											<div>
+												<label class="control-label col-sm-3 no-padding-right" for="sexo">Sexo:</label>
+											</div>
+											<div class="col-sm-2">
+												<div class="clearfix">
+													<div>
+														<label class="line-height-1 blue">
+															<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
+															<span class="lbl"> Masculino</span>
+														</label>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-2">
+												<div class="clearfix">
+													<div class="col-sm-12">
+														<label class="line-height-1 blue">
+															<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
+															<span class="lbl"> Femenino</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+								<div align="center">
+									<button class="btn btn-primary" onclick="send_consulta_hijo();
+									showElementos('tablaHijos');hiddenElementos('infoHijos');hiddenElementos('infoExtra');showElementos('AgregarOtro');
+									send_registro_persona()">
+									<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+									Registrar
+									</button>
+								</div>
+								</div><!--  Fin informacion de los hijos -->
+								<hr>
+								<div align="center" id="AgregarOtro" hidden>
+									<button class="btn btn-primary" onclick="showElementos('infoHijos');hiddenElementos('AgregarOtro');">
+									<i class      ="glyphicon glyphicon-plus"></i>
+									Agregar otro hijo
+									</button>
+								</div>
+								<div id="tablaHijos" hidden>
+									<br>
+									<table id="tablaHijosAdd" class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>Primer nombre</th>
+												<th class="hidden-480">Segundo nombre</th>
+												<th>Primer apellido</th>
+												<th class="hidden-480">Segundo apellido</th>
+												<th class="center">Sexo</th>
+												<th class="center">Edad</th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php foreach ($this->_listado as $persona): ?>
+											<tr>
+												
+												<!-- 	<td class="center">
+													<div class="hidden-sm hidden-xs action-buttons">
+														<a class="btn-app  btn-primary  btn-sm" id="detalle_persona"
+															onclick="pickOpen('prod', 'id_prod',
+															'<?php echo BASE_URL."personal/update/". $persona['id_persona'] ?>',
+															90, 80, 70, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
+															style=cursor:pointer; >
+															<i class="glyphicon glyphicon-search"></i>
+															Detalles
+														</a>
+														<a class="btn-app btn-danger btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
+															<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>
+															Eliminar
+														</a>
+													</div>
+												</td> -->
+											</tr>
+											<?php endforeach ?>
+											</tbody>  <!-- div tabla  -->
+										</table>
+										</div>	<!-- final div tabla			 -->
+									</div>
+									<hr>
+								</div>
+								<div class="step-pane" data-step="3">
+									<div>
+										<div id="preguntaPadres">
+											<table align="center">
+												<tr>
+													<td>
+														<label for="">¿Esta persona tiene Padres?</label>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+														&nbsp;
+														<label class="blue">
+															<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres"
+															onchange="showElementos('infoPadres');showElementos('infoExtra');hiddenElementos('preguntaPadres');" value="16" />
+															<span class="lbl"> Si</span>
+														</label>
+														&nbsp;
+														<label class="blue">
+															<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoPadres')"/>
+															<span class="lbl"> No</span>
+														</label>
+													</td>
+												</tr>
+											</table>
+										</div>
+										<hr>
+										<div id="infoExtra" hidden>
+											<h3 align="center" class="lighter block blue">Ahora podra registrar un maximo de 5 Padres</h3>
+										</div>
+										<div id="infoPadres" class="col-sm-16" hidden><!-- informacion de los Padres -->
+										<br>
+										<div class="form-group">
+											<input autocomplete="off" type="hidden" name="cedula" value="-">
+											<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
+											<input autocomplete="off" type="hidden" name="telefono" value="-">
+											<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
+											<input autocomplete="off" type="hidden" name="correo" value="-">
+											<input autocomplete="off" type="hidden" name="direccion" value="0">
+											<input autocomplete="off" type="hidden" name="ubicacion" value="-">
+											<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
+											<div class="col-xs-12 col-sm-7">
+												<div class="col-sm-6">
+													<input autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="form-control" />
+												</div>
+												<div class="col-sm-6">
+													<input autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="form-control" />
+												</div>
+											</div>
+										</div>
+										<div class="space-2"></div>
+										<div class="form-group">
+											<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
+											<div class="col-xs-12 col-sm-7">
+												<div class="col-sm-6">
+													<input autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="form-control" />
+												</div>
+												<div class="col-sm-6">
+													<input autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="form-control" />
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Telefono: </label>
+											<div class="col-sm-8">
+												<div class="col-sm-4">
+													<div class="input-group">
+														<input autocomplete="off" class  ="form-control input-mask-phone" type="text" id="telefono" name="telefono" />
+														<span class   ="input-group-addon">
+															<i class      ="ace-icon fa fa-phone"></i>
+														</span>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+										<div align="center">
+											<button class="btn btn-primary" onclick="send_consulta_hijo();
+											showElementos('tablaPadres');hiddenElementos('infoPadres');hiddenElementos('infoExtra');showElementos('AgregarOtroPadre');
+											send_registro_persona()">
+											<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+											Registrar
+											</button>
+										</div>
+										</div><!--  Fin informacion de los Padres -->
+										<hr>
+										<div align="center" id="AgregarOtroPadre" hidden>
+											<button class="btn btn-primary" onclick="showElementos('infoPadres');hiddenElementos('AgregarOtroPadre');">
+											<i class      ="glyphicon glyphicon-plus"></i>
+											Agregar padre
+											</button>
+										</div>
+										<div id="tablaPadres" hidden>
+											<br>
+											<table id="tablaPadresAdd" class="table table-striped table-bordered table-hover">
+												<thead>
+													<tr>
+														<th>Primer nombre</th>
+														<th class="hidden-480">Segundo nombre</th>
+														<th>Primer apellido</th>
+														<th class="hidden-480">Segundo apellido</th>
+														<th class="center">Sexo</th>
+														<th class="center">Edad</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php foreach ($this->_listado as $persona): ?>
+													<tr>
+														
+														<!-- 	<td class="center">
+															<div class="hidden-sm hidden-xs action-buttons">
+																<a class="btn-app  btn-primary  btn-sm" id="detalle_persona"
+																	onclick="pickOpen('prod', 'id_prod',
+																	'<?php echo BASE_URL."personal/update/". $persona['id_persona'] ?>',
+																	90, 80, 70, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
+																	style=cursor:pointer; >
+																	<i class="glyphicon glyphicon-search"></i>
+																	Detalles
+																</a>
+																<a class="btn-app btn-danger btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
+																	<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>
+																	Eliminar
+																</a>
+															</div>
+														</td> -->
+													</tr>
+													<?php endforeach ?>
+													</tbody>  <!-- div tabla  -->
+												</table>
+												</div>	<!-- final div tabla			 -->
+											</div>
+											<hr>
+										</div>
+										<div class="step-pane" data-step="4">
+											<div class="center">
+												<h3 class="green">Congrats!</h3>
+												Your product is ready to ship! Click finish to continue!
+											</div>
+										</div>
+									</div>
+								</div>
+									<div class="wizard-actions">
+									<button class="btn btn-danger" onclick="closePickList()">
+										<i class      ="fa fa-reply-all"></i>
+										Salir
+									</button>	
+									&nbsp;														
+									<button class="btn btn-prev">
+									<i class="fa fa-user fa-lg"></i>
+									Anterior
+									</button>
+									&nbsp;
+									<button class="btn btn-success btn-next" data-last="Finish" >
+									Siguiente
+									<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+									</button>
+								</div>
+								</div><!-- /.widget-main -->
+			</div><!-- /.widget-body -->
+		</div>
+	</form>
 </div><!-- /.page-content -->
 
+						<!-- <div class    ="clearfix form-actions" align="center"> <!-- Botonera -->
+						<!-- <div>
+								<a class ="btn btn-primary" type="submit" onclick="send_actualizar_persona();">
+									<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+									Actualizar cambios
+								</a>
+								&nbsp; &nbsp; &nbsp;
+								<a class ="btn btn-danger"
+									onclick="closePickList()">
+									<i class      ="fa fa-reply-all"></i>
+									Salir
+																					</a>
+						</div> -->
+						<!--div> < Fin botonera	 -->
+<script>
+window.addEventListener('load', alert, false);
 
-
-<!-- <div class    ="clearfix form-actions" align="center"> <!-- Botonera -->
-	<!-- <div>
-		<a class ="btn btn-primary" type="submit" onclick="send_actualizar_persona();">
-		<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
-		Actualizar cambios
-		</a>
-
-		&nbsp; &nbsp; &nbsp;
-		<a class ="btn btn-danger" 
-		onclick="closePickList()">
-		<i class      ="fa fa-reply-all"></i>
-		Salir
-		</a>													
-	</div> -->
-<!--div> < Fin botonera	 -->					
-<script>	
-	window.addEventListener('load', alert, false);
-
-	
 function alert() {
 //alert("Aviso: Desde esta misma ventana usted podra editar los datos de la persona.");
 }
-
 function showElementos(divName){
-    hide(divName,0);
-        show(divName, 1000);    
+hide(divName,0);
+show(divName, 1000);
 }
-
 function hiddenElementos(divName){
-    hide(divName,0);
+hide(divName,0);
 }
-</script>							
+//*************************************************/
+$('#my-wizard')
+.ace_wizard({
+  //step: 2 //optional argument. wizard will jump to step "2" at first
+  //buttons: '.my-action-buttons' //which is possibly located somewhere else and is not a sibling of wizard
+})
+.on('actionclicked.fu.wizard' , function(e, data) {
+         
 
+})
+.on('changed.fu.wizard', function() {
 
+  
+})
+.on('finished.fu.wizard', function(e) {
+   //do something when finish button is clicked
+
+}).on('stepclick.fu.wizard', function(e) {
+
+   //e.preventDefault();//this will prevent clicking and selecting steps
+});
+})
+</script>
