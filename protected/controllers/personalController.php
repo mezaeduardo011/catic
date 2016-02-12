@@ -9,16 +9,8 @@
 			parent::__construct();
 			$this->_personal = $this->loadModel('personal');
 			$this->_pdf = $this->getLibrary('SIGESP','utilitario');
-			/*$this->_pdf1 = $this->getLibrary('SIGESP','MPPICurl');
-			$this->_pdf2 = $this->getLibrary('SIGESP','MPPICurlCabeceras');
-			$this->_pdf3 = $this->getLibrary('SIGESP','MPPICurlCliente');
-			$this->_pdf4 = $this->getLibrary('SIGESP','MPPICurlMensajes');
-			$this->_pdf5 = $this->getLibrary('SIGESP','MPPICurlRespuestas');*/
-
-
 		}
 		
-
 		function index(){
 	
 
@@ -28,7 +20,7 @@
 				"Librerias/bootstrap-datepicker",
 				"Librerias/jquery.maskedinput",
 				"registroPersona/registroPersona",
-				"utilidades"));
+				"utilidades","persons"));
 
 				$this->_view->setCss(array("datepicker","bootstrapValidator.min"));
 
@@ -54,6 +46,7 @@
 		}
 
 		function prueba($id=false){
+
 			//print_r($id);
 			$persona = $this->_personal->getUnicaPersona($id);
 			//$this->imprimirArreglo($persona);
@@ -82,6 +75,7 @@
 
 
 		function insertPerson(){
+
 				//$_POST=$_GET;
 				unset($_POST['url']);
 				unset($_POST['estado']);
@@ -224,11 +218,7 @@
 
 		      $jsondata = json_encode($data,JSON_PRETTY_PRINT);
 
-		      /*$book = json_decode($jsondata,true);
-
-		      echo $book['apellidos'];*/
-
-		      return $this->renderText($jsondata);
+		      return $jsondata;
 		  }
 	}
 ?>
