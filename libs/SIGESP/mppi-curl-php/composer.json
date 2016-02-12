@@ -1,0 +1,15 @@
+{
+    "name": "janselmi/mppi-curl-php",
+    "description": "Clase PHP CuRL que permite utilizar la libreria CuRL de forma facil",
+    "homepage": "http://git.mppi.gob.ve/janselmi/mppi-curl-php",
+    "license": "Unlicense",
+    "keywords": ["php", "curl", "class","mppi"],
+    "version": "1.0",
+    "require": {
+        "php": ">=5.3",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    }
+}
