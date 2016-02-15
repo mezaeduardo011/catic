@@ -1,7 +1,6 @@
-<div class    ="page-content" ><!-- /.page-content -->
+<!-- /.page-content -->
+<div class    ="page-content" >
 <form class   ="form-horizontal" role="form"  method="post"  id="registro_persona" name="registro_persona" >
-	
-	
 	<div class="widget-box">
 		<div class="widget-header widget-header-blue widget-header-flat">
 			<div class    ="page-header" id="inicio">
@@ -16,7 +15,6 @@
 								<th>Registrando datos de: </th>
 							</tr>
 						</thead>
-						
 					</table>
 					<table id="infoDatos">
 						<thead>
@@ -24,16 +22,13 @@
 								<th></th>
 							</tr>
 						</thead>
-						
 					</table>
-					
 				</div>
 				<br>
 				<br>
 				</h5>
 			</div>
 		</div>
-		
 		<div class="widget-body">
 			<div class="widget-main">
 				<div id="my-wizard">
@@ -80,10 +75,10 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
-									<button class="btn btn-primary">
+									<a class="btn btn-primary" onclick="obten_datos('cedula','nombre','nombre2','apellido','apellido2','fecha_nacimiento','telefono','fecha_ingreso','correo','ubicacion');" >
 									Buscar en SIGESP
 									<i class="glyphicon glyphicon-search"></i>
-									</button>
+									</a>
 										</div>
 									</div>										
 								</div>
@@ -130,7 +125,7 @@
 											<div class="clearfix">
 												<div>
 													<label class="line-height-1 blue">
-														<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
+														<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos"  />
 														<span class="lbl"> Masculino</span>
 													</label>
 												</div>
@@ -213,7 +208,7 @@
 									<div class="col-sm-8">
 										<div class="col-sm-5">
 											<div class="input-group">
-												<input autocomplete="off" class  ="form-control" type="text"  name="correo" />
+												<input autocomplete="off" class  ="form-control" type="text"  name="correo" id="correo"/>
 												<span class   ="input-group-addon">
 													<i class      ="fa fa-weixin"></i>
 												</span>
@@ -227,11 +222,7 @@
 								<div align="center" class="col-sm-4">
 									<label class="control-label col-sm-2 no-padding-right" for="estado">Estado: </label>
 									<div class    ="input-group">
-								        <select name="estado" class="selectpicker show-tick form-control" data-live-search="true">
-								          <option value="">Seleccione un estado.... </option>
-								          <?php foreach ($this->_direccionEstado as $estado):?>
-								            <option  value ="<?php  echo $estado['id_referencial']; ?>"><?php  echo $estado['estado']; ?></option>
-								          <?php endforeach ?>
+								        <select name="estado" id="estado" class="selectpicker show-tick form-control" data-live-search="true">
 								        </select>
 									</div>
 								</div>
@@ -267,7 +258,7 @@
 									<div class="col-sm-9">
 										<div class="col-sm-9">
 											<div class="input-group">
-												<input autocomplete="off" class  ="form-control" type="text"  name="ubicacion" placeholder="Zona donde vive la persona"/>
+												<input autocomplete="off" class  ="form-control" type="text"  name="ubicacion" placeholder="Zona donde vive la persona" id="ubicacion"/>
 												<span class   ="input-group-addon">
 													<i class      ="fa 	fa-globe "></i>
 												</span>

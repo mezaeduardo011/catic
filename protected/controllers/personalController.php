@@ -20,7 +20,7 @@
 				"Librerias/bootstrap-datepicker",
 				"Librerias/jquery.maskedinput",
 				"registroPersona/registroPersona",
-				"utilidades","Librerias/bootstrap-select"));
+				"utilidades","Librerias/bootstrap-select","SIGESP","persons"));
 
 				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select"));
 
@@ -201,24 +201,36 @@
 			 	
 		}
 
-
 		  public function BuscarCedula(){
-
-		      $cedula= '18019742';
+		  	  //18019742
+		      $cedula= $_POST['cedular'];
+		      $cedula=str_replace('.','', $cedula); 
 
 		      $cliente = new ClienteApiSigesp();
 
 		      $resp = $cliente->getServicio('datos_empleado',array('cedula'=> $cedula));
 
-		      //$this->getResponse()->setStatusCode($resp->errores['http_status_code']);
-
-		      //$this->getResponse()->setContentType('application/json');
-
 		      $data = !!$resp->errores['error']?$resp->cuerpo_response:$resp->cuerpo_response->data;
 
-		      $jsondata = json_encode($data,JSON_PRETTY_PRINT);
+		      //print_r($data); die();
 
-		      return $jsondata;
+		      echo json_encode(array("data" => $data));
+
+		      /*$formatjson = json_decode($jsondata,true);
+
+		      //print_r($formatjson); die();
+
+		      list($nombres1, $nombres2) = explode(" ",$formatjson['nombres']);
+		      list($apellido1, $apellido2) = explode(" ",$formatjson['apellidos']);
+
+		      $info = array($formatjson['correo_electronico'],$formatjson['direccion'],$formatjson['fecha_ingreso'],$formatjson['fecha_nacimiento'],$formatjson['telefono_celular']);
+
+		      list($correo_electronico,$ubicacion,$fecha_ingreso,$fecha_nacimiento,$telefono) = $info;
+
+		   	  $datos_personas = array($nombres1,$nombres2,$apellido1,$apellido2,$fecha_nacimiento,$telefono,$fecha_ingreso,$correo_electronico,$ubicacion);
+
+		   	  print_r("hola");*/
+
 		  }
 	}
 ?>
