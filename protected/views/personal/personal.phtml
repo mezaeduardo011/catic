@@ -1,3 +1,4 @@
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <div class    ="page-content" ><!-- /.page-content -->
 <form class   ="form-horizontal" role="form"  method="post"  id="registro_persona" name="registro_persona" >
 	
@@ -33,7 +34,6 @@
 				</h5>
 			</div>
 		</div>
-		
 		<div class="widget-body">
 			<div class="widget-main">
 				<div id="my-wizard">
@@ -67,8 +67,8 @@
 						<div class="step-pane active" data-step="1" id="divPersona">
 							
 							
-							<div class="form-group">
-								<label class="control-label col-sm-3 no-padding-right" for="cedula">Cédula: </label>
+							<div class="form-group" >
+								<label  class="control-label col-sm-4 no-padding-right" for="cedula">Cédula: </label>
 								<div class="col-sm-8">
 									<div class="col-sm-4">
 										<div class="input-group">
@@ -80,14 +80,15 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
-									<button class="btn btn-primary">
-									Buscar en SIGESP
-									<i class="glyphicon glyphicon-search"></i>
-									</button>
+											<button class="btn btn-primary">
+											Buscar en SIGESP
+											<i class="glyphicon glyphicon-search"></i>
+											</button>
 										</div>
-									</div>										
+									</div>
 								</div>
-							</div>							
+							</div>
+							<hr>
 							<div class="form-group">
 								<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
 								
@@ -122,31 +123,31 @@
 							
 							<div class="space-2"></div>
 							<div class="form-group">
-									<div align="center">
-										<div>
-											<label class="control-label col-sm-3 no-padding-right" for="sexo">Sexo:</label>
-										</div>
-										<div class="col-sm-1">
-											<div class="clearfix">
-												<div>
-													<label class="line-height-1 blue">
-														<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
-														<span class="lbl"> Masculino</span>
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-sm-1">
-											<div class="clearfix">
-												<div class="col-sm-12">
-													<label class="line-height-1 blue">
-														<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
-														<span class="lbl"> Femenino</span>
-													</label>
-												</div>
+								<div align="center">
+									<div>
+										<label class="control-label col-sm-3 no-padding-right" for="sexo">Sexo:</label>
+									</div>
+									<div class="col-sm-1">
+										<div class="clearfix">
+											<div>
+												<label class="line-height-1 blue">
+													<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
+													<span class="lbl"> Masculino</span>
+												</label>
 											</div>
 										</div>
 									</div>
+									<div class="col-sm-1">
+										<div class="clearfix">
+											<div class="col-sm-12">
+												<label class="line-height-1 blue">
+													<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
+													<span class="lbl"> Femenino</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 							
 							
@@ -207,6 +208,26 @@
 									</div>
 								</div>
 								
+								<script>
+									
+									$('#fecha_ingreso').datepicker({
+									clearBtn: true,
+									language: "es",
+									daysOfWeekHighlighted: "0,1,2,3,4,5,6",
+									calendarWeeks: true,
+									todayHighlight: true,
+									beforeShowMonth: function (date){
+									if (date.getMonth() == 8) {
+									return false;
+									}
+									},
+									beforeShowYear: function (date){
+									if (date.getFullYear() == 2007) {
+									return false;
+									}
+									}
+									});
+								</script>
 								<div class="space-2"></div>
 								<div class="form-group">
 									<label class="control-label col-sm-3 no-padding-right" for="correo">Correo personal: </label>
@@ -227,36 +248,24 @@
 								<div align="center" class="col-sm-4">
 									<label class="control-label col-sm-2 no-padding-right" for="estado">Estado: </label>
 									<div class    ="input-group">
-								        <select name="estado" class="selectpicker show-tick form-control" data-live-search="true">
-								          <option value="">Seleccione un estado.... </option>
-								          <?php foreach ($this->_direccionEstado as $estado):?>
-								            <option  value ="<?php  echo $estado['id_referencial']; ?>"><?php  echo $estado['estado']; ?></option>
-								          <?php endforeach ?>
-								        </select>
+										<select name="estado" id="estado" class="selectpicker show-tick form-control" data-live-search="true">
+										</select>
 									</div>
 								</div>
 								
 								<div align="center" class="col-sm-4">
 									<label class="control-label col-sm-2 no-padding-right" for="municipio">Municipio: </label>
 									<div class    ="input-group">
-								        <select name="municipio" class="selectpicker show-tick form-control" data-live-search="true">
-								          <option value="">Seleccione un municipio...</option>
-								          <?php foreach ($this->_direccionMunicipio as $municipio):?>
-								            <option  value ="<?php  echo $municipio['id_referencial']; ?>"><?php  echo $municipio['municipio']; ?></option>
-								          <?php endforeach ?>
-								        </select>
+										<select name="municipio" id="municipio" class="selectpicker show-tick form-control" data-live-search="true">
+										</select>
 									</div>
 								</div>
 								
 								<div align="center" class="col-sm-4">
 									<label class="control-label col-sm-2 no-padding-right" for="parroquia">Parroquia: </label>
 									<div class    ="input-group">
-								        <select name="direccion" class="selectpicker show-tick form-control" data-live-search="true">
-								          <option value="">Seleccione un parroquia...</option>
-								          <?php foreach ($this->_direccionParroquia as $parroquia):?>
-								            <option  value ="<?php  echo $parroquia['id_referencial']; ?>"><?php  echo $parroquia['parroquia']; ?></option>
-								          <?php endforeach ?>
-								        </select>
+										<select name="direccion" id="direccion" class="selectpicker show-tick form-control" data-live-search="true">
+										</select>
 									</div>
 								</div>
 								<br><br>
@@ -276,17 +285,24 @@
 									</div>
 								</div>
 								<hr>
-<!-- 								<div align="center" >
-									<label class="control-label no-padding-right" for="parroquia">Coordinacion a la cual pertenecera esta persona: </label>
-									<div class    ="input-group">
-										<select  id="coordinacion" name="coordinacion">
-											<option value ="" default selected>Seleccione una coordinacion...</option>
+								<!-- 								<div align="center" >
+										<label class="control-label no-padding-right" for="parroquia">Coordinacion a la cual pertenecera esta persona: </label>
+										<div class    ="input-group">
+												<select  id="coordinacion" name="coordinacion">
+														<option value ="" default selected>Seleccione una coordinacion...</option>
 											<?php foreach ($this->_coordinaciones as $parroquia):?>
 											<option value ="<?php  echo $parroquia['id_referencial']; ?>"><?php  echo $parroquia['referencia']; ?></option>
 											<?php endforeach ?>
 										</select>
 									</div>
 								</div> -->
+								
+								<div  id="modificarDatos" hidden align="center">
+									<button class="btn btn-primary">
+									Actualizar
+									<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
 							</form>
 						</div>
 						
@@ -711,8 +727,8 @@
 													
 													<!-- 	<td class="center">
 														<div class="hidden-sm hidden-xs action-buttons">
-															<a class="btn-app  btn-primary  btn-sm" id="detalle_persona"
-																onclick="pickOpen('prod', 'id_prod',
+																<a class="btn-app  btn-primary  btn-sm" id="detalle_persona"
+																		onclick="pickOpen('prod', 'id_prod',
 																'<?php echo BASE_URL."personal/update/". $persona['id_persona'] ?>',
 																90, 80, 70, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
 																style=cursor:pointer; >
@@ -911,8 +927,8 @@
 								<hr />
 								<div class="wizard-actions">
 									<button class="btn btn-prev">
-									<i class="fa fa-user fa-lg"></i>
-									Registrar a otra persona.
+									<i class="ace-icon fa fa-arrow-left"></i>
+									Modificar datos
 									</button>
 									
 									<button class="btn btn-success btn-next" data-last="Finish" onclick="

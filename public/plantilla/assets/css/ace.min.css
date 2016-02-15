@@ -1456,7 +1456,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1873c9', end
 	font-size: 120%
 }
 .user-info {
-	max-width: 100px;
+	
+	min-width: 50px;
 	display: inline-block;
 	overflow: hidden;
 	text-overflow: ellipsis;

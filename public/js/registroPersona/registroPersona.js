@@ -1,8 +1,6 @@
 function send_registro_persona() {
 
     //alert("/catic/personal/insertPerson?"+request(document.getElementById('infoPadreUnico')));
-    var prueba=request(document.getElementById('divPersona'));
-    alert (prueba);
     if (request(document.getElementById('divPersona')) != "") {
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
     };
@@ -95,3 +93,22 @@ function borrar_datos_tabla(id_tabla) {
     }
     return true;
 }
+
+
+ var loadSelectestado3 = $("#estado");
+    $.ajax({
+        type: "POST",
+        dataType: 'json',
+        success: function(){
+            var select = $(loadSelectestado3);                  
+                $.post(BASE_URL + "personal/loadSelectEstado",
+                    function(data) {
+                        select.empty();
+                        select.append('<option value="">Seleccione...</option>');
+                        alert(data);
+                        for (var i=0; i<data.length; i++) {
+                            select.append('<option value="' + data[i].value + '">' + data[i].option + '</option>');
+                        }
+                }, "json");
+            }
+    });

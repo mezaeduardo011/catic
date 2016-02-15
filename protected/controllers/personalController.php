@@ -20,13 +20,14 @@
 				"Librerias/bootstrap-datepicker",
 				"Librerias/jquery.maskedinput",
 				"registroPersona/registroPersona",
-				"utilidades","Librerias/bootstrap-select"));
+				"utilidades","Librerias/bootstrap-select",
+				"Librerias/jquery.gritter",
+				"persons"));
 
-				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select"));
+				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter"));
 
 				$direccionEstado = $this->_personal->getDireccionEstado();
-				$this->_view->_direccionEstado = $direccionEstado;
-				//$direccionMunicipio = $this->_personal->getDireccionMunicipio();
+				$this->_view->_direccionEstado = $direccionEstado;				//$direccionMunicipio = $this->_personal->getDireccionMunicipio();
 				//$this->_view->_direccionMunicipio = $direccionMunicipio;
 				$direccionParroquia = $this->_personal->getDireccionParroquia();
 				$this->_view->_direccionParroquia = $direccionParroquia;				
@@ -175,36 +176,13 @@
 
 		}
 
-		function loadSexo(){
-
-			$result = $this->_personal->getSexo();
-
-			$data = array();
-
-			for ($i = 0; $i < count($result); $i++) {
-
-				$data[$i] = array("value"=>$result[$i]['id_referencial'],"option"=>$result[$i]['referencia']);
-			}
-
-			echo json_encode($data);
-
-		}
-
-		function selectMun(){
-
-				
-				 unset($_POST['url']);
-				 $id_post=$this->ConvertirArray($_POST);
-				 $id_estado = $id_post[':id_estado'];
-			 	 $direccionMunicipio = $this->_personal->getDireccionMunicipio($id_estado);
-				 $this->_view->_direccionMunicipio = $direccionMunicipio;
-			 	
-		}
-
+		
 
 		  public function BuscarCedula(){
 
-		      $cedula= '18019742';
+		      	$cedula= '18.019.742';
+
+		       $cedula=str_replace('.','', $cedula); 
 
 		      $cliente = new ClienteApiSigesp();
 
@@ -220,5 +198,42 @@
 
 		      return $jsondata;
 		  }
+
+		function SelectEstado() {
+			
+					$result = $this->_personal->getDireccionEstado();
+					$data = array();
+
+					for ($i = 0; $i < count($result); $i++) {
+						$data[$i] = array("value"=>$result[$i]['id_direccion'],"option"=>$result[$i]['estado']);
+					}
+					echo json_encode($data);
+		}
+
+		function SelectMunicipio() {
+			if (isset($_POST["selected"])) {
+				$result = $this->_personal->getDireccionMunicipio($_POST["selected"]);
+				$data = array();
+						
+				for ($i = 0; $i < count($result); $i++) {
+					$data[$i] = array("id"=>$result[$i]["id_direccion"],"option"=>$result[$i]["municipio"]);
+				}
+			 }
+						
+			echo json_encode($data);
+		}
+
+		function SelectParroquia() {
+			if (isset($_POST["selected"])) {
+				$result = $this->_personal->getDireccionParroquia($_POST["selected"]);
+				$data = array();
+						
+				for ($i = 0; $i < count($result); $i++) {
+					$data[$i] = array("id"=>$result[$i]["id_direccion"],"option"=>$result[$i]["parroquia"]);
+				}
+			 }
+						
+			echo json_encode($data);
+		}				
 	}
 ?>

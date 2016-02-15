@@ -44,7 +44,7 @@
 
 				$query = "SELECT ROW_NUMBER() OVER (ORDER BY id_persona) AS numeracion,*,S.referencia AS sexo from persona P, referencial S
 							WHERE p.sexo_referencial= S.id_referencial
-							AND tipo_persona_referencial=63";
+							AND tipo_persona_referencial=76";
 				}else{
 
 				$query = "SELECT ROW_NUMBER() OVER (ORDER BY id_persona) AS numeracion,*,S.referencia AS sexo from persona P, referencial S
@@ -164,9 +164,7 @@
 					AND  E.id_direccion=M.id_padre 
 					AND M.id_direccion=P.id_padre
 					AND P.id_direccion=direccion_referencial
-					AND
-					PER.id_persona = $id;
-					";
+					AND	PER.id_persona = 0";
 			
 			$auxiliar = $this->_db->query($query);
 				try {
@@ -258,7 +256,7 @@
 		public function getDireccionEstado(){
 
 
-			$query = " SELECT DISTINCT E.direccion as Estado from direccion E, direccion M, direccion P
+			$query = " SELECT DISTINCT E.id_direccion,E.direccion as Estado from direccion E, direccion M, direccion P
 				WHERE  E.id_direccion=M.id_padre and M.id_direccion=P.id_padre";
 			
 			$auxiliar = $this->_db->query($query);
@@ -282,8 +280,8 @@
 
 		public function getDireccionMunicipio($id){
 
-		$query = "SELECT Distinct M.direccion AS Municipio FROM direccion E, direccion M, direccion P
-				WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND M.id_padre='.$id.' ORDER BY municipio;";
+		$query = "SELECT Distinct M.id_direccion,M.direccion AS Municipio FROM direccion E, direccion M, direccion P
+				WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND M.id_padre='".$id."' ORDER BY municipio;";
 			
 			$auxiliar = $this->_db->query($query);
 				try {
@@ -303,10 +301,10 @@
 			
 		}
 
-		public function getDireccionParroquia(){
+		public function getDireccionParroquia($id=false){
 
-		$query = "SELECT Distinct P.direccion as Parroquia,P.id_referencial from direccion E, direccion M, direccion P
-			WHERE  E.id_direccion=M.id_padre and M.id_direccion=P.id_padre;";
+		$query = "SELECT Distinct P.id_direccion,P.direccion as Parroquia,P.id_referencial from direccion E, direccion M, direccion P
+			WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND P.id_padre=2";
 			
 			$auxiliar = $this->_db->query($query);
 				try {

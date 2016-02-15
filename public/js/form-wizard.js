@@ -12,18 +12,6 @@ $('#registro_persona').formValidation({
              validators: {
                   notEmpty: { // No puede ser vacio
                      message: 'El primer nombre es requerido.'
-                 },
-                 regexp: { // Solo estos caracteres pueden ser usados
-                     regexp: /^[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz]+$/,
-                     message: 'El nombre solo puede contener letras.'
-                 }
-             }
-         },
-          nombre2: {
-             validators: {
-                 regexp: { // Solo estos caracteres pueden ser usados
-                     regexp: /^[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz]+$/,
-                     message: 'El nombre solo puede contener letras.'
                  }
              }
          },
@@ -31,18 +19,6 @@ $('#registro_persona').formValidation({
              validators: {
                   notEmpty: { // No puede ser vacio
                      message: 'El primer apellido es requerido.'
-                 },
-                 regexp: { // Solo estos caracteres pueden ser usados
-                     regexp: /^[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz]+$/,
-                     message: 'El apellido solo puede contener letras.'
-                 }
-             }
-         },
-          apellido2: {
-             validators: {
-                 regexp: { // Solo estos caracteres pueden ser usados
-                     regexp: /^[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz]+$/,
-                     message: 'El apellido solo puede contener letras.'
                  }
              }
          },
@@ -207,6 +183,7 @@ $('#my-wizard')
      e.preventDefault();
      }else{
         send_registro_persona();
+        showElementos('modificarDatos');
         send_consulta_info();
      }
 })
