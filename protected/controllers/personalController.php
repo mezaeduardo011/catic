@@ -20,9 +20,9 @@
 				"Librerias/bootstrap-datepicker",
 				"Librerias/jquery.maskedinput",
 				"registroPersona/registroPersona",
-				"utilidades","persons"));
+				"utilidades","Librerias/bootstrap-select"));
 
-				$this->_view->setCss(array("datepicker","bootstrapValidator.min"));
+				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select"));
 
 				$direccionEstado = $this->_personal->getDireccionEstado();
 				$this->_view->_direccionEstado = $direccionEstado;

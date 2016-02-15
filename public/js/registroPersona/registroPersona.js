@@ -90,7 +90,7 @@ function deleteBodyTablaHijos() {
 
 function borrar_datos_tabla(id_tabla) {
     var tbl = document.getElementById(id_tabla);
-    for (var i = 0; i < tbl.rows.length;) {
+    for (var i = 1; i < tbl.rows.length;) {
         tbl.deleteRow(tbl.rows[i].rowIndex);
     }
     return true;
