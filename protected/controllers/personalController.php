@@ -27,14 +27,6 @@
 
 				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter",
 											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));				
-				$coordinaciones = $this->_personal->getCoordinaciones();
-				$this->_view->_coordinaciones = $coordinaciones;
-				$tallas_camisa = $this->_personal->getTallasCamisas();
-				$this->_view->_tallas_camisa = $tallas_camisa;
-				$tallas_pantalon = $this->_personal->getTallasPantalon();
-				$this->_view->_tallas_pantalon = $tallas_pantalon;
-				$tallas_zapatos = $this->_personal->getTallasZapatos();
-				$this->_view->_tallas_zapatos = $tallas_zapatos;
 				$listado = $this->_personal->getHijosModel();
 				$this->_view->_listado = $listado;
 				//Se pinta la vista con el metodo render.
@@ -75,9 +67,6 @@
 
 
 		}
-
-
-	
 
 		function listing(){
 
@@ -159,17 +148,6 @@
 
 		}
 
-		function selectMun(){
-
-				
-				 unset($_POST['url']);
-				 $id_post=$this->ConvertirArray($_POST);
-				 $id_estado = $id_post[':id_estado'];
-			 	 $direccionMunicipio = $this->_personal->getDireccionMunicipio($id_estado);
-				 $this->_view->_direccionMunicipio = $direccionMunicipio;
-			 	
-		}
-
 		  public function BuscarCedula(){
 		  	  //18019742
 		      $cedula= $_POST['cedular'];
@@ -236,6 +214,29 @@
 			 }
 						
 			echo json_encode($data);
-		}				
+		}
+		
+		function SelectCargo(){			
+					$result = $this->_personal->getCargos();
+					$data = array();
+
+					for ($i = 0; $i < count($result); $i++) {
+						$data[$i] = array("value"=>$result[$i]['id_cargo'],"option"=>$result[$i]['cargo']);
+					}
+					echo json_encode($data);
+		}
+
+		function SelectCoordinaciones(){
+
+					$result = $this->_personal->getCoordinaciones();
+					$data = array();
+
+					for ($i = 0; $i < count($result); $i++) {
+						$data[$i] = array("value"=>$result[$i]['id_coordinacion'],"option"=>$result[$i]['coordinacion']);
+					}
+					echo json_encode($data);
+
+		}
+
 	}
 ?>

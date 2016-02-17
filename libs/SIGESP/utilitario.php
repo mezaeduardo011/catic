@@ -1,9 +1,9 @@
 <?php
-include_once '/var/www/html/catic/libs/SIGESP/mppi-curl-php/src/MPPICurl/MPPICurlCabeceras.php';
-include_once '/var/www/html/catic/libs/SIGESP/mppi-curl-php/src/MPPICurl/MPPICurlMensajes.php';
-include_once '/var/www/html/catic/libs/SIGESP/mppi-curl-php/src/MPPICurl/MPPICurlRespuesta.php';
-include_once '/var/www/html/catic/libs/SIGESP/mppi-curl-php/src/MPPICurl/MPPICurl.php';
-include_once '/var/www/html/catic/libs/SIGESP/mppi-curl-php/src/MPPICurl/MPPICurlCliente.php';
+include_once '/var/www/catic/libs/SIGESP/mppi-curl-php/src/MPPICurl/MPPICurlCabeceras.php';
+include_once '/var/www/catic/libs/SIGESP/mppi-curl-php/src/MPPICurl/MPPICurlMensajes.php';
+include_once '/var/www/catic/libs/SIGESP/mppi-curl-php/src/MPPICurl/MPPICurlRespuesta.php';
+include_once '/var/www/catic/libs/SIGESP/mppi-curl-php/src/MPPICurl/MPPICurl.php';
+include_once '/var/www/catic/libs/SIGESP/mppi-curl-php/src/MPPICurl/MPPICurlCliente.php';
 /**
  * Esta clase permite listar y verificar la existecia de un modulo dentro de la aplicación frontend.
  */
