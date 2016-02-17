@@ -12,9 +12,8 @@
 
 		//Insercion de la persona nueva
 		public function insertPersonModel($persona){
-
-			//Se le pasa el arreglo desde el controlador, se le asignan los valores segun lo que dicta la asociacion
-			$this->query = "SELECT registro_persona(:nombre,:nombre2,:apellido,:apellido2,:sexos,
+				//Se le pasa el arreglo desde el controlador, se le asignan los valores segun lo que dicta la asociacion
+			$this->query = "SELECT registro_persona(:tipo_persona,:nombre,:nombre2,:apellido,:apellido2,:sexos,
 				:fecha_nacimiento,:cedula,:fecha_ingreso,:telefono,:correo,:direccion,:ubicacion,:otro_telefono);";
 			
 			//Cuando esta construido el query se envia para que empieze la transaccion.
@@ -42,8 +41,11 @@
 			if (is_bool($id)){
 				if(is_bool($actividad)){
 
-				$query = "SELECT ROW_NUMBER() OVER (ORDER BY id_persona) AS numeracion,*,S.referencia AS sexo from persona P, referencial S
-							WHERE p.sexo_referencial= S.id_referencial
+				$query = "SELECT ROW_NUMBER() OVER (ORDER BY P.id_persona) AS numeracion,
+							P.*,S.referencia AS sexo ,E.*
+							FROM persona P
+							INNER JOIN referencial AS S on S.id_referencial = P.sexo_referencial
+							INNER JOIN persona_empleada as E on E.id_persona=P.id_persona
 							AND tipo_persona_referencial=76";
 				}else{
 

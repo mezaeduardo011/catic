@@ -11091,7 +11091,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Mostrando _START_ a _END_ de _TOTAL_ personas registradas.",
+			"sInfo": "Mostrando a _END_ de _TOTAL_ persona(s) registrada(s).",
 	
 	
 			/**

@@ -17,20 +17,16 @@
 				$this->_view->setJs(array(
 				"Librerias/formValidation","Librerias/bootstrapValidator.min","validaciones",
 				"Librerias/fuelux.wizard","form-wizard",
-				"Librerias/bootstrap-datepicker",
+				"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
 				"Librerias/jquery.maskedinput",
 				"registroPersona/registroPersona",
-				"utilidades","Librerias/bootstrap-select",
-				"Librerias/jquery.gritter",
-				"persons"));
+				// "utilidades","Librerias/bootstrap-select",
+				// "Librerias/jquery.gritter",
+				// "persons"));
+				"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion"));
 
-				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter"));
-
-				$direccionEstado = $this->_personal->getDireccionEstado();
-				$this->_view->_direccionEstado = $direccionEstado;				//$direccionMunicipio = $this->_personal->getDireccionMunicipio();
-				//$this->_view->_direccionMunicipio = $direccionMunicipio;
-				$direccionParroquia = $this->_personal->getDireccionParroquia();
-				$this->_view->_direccionParroquia = $direccionParroquia;				
+				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter",
+											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));				
 				$coordinaciones = $this->_personal->getCoordinaciones();
 				$this->_view->_coordinaciones = $coordinaciones;
 				$tallas_camisa = $this->_personal->getTallasCamisas();
@@ -45,34 +41,6 @@
 				$this->_view->render('personal');
 	
 		}
-
-		function prueba($id=false){
-
-			//print_r($id);
-			$persona = $this->_personal->getUnicaPersona($id);
-			//$this->imprimirArreglo($persona);
-			$this->_view->_persona  = $persona;
-
-
-
-			$this->_view->render('personaPrueba');
-	
-		}		
-
-		function registro_vacaciones(){
-
-				//Me manda el listado del personal para seleccionar la asignacion de Vacaciones de forma masiva.
-				$listado = $this->_personal->getPersonal();
-
-				//Crea el objeto de la clase vista para pintarle los datos
-				$this->_view->_listado = $listado;
-
-				//Pinta la vista
-				$this->_view->render('registro_vacaciones');
-		}
-
-
-
 
 
 		function insertPerson(){
@@ -118,7 +86,7 @@
 			"pickList"));
 
 			$listado = $this->_personal->getPersonal();
-
+			//$this->imprimirArreglo($listado);
 			$this->_view->_listado = $listado;
 
 			$this->_view->render('consulta_personal');
@@ -176,27 +144,61 @@
 
 		}
 
-		
+		function loadSexo(){
+
+			$result = $this->_personal->getSexo();
+
+			$data = array();
+
+			for ($i = 0; $i < count($result); $i++) {
+
+				$data[$i] = array("value"=>$result[$i]['id_referencial'],"option"=>$result[$i]['referencia']);
+			}
+
+			echo json_encode($data);
+
+		}
+
+		function selectMun(){
+
+				
+				 unset($_POST['url']);
+				 $id_post=$this->ConvertirArray($_POST);
+				 $id_estado = $id_post[':id_estado'];
+			 	 $direccionMunicipio = $this->_personal->getDireccionMunicipio($id_estado);
+				 $this->_view->_direccionMunicipio = $direccionMunicipio;
+			 	
+		}
 
 		  public function BuscarCedula(){
-
-		      	$cedula= '18.019.742';
-
-		       $cedula=str_replace('.','', $cedula); 
-
+		  	  //18019742
+		      $cedula= $_POST['cedular'];
+		      $cedula=str_replace('.','', $cedula); 
 		      $cliente = new ClienteApiSigesp();
 
 		      $resp = $cliente->getServicio('datos_empleado',array('cedula'=> $cedula));
 
-		      //$this->getResponse()->setStatusCode($resp->errores['http_status_code']);
-
-		      //$this->getResponse()->setContentType('application/json');
-
 		      $data = !!$resp->errores['error']?$resp->cuerpo_response:$resp->cuerpo_response->data;
 
-		      $jsondata = json_encode($data,JSON_PRETTY_PRINT);
+		      //print_r($data); die();
 
-		      return $jsondata;
+		      echo json_encode(array("data" => $data));
+
+		      /*$formatjson = json_decode($jsondata,true);
+
+		      //print_r($formatjson); die();
+
+		      list($nombres1, $nombres2) = explode(" ",$formatjson['nombres']);
+		      list($apellido1, $apellido2) = explode(" ",$formatjson['apellidos']);
+
+		      $info = array($formatjson['correo_electronico'],$formatjson['direccion'],$formatjson['fecha_ingreso'],$formatjson['fecha_nacimiento'],$formatjson['telefono_celular']);
+
+		      list($correo_electronico,$ubicacion,$fecha_ingreso,$fecha_nacimiento,$telefono) = $info;
+
+		   	  $datos_personas = array($nombres1,$nombres2,$apellido1,$apellido2,$fecha_nacimiento,$telefono,$fecha_ingreso,$correo_electronico,$ubicacion);
+
+		   	  print_r("hola");*/
+
 		  }
 
 		function SelectEstado() {
