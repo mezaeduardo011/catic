@@ -10,7 +10,7 @@
     function LlenarDatos(text,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9)
     {
 
-        if(typeof(text.data.nombre) != "undefined"){
+        if(typeof(text.data.nombres) != "undefined"){
             //alert(''+JSON.stringify(text));
             var nombres = text.data.nombres.split(' ');
             var apellidos = text.data.apellidos.split(' ');     
