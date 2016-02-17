@@ -118,7 +118,7 @@ html {
 }
 </style>
 <body>
-<script type="text/php">
+<!-- <script type="text/php">
 
         if ( isset($pdf) ) {
                 $w = $pdf->get_width();
@@ -128,9 +128,9 @@ html {
 
         }
 
-</script> 
+</script>  -->
 <div class="cintillo">
-        <img src="/var/www/catic/public/img/cintillo.jpg" width="100%" height="80">
+        <img src="/var/www/html/catic/public/img/cintillo.jpg" width="100%" height="80">
 </div> 
 <div class="cuerpo">
     <div class="page-header" align="center">
@@ -243,19 +243,33 @@ html {
         </tr>
     </table>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br><br>
+<div align="center">
+    <?php echo date("m/d/Y"); ?>
+</div>
 </body>
+
 
 
     
 
 <?php
-//require_once("dompdf/dompdf_config.inc.php");
 $dompdf = new DOMPDF();
 $dompdf->load_html(ob_get_clean());
 $dompdf->render();
 $pdf = $dompdf->output();
-$filename = "listaDelPersonal";
-file_put_contents($filename, $pdf);
-$dompdf->stream($filename);
+$dompdf->stream('listaDelPersonal',array('Attachment'=>0));
 
 ?>

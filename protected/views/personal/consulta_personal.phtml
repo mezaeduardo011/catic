@@ -20,11 +20,11 @@
 												#
 											</label>
 										</th>
-										<th>Cedula</th>
-										<th>Primer nombre</th>
-										<th class="hidden-480">Segundo nombre</th>
-										<th>Primer apellido</th>
-										<th class="hidden-480">Segundo apellido</th>
+										<th class="center">Cedula</th>
+										<th class="center">Nombres</th>
+										<th class="center">Apellidos</th>
+										<th class="center">Fecha de ingreso</th>
+										<th class="center">Teléfono</th>
 										<th class="center">Acciones</th>
 									</tr>
 								</thead>
@@ -33,12 +33,10 @@
 									<tr>
 										<td class="center"><?php echo $persona['numeracion'];?></td>
 										<td><?php echo $persona['cedula']; ?></td>
-										<td><?php echo $persona['nombre']; ?></td>
-										<td class="hidden-480"><?php echo $persona['nombre2']; ?></td>
-										<td><?php echo $persona['apellido']; ?></td>
-										<td class="hidden-480">
-											<?php echo $persona['apellido2']; ?>
-										</td>
+										<td><?php echo $persona['nombre']; ?>&nbsp;&nbsp;<?php echo $persona['nombre2']; ?></td>
+										<td><?php echo $persona['apellido']; ?>&nbsp;&nbsp;<?php echo $persona['apellido2']; ?></td>
+										<td class="center"><?php echo $persona['fecha_ingreso'];?></td>
+										<td class="center"><?php echo $persona['telefono'];?></td>
 										<td class="center">
 											<div class="hidden-sm hidden-xs action-buttons">
 												<a class="btn-app  btn-success  btn-sm" id="detalle_persona"
@@ -50,7 +48,7 @@
 													Detalles
 													
 												</a>
-												<a class="btn-app  btn-primary  btn-sm" id="detalle_persona"
+												<a class="btn-app  btn-primary  btn-sm" id="detalle_persona" target="_blank"
 													href="<?php echo BASE_URL."pdf/pdfDetallePersona/". $persona['id_persona'] ?>" >
 													<i class="ace-icon fa fa-print bigger fa-lg"></i>
 													Imprimir

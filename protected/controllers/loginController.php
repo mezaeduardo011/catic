@@ -32,7 +32,8 @@
 
 				 switch ($data['perfil_referencial']) {
 					case 68:
-						$usuario=Session::set('user', 'Sr(a). '.$data['nombre'].', '.$data['apellido']);
+
+						$usuario=Session::set('user', $data['nombre'].', '.$data['apellido']);					
 						$this->_view->redirect('personal');
 
 					break;

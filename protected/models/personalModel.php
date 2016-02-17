@@ -12,9 +12,8 @@
 
 		//Insercion de la persona nueva
 		public function insertPersonModel($persona){
-
-			//Se le pasa el arreglo desde el controlador, se le asignan los valores segun lo que dicta la asociacion
-			$this->query = "SELECT registro_persona(:nombre,:nombre2,:apellido,:apellido2,:sexos,
+				//Se le pasa el arreglo desde el controlador, se le asignan los valores segun lo que dicta la asociacion
+			$this->query = "SELECT registro_persona(:tipo_persona,:nombre,:nombre2,:apellido,:apellido2,:sexos,
 				:fecha_nacimiento,:cedula,:fecha_ingreso,:telefono,:correo,:direccion,:ubicacion,:otro_telefono);";
 			
 			//Cuando esta construido el query se envia para que empieze la transaccion.
@@ -42,9 +41,12 @@
 			if (is_bool($id)){
 				if(is_bool($actividad)){
 
-				$query = "SELECT ROW_NUMBER() OVER (ORDER BY id_persona) AS numeracion,*,S.referencia AS sexo from persona P, referencial S
-							WHERE p.sexo_referencial= S.id_referencial
-							AND tipo_persona_referencial=63";
+				$query = "SELECT ROW_NUMBER() OVER (ORDER BY P.id_persona) AS numeracion,
+							P.*,S.referencia AS sexo ,E.*
+							FROM persona P
+							INNER JOIN referencial AS S on S.id_referencial = P.sexo_referencial
+							INNER JOIN persona_empleada as E on E.id_persona=P.id_persona
+							AND tipo_persona_referencial=76";
 				}else{
 
 				$query = "SELECT ROW_NUMBER() OVER (ORDER BY id_persona) AS numeracion,*,S.referencia AS sexo from persona P, referencial S
@@ -164,9 +166,7 @@
 					AND  E.id_direccion=M.id_padre 
 					AND M.id_direccion=P.id_padre
 					AND P.id_direccion=direccion_referencial
-					AND
-					PER.id_persona = $id;
-					";
+					AND	PER.id_persona = 0";
 			
 			$auxiliar = $this->_db->query($query);
 				try {
@@ -258,7 +258,7 @@
 		public function getDireccionEstado(){
 
 
-			$query = " SELECT DISTINCT E.direccion as Estado from direccion E, direccion M, direccion P
+			$query = " SELECT DISTINCT E.id_direccion,E.direccion as Estado from direccion E, direccion M, direccion P
 				WHERE  E.id_direccion=M.id_padre and M.id_direccion=P.id_padre";
 			
 			$auxiliar = $this->_db->query($query);
@@ -282,8 +282,8 @@
 
 		public function getDireccionMunicipio($id){
 
-		$query = "SELECT Distinct M.direccion AS Municipio FROM direccion E, direccion M, direccion P
-				WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND M.id_padre='.$id.' ORDER BY municipio;";
+		$query = "SELECT Distinct M.id_direccion,M.direccion AS Municipio FROM direccion E, direccion M, direccion P
+				WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND M.id_padre='".$id."' ORDER BY municipio;";
 			
 			$auxiliar = $this->_db->query($query);
 				try {
@@ -303,10 +303,10 @@
 			
 		}
 
-		public function getDireccionParroquia(){
+		public function getDireccionParroquia($id=false){
 
-		$query = "SELECT Distinct P.direccion as Parroquia,P.id_referencial from direccion E, direccion M, direccion P
-			WHERE  E.id_direccion=M.id_padre and M.id_direccion=P.id_padre;";
+		$query = "SELECT Distinct P.id_direccion,P.direccion as Parroquia,P.id_referencial from direccion E, direccion M, direccion P
+			WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND P.id_padre=2";
 			
 			$auxiliar = $this->_db->query($query);
 				try {
