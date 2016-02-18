@@ -1,16 +1,10 @@
 <?php 
 
 	class Complement{
-				function valCheckbox($contador){
-					$count = $contador;							
-					$data = array();
-						for ($i = 0; $i <= $count; $i++) {
+				function valCheckbox($contador){						
+						for ($i = 0; $i <= $contador; $i++) {
 							if(isset($_POST['check'.$i]) && !($_POST['check'.$i]==" ")){
 								$data[$i] =  $_POST['check'.$i];
-								}
-						}
-								for ($i=0; $i <= count($data); $i++) { 
-							if(isset($data[$i]) && !($data[$i]==" ")){
 								}
 						}
 					return $data;
@@ -24,7 +18,7 @@
 
 
 				function ConvertirArray($VarPost){
-							 $arregloNuevo= array();									
+							 //$arregloNuevo= array();									
 								foreach ($VarPost as $newArrayKey => $valor) {		
 										$arregloNuevo[':'.$newArrayKey]=$valor;
 								}		 					

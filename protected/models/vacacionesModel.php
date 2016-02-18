@@ -2,17 +2,25 @@
 
 	class vacacionesModel extends Model{
 		
-		//variable protegida donde se guardan los query para la base de datos
 		protected $query;
-		
-		//Construtor Herado de la clase Modelo principal
-		public function __construct(){
+				public function __construct(){
 			parent::__construct();
 		}
+		public function registroVacaciones($vacaciones){
+			$this->query = "SELECT registro_vacaciones(:desde,:hasta,:dias_correspondientes,:fecha_reincorporacion,:personas);";
+						try {
 
+				$this->_db->beginTransaction();
+				$this->_db->prepare($this->query)->execute($vacaciones);
+				$this->_db->commit();
+			}
+			catch (Exception $e){
+				$this->_db->rollBack();
+				echo "Error :: ".$e->getMessage();
+				exit();
+			}
+		}
 
-
-		//Retorna un listado del personal a traves de un select
 		public function getVacaciones($id = FALSE,$actividad = FALSE){
 			 
 

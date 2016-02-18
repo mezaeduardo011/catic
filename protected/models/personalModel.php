@@ -306,7 +306,7 @@
 		public function getDireccionParroquia($id=false){
 
 		$query = "SELECT Distinct P.id_direccion,P.direccion as Parroquia,P.id_referencial from direccion E, direccion M, direccion P
-			WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND P.id_padre=2";
+			WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND P.id_padre='".$id."'";
 			
 			$auxiliar = $this->_db->query($query);
 				try {

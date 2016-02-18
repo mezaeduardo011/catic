@@ -20,9 +20,6 @@
 				"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
 				"Librerias/jquery.maskedinput",
 				"registroPersona/registroPersona",
-				// "utilidades","Librerias/bootstrap-select",
-				// "Librerias/jquery.gritter",
-				// "persons"));
 				"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion"));
 
 				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter",

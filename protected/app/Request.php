@@ -41,20 +41,6 @@
 			return $this->_arguments;
 		}
 
-			function valCheckbox($contador){
-				$count = $contador;							
-				$data = array();
-					for ($i = 0; $i <= $count; $i++) {
-						if(isset($_POST['check'.$i]) && !($_POST['check'.$i]==" ")){
-							$data[$i] =  $_POST['check'.$i];
-							}
-					}
-							for ($i=0; $i <= count($data); $i++) { 
-						if(isset($data[$i]) && !($data[$i]==" ")){
-							}
-					}
-				//print_r($data);
-				return $data;
-			}
+
 	}
 ?>
