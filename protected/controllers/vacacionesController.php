@@ -19,9 +19,7 @@
 
 		function registro_vacaciones(){
 
-
-					$contador= $_POST['contador'];					
-					$check = $this->valCheckbox($contador);
+					$check = $this->valCheckbox( $_POST['contador'];);
 					$this->imprimirArreglo($check);
 
 
