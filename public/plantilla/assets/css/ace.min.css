@@ -290,14 +290,14 @@ border-radius: 15px 15px 0px 0px;
 	border-width: 1px;
 	border-color: #d4dfe3;
 	border-radius: 0 !important;
-	color: #2283c5;
+	color: #4B0000;
 	background-color: #fafafa;
 	margin: 0 -1px 0 0;
 	position: relative;
 	z-index: auto
 }
 .pagination>li>a:hover, .pager>li>a:hover {
-	color: #1c6ca2;
+	color: #BC0101;
 	background-color: #eaeff2;
 	border-color: #c1d1d7;
 	z-index: 1
@@ -312,7 +312,7 @@ border-radius: 15px 15px 0px 0px;
 }
 .pagination>li.active>a, .pagination>li.active>a:hover {
 	background-color: #6faed9;
-	border-color: #6faed9;
+	border-color: #393939;
 	color: #fff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
 	z-index: 2
@@ -12650,10 +12650,10 @@ ul.attachment-list>li {
 	color: #555
 }
 .dataTable>thead>tr>th[class*=sort]:hover {
-	color: #547ea8
+	color: #f00;
 }
 .dataTable>thead>tr>th[class*=sorting_] {
-	color: #307ecc
+	color: #CC3030;
 }
 .dataTable>thead>tr>th.sorting_desc, .dataTable>thead>tr>th.sorting_asc {
 	background-image: -webkit-linear-gradient(top, #eff3f8 0, #e3e7ed 100%);

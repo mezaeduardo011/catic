@@ -2476,13 +2476,32 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', end
 }
 .btn-success {
 	color: #fff;
-	background-color: #5cb85c;
+	background-color: #145600;
 	border-color: #4cae4c
 }
 .btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
 	color: #fff;
 	background-color: #449d44;
 	border-color: #398439
+}
+.btn-imprimir {
+	color: #e20000;
+	background-color: #fff;
+	border: 1px solid #000000;
+}
+.btn-imprimir:hover, .btn-imprimir:focus, .btn-imprimir.focus, .btn-imprimir:active, .btn-imprimir.active, .open>.dropdown-toggle.btn-imprimir {
+	color: #fff;
+	background-color: #b70300;
+
+}
+.btn-eliminar {
+	color: #fff;
+	background-color: #b70300;
+	border: 1px solid #000000;
+}
+.btn-eliminar:hover, .btn-eliminar:focus, .btn-eliminar.focus, .btn-eliminar:active, .btn-eliminar.active, .open>.dropdown-toggle.btn-eliminar {
+	color: #fff;
+	background-color: #de352a;
 }
 .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
 	background-image: none
@@ -2515,6 +2534,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', end
 .btn-info .badge {
 	color: #5bc0de;
 	background-color: #fff
+}
+.btn-detalles {
+	color: #fff;
+	background-color: #4e4c4a;
+	border: 1px solid #000000;
+}
+.btn-detalles:hover, .btn-detalles:focus, .btn-detalles.focus, .btn-detalles:active, .btn-detalles.active, .open>.dropdown-toggle.btn-detalles {
+	color: #fff;
+	background-color: #949494;
 }
 .btn-warning {
 	color: #fff;
@@ -3725,8 +3753,14 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
 	z-index: 2;
 	color: #fff;
-	background-color: #337ab7;
-	border-color: #337ab7;
+background: rgba(248,80,50,0.9);
+background: -moz-radial-gradient(center, ellipse cover, rgba(248,80,50,0.9) 0%, rgba(140,12,0,0.9) 0%, rgba(166,17,0,0.9) 95%, rgba(241,111,92,0.9) 98%, rgba(246,41,12,0.9) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(248,80,50,0.9)), color-stop(0%, rgba(140,12,0,0.9)), color-stop(95%, rgba(166,17,0,0.9)), color-stop(98%, rgba(241,111,92,0.9)), color-stop(100%, rgba(246,41,12,0.9)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(248,80,50,0.9) 0%, rgba(140,12,0,0.9) 0%, rgba(166,17,0,0.9) 95%, rgba(241,111,92,0.9) 98%, rgba(246,41,12,0.9) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(248,80,50,0.9) 0%, rgba(140,12,0,0.9) 0%, rgba(166,17,0,0.9) 95%, rgba(241,111,92,0.9) 98%, rgba(246,41,12,0.9) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(248,80,50,0.9) 0%, rgba(140,12,0,0.9) 0%, rgba(166,17,0,0.9) 95%, rgba(241,111,92,0.9) 98%, rgba(246,41,12,0.9) 100%);
+background: radial-gradient(ellipse at center, rgba(248,80,50,0.9) 0%, rgba(140,12,0,0.9) 0%, rgba(166,17,0,0.9) 95%, rgba(241,111,92,0.9) 98%, rgba(246,41,12,0.9) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#f6290c', GradientType=1 );
 	cursor: default
 }
 .pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus {
@@ -3991,7 +4025,7 @@ border-radius: 18px 18px 0px 0px;
 	color: #2b542c
 }
 .alert-info {
-	
+
 background: rgba(156,18,3,1);
 background: -moz-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(156,18,3,1)), color-stop(100%, rgba(179,27,0,1)));
