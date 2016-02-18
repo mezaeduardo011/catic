@@ -849,7 +849,7 @@ input, button, select, textarea {
 	line-height: inherit
 }
 a {
-	color: #337ab7;
+	color: #b31b00
 	text-decoration: none
 }
 a:hover, a:focus {
@@ -2443,8 +2443,14 @@ textarea.input-lg, textarea.form-group-lg .form-control, select[multiple].input-
 }
 .btn-primary {
 	color: #fff;
-	background-color: #f6290c;
-	border-color: #961200
+background: rgba(156,18,3,1);
+background: -moz-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(156,18,3,1)), color-stop(100%, rgba(179,27,0,1)));
+background: -webkit-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
+background: -o-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
+background: -ms-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
+background: linear-gradient(to bottom, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c1203', endColorstr='#b31b00', GradientType=0 );
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
 	color: #fff;
@@ -3986,14 +3992,14 @@ border-radius: 18px 18px 0px 0px;
 }
 .alert-info {
 	
-background: rgba(248,80,50,1);
-background: -moz-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(246,41,12,1) 0%, rgba(222,25,3,1) 98%, rgba(231,56,39,1) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(248,80,50,1)), color-stop(0%, rgba(246,41,12,1)), color-stop(98%, rgba(222,25,3,1)), color-stop(100%, rgba(231,56,39,1)));
-background: -webkit-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(246,41,12,1) 0%, rgba(222,25,3,1) 98%, rgba(231,56,39,1) 100%);
-background: -o-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(246,41,12,1) 0%, rgba(222,25,3,1) 98%, rgba(231,56,39,1) 100%);
-background: -ms-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(246,41,12,1) 0%, rgba(222,25,3,1) 98%, rgba(231,56,39,1) 100%);
-background: linear-gradient(to bottom, rgba(248,80,50,1) 0%, rgba(246,41,12,1) 0%, rgba(222,25,3,1) 98%, rgba(231,56,39,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=0 );
+background: rgba(156,18,3,1);
+background: -moz-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(156,18,3,1)), color-stop(100%, rgba(179,27,0,1)));
+background: -webkit-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
+background: -o-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
+background: -ms-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
+background: linear-gradient(to bottom, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c1203', endColorstr='#b31b00', GradientType=0 );
 }
 .alert-info hr {
 	border-top-color: #a6e1ec
