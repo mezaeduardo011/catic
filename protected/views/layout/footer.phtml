@@ -43,6 +43,7 @@
             jQuery(function($) {
                 $('.date-picker').datepicker({
                        clearBtn: true,
+                       autoclose: true,
                     language: "es",
                     daysOfWeekHighlighted: "0,1,2,3,4,5,6",
                     todayHighlight: true,
@@ -60,10 +61,10 @@
 
                   $(document).ready(function () { 
                     var selector = function (dateStr) {
-                            var d1 = $('#start').datepicker('getDate');
-                            var d2 = $('#end').datepicker('getDate');
-                            $('#start').datepicker("option", "maxDate",d2); //new line           
-                            $('#end').datepicker("option", "minDate",d1); // new line
+                            var d1 = $('#fecha_desde').datepicker('getDate');
+                            var d2 = $('#fecha_hasta').datepicker('getDate');
+                            $('#fecha_desde').datepicker("option", "maxDate",d2); //new line           
+                            $('#fecha_hasta').datepicker("option", "minDate",d1); // new line
                             var diff = 1;
                             if (d1 && d2) {
                                 diff = diff + Math.floor((d2.getTime() - d1.getTime()) / 86400000);
@@ -72,7 +73,7 @@
                             //$('.minim').val(d1)
                         }    
 
-                    $('#start,#end').change(selector)
+                    $('#fecha_desde,#fecha_hasta').change(selector)
                     });
 
                 $.mask.definitions['~']='[+-]';

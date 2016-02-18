@@ -1,146 +1,104 @@
 <div class="page-content">
-	<div class="page-header">
-		<h1>Registro de correspondencias.</h1>
-	</div>
-	
-	
-	<!-- /.page-header -->
-	<div class="row">
-		<div class="col-xs-12">
-			
-			<!-- PAGE CONTENT BEGINS -->
+	<div class="widget-box">
+		<div class="alert alert-info" align="center">
+			<h4>Registro de correspondencia <i class="fa fa-file-text-o"></i></h4>
+		</div>
+		<!-- PAGE CONTENT BEGINS -->
 			<form class="form-horizontal" role="form" action="<?php  echo BASE_URL;?>correspondencia/insert" method="post" >
-				<div>
 					<br>
-					
-					
-					<div class="widget-box">
-						<div class="widget-header widget-header-blue widget-header-flat">
-							<h4 class="widget-title lighter">Por favor introduzca la siguiente información</h4>
+					<table align="center">
+						<!---- Labels ---->
+						<tr>
+							<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td><label>Asunto:</label></td>
+							<td></td>
+							<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td><label>Oficina:</label></td>
+						</tr>
+						<!-- Fin de los Labels -->
+						<!---------------------->
+						<!---------------------->
+						<!-- Inputs o selects -->
+						<tr>
+							<td></td>
+							<td>
+								<div class="input-group">
+									<input type="text" class="input-sm form-control" name="asunto" id="asunto" size="25">
+									<span class="input-group-addon">
+										<i class="fa fa-cc"></i>
+									</span>
+								</div>
+							</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td>
+								<div class="input-group">
+									<input class="input-sm form-control" name="oficina" id="oficina" type="text" size="25" />
+									<span class="input-group-addon">
+										<i class="fa fa-archive"></i>
+									</span>
+								</div>
+							</td>
+						</tr>
+						<!------------Fin de los inputs------------>
+					</table>
+					<br>
+					<table align="center">
+						<tr>
+							<td><label>Instruccion:</label></td>
+							<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td><label>Coordinación Asignada:</label></td>
+							<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td><label>Fecha:</label></td>
+						</tr>
+						<tr>
+							<td>
+								<div class="input-group">
+									<input class="input-sm form-control" name="instruccion" id="instruccion" type="text" size="25" />
+									<span class="input-group-addon">
+										<i class="fa fa-file-text"></i>
+									</span>
+								</div>
+							</td>
+							<td>&nbsp;</td>
+							<td>
+								<div class="input-group">
+									<select  class="selectpicker show-tick input-sm form-control" id="coordinacion" name="coordinacion">
+										<option value="" default selected>Seleccione una coordinación</option>
+										<?php foreach ($this->_coordinacion as $coordinacion):?>
+										<option value ="<?php  echo $coordinacion['id_referencial']; ?>"><?php  echo $coordinacion['referencia']; ?></option>
+										<?php endforeach ?>
+									</select>
+								</div>
+							</td>
+							<td></td>
+							<td>
+								<div class="input-group">
+									<input class="input-sm form-control date-picker" name="fecha_entregado" id="fecha_entregado" type="date" data-date-format="yyyy-mm-dd" />
+									<span class="input-group-addon">
+										<i class="fa fa-calendar bigger-110"></i>
+									</span>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<hr />
+					<div class="clearfix form-actions" align="center">
+						<div>
+							<button class="btn btn-primary" type="submit">
+							<i class="ace-icon fa fa-floppy-o fa-lg"></i>
+							Registrar
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="reset">
+							<i class="ace-icon fa fa-undo bigger-110"></i>
+							Restaurar valores
+							</button>
 						</div>
-						<div class="widget-body">
-							<div class="widget-main">
-								<table align="center">
-									<!---- Labels ---->
-									<tr>
-										<td><label>N° comunicación:</label></td>
-										<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-										<td><label>Asunto:</label></td>
-										<td></td>
-										<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-										<td><label>Oficina:</label></td>
-									</tr>
-									<!-- Fin de los Labels -->
-									<!---------------------->
-									<!---------------------->
-									<!-- Inputs o selects -->
-									<tr>
-										<td>
-											<input type="text" name="numero_comunicacion" id="numero_comunicacion" size="12">
-										</td>
-										<td></td>
-										<td>
-											<div class="input-group">
-												<span class="input-group-addon">
-													<i class="fa fa-cc"></i>
-												</span>
-												<input type="text"  name="asunto" id="asunto" size="25">
-											</div>
-										</td>
-										<td></td>
-										<td>&nbsp;</td>
-										<td>
-											<div class="input-group">
-												<span class="input-group-addon">
-													<i class="fa fa-archive"></i>
-												</span>
-												<input class="form-control" name="oficina" id="oficina" type="text" size="25" />
-											</div>
-										</td>
-									</tr>
-									<!------------Fin de los inputs------------>
-									
-								</table>
-								<br>
-								
-							</div>
-							<table align="center">
-								<tr>
-									<td><label>Fecha de recibido:</label></td>
-									<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-									<td><label>Fecha de entrega:</label></td>
-									<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-									<td><label>Instruccion:</label></td>
-									<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-									<td><label>Coordinación Asignada:</label></td>
-								</tr>
-								<tr>
-									<td>
-										<div class="input-group">
-											<input class="form-control date-picker" name="fecha_recibido" id="fecha_recibido" type="date" data-date-format="yyyy-mm-dd" />
-											<span class="input-group-addon">
-												<i class="fa fa-calendar bigger-110"></i>
-											</span>
-										</div>
-									</td>
-									<td>&nbsp;</td>
-									<td>
-										<div class="input-group">
-											<input class="form-control date-picker" name="fecha_entregado" id="fecha_entregado" type="date" data-date-format="yyyy-mm-dd" />
-											<span class="input-group-addon">
-												<i class="fa fa-calendar bigger-110"></i>
-											</span>
-										</div>
-									</td>
-									<td></td>
-									<td>
-										<div class="input-group">
-											<span class="input-group-addon">
-												<i class="fa fa-file-text"></i>
-											</span>
-											<input type="text"  name="instruccion" id="instruccion" size="25">
-										</div>
-									</td>
-									<td></td>
-									<td>
-										<div class="input-group">
-											<select  id="coordinacion" name="coordinacion">
-												<option value="" default selected>Seleccione una coordinación</option>
-												<?php foreach ($this->_coordinacion as $coordinacion):?>
-												<option value ="<?php  echo $coordinacion['id_referencial']; ?>"><?php  echo $coordinacion['referencia']; ?></option>
-												<?php endforeach ?>
-											</select>
-										</div>
-									</td>
-								</tr>
-							</table>
-							
-							<hr />
-							</div><!-- /.widget-main -->
-							</div><!-- /.widget-body -->
-						</div>
-						<div class="clearfix form-actions" align="center">
-							<div>
-								<button class="btn btn-primary" type="submit">
-								<i class="ace-icon fa fa-floppy-o fa-lg"></i>
-								Guardar
-								</button>
-								
-								&nbsp; &nbsp; &nbsp;
-								<button class="btn" type="reset">
-								<i class="ace-icon fa fa-undo bigger-110"></i>
-								Restaurar valores
-								</button>
-							</div>
-						</div>
-						
-					</form>
-					<!-- PAGE CONTENT ENDS -->
-					</div><!-- /.col -->
-					</div><!-- /.row -->
-					</div><!-- /.page-content -->
-				</div>
-				</div><!-- /.main-content -->
-			</body>
-			
-		</html>
+					</div>
+			</form>
+			<!-- PAGE CONTENT ENDS -->
+	</div><!-- /.page-content -->
+</div>
+</body>
+</html>

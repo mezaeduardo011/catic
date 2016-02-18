@@ -9778,7 +9778,7 @@
 		 * Note that the `pageLength` property will be automatically set to the
 		 * first value given in this array, unless `pageLength` is also provided.
 		 *  @type array
-		 *  @default [ 10, 25, 50, 100 ]
+		 *  @default [ 5,10, 25, 50, 100 ]
 		 *
 		 *  @dtopt Option
 		 *  @name DataTable.defaults.lengthMenu
@@ -9790,7 +9790,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"aLengthMenu": [ 10, 25, 50, 100 ],
+		"aLengthMenu": [ 5,10, 25, 50, 100 ],
 	
 	
 		/**
@@ -10819,7 +10819,7 @@
 		 *      } );
 		 *    } )
 		 */
-		"iDisplayLength": 10,
+		"iDisplayLength": 5,
 	
 	
 		/**
