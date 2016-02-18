@@ -25,8 +25,9 @@
 				// "persons"));
 				"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion"));
 
-				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter",
-											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));				
+				$this->_view->setCss(array(
+				"datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter","bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3",
+				"bootstrap-datepicker3.standalone"));				
 				$listado = $this->_personal->getHijosModel();
 				$this->_view->_listado = $listado;
 				//Se pinta la vista con el metodo render.
