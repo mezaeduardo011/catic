@@ -144,7 +144,9 @@
 				"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion","pickList"));
 
 				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter",
-											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));							
+											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));		
+
+																
 				$persona = $this->_personal->getUnicaPersona($id);
 				$this->_view->_persona = $persona;
 				$this->_view->render('actualizar_persona','','pickList');

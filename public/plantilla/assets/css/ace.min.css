@@ -13931,19 +13931,19 @@ div.ColVis_collectionBackground {
 	position: fixed;
 	left: 33%;
 	right: 33%;
-	top: 33%
+	top: 80%
 }
 @media only screen and (max-width:767px) {
 	.gritter-center {
 		left: 16%;
 		right: 16%;
-		top: 30%
+		top: 80%
 	}
 }
 @media only screen and (max-width:480px) {
 	.gritter-center {
 		left: 30px;
-		right: 30px
+		right: 80
 	}
 }
 @media only screen and (max-width:320px) {

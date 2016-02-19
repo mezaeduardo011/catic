@@ -10,13 +10,19 @@ $(document).ready(
             dataType: 'json',
         })
 
+
+
         .done(function(data) { // si todo funciona
             $('#estado').empty();
             $('#estado').append('<option value="">Seleccione un estado...</option>');
             for (var i = 0; i < data.length; i++) {
                 $('#estado').append('<option value="' + data[i].value + '">' + data[i].option + '</option>');
-            }
-            $('#estado').selectpicker('refresh');
+                if (data[i].value==4) {
+                $('#estado').append('<option selected value="' + data[i].value + '">' + data[i].option + '</option>');
+
+                }
+            }            
+            //$('#estado').selectpicker('refresh');
         })
 
         .fail(function() { //si da error decimos error
