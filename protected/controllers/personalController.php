@@ -58,28 +58,26 @@
 				unset($_POST['municipio']);
 				$persona= $this->ConvertirArray($_POST);
 				//$this->imprimirArreglo($persona);
-				$this->_personal->insertPersonModel($persona);
+				$prueba=$this->_personal->insertPersonModel($persona);
+				print_r($prueba);die();
 		}
 
 		function Insert_InfoAdicional(){
-
 			//$_POST=$_GET;
 			unset($_POST['url']);
 			unset($_POST['medicina']);
-			$infoAdicional= $this->ConvertirArray($_POST);
+			$postRecibido= $this->ConvertirArray($_POST);
 
 			if($_POST['deporte']=='on'){
-
+					unset($postRecibido[':deporte']);
 					$check = $this->valCheckbox(6);
 					$arregloPost = $this->ConvertirArraySql($check);
-					unset($infoAdicional[':deporte']);
+					$infoAdicional=$this->borrarCheckbox(6,$postRecibido);
 					$this->_personal->InsertInfoAdicional($infoAdicional,$arregloPost);
 
 			}else{
-
-					unset($infoAdicional[':deporte']);
-					//print_r($infoAdicional);die();
-					$this->_personal->InsertInfoAdicional($infoAdicional,'{0}');		
+					unset($postRecibido[':deporte']);
+					$this->_personal->InsertInfoAdicional($postRecibido,'{0}');		
 			}	
 
 		}

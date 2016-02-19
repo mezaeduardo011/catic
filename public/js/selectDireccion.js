@@ -1,122 +1,125 @@
 $(document).ready(
 
-	function() { 
+    function() {
 
-		var BASE_URL = "http://localhost/catic/"; //base url en javascript 
+        var BASE_URL = "http://localhost/catic/"; //base url en javascript 
 
-		$.ajax({
-			url: BASE_URL +'personal/SelectEstado', //apuntamos a persons/loadSexo
-			type: 'POST',
-			dataType: 'json',		
-		})
+        $.ajax({
+            url: BASE_URL + 'personal/SelectEstado', //apuntamos a persons/loadSexo
+            type: 'POST',
+            dataType: 'json',
+        })
 
-		.done(function(data) { // si todo funciona
-			$('#estado').empty();
-			$('#estado').append('<option value="">Seleccione un estado...</option>');
-			for (var i=0; i<data.length; i++) {
-				$('#estado').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
-			}	
-			$('#estado').selectpicker('refresh');
-		})
+        .done(function(data) { // si todo funciona
+            $('#estado').empty();
+            $('#estado').append('<option value="">Seleccione un estado...</option>');
+            for (var i = 0; i < data.length; i++) {
+                $('#estado').append('<option value="' + data[i].value + '">' + data[i].option + '</option>');
+            }
+            $('#estado').selectpicker('refresh');
+        })
 
-		.fail(function() {//si da error decimos error
-			alert("Error cargando los estados");
-		});
-				
-		var idSelectestado 	= '#estado';	
-		var selectDepen3 = $("#municipio");
+        .fail(function() { //si da error decimos error
+            alert("Error cargando los estados");
+        });
 
-		$($('#estado')).change(function () {
-	        $(idSelectestado+' option:selected').each(function () {
-	      		selected = $(this).val();
-	      		var select = $(selectDepen3);
-	      		select.append('<option value="">Seleccione un municipio...</option>');
+        var idSelectestado = '#estado';
+        var selectDepen3 = $("#municipio");
 
-	     		$.post(
+        $($('#estado')).change(function() {
+            $(idSelectestado + ' option:selected').each(function() {
+                selected = $(this).val();
+                var select = $(selectDepen3);
+                select.append('<option value="">Seleccione un municipio...</option>');
 
-	         		BASE_URL+"personal/SelectMunicipio", 
-	     			{ selected: selected },
+                $.post(
 
-	     			function(data){
-	     				select.empty();
-						select.append('<option value="">Seleccione un municipio...</option>');
-	     				for (var i=0; i<data.length; i++) {
-							select.append('<option value="' + data[i].id + '">' + data[i].option + '</option>');
-						}
+                    BASE_URL + "personal/SelectMunicipio", {
+                        selected: selected
+                    },
 
-						$('#municipio').selectpicker('refresh');
-	     			}, 
+                    function(data) {
+                        select.empty();
+                        select.append('<option value="">Seleccione un municipio...</option>');
+                        for (var i = 0; i < data.length; i++) {
+                            select.append('<option value="' + data[i].id + '">' + data[i].option + '</option>');
+                        }
 
-	     			"json");  
-	                  
-	     	});
-		});
+                        $('#municipio').selectpicker('refresh');
+                    },
 
-		var idSelect9 	= '#municipio';	
-		var selectDepen2 = $("#direccion");
+                    "json");
 
-		$(selectDepen3).change(function () {
+            });
+        });
 
-	        $(idSelect9+' option:selected').each(function () {
-	     		selected = $(this).val();
-	     		var select = $(selectDepen2);
+        var idSelect9 = '#municipio';
+        var selectDepen2 = $("#direccion");
 
-	     		$.post(
-	         		BASE_URL+"personal/SelectParroquia", 
-	     			{ selected: selected },
+        $(selectDepen3).change(function() {
 
-	     			function(data){
-	     				select.empty();
-						select.append('<option value="">Seleccione...</option>');
+            $(idSelect9 + ' option:selected').each(function() {
+                selected = $(this).val();
+                var select = $(selectDepen2);
 
-	     				for (var i=0; i<data.length; i++) {
-							select.append('<option value="' + data[i].id + '">' + data[i].option + '</option>');
-						}
+                $.post(
+                    BASE_URL + "personal/SelectParroquia", {
+                        selected: selected
+                    },
 
-						$('#direccion').selectpicker('refresh');
-	     			}, 
+                    function(data) {
+                        select.empty();
+                        select.append('<option value="">Seleccione...</option>');
 
-	     			"json");     
-	     	});
-		});
+                        for (var i = 0; i < data.length; i++) {
+                            select.append('<option value="' + data[i].id + '">' + data[i].option + '</option>');
+                        }
 
-		$.ajax({
-			url: BASE_URL +'personal/SelectCargo', //apuntamos a persons/loadSexo
-			type: 'POST',
-			dataType: 'json',		
-		})
+                        $('#direccion').selectpicker('refresh');
+                    },
 
-		.done(function(data) { // si todo funciona
-			$('#cargo').empty();
-			$('#cargo').append('<option value="">Seleccione un cargo...</option>');
-			for (var i=0; i<data.length; i++) {
-				$('#cargo').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
-			}	
-			$('#cargo').selectpicker('refresh');
-		})
+                    "json");
+            });
+        });
 
-		.fail(function() {//si da error decimos error
-			alert("Error cargando los estados");
-		});
+        $.ajax({
+            url: BASE_URL + 'personal/SelectCargo', //apuntamos a persons/loadSexo
+            type: 'POST',
+            dataType: 'json',
+        })
 
-		$.ajax({
-			url: BASE_URL +'personal/SelectCoordinaciones', //apuntamos a persons/loadSexo
-			type: 'POST',
-			dataType: 'json',		
-		})
+        .done(function(data) { // si todo funciona
+            $('#cargo').empty();
+            $('#cargo').append('<option value="">Seleccione un cargo...</option>');
+            for (var i = 0; i < data.length; i++) {
+                $('#cargo').append('<option value="' + data[i].value + '">' + data[i].option + '</option>');
+            }
+            $('#cargo').selectpicker('refresh');
+        })
 
-		.done(function(data) { // si todo funciona
-			$('#coordinacion').empty();
-			$('#coordinacion').append('<option value="">Seleccione una coordinacion...</option>');
-			for (var i=0; i<data.length; i++) {
-				$('#coordinacion').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
-			}	
-			$('#coordinacion').selectpicker('refresh');
-		})
+        .fail(function() { //si da error decimos error
+            alert("Error cargando los estados");
+        });
 
-		.fail(function() {//si da error decimos error
-			alert("Error cargando las coordinaciones");
-		});
+        $.ajax({
+            url: BASE_URL + 'personal/SelectCoordinaciones', //apuntamos a persons/loadSexo
+            type: 'POST',
+            dataType: 'json',
+        })
+
+        .done(function(data) { // si todo funciona
+            $('#coordinacion').empty();
+            $('#coordinacion').append('<option value="">Seleccione una coordinacion...</option>');
+            for (var i = 0; i < data.length; i++) {
+                $('#coordinacion').append('<option value="' + data[i].value + '">' + data[i].option + '</option>');
+            }
+            $('#coordinacion').selectpicker('refresh');
+        })
+
+        .fail(function() { //si da error decimos error
+            alert("Error cargando las coordinaciones");
+        });
 
 
-});
+    });
+
