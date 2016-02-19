@@ -13566,10 +13566,10 @@ div.ColVis_collectionBackground {
 	-o-transform: scale(1.1);
 	-ms-transform: scale(1.1);
 	transform: scale(1.1);
-	border-color: #80afd4
+	border-color: #F50000;
 }
 .steps li.complete:hover:before {
-	border-color: #80afd4
+	border-color:#F50000;
 }
 .steps li .title {
 	display: block;

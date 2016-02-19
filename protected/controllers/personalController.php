@@ -58,7 +58,8 @@
 				unset($_POST['municipio']);
 				$persona= $this->ConvertirArray($_POST);
 				//$this->imprimirArreglo($persona);
-				$this->_personal->insertPersonModel($persona);
+				$prueba=$this->_personal->insertPersonModel($persona);
+				print_r($prueba);die();
 		}
 
 		function Insert_InfoAdicional(){
