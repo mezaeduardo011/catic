@@ -18,7 +18,7 @@
 			"Librerias/formValidation","Librerias/bootstrapValidator.min","validaciones",
 			"Librerias/fuelux.wizard","form-wizard",
 			"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
-			"Librerias/jquery.maskedinput",
+			"Librerias/jquery.maskedinput","Librerias/jquery.gritter",
 			"registroPersona/registroPersona",
 			"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion"));
 
