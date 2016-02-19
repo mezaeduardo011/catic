@@ -117,15 +117,19 @@
 				$this->_view->redirect('personal/actualizar_persona/'.$persona[':id']);
 				//OJO redireccionamos a persona update MAS EL ID de la persona,para que vea los cambios
 
-				}else{
-							$this->_view->setJs(array("utilidades"));	
-				//Se muestra la pagina de la persona con sus datos prederterminados sin cambios
+				}else{	
+				$this->_view->setJs(array(
+				"Librerias/formValidation","Librerias/bootstrapValidator.min","validaciones",
+				"Librerias/fuelux.wizard","actualizarPersona/form-wizard_actualizar",
+				"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
+				"Librerias/jquery.maskedinput",
+				"registroPersona/registroPersona",
+				"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion","pickList"));
+
+				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter",
+											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));							
 				$persona = $this->_personal->getUnicaPersona($id);
-
-				//Se crea el objeto para la clase vista
 				$this->_view->_persona = $persona;
-
-				//Se pinta la vista
 				$this->_view->render('actualizar_persona','','pickList');
 				
 				}
@@ -139,32 +143,6 @@
 			//Nos redirecciona al listado del personal nuevamente
 			$this->_view->redirect('personal/listing');
 
-		}
-
-		function loadSexo(){
-
-			$result = $this->_personal->getSexo();
-
-			$data = array();
-
-			for ($i = 0; $i < count($result); $i++) {
-
-				$data[$i] = array("value"=>$result[$i]['id_referencial'],"option"=>$result[$i]['referencia']);
-			}
-
-			echo json_encode($data);
-
-		}
-
-		function selectMun(){
-
-				
-				 unset($_POST['url']);
-				 $id_post=$this->ConvertirArray($_POST);
-				 $id_estado = $id_post[':id_estado'];
-			 	 $direccionMunicipio = $this->_personal->getDireccionMunicipio($id_estado);
-				 $this->_view->_direccionMunicipio = $direccionMunicipio;
-			 	
 		}
 
 		  public function BuscarCedula(){

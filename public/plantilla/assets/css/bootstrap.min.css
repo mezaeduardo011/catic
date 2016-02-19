@@ -2451,6 +2451,7 @@ background: -o-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
 background: -ms-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
 background: linear-gradient(to bottom, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c1203', endColorstr='#b31b00', GradientType=0 );
+border: 1px solid #000000;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
 	color: #fff;
@@ -2477,7 +2478,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', end
 .btn-success {
 	color: #fff;
 	background-color: #145600;
-	border-color: #4cae4c
+	border: 1px solid #000000;
 }
 .btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
 	color: #fff;

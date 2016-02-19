@@ -166,7 +166,7 @@
 					AND  E.id_direccion=M.id_padre 
 					AND M.id_direccion=P.id_padre
 					AND P.id_direccion=direccion_referencial
-					AND	PER.id_persona = 0";
+					AND	PER.id_persona = '".$id."'";
 			
 			$auxiliar = $this->_db->query($query);
 				try {
