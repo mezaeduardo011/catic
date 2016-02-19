@@ -2,31 +2,23 @@
 
 	class personalModel extends Model{
 		
-		//variable protegida donde se guardan los query para la base de datos
 		protected $query;
 		
-		//Construtor Herado de la clase Modelo principal
 		public function __construct(){
 			parent::__construct();
 		}
 
-		//Insercion de la persona nueva
 		public function insertPersonModel($persona){
-				//Se le pasa el arreglo desde el controlador, se le asignan los valores segun lo que dicta la asociacion
+
 			$this->query = "SELECT registro_persona(:tipo_persona,:nombre,:nombre2,:apellido,:apellido2,:sexos,
-				:fecha_nacimiento,:cedula,:fecha_ingreso,:telefono,:correo,:direccion,:ubicacion,:otro_telefono);";
+				:fecha_nacimiento,:cedula,:fecha_ingreso,:telefono,:correo,:direccion,:ubicacion,:otro_telefono,:cargo,:coordinacion);";
 			
-			//Cuando esta construido el query se envia para que empieze la transaccion.
 			try {
 
 				$this->_db->beginTransaction();
 				$this->_db->prepare($this->query)->execute($persona);
-
-				//Sirve como confirmacion de que se realizaron los cambios con exito o se ejercuto la sentencia
 				$this->_db->commit();
 			}
-
-			//En caso de error, lo envia en pantalla.
 			catch (Exception $e){
 				$this->_db->rollBack();
 				echo "Error :: ".$e->getMessage();
@@ -35,7 +27,6 @@
 		}
 
 
-		//Retorna un listado del personal a traves de un select
 		public function getPersonal($id = FALSE,$actividad = FALSE){
 			 
 			if (is_bool($id)){
@@ -119,7 +110,6 @@
 			
 		}
 
-		//Retorna un listado del personal a traves de un select
 		public function getHijosModel(){
 	
 				$query = "SELECT
@@ -159,10 +149,9 @@
 
 		public function getUnicaPersona($id){
 
-		$query = "SELECT (SELECT date_part('year',age( fecha_nacimiento )) ) as edad,S.referencia as sexo,
-					 E.direccion as Estado, M.direccion as Municipio,P.direccion as Parroquia,* 
+		$query = "SELECT (SELECT date_part('year',age( fecha_nacimiento )) ) as edad,S.referencia as sexo,E.direccion as Estado, M.direccion as Municipio,P.direccion as Parroquia,* 
 					 from persona PER, referencial S, persona_empleada P2, direccion E, direccion M, direccion P
-					WHERE pER.sexo_referencial= S.id_referencial
+					WHERE PER.sexo_referencial= S.id_referencial
 					AND  E.id_direccion=M.id_padre 
 					AND M.id_direccion=P.id_padre
 					AND P.id_direccion=direccion_referencial
@@ -187,6 +176,7 @@
 		}
 
 		public function updatePersonal($persona){
+
 		$this->query = "UPDATE persona SET 
 					cedula 		= :cedula,
 					nombre 		= :nombre,
@@ -246,14 +236,6 @@
 				return $result;
 			
 		}
-
-	   	// public function num_campos(){
-	    // 	$res= $this->_db->prepare("SELECT * from persona");
-	    // 	$res->execute();
-	    // 	$colcount = $res->columnCount();
-	    // 	print_r($colcount);
-	    // 	die();
-    	// }
 		
 		public function getDireccionEstado(){
 
@@ -437,7 +419,26 @@
 			
 		}
 
-								
+		public function InsertInfoAdicional($informacion_adicional){
+
+			print_r($informacion_adicional); die();
+
+			$this->query = "SELECT registro_informacion_adicional(:vehiculos,:vivienda,:deporte,:medicamento);";
+			
+			try {
+
+				$this->_db->beginTransaction();
+				$this->_db->prepare($this->query)->execute($persona);
+				$this->_db->commit();
+
+			}
+			catch (Exception $e){
+				$this->_db->rollBack();
+				echo "Error :: ".$e->getMessage();
+				exit();
+			}
+
+		}						
 	}
 ?>
 
