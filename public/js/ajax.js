@@ -37,7 +37,7 @@ function send_ajax(metodo, paginaMasArgumento, funcionResponse, valores, capaCon
 			if (ajax.status == 200 && ajax.responseText != '')
 				if (isObj == null)
 					eval(funcionResponse + '("' + ajax.responseText.replace(/^\s*|\s*$/g, "") + '");');
-				else if (isObj == true) { //alert(ajax.responseText);
+				else if (isObj == true) {//alert(ajax.responseText);
 				eval(funcionResponse + '(' + ajax.responseText + ');');
 			} else if (ajax.status == 404)
 				alert("La direccion no existe");
@@ -109,25 +109,3 @@ function request(oContainer) {
 			resp += objsTextArea[i].name + '=' + objsTextArea[i].value + '&';
 	return resp.substring(0, resp.length - 1);
 }
-
-/*function sendAjaxJQuery(pagina, metodo, data){
-    $.ajax({
-       
-        url:pagina, //Url a donde la enviaremos
-        type:metodo, //Metodo que usaremos
-        contentType:false, //Debe estar en false para que pase el objeto sin procesar
-        data:data, //Le pasamos el objeto que creamos con los archivos
-        processData:false, //Debe estar en false para que JQuery no procese los datos a enviar
-        cache:false //Para que el formulario no guarde cache
-    }).done(function(msg){ 
-        if(msg =='No se pudo cargar el archivo'){
-            alert('Error: No se pudo cargar el archivo. Intente nuevamente.');
-        }else if(msg =='formato invalido'){
-            alert('Error: Formato invalido. debe cargar el archivo en formato pdf');
-        }else{
-            document.getElementById('id_subir_archivo').style.display='none';
-        }
-        $("#cargado").append(msg); //Mostrara los archivos cargados en el div con el id "Cargados"
-    });
-    
-}*/

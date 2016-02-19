@@ -110,39 +110,39 @@
 							
 							<hr>
 							<div class="form-group">
-										<label class="control-label  col-sm-3 no-padding-right" for="fecha_nacimiento">Fecha de nacimiento: </label>
-									<div class="col-sm-2">
-										<div class="input-group">
-											<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
-											<span class   ="input-group-addon">
-												<i class      ="fa fa-calendar bigger-110"></i>
-											</span>
+								<label class="control-label  col-sm-3 no-padding-right" for="fecha_nacimiento">Fecha de nacimiento: </label>
+								<div class="col-sm-2">
+									<div class="input-group">
+										<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
+										<span class   ="input-group-addon">
+											<i class      ="fa fa-calendar bigger-110"></i>
+										</span>
+									</div>
+								</div>
+								
+								
+								<label class="control-label col-sm-2 no-padding-right" for="sexo">Sexo:</label>
+								<div class="col-sm-1">
+									<div class="clearfix">
+										<div class="col-sm-12">
+											<label class="line-height-1 blue">
+												<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
+												<span class="lbl"> Masculino</span>
+											</label>
 										</div>
 									</div>
-	
-				
-							<label class="control-label col-sm-2 no-padding-right" for="sexo">Sexo:</label>
-									<div class="col-sm-1">
-										<div class="clearfix">
-											<div class="col-sm-12">
-												<label class="line-height-1 blue">
-													<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
-													<span class="lbl"> Masculino</span>
-												</label>
-											</div>
+								</div>
+								<div class="col-sm-1">
+									<div class="clearfix">
+										<div class="col-sm-12">
+											<label class="line-height-1 blue">
+												<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
+												<span class="lbl"> Femenino</span>
+											</label>
 										</div>
 									</div>
-									<div class="col-sm-1">
-										<div class="clearfix">
-											<div class="col-sm-12">
-												<label class="line-height-1 blue">
-													<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
-													<span class="lbl"> Femenino</span>
-												</label>
-											</div>
-										</div>
-									</div>
-							
+								</div>
+								
 							</div>
 							
 							
@@ -181,453 +181,332 @@
 								<label class="control-label col-sm-3 no-padding-right" for="cedula">Fecha de ingreso: </label>
 								<div class="col-sm-9">
 									<div class="col-sm-3">
-												<div class="input-group">
-													<input onkeypress="return numeros(event);" onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_ingreso" id="fecha_ingreso" type="date" data-date-format="yyyy-mm-dd" />
-													<span class   ="input-group-addon">
-														<i class      ="fa fa-calendar bigger-110"></i>
-													</span>
-												</div>
+										<div class="input-group">
+											<input onkeypress="return numeros(event);" onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_ingreso" id="fecha_ingreso" type="date" data-date-format="yyyy-mm-dd" />
+											<span class   ="input-group-addon">
+												<i class      ="fa fa-calendar bigger-110"></i>
+											</span>
+										</div>
 									</div>
 									<div class="col-sm-8">
 										<label class="control-label col-sm-3 no-padding-right" for="cedula">Correo personal: </label>
 										<div class="col-sm-7">
 											<div class="col-sm-12">
 												<div class="input-group">
-												<input autocomplete="off" class  ="input-sm form-control" type="text"  name="correo" id="correo" />
-												<span class   ="input-group-addon">
-													<i class      ="fa fa-weixin"></i>
-												</span>
-												</div>	
+													<input autocomplete="off" class  ="input-sm form-control" type="text"  name="correo" id="correo" />
+													<span class   ="input-group-addon">
+														<i class      ="fa fa-weixin"></i>
+													</span>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>	
-<!-- 								<div class="hr hr-dotted"></div>
-								<div align="center" class="col-sm-6">
-									<label class="control-label col-sm-5 no-padding-right" for="estado">Cargo: </label>
-									<div class    ="input-group">
-										<select name="cargo" id="cargo" class="selectpicker show-tick input-sm form-control" data-live-search="true">
-										</select>
-									</div>
 								</div>
-								
-								<div align="center" class="col-sm-5">
-									<label class="control-label col-sm-1 no-padding-right" for="coordinacion">Coordinación: </label>
-									<div class    ="input-group">
-										<select name="coordinacion" id="coordinacion" class="selectpicker show-tick input-sm form-control" data-live-search="true">
-										</select>
-									</div>
-								</div>													
-								<br><br> -->
-								<div class="hr hr-dotted"></div>
-								<div align="center" class="col-sm-4">
-									<label class="control-label col-sm-2 no-padding-right" for="estado">Estado: </label>
-									<div class    ="input-group">
-										<select name="estado" id="estado" class="selectpicker show-tick input-sm form-control" data-live-search="true">
-										</select>
-									</div>
+							</div>
+							<div class="hr hr-dotted"></div>
+							<div align="center" class="col-sm-6">
+								<label class="control-label col-sm-5 no-padding-right" for="estado">Cargo: </label>
+								<div class    ="input-group">
+									<select name="cargo" id="cargo" class="selectpicker show-tick input-sm form-control" data-live-search="true">
+									</select>
 								</div>
-								
-								<div align="center" class="col-sm-4">
-									<label class="control-label col-sm-2 no-padding-right" for="municipio">Municipio: </label>
-									<div class    ="input-group">
-										<select name="municipio" id="municipio" class="selectpicker show-tick input-sm form-control" data-live-search="true">
-										</select>
-									</div>
+							</div>
+							
+							<div align="center" class="col-sm-5">
+								<label class="control-label col-sm-1 no-padding-right" for="coordinacion">Coordinación: </label>
+								<div class    ="input-group">
+									<select name="coordinacion" id="coordinacion" class="selectpicker show-tick input-sm form-control" data-live-search="true">
+									</select>
 								</div>
-								
-								<div align="center" class="col-sm-4">
-									<label class="control-label col-sm-2 no-padding-right" for="parroquia">Parroquia: </label>
-									<div class    ="input-group">
-										<select name="direccion" id="direccion" class="selectpicker show-tick input-sm form-control" data-live-search="true">
-										</select>
-									</div>
+							</div>
+							<br><br>
+							<div class="hr hr-dotted"></div>
+							<div align="center" class="col-sm-4">
+								<label class="control-label col-sm-2 no-padding-right" for="estado">Estado: </label>
+								<div class    ="input-group">
+									<select name="estado" id="estado" class="selectpicker show-tick input-sm form-control" data-live-search="true">
+									</select>
 								</div>
-								<br><br>
-								<div class="hr hr-dotted"></div>
-								
-								<div class="form-group">
-									<label class="control-label col-sm-3 no-padding-right" for="ubicacion">Ubicación: </label>
+							</div>
+							
+							<div align="center" class="col-sm-4">
+								<label class="control-label col-sm-2 no-padding-right" for="municipio">Municipio: </label>
+								<div class    ="input-group">
+									<select name="municipio" id="municipio" class="selectpicker show-tick input-sm form-control" data-live-search="true">
+									</select>
+								</div>
+							</div>
+							
+							<div align="center" class="col-sm-4">
+								<label class="control-label col-sm-2 no-padding-right" for="parroquia">Parroquia: </label>
+								<div class    ="input-group">
+									<select name="direccion" id="direccion" class="selectpicker show-tick input-sm form-control" data-live-search="true">
+									</select>
+								</div>
+							</div>
+							<br><br>
+							<div class="hr hr-dotted"></div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3 no-padding-right" for="ubicacion">Ubicación: </label>
+								<div class="col-sm-9">
 									<div class="col-sm-9">
-										<div class="col-sm-9">
-											<div class="input-group">
-												<input autocomplete="off" class  ="input-sm form-control" type="text" id="ubicacion" name="ubicacion" placeholder="Zona donde vive la persona"/>
-												<span class   ="input-group-addon">
-													<i class      ="fa 	fa-globe "></i>
-												</span>
-											</div>
+										<div class="input-group">
+											<input autocomplete="off" class  ="input-sm form-control" type="text" id="ubicacion" name="ubicacion" placeholder="Zona donde vive la persona"/>
+											<span class   ="input-group-addon">
+												<i class      ="fa 	fa-globe "></i>
+											</span>
 										</div>
 									</div>
 								</div>
-								<hr>
-								<!-- 								<div align="center" >
-									<label class="control-label no-padding-right" for="parroquia">Coordinacion a la cual pertenecera esta persona: </label>
-									<div class    ="input-group">
-										<select  id="coordinacion" name="coordinacion">
-											<option value ="" default selected>Seleccione una coordinacion...</option>
-											<?php foreach ($this->_coordinaciones as $parroquia):?>
-											<option value ="<?php  echo $parroquia['id_referencial']; ?>"><?php  echo $parroquia['referencia']; ?></option>
-											<?php endforeach ?>
-										</select>
-									</div>
-								</div> -->
-								
-								<div  id="modificarDatos" hidden align="center">
-									<button class="btn btn-primary">
-									Actualizar
-									<i class="glyphicon glyphicon-search"></i>
-									</button>
+							</div>
+							<hr>
+							<!-- 								<div align="center" >
+								<label class="control-label no-padding-right" for="parroquia">Coordinacion a la cual pertenecera esta persona: </label>
+								<div class    ="input-group">
+									<select  id="coordinacion" name="coordinacion">
+										<option value ="" default selected>Seleccione una coordinacion...</option>
+										<?php foreach ($this->_coordinaciones as $parroquia):?>
+										<option value ="<?php  echo $parroquia['id_referencial']; ?>"><?php  echo $parroquia['referencia']; ?></option>
+										<?php endforeach ?>
+									</select>
 								</div>
-							</form>
-						</div>
-						
-						<div class="step-pane" data-step="2">
-							<div>
-								<div id="preguntaHijos">
-									<table align="center">
-										<tr>
-											<td>
-												<label for="">¿Esta persona tiene hijos?</label>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-												&nbsp;
-												
-												<label class="blue">
-													<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos"
-													onchange="showElementos('infoHijos');showElementos('infoExtra');hiddenElementos('preguntaHijos');" value="16" />
-													<span class="lbl"> Si</span>
-												</label>
-												&nbsp;
-												<label class="blue">
-													<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos" onchange="hiddenElementos('infoHijos')"/>
-													<span class="lbl"> No</span>
-												</label>
-											</td>
+							</div> -->
+							
+							<div  id="modificarDatos" hidden align="center">
+								<button class="btn btn-primary">
+								Actualizar
+								<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</form>
+					</div>
+					
+					<div class="step-pane" data-step="2">
+						<div>
+							<div id="preguntaHijos">
+								<table align="center">
+									<tr>
+										<td>
+											<label for="">¿Esta persona tiene hijos?</label>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp;
 											
-										</tr>
-									</table>
-								</div>
-								<hr>
-								<div id="infoExtra" hidden>
-									<h3 align="center" class="lighter block blue">Ahora podra registrar un maximo de 5 hijos</h3>
-								</div>
-								<div id="infoHijos" class="col-sm-16" hidden><!-- informacion de los hijos -->
+											<label class="blue">
+												<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos"
+												onchange="showElementos('infoHijos');showElementos('infoExtra');hiddenElementos('preguntaHijos');" value="16" />
+												<span class="lbl"> Si</span>
+											</label>
+											&nbsp;
+											<label class="blue">
+												<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos" onchange="hiddenElementos('infoHijos')"/>
+												<span class="lbl"> No</span>
+											</label>
+										</td>
+										
+									</tr>
+								</table>
+							</div>
+
+							<div id="infoExtra" hidden>
+							<hr>							
+								<h3 align="center" class="lighter block blue">Ahora podra registrar un maximo de 5 hijos</h3>
+							</div>
+							<div id="infoHijos" class="col-sm-16" hidden><!-- informacion de los hijos -->
+							
+							<br>
+							
+							<div class="form-group">
+								<input type="text" name="tipo_persona" value="hijo" hidden></input>
+								<input autocomplete="off" type="hidden" name="cedula" value="-">
+								<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
+								<input autocomplete="off" type="hidden" name="telefono" value="-">
+								<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
+								<input autocomplete="off" type="hidden" name="correo" value="-">
+								<input autocomplete="off" type="hidden" name="direccion" value="0">
+								<input autocomplete="off" type="hidden" name="ubicacion" value="-">
+								<input autocomplete="off" type="hidden" name="cargo" value="0">
+								<input autocomplete="off" type="hidden" name="coordinacion" value="0">
 								
-								<br>
+								<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
 								
-								<div class="form-group">
-									<input type="text" name="tipo_persona" value="hijo" hidden></input>
-									<input autocomplete="off" type="hidden" name="cedula" value="-">
-									<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
-									<input autocomplete="off" type="hidden" name="telefono" value="-">
-									<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
-									<input autocomplete="off" type="hidden" name="correo" value="-">
-									<input autocomplete="off" type="hidden" name="direccion" value="0">
-									<input autocomplete="off" type="hidden" name="ubicacion" value="-">
-									
-									<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
-									
-									<div class="col-xs-12 col-sm-7">
-										<div class="col-sm-6">
-											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
-											type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control" />
-										</div>
-										<div class="col-sm-6">
-											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
-											type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
-										</div>
+								<div class="col-xs-12 col-sm-7">
+									<div class="col-sm-6">
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+										type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control" />
+									</div>
+									<div class="col-sm-6">
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+										type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
 									</div>
 								</div>
+							</div>
+							
+							<div class="space-2"></div>
+							
+							<div class="form-group">
+								<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
 								
-								<div class="space-2"></div>
-								
-								<div class="form-group">
-									<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
-									
-									<div class="col-xs-12 col-sm-7">
-										<div class="col-sm-6">
-											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
-										</div>
-										<div class="col-sm-6">
-											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
-										</div>
+								<div class="col-xs-12 col-sm-7">
+									<div class="col-sm-6">
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
+									</div>
+									<div class="col-sm-6">
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Fecha de nacimiento: </label>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Fecha de nacimiento: </label>
+								<div class="col-sm-8">
+									<div class="col-sm-4">
+										<div class="input-group">
+											<input onkeypress="return numeros(event);" onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
+											<span class   ="input-group-addon">
+												<i class      ="fa fa-calendar bigger-110"></i>
+											</span>
+										</div>
+									</div>
 									<div class="col-sm-8">
-										<div class="col-sm-4">
-											<div class="input-group">
-												<input onkeypress="return numeros(event);" onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
-												<span class   ="input-group-addon">
-													<i class      ="fa fa-calendar bigger-110"></i>
-												</span>
-											</div>
+										<div>
+											<label class="control-label col-sm-3 no-padding-right" for="sexo">Sexo:</label>
 										</div>
-										<div class="col-sm-8">
-											<div>
-												<label class="control-label col-sm-3 no-padding-right" for="sexo">Sexo:</label>
-											</div>
-											<div class="col-sm-2">
-												<div class="clearfix">
-													<div>
-														<label class="line-height-1 blue">
-															<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
-															<span class="lbl"> Masculino</span>
-														</label>
-													</div>
+										<div class="col-sm-2">
+											<div class="clearfix">
+												<div>
+													<label class="line-height-1 blue">
+														<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
+														<span class="lbl"> Masculino</span>
+													</label>
 												</div>
 											</div>
-											<div class="col-sm-2">
-												<div class="clearfix">
-													<div class="col-sm-12">
-														<label class="line-height-1 blue">
-															<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
-															<span class="lbl"> Femenino</span>
-														</label>
-													</div>
+										</div>
+										<div class="col-sm-2">
+											<div class="clearfix">
+												<div class="col-sm-12">
+													<label class="line-height-1 blue">
+														<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
+														<span class="lbl"> Femenino</span>
+													</label>
 												</div>
 											</div>
 										</div>
 									</div>
-									
-								</div>
-								<div align="center">
-									<button class="btn btn-primary" onclick="send_consulta_hijo();
-									showElementos('tablaHijos');hiddenElementos('infoHijos');hiddenElementos('infoExtra');showElementos('AgregarOtro');
-									send_registro_persona();">
-									<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
-									Registrar
-									</button>
-								</div>
-								</div><!--  Fin informacion de los hijos -->
-								<hr>
-								<div align="center" id="AgregarOtro" hidden>
-									<button class="btn btn-primary" onclick="showElementos('infoHijos');hiddenElementos('AgregarOtro');">
-									<i class      ="glyphicon glyphicon-plus"></i>
-									Agregar otro hijo
-									</button>
-								</div>
-								<div id="tablaHijos" hidden>
-									<br>
-									<table class="table table-striped table-bordered table-hover">
-										<thead>
-											<tr>
-												<th>Nombres</th>
-												<th class="hidden-480">Apellidos</th>
-												<th class="center">Sexo</th>
-												<th class="center">Edad</th>
-											</tr>
-										</thead>
-									</table>
-									<table id="tablaHijosAdd" class="table table-striped table-bordered table-hover">
-										<thead>
-											<tr>
-												<th>Nombres</th>
-												<th class="hidden-480">Apellidos</th>
-												<th class="center">Sexo</th>
-												<th class="center">Edad</th>
-											</tr>
-										</thead>
-										
-										<tbody>
-											</tbody>  <!-- div tabla  -->
-										</table>
-										</div>	<!-- final div tabla			 -->
-										
-									</div>
-									<hr>
-									
 								</div>
 								
-								<div class="step-pane" data-step="3">
-									<div>
-										<div id="preguntaPadres">
-											<table align="center">
-												<tr>
-													<td>
-														<label for="">¿Esta persona tiene Padres?</label>
-													</td>
-												</tr>
-												<tr>
-													<td>
-														&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-														&nbsp;
-														
-														<label class="blue">
-															<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres"
-															onchange="showElementos('preguntaPadresAmbos');hiddenElementos('preguntaPadres');" value="16" />
-															<span class="lbl"> Si</span>
-														</label>
-														&nbsp;
-														<label class="blue">
-															<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoPadres')"/>
-															<span class="lbl"> No</span>
-														</label>
-													</td>
-													
-												</tr>
-											</table>
-										</div>
-										
-										<div id="preguntaPadresAmbos" hidden>
-											<table align="center">
+							</div>
+							<div align="center">
+								<button class="btn btn-primary" onclick="send_consulta_hijo();
+								showElementos('tablaHijos');hiddenElementos('infoHijos');hiddenElementos('infoExtra');showElementos('AgregarOtro');
+								send_registro_persona();">
+								<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+								Registrar
+								</button>
+							</div>
+							<hr>
+							</div><!--  Fin informacion de los hijos -->
+
+							<div align="center" id="AgregarOtro" hidden>
+
+								<button class="btn btn-primary" onclick="showElementos('infoHijos');hiddenElementos('AgregarOtro');">
+								<i class      ="glyphicon glyphicon-plus"></i>
+								Agregar otro hijo
+								</button>
+							</div>
+							<div id="tablaHijos" hidden>
+								<br>
+								<table id="tablaHijosAdd" class="table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>Nombres</th>
+											<th class="hidden-480">Apellidos</th>
+											<th class="center">Sexo</th>
+											<th class="center">Edad</th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										</tbody>  <!-- div tabla  -->
+									</table>
+									</div>	<!-- final div tabla			 -->
+									
+								</div>
+								<hr>
+								
+							</div>
+							
+							<div class="step-pane" data-step="3">
+								<div>
+									<div id="preguntaPadres">
+										<table align="center">
+											<tr>
+												<td>
+													<label for="">¿Esta persona tiene Padres?</label>
+												</td>
+											</tr>
+											<tr>
 												<td>
 													&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 													&nbsp;
 													
 													<label class="blue">
 														<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres"
-														onchange="showElementos('infoPadresAmbos');hiddenElementos('infoPadresUno');" value="16" />
-														<span class="lbl"> Ambos</span>
+														onchange="showElementos('preguntaPadresAmbos');hiddenElementos('preguntaPadres');" value="16" />
+														<span class="lbl"> Si</span>
 													</label>
 													&nbsp;
 													<label class="blue">
-														<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoPadresAmbos');showElementos('infoPadreUnico');"/>
-														<span class="lbl"> Solo uno de ellos</span>
+														<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoPadres')"/>
+														<span class="lbl"> No</span>
 													</label>
 												</td>
 												
 											</tr>
 										</table>
 									</div>
-									<hr>
 									
-									<div id="infoPadresAmbos" class="col-sm-16" hidden><!-- informacion de los Padres -->
-									<h3 align="center" class="lighter block blue">Información del padre de la persona</h3>
-									<br>
-									<div id="infoPadre">
-										<input type="text" name="tipo_persona" value="padre" hidden></input>
-										<input autocomplete="off" type="hidden" name="cedula" value="-">
-										<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
-										<input autocomplete="off" type="hidden" name="fecha_nacimiento" value="2016-01-01">
-										<input autocomplete="off" type="hidden" name="telefono" value="-">
-										<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
-										<input autocomplete="off" type="hidden" name="correo" value="-">
-										<input autocomplete="off" type="hidden" name="direccion" value="0">
-										<input autocomplete="off" type="hidden" name="ubicacion" value="-">
-										<input autocomplete="off" type="hidden" name="sexos" value="0">
-										<div class="form-group">
+									<div id="preguntaPadresAmbos" hidden>
+										<table align="center">
+											<td>
+												&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+												&nbsp;
+												
+												<label class="blue">
+													<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres"
+													onchange="showElementos('infoPadresAmbos');hiddenElementos('infoPadresUno');" value="16" />
+													<span class="lbl"> Ambos</span>
+												</label>
+												&nbsp;
+												<label class="blue">
+													<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoPadresAmbos');showElementos('infoPadreUnico');"/>
+													<span class="lbl"> Solo uno de ellos</span>
+												</label>
+											</td>
 											
-											<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
-											
-											<div class="col-xs-12 col-sm-7">
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control" />
-												</div>
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
-												</div>
-											</div>
-										</div>
-										<div class="space-2"></div>
-										<div class="form-group">
-											<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
-											
-											<div class="col-xs-12 col-sm-7">
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
-												</div>
-												<div class="col-sm-6">
-													<input  style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Telefono: </label>
-											<div class="col-sm-8">
-												<div class="col-sm-4">
-													<div class="input-group">
-														<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" />
-														<span class   ="input-group-addon">
-															<i class      ="ace-icon fa fa-phone"></i>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<hr>
-									<br>
-									<h3 align="center" class="lighter block blue">Información de la madre de la persona</h3>
-									<div id="infoMadre">
-										<input autocomplete="off" type="hidden" name="cedula" value="-">
-										<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
-										<input autocomplete="off" type="hidden" name="fecha_nacimiento" value="2016-01-01">
-										<input autocomplete="off" type="hidden" name="telefono" value="-">
-										<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
-										<input autocomplete="off" type="hidden" name="correo" value="-">
-										<input autocomplete="off" type="hidden" name="direccion" value="0">
-										<input autocomplete="off" type="hidden" name="ubicacion" value="-">
-										<input autocomplete="off" type="hidden" name="sexos" value="0">
-										<div class="form-group">
-											<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
-											
-											<div class="col-xs-12 col-sm-7">
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control" />
-												</div>
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
-												</div>
-											</div>
-										</div>
-										<div class="space-2"></div>
-										<div class="form-group">
-											<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
-											
-											<div class="col-xs-12 col-sm-7">
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
-												</div>
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Telefono: </label>
-											<div class="col-sm-8">
-												<div class="col-sm-4">
-													<div class="input-group">
-														<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" />
-														<span class   ="input-group-addon">
-															<i class      ="ace-icon fa fa-phone"></i>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div align="center">
-										<button class="btn btn-primary" onclick="send_consulta_hijo();
-										showElementos('tablaPadres');hiddenElementos('infoPadres');hiddenElementos('infoExtra');showElementos('AgregarOtroPadre');
-										send_registro_persona()">
-										<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
-										Registrar
-										</button>
-									</div>
-									</div><!--  Fin informacion de los Padres -->
-									<hr>
-									
-									
-									<div id="infoPadreUnico" class="col-sm-16" hidden><!-- informacion de los Padres -->
-									<br>
-									
+										</tr>
+									</table>
+								</div>
+								<hr>
+								
+								<div id="infoPadresAmbos" class="col-sm-16" hidden><!-- informacion de los Padres -->
+								<h3 align="center" class="lighter block blue">Información del padre de la persona</h3>
+								<br>
+								<div id="infoPadre">
+									<input type="text" name="tipo_persona" value="padre" hidden></input>
+									<input autocomplete="off" type="hidden" name="cedula" value="-">
+									<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
+									<input autocomplete="off" type="hidden" name="fecha_nacimiento" value="2016-01-01">
+									<input autocomplete="off" type="hidden" name="telefono" value="-">
+									<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
+									<input autocomplete="off" type="hidden" name="correo" value="-">
+									<input autocomplete="off" type="hidden" name="direccion" value="0">
+									<input autocomplete="off" type="hidden" name="ubicacion" value="-">
+									<input autocomplete="off" type="hidden" name="sexos" value="0">
 									<div class="form-group">
-										<input autocomplete="off" type="hidden" name="cedula" value="-">
-										<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
-										<input autocomplete="off" type="hidden" name="fecha_nacimiento" value="2016-01-01">
-										<input autocomplete="off" type="hidden" name="telefono" value="-">
-										<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
-										<input autocomplete="off" type="hidden" name="correo" value="-">
-										<input autocomplete="off" type="hidden" name="direccion" value="0">
-										<input autocomplete="off" type="hidden" name="ubicacion" value="-">
-										<input autocomplete="off" type="hidden" name="sexos" value="0">
 										
 										<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
 										
@@ -640,9 +519,59 @@
 											</div>
 										</div>
 									</div>
-									
 									<div class="space-2"></div>
-									
+									<div class="form-group">
+										<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
+										
+										<div class="col-xs-12 col-sm-7">
+											<div class="col-sm-6">
+												<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
+											</div>
+											<div class="col-sm-6">
+												<input  style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Telefono: </label>
+										<div class="col-sm-8">
+											<div class="col-sm-4">
+												<div class="input-group">
+													<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" />
+													<span class   ="input-group-addon">
+														<i class      ="ace-icon fa fa-phone"></i>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<br>
+								<h3 align="center" class="lighter block blue">Información de la madre de la persona</h3>
+								<div id="infoMadre">
+									<input autocomplete="off" type="hidden" name="cedula" value="-">
+									<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
+									<input autocomplete="off" type="hidden" name="fecha_nacimiento" value="2016-01-01">
+									<input autocomplete="off" type="hidden" name="telefono" value="-">
+									<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
+									<input autocomplete="off" type="hidden" name="correo" value="-">
+									<input autocomplete="off" type="hidden" name="direccion" value="0">
+									<input autocomplete="off" type="hidden" name="ubicacion" value="-">
+									<input autocomplete="off" type="hidden" name="sexos" value="0">
+									<div class="form-group">
+										<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
+										
+										<div class="col-xs-12 col-sm-7">
+											<div class="col-sm-6">
+												<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control" />
+											</div>
+											<div class="col-sm-6">
+												<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
+											</div>
+										</div>
+									</div>
+									<div class="space-2"></div>
 									<div class="form-group">
 										<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
 										
@@ -668,256 +597,326 @@
 											</div>
 										</div>
 									</div>
+								</div>
+								<div align="center">
+									<button class="btn btn-primary" onclick="send_consulta_hijo();
+									showElementos('tablaPadres');hiddenElementos('infoPadres');hiddenElementos('infoExtra');showElementos('AgregarOtroPadre');
+									send_registro_persona()">
+									<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+									Registrar
+									</button>
+								</div>
+								</div><!--  Fin informacion de los Padres -->
+								<hr>
+								
+								
+								<div id="infoPadreUnico" class="col-sm-16" hidden><!-- informacion de los Padres -->
+								<br>
+								
+								<div class="form-group">
+									<input autocomplete="off" type="hidden" name="cedula" value="-">
+									<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
+									<input autocomplete="off" type="hidden" name="fecha_nacimiento" value="2016-01-01">
+									<input autocomplete="off" type="hidden" name="telefono" value="-">
+									<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
+									<input autocomplete="off" type="hidden" name="correo" value="-">
+									<input autocomplete="off" type="hidden" name="direccion" value="0">
+									<input autocomplete="off" type="hidden" name="ubicacion" value="-">
+									<input autocomplete="off" type="hidden" name="sexos" value="0">
 									
-									<div align="center">
-										<button class="btn btn-primary" onclick="send_consulta_hijo();
-										showElementos('tablaPadres');hiddenElementos('infoPadres');hiddenElementos('infoExtra');showElementos('AgregarOtroPadre');
-										send_registro_persona()">
-										<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
-										Registrar
-										</button>
-									</div>
-									</div><!--  Fin informacion de los Padres -->
-									<hr>
-									<div align="center" id="AgregarOtroPadre" hidden>
-										<button class="btn btn-primary" onclick="showElementos('infoPadres');hiddenElementos('AgregarOtroPadre');">
-										<i class      ="glyphicon glyphicon-plus"></i>
-										Agregar padre
-										</button>
-									</div>
-									<div id="tablaPadres" hidden>
-										<br>
-										<table id="tablaPadresAdd" class="table table-striped table-bordered table-hover">
-											<thead>
-												<tr>
-													<th>Primer nombre</th>
-													<th class="hidden-480">Segundo nombre</th>
-													<th>Primer apellido</th>
-													<th class="hidden-480">Segundo apellido</th>
-													<th class="center">Sexo</th>
-													<th class="center">Edad</th>
-												</tr>
-											</thead>
-											
-											<tbody>
-												<?php foreach ($this->_listado as $persona): ?>
-												<tr>
-													
-													<!-- 	<td class="center">
-														<div class="hidden-sm hidden-xs action-buttons">
-																		<a class="btn-app  btn-primary  btn-sm" id="detalle_persona"
-																						onclick="pickOpen('prod', 'id_prod',
-																'<?php echo BASE_URL."personal/update/". $persona['id_persona'] ?>',
-																90, 80, 70, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
-																style=cursor:pointer; >
-																<i class="glyphicon glyphicon-search"></i>
-																Detalles
-																
-															</a>
-															
-															<a class="btn-app btn-danger btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
-																<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>
-																Eliminar
-															</a>
-														</div>
-														
-													</td> -->
-												</tr>
-												<?php endforeach ?>
-												</tbody>  <!-- div tabla  -->
-											</table>
-											</div>	<!-- final div tabla			 -->
-											
+									<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
+									
+									<div class="col-xs-12 col-sm-7">
+										<div class="col-sm-6">
+											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control" />
 										</div>
-										<hr>
+										<div class="col-sm-6">
+											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
+										</div>
+									</div>
+								</div>
+								
+								<div class="space-2"></div>
+								
+								<div class="form-group">
+									<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
+									
+									<div class="col-xs-12 col-sm-7">
+										<div class="col-sm-6">
+											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
+										</div>
+										<div class="col-sm-6">
+											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Telefono: </label>
+									<div class="col-sm-8">
+										<div class="col-sm-4">
+											<div class="input-group">
+												<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" />
+												<span class   ="input-group-addon">
+													<i class      ="ace-icon fa fa-phone"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div align="center">
+									<button class="btn btn-primary" onclick="send_consulta_hijo();
+									showElementos('tablaPadres');hiddenElementos('infoPadres');hiddenElementos('infoExtra');showElementos('AgregarOtroPadre');
+									send_registro_persona()">
+									<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+									Registrar
+									</button>
+								</div>
+								</div><!--  Fin informacion de los Padres -->
+								<hr>
+								<div align="center" id="AgregarOtroPadre" hidden>
+									<button class="btn btn-primary" onclick="showElementos('infoPadres');hiddenElementos('AgregarOtroPadre');">
+									<i class      ="glyphicon glyphicon-plus"></i>
+									Agregar padre
+									</button>
+								</div>
+								<div id="tablaPadres" hidden>
+									<br>
+									<table id="tablaPadresAdd" class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>Primer nombre</th>
+												<th class="hidden-480">Segundo nombre</th>
+												<th>Primer apellido</th>
+												<th class="hidden-480">Segundo apellido</th>
+												<th class="center">Sexo</th>
+												<th class="center">Edad</th>
+											</tr>
+										</thead>
+										
+										<tbody>
+											<?php foreach ($this->_listado as $persona): ?>
+											<tr>
+												
+												<!-- 	<td class="center">
+													<div class="hidden-sm hidden-xs action-buttons">
+																		<a class="btn-app  btn-primary  btn-sm" id="detalle_persona"
+																							onclick="pickOpen('prod', 'id_prod',
+															'<?php echo BASE_URL."personal/update/". $persona['id_persona'] ?>',
+															90, 80, 70, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
+															style=cursor:pointer; >
+															<i class="glyphicon glyphicon-search"></i>
+															Detalles
+															
+														</a>
+														
+														<a class="btn-app btn-danger btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
+															<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>
+															Eliminar
+														</a>
+													</div>
+													
+												</td> -->
+											</tr>
+											<?php endforeach ?>
+											</tbody>  <!-- div tabla  -->
+										</table>
+										</div>	<!-- final div tabla			 -->
 										
 									</div>
+									<hr>
 									
-									<div class="step-pane" data-step="4">
-										<div class="center">
+								</div>
+								
+								<div class="step-pane" data-step="4">
+
+									<div class="informacion_adicional" id="informacion_adicional">
+
+									<div class="center">
+										<div>
+											<table align="center">
+												<tr>
+													<td>
+														<label for="">¿Esta persona tiene vehiculos?</label>
+													</td>
+													<td><label for="">Tipo de vivienda</label></td>
+												</tr>
+												<tr>
+													<td>
+														&nbsp; &nbsp; &nbsp;
+														
+														<label class="blue">
+															<input autocomplete="off" type="radio" class="ace" name="vehiculos"
+															onchange="" value="si" />
+															<span class="lbl"> Si</span>
+														</label>
+														&nbsp;
+														<label class="blue">
+															<input autocomplete="off" value="no" type="radio" class="ace" name="vehiculos"  onchange=""/>
+															<span class="lbl"> No</span>
+														</label>
+													</td>
+													<td>
+														&nbsp; &nbsp; &nbsp;
+														
+														<label class="blue">
+															<input autocomplete="off" type="radio" class="ace" name="vivienda" 
+															onchange="" value="73" />
+															<span class="lbl"> Alquilada</span>
+														</label>
+														&nbsp;
+														<label class="blue">
+															<input autocomplete="off" value="74" type="radio" class="ace" name="vivienda"  onchange=""/>
+															<span class="lbl"> Propia</span>
+														</label>
+													</td>
+												</table>
+											</div>
+											<hr>
 											<div>
 												<table align="center">
 													<tr>
 														<td>
-															<label for="">¿Esta persona tiene vehiculos?</label>
+															<label for="">¿Practica algun deporte?</label>
 														</td>
-														<td><label for="">Tipo de vivienda</label></td>
 													</tr>
 													<tr>
 														<td>
 															&nbsp; &nbsp; &nbsp;
 															
 															<label class="blue">
-																<input autocomplete="off" type="radio" class="ace" name="vehiculos"
-																onchange="" value="si" />
+																<input autocomplete="off" type="radio" class="ace" name="deporte"
+																onchange="showElementos('deporteSelect');" />
 																<span class="lbl"> Si</span>
 															</label>
 															&nbsp;
 															<label class="blue">
-																<input autocomplete="off" value="no" type="radio" class="ace" name="vehiculos" onchange=""/>
+																<input autocomplete="off" value="no" type="radio" class="ace" name="deporte" onchange="hiddenElementos('deporteSelect');"/>
 																<span class="lbl"> No</span>
 															</label>
 														</td>
+														
+													</tr>
+												</table>
+											</div>
+											<div class="space-2"></div>
+											<div id="deporteSelect" hidden>
+												<table align="center">
+													<tr>
+														<td>
+															<label for="">Deportes que practica</label>
+														</td>
+													</tr>
+													<tr>
 														<td>
 															&nbsp; &nbsp; &nbsp;
 															
 															<label class="blue">
-																<input autocomplete="off" type="radio" class="ace" name="vivienda"
-																onchange="" value="si" />
-																<span class="lbl"> Alquilada</span>
+																<input autocomplete="off" type="checkbox" id="check1" class="ace" name="<?php echo 'check0'; ?>"
+																onchange="" value="65" id="deporte"/>
+																<span class="lbl"> Futbol</span>
 															</label>
 															&nbsp;
 															<label class="blue">
-																<input autocomplete="off" value="no" type="radio" class="ace" name="vivienda" onchange=""/>
-																<span class="lbl"> Propia</span>
+																<input autocomplete="off" value="66" id="check2" type="checkbox" class="ace" name="<?php echo 'check1' ?>" onchange=""/>
+																<span class="lbl"> Basquet</span>
+															</label>
+															&nbsp;
+															<label class="blue">
+																<input autocomplete="off" value="67" id="check3" type="checkbox" class="ace" name="<?php echo 'check2' ?>" onchange=""/>
+																<span class="lbl"> Boleyball</span>
+															</label>
+															&nbsp;
+															<label class="blue">
+																<input autocomplete="off" value="68" id="check4" type="checkbox" class="ace" name="<?php echo 'check3' ?>" onchange=""/>
+																<span class="lbl"> Beisbol</span>
+															</label>
+															&nbsp;
+															<label class="blue">
+																<input autocomplete="off" value="69" id="check5" type="checkbox" class="ace" name="<?php echo 'check4'?>" onchange=""/>
+																<span class="lbl"> Softball</span>
+															</label>
+															&nbsp;
+															<label class="blue">
+																<input autocomplete="off" value="70" id="check6" type="checkbox" class="ace" name="<?php echo 'check5' ?>" onchange=""/>
+																<span class="lbl"> Ajedrez</span>
+															</label>
+															&nbsp;
+															<label class="blue">
+																<input autocomplete="off" value="80" id="check7" type="checkbox" class="ace" name="<?php echo 'check6' ?>" onchange=""/>
+																<span class="lbl"> Otro</span>
 															</label>
 														</td>
-													</table>
-												</div>
-												<hr>
-												<div>
-													<table align="center">
-														<tr>
-															<td>
-																<label for="">¿Practica algun deporte?</label>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																&nbsp; &nbsp; &nbsp;
-																
-																<label class="blue">
-																	<input autocomplete="off" type="radio" class="ace" name="deporte"
-																	onchange="showElementos('deporteSelect');" value="si" />
-																	<span class="lbl"> Si</span>
-																</label>
-																&nbsp;
-																<label class="blue">
-																	<input autocomplete="off" value="no" type="radio" class="ace" name="deporte" onchange="hiddenElementos('deporteSelect');"/>
-																	<span class="lbl"> No</span>
-																</label>
-															</td>
-															
-														</tr>
-													</table>
-												</div>
-												<div class="space-2"></div>
-												<div id="deporteSelect" hidden>
-													<table align="center">
-														<tr>
-															<td>
-																<label for="">Deportes que practica</label>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																&nbsp; &nbsp; &nbsp;
-																
-																<label class="blue">
-																	<input autocomplete="off" type="checkbox" class="ace" name="deporteSeleccionado"
-																	onchange="" value="si" />
-																	<span class="lbl"> Futbol</span>
-																</label>
-																&nbsp;
-																<label class="blue">
-																	<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
-																	<span class="lbl"> Basquet</span>
-																</label>
-																&nbsp;
-																<label class="blue">
-																	<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
-																	<span class="lbl"> Boleyball</span>
-																</label>
-																&nbsp;
-																<label class="blue">
-																	<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
-																	<span class="lbl"> Beisbol</span>
-																</label>
-																&nbsp;
-																<label class="blue">
-																	<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
-																	<span class="lbl"> Softball</span>
-																</label>
-																&nbsp;
-																<label class="blue">
-																	<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
-																	<span class="lbl"> Ajedrez</span>
-																</label>
-																&nbsp;
-																<label class="blue">
-																	<input autocomplete="off" value="no" type="checkbox" class="ace" name="deporteSeleccionado" onchange=""/>
-																	<span class="lbl"> Otro</span>
-																</label>
-															</td>
-															
-														</tr>
-													</table>
-												</div>
-												<hr>
-												<div>
-													<table align="center">
-														<tr>
-															<td>
-																<label for="">¿Esta persona toma algún medicamento de por vida?</label>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																&nbsp; &nbsp; &nbsp;
-																
-																<label class="blue">
-																	<input autocomplete="off" type="radio" class="ace" name="deporte"
-																	onchange="showElementos('medicamentos');" value="si" />
-																	<span class="lbl"> Si</span>
-																</label>
-																&nbsp;
-																<label class="blue">
-																	<input autocomplete="off" value="no" type="radio" class="ace" name="deporte" onchange="hiddenElementos('medicamentos');"/>
-																	<span class="lbl"> No</span>
-																</label>
-															</td>
-															
-														</tr>
-													</table>
-												</div>
-												<div id="medicamentos" hidden>
-													<hr>
-													<table align="center">
-														<tr>
-															<td>
-																<label for="">Medicamentos que toma esta persona:</label>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<textarea id="form-field-11" align"center" class="autosize-transition input-sm form-control"></textarea>
-															</td>
-															
-														</tr>
-													</table>
-												</div>
-												
+														
+													</tr>
+												</table>
 											</div>
+											<hr>
+											<div>
+												<table align="center">
+													<tr>
+														<td>
+															<label for="">¿Esta persona toma algún medicamento de por vida?</label>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															&nbsp; &nbsp; &nbsp;
+															
+															<label class="blue">
+																<input autocomplete="off" type="radio" class="ace" name="medicina"
+																onchange="showElementos('medicamentos');"/>
+																<span class="lbl"> Si</span>
+															</label>
+															&nbsp;
+															<label class="blue">
+																<input autocomplete="off" value="no" type="radio" class="ace" name="medicina" onchange="hiddenElementos('medicamentos');"/>
+																<span class="lbl"> No</span>
+															</label>
+														</td>
+														
+													</tr>
+												</table>
+											</div>
+											<div id="medicamentos" hidden>
+												<hr>
+												<table align="center">
+													<tr>
+														<td>
+															<label for="">Medicamentos que toma esta persona:</label>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<textarea id="form-field-11" align"center" class="autosize-transition input-sm form-control" name="medicina_text"></textarea>
+														</td>
+														
+													</tr>
+												</table>
+											</div>
+											
 										</div>
 									</div>
 								</div>
-								
-								<hr />
-								<div class="wizard-actions">
-									<button class="btn btn-prev">
-									<i class="ace-icon fa fa-arrow-left"></i>
-									Modificar datos
-									</button>
-									
-									<button class="btn btn-success btn-next" data-last="Finish" onclick="
-									hiddenElementos('inicio');">
-									Siguiente
-									<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-									</button>
 								</div>
-								</div><!-- /.widget-main -->
-								</div><!-- /.widget-body -->
 							</div>
 							
-						</form>
-						</div><!-- /.page-content -->
+							<hr />
+							<div class="wizard-actions">
+								<button class="btn btn-prev">
+								<i class="ace-icon fa fa-arrow-left"></i>
+								Modificar datos
+								</button>
+								
+								<button class="btn btn-success btn-next" data-last="Finish" onclick="
+								hiddenElementos('inicio');">
+								Siguiente
+								<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+								</button>
+							</div>
+							</div><!-- /.widget-main -->
+							</div><!-- /.widget-body -->
+						</div>
+						
+					</form>
+					</div><!-- /.page-content -->

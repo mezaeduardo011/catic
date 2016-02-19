@@ -2,7 +2,7 @@ function send_registro_persona() {
 
     //alert("/catic/personal/insertPerson?"+request(document.getElementById('divPersona')));
     //if (request(document.getElementById('divPersona')) != "") {
-        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
+        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoHijos')), null, true);
     // };
     // if (request(document.getElementById('infoHijos')) != "") {
     //     send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoHijos')), null, true);
@@ -16,12 +16,15 @@ function send_registro_persona() {
     // if (request(document.getElementById('infoPadreUnico')) != "") {
     //     send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadreUnico')), null, true);
     // };
-
 }
 
+function send_registro_InfoAdicional() {
+    //alert("/catic/personal/Insert_InfoAdicional?"+request(document.getElementById('informacion_adicional')));
+    send_ajax('POST', '../../catic/personal/Insert_InfoAdicional', 'response_registro_persona', request(document.getElementById('informacion_adicional')), null, true);
+}
 
 function response_registro_persona(response) {
-    alert("Registro exitoso");
+    alert("Registro Exitoso");
 
 }
 
@@ -93,22 +96,3 @@ function borrar_datos_tabla(id_tabla) {
     }
     return true;
 }
-
-
- var loadSelectestado3 = $("#estado");
-    $.ajax({
-        type: "POST",
-        dataType: 'json',
-        success: function(){
-            var select = $(loadSelectestado3);                  
-                $.post(BASE_URL + "personal/loadSelectEstado",
-                    function(data) {
-                        select.empty();
-                        select.append('<option value="">Seleccione...</option>');
-                        alert(data);
-                        for (var i=0; i<data.length; i++) {
-                            select.append('<option value="' + data[i].value + '">' + data[i].option + '</option>');
-                        }
-                }, "json");
-            }
-    });

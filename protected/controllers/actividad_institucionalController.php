@@ -26,15 +26,10 @@
 				if ($_SERVER['REQUEST_METHOD']=='POST') {
 					
 					$contador= $_POST['contador'];
-					$actividad = array(
-			
-					':nombre_actividad' => $_POST['nombre_actividad'],
-					':fecha_actividad' => $_POST['fecha_actividad'], 
-					':hora_actividad' => $_POST['timepicker1'],
-					':ubicacion' => $_POST['ubicacion']
-					);
-
 					$check = $this->valCheckbox($contador);
+					$actividad = $this->ConvertirArray($_POST);
+					unset($actividad[':contador']);					
+					print_r($actividad);die();
 
 					$arregloPost = $this->ConvertirArraySql($check);
 

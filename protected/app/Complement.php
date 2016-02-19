@@ -1,7 +1,7 @@
 <?php 
 
 	class Complement{
-				function valCheckbox($contador){						
+				function valCheckbox($contador){		
 						for ($i = 0; $i <= $contador; $i++) {
 							if(isset($_POST['check'.$i]) && !($_POST['check'.$i]==" ")){
 								$data[$i] =  $_POST['check'.$i];
@@ -9,6 +9,13 @@
 						}
 					return $data;
 				}
+
+				function borrarCheckbox($contador){
+						for ($i = 0; $i <= $contador; $i++) {
+								unset($infoAdicional[':check'.$i]);
+						}
+					return $data;
+				}				
 
 
 				function ConvertirArraySql($arregloPhp){

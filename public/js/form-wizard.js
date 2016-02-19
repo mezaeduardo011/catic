@@ -192,7 +192,7 @@ $('#my-wizard')
   
 })
 .on('finished.fu.wizard', function(e) {
-   //do something when finish button is clicked
+   send_registro_InfoAdicional();
 
 }).on('stepclick.fu.wizard', function(e) {
 
