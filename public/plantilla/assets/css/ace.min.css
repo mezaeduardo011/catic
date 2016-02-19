@@ -6925,7 +6925,7 @@ button.:active {
 	width: 36px
 }
 .dropdown-menu>li:hover>a, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:active, .dropdown-menu>li.active>a, .dropdown-menu>li.active:hover>a {
-	background: #4f99c6;
+	background: #AA1F1F;
 	color: #fff
 }
 .dropdown-default>li:hover>a, .dropdown-default>li>a:focus, .dropdown-default>li>a:active, .dropdown-default>li.active>a, .dropdown-default>li.active:hover>a {
@@ -17063,7 +17063,7 @@ input.typeahead.scrollable~.tt-dropdown-menu {
 }
 .no-skin .nav-list>li>a:focus {
 	background-color: #f8f8f8;
-	color: #1963aa
+	color: #A81A1A
 }
 .no-skin .nav-list>li:hover>a {
 	background-color: #fff;
@@ -17086,7 +17086,7 @@ input.typeahead.scrollable~.tt-dropdown-menu {
 }
 .no-skin .nav-list>li .submenu>li>a {
 	border-top-color: #e4e4e4;
-	background-color: #fbc1c1;
+	background-color: #F9F9F9;
 	color: #030101;
 }
 .no-skin .nav-list>li .submenu>li>a:hover {
