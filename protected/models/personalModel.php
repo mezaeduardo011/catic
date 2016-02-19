@@ -329,7 +329,7 @@
 
 		public function getCoordinaciones(){
 
-		$query = "SELECT * FROM referencial WHERE referencial_id = 9 AND id_referencial !=9;";
+		$query = "SELECT id_referencial as id_coordinacion, referencia as coordinacion FROM referencial WHERE referencial_id = 9 AND id_referencial !=9;";
 			
 			$auxiliar = $this->_db->query($query);
 				try {
@@ -413,7 +413,31 @@
 				
 				return $result;
 			
-		}						
+		}
+
+		public function getCargos(){
+
+			$query = "SELECT C.id_referencial as id_cargo, C.referencia as cargo FROM referencial C  WHERE C.referencial_id=79 and C.id_referencial!=79 ORDER BY id_referencial;";
+			
+			$auxiliar = $this->_db->query($query);
+				try {
+				$this->_db->beginTransaction();
+				$result= $auxiliar->fetchAll();
+				$this->_db->commit();
+				}
+				catch (Exception $e){
+					
+					$this->_db-rollBack();
+					echo "Error :: ".$e->getMessage();
+					exit();
+					
+				}
+				
+				return $result;
+			
+		}
+
+								
 	}
 ?>
 

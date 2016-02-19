@@ -22,16 +22,9 @@
 				"registroPersona/registroPersona",
 				"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion"));
 
-				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter",
-											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));				
-				$coordinaciones = $this->_personal->getCoordinaciones();
-				$this->_view->_coordinaciones = $coordinaciones;
-				$tallas_camisa = $this->_personal->getTallasCamisas();
-				$this->_view->_tallas_camisa = $tallas_camisa;
-				$tallas_pantalon = $this->_personal->getTallasPantalon();
-				$this->_view->_tallas_pantalon = $tallas_pantalon;
-				$tallas_zapatos = $this->_personal->getTallasZapatos();
-				$this->_view->_tallas_zapatos = $tallas_zapatos;
+				$this->_view->setCss(array(
+				"datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter","bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3",
+				"bootstrap-datepicker3.standalone"));				
 				$listado = $this->_personal->getHijosModel();
 				$this->_view->_listado = $listado;
 				//Se pinta la vista con el metodo render.
@@ -42,12 +35,12 @@
 
 		function insertPerson(){
 
-				//$_POST=$_GET;
+				$_POST=$_GET;
 				unset($_POST['url']);
 				unset($_POST['estado']);
 				unset($_POST['municipio']);
 				$persona= $this->ConvertirArray($_POST);
-				//$this->imprimirArreglo($persona);
+				$this->imprimirArreglo($persona);
 				$this->_personal->insertPersonModel($persona);
 	
 			}	
@@ -72,9 +65,6 @@
 
 
 		}
-
-
-	
 
 		function listing(){
 
@@ -145,6 +135,7 @@
 
 		}
 
+
 		  public function BuscarCedula(){
 		  	  //18019742
 		      $cedula= $_POST['cedular'];
@@ -211,6 +202,29 @@
 			 }
 						
 			echo json_encode($data);
-		}				
+		}
+		
+		function SelectCargo(){			
+					$result = $this->_personal->getCargos();
+					$data = array();
+
+					for ($i = 0; $i < count($result); $i++) {
+						$data[$i] = array("value"=>$result[$i]['id_cargo'],"option"=>$result[$i]['cargo']);
+					}
+					echo json_encode($data);
+		}
+
+		function SelectCoordinaciones(){
+
+					$result = $this->_personal->getCoordinaciones();
+					$data = array();
+
+					for ($i = 0; $i < count($result); $i++) {
+						$data[$i] = array("value"=>$result[$i]['id_coordinacion'],"option"=>$result[$i]['coordinacion']);
+					}
+					echo json_encode($data);
+
+		}
+
 	}
 ?>
