@@ -8,6 +8,19 @@
 			parent::__construct();
 			$this->_personal = $this->loadModel('personal');
 			$this->_pdf = $this->getLibrary('SIGESP','utilitario');
+
+			$this->_sidebar_menu =array(
+					array(
+				'id' => 'insert_new',
+				'title' => 'Nueva Persona',
+				'link' => BASE_URL . 'personal' . DS . 'index'
+						),
+			 		array(
+			 	'id' => 'listar',
+			 	'title' => 'Listado de  Persona',
+			 	'link' => BASE_URL . 'personal' . DS . 'listing'
+			 			)
+					);		
 		}
 
 		/* Funcion Index donde se inicializa todo lo basico que  sera usado por el controlador*/
@@ -28,7 +41,7 @@
 
 			$listado = $this->_personal->getHijosModel();
 			$this->_view->_listado = $listado;
-			$this->_view->render('personal');
+			$this->_view->render('personal','','',$this->_sidebar_menu);
 	
 		}
 
@@ -110,7 +123,7 @@
 
 			$listado = $this->_personal->getPersonal();
 			$this->_view->_listado = $listado;
-			$this->_view->render('consulta_personal');
+			$this->_view->render('consulta_personal','','',$this->_sidebar_menu);
 
 		}
 

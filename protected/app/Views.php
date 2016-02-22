@@ -24,20 +24,34 @@
 
 
 			$menu = array(
-							array(
-		  	 				'id' => 'index',
-		  	 				'title' 	=> 'Inicio',
-		  	 				'link'=> BASE_URL . 'index'
-					  	 	),array(
-				            'id' => 'personas',
-				            'title'   => 'Personas',
-				            'link'=> BASE_URL . 'persons'
-					      ),array(
-				            'id' => 'prueba',
-				            'title'   => 'Prueba',
-				            'link'=> BASE_URL . 'personal'
-					      )
-					  	 );
+								array(
+			  	 				'id' => 'index',
+			  	 				'title' 	=> 'Inicio',
+			  	 				'link'=> BASE_URL . 'index'
+						  	 	),array(
+					            'id' => 'personas',
+					            'title'   => 'Control del personal',
+					            'link'=> BASE_URL . 'personal'
+						      ),array(
+					            'id' => 'vacaciones',
+					            'title'   => 'Vacaciones',
+					            'link'=> BASE_URL . 'vacaciones'
+						      )
+								,array(
+					            'id' => 'actividades',
+					            'title'   => 'Actividades',
+					            'link'=> BASE_URL . 'actividad_institucional'
+						      )
+						      ,array(
+					            'id' => 'correspondencias',
+					            'title'   => 'Correspondencias',
+					            'link'=> BASE_URL . 'correspondencia'
+						      ),array(
+					            'id' => 'adiministracion',
+					            'title'   => 'Administracion del sistema',
+					            'link'=> BASE_URL . 'administracion'
+						      )						      
+					  	 );	
 
 
 			$js = array();

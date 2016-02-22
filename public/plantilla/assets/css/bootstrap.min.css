@@ -3987,7 +3987,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 	color: #333
 }
 .alert {
-	padding: 5px;
+	padding: 2px;
 border-radius: 18px 18px 0px 0px;
 -moz-border-radius: 18px 18px 0px 0px;
 -webkit-border-radius: 18px 18px 0px 0px;

@@ -4,101 +4,131 @@
 			<h4>Registro de correspondencia <i class="fa fa-file-text-o"></i></h4>
 		</div>
 		<!-- PAGE CONTENT BEGINS -->
-			<form class="form-horizontal" role="form" action="<?php  echo BASE_URL;?>correspondencia/insert" method="post" >
-					<br>
-					<table align="center">
-						<!---- Labels ---->
-						<tr>
-							<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-							<td><label>Asunto:</label></td>
-							<td></td>
-							<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-							<td><label>Oficina:</label></td>
-						</tr>
-						<!-- Fin de los Labels -->
-						<!---------------------->
-						<!---------------------->
-						<!-- Inputs o selects -->
-						<tr>
-							<td></td>
-							<td>
-								<div class="input-group">
-									<input type="text" class="input-sm form-control" name="asunto" id="asunto" size="25">
-									<span class="input-group-addon">
-										<i class="fa fa-cc"></i>
-									</span>
-								</div>
-							</td>
-							<td></td>
-							<td>&nbsp;</td>
-							<td>
-								<div class="input-group">
-									<input class="input-sm form-control" name="oficina" id="oficina" type="text" size="25" />
-									<span class="input-group-addon">
-										<i class="fa fa-archive"></i>
-									</span>
-								</div>
-							</td>
-						</tr>
-						<!------------Fin de los inputs------------>
-					</table>
-					<br>
-					<table align="center">
-						<tr>
-							<td><label>Instruccion:</label></td>
-							<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-							<td><label>Coordinación Asignada:</label></td>
-							<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-							<td><label>Fecha:</label></td>
-						</tr>
-						<tr>
-							<td>
-								<div class="input-group">
-									<input class="input-sm form-control" name="instruccion" id="instruccion" type="text" size="25" />
-									<span class="input-group-addon">
-										<i class="fa fa-file-text"></i>
-									</span>
-								</div>
-							</td>
-							<td>&nbsp;</td>
-							<td>
-								<div class="input-group">
-									<select  class="selectpicker show-tick input-sm form-control" id="coordinacion" name="coordinacion">
-										<option value="" default selected>Seleccione una coordinación</option>
-										<?php foreach ($this->_coordinacion as $coordinacion):?>
-										<option value ="<?php  echo $coordinacion['id_referencial']; ?>"><?php  echo $coordinacion['referencia']; ?></option>
-										<?php endforeach ?>
-									</select>
-								</div>
-							</td>
-							<td></td>
-							<td>
-								<div class="input-group">
-									<input class="input-sm form-control date-picker" name="fecha_entregado" id="fecha_entregado" type="date" data-date-format="yyyy-mm-dd" />
-									<span class="input-group-addon">
-										<i class="fa fa-calendar bigger-110"></i>
-									</span>
-								</div>
-							</td>
-						</tr>
-					</table>
-					<hr />
-					<div class="clearfix form-actions" align="center">
-						<div>
-							<button class="btn btn-primary" type="submit">
-							<i class="ace-icon fa fa-floppy-o fa-lg"></i>
-							Registrar
-							</button>
-							&nbsp; &nbsp; &nbsp;
-							<button class="btn" type="reset">
-							<i class="ace-icon fa fa-undo bigger-110"></i>
-							Restaurar valores
-							</button>
+		<form class="form-horizontal" role="form" action="<?php  echo BASE_URL;?>correspondencia/registro_correspondencia" method="post" >
+			<br>
+			<table align="center">
+				<!---- Labels ---->
+				<tr>
+					<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+					<td><label>Asunto:</label></td>
+					<td></td>
+					<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+					<td><label>Oficina:</label></td>
+				</tr>
+				<!-- Fin de los Labels -->
+				<!---------------------->
+				<!---------------------->
+				<!-- Inputs o selects -->
+				<tr>
+					<td></td>
+					<td>
+						<div class="input-group">
+							<input type="text" class="input-sm form-control" name="asunto" id="asunto" size="25">
+							<span class="input-group-addon">
+								<i class="fa fa-cc"></i>
+							</span>
 						</div>
-					</div>
-			</form>
-			<!-- PAGE CONTENT ENDS -->
-	</div><!-- /.page-content -->
-</div>
+					</td>
+					<td></td>
+					<td>&nbsp;</td>
+					<td>
+						<div class="input-group">
+							<input class="input-sm form-control" name="oficina" id="oficina" type="text" size="25" />
+							<span class="input-group-addon">
+								<i class="fa fa-archive"></i>
+							</span>
+						</div>
+					</td>
+				</tr>
+				<!------------Fin de los inputs------------>
+			</table>
+			<br>
+			<table align="center">
+				<tr>
+					<td><label>Instruccion:</label></td>
+					<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+					<td><label>Coordinación Asignada:</label></td>
+					<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+					<td><label>Fecha:</label></td>
+				</tr>
+				<tr>
+					<td>
+						<div class="input-group">
+							<input class="input-sm form-control" name="instruccion" id="instruccion" type="text" size="25" />
+							<span class="input-group-addon">
+								<i class="fa fa-file-text"></i>
+							</span>
+						</div>
+					</td>
+					<td>&nbsp;</td>
+					<td>
+						<div class="input-group">
+							<select  class="selectpicker show-tick input-sm form-control" id="coordinacion" name="coordinacion">
+								<option value="" default selected>Seleccione una coordinación</option>
+								<?php foreach ($this->_coordinacion as $coordinacion):?>
+								<option value ="<?php  echo $coordinacion['id_referencial']; ?>"><?php  echo $coordinacion['referencia']; ?></option>
+								<?php endforeach ?>
+							</select>
+						</div>
+					</td>
+					<td></td>
+					<td>
+						<div class="input-group">
+							<input class="input-sm form-control date-picker" name="fecha" id="fecha" type="date" data-date-format="yyyy-mm-dd" />
+							<span class="input-group-addon">
+								<i class="fa fa-calendar bigger-110"></i>
+							</span>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<div align="center">
+								<label class="control-label col-sm-5 no-padding-right" for="tipo">Tipo de correspondencia:</label>
+								<div class="col-sm-1">
+									<div class="clearfix">
+										<div class="col-sm-12">
+											<label class="line-height-1 blue">
+												<input autocomplete="off"  value="Entregada" type="radio" class="ace" name="tipo" />
+												<span class="lbl"> Entregada</span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-1">
+									<div class="clearfix">
+										<div class="col-sm-12">
+											<label class="line-height-1 blue">
+												<input autocomplete="off"  value="Recibida" type="radio" class="ace" name="tipo" />
+												<span class="lbl"> Recibida</span>
+											</label>
+										</div>
+									</div>
+								</div>				
+			</div>	
+			<br><br>		
+			<div class="clearfix form-actions" align="center">
+				<div>
+					<button class="btn btn-success" type="submit" onclick="closePickList()">
+						<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+					Registrar
+					</button>
+					&nbsp; &nbsp; &nbsp;							
+					<button class="btn" type="reset">
+					<i class="ace-icon fa fa-undo bigger-110"></i>
+					Restaurar valores
+					</button>
+					&nbsp; &nbsp; &nbsp;			
+					<a class="btn btn-primary" type="submit" onclick="closePickList()">
+					<i class      ="fa fa-reply-all"></i>
+					Salir
+					</a>					
+				</div>
+			</div>
+		</form>
+		<!-- PAGE CONTENT ENDS -->
+		</div><!-- /.page-content -->
+	</div>
 </body>
 </html>
+

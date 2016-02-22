@@ -11,14 +11,14 @@
 			;
 		}
 
-		public function insertCorrespondencia($persona){
-
-			$this->query = "INSERT INTO correspondencia_diaria
-			(numero_comunicacion  , asunto ,  oficina , fecha_recibido ,  fecha_entregado ,  instruccion , id_status, id_coordinacion)  VALUES 
-			(:numero_comunicacion , :asunto, :oficina, :fecha_recibido , :fecha_entregado , :instruccion , 23 ,:coordinacion)   ";		
+		public function insertCorrespondencia($correspondencia){
+						
+			$this->query = "INSERT INTO correspondencia
+							( asunto ,  oficina ,   fecha ,  instruccion,tipo , id_status, id_coordinacion)  VALUES 
+							( :asunto, :oficina, :fecha ,  :instruccion,:tipo , 19 ,:coordinacion)   ";		
 			try {
 				$this->_db->beginTransaction();
-				$this->_db->prepare($this->query)->execute($persona);
+				$this->_db->prepare($this->query)->execute($correspondencia);
 				$this->_db->commit();
 			}
 			catch (Exception $e){
@@ -37,10 +37,11 @@
 		
 		public function getCorrespondencia(){
 
-		$query = "SELECT 
-					*,referencia as Coordinacion, (select referencia from referencial where id_referencial = 23) as Status 
-					FROM correspondencia_diaria
-					inner join referencial on id_referencial= id_coordinacion";
+		$query = "SELECT ROW_NUMBER() OVER (ORDER BY id_correspondencia) AS numeracion,
+				*,referencia as Coordinacion, (select referencia from referencial where id_referencial = 23) as Status 
+				FROM correspondencia
+				inner join referencial on id_referencial= id_coordinacion
+				ORDER BY id_correspondencia DESC";
 			
 			$auxiliar = $this->_db->query($query);
 				try {
