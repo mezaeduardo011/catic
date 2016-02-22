@@ -1,6 +1,5 @@
 function send_registro_persona() {
-
-    //alert("/catic/personal/insertPerson?"+request(document.getElementById('divPersona')));
+    //alert("/catic/personal/insertPerson?"+request(document.getElementById('infoHijos')));
     //if (request(document.getElementById('divPersona')) != "") {
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoHijos')), null, true);
     // };
@@ -96,3 +95,36 @@ function borrar_datos_tabla(id_tabla) {
     }
     return true;
 }
+
+
+
+function borrarCheckbox(){
+  for (i=0;i<document.registro_persona.elements.length;i++)
+          if(document.registro_persona.elements[i].type == "checkbox"){
+         document.registro_persona.elements[i].checked=0; 
+      }
+ }
+
+$("#registrarHijo").click(function() {
+$.ajax({
+    url: BASE_URL + 'personal/getHijos', //apuntamos a persons/loadSexo
+    type: 'POST',
+    dataType: 'json',
+})
+
+.done(function(data) { // si todo funciona
+
+
+    for (var i = 0; i < data.length; i++) {
+        if (data[i]['numeracion'] == 5) {
+            alert('Ya tiene registrado el maximo de hijos');
+            hiddenElementos('AgregarOtro');
+        }
+    }
+    //alert($data);
+})
+
+.fail(function() { //si da error decimos error
+    alert("Error");
+});
+});

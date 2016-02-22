@@ -1,6 +1,85 @@
 //esto captura el ID del formulario al cual se le aplicaran las validaciones.
 //dichas validaciones son al campo por nombre
-$('#registro_persona').formValidation({
+// $('#registro_persona').formValidation({
+// 	 framework: 'bootstrap',
+//      feedbackIcons: {
+//          valid: 'glyphicon glyphicon-ok',
+//          invalid: 'glyphicon glyphicon-remove',
+//          validating: 'glyphicon glyphicon-refresh'
+//      },
+//      fields: {
+//          nombre: {
+//              validators: {
+//                   notEmpty: { // No puede ser vacio
+//                      message: 'El primer nombre es requerido.'
+//                  }
+//              }
+//          },
+//          apellido: {
+//              validators: {
+//                   notEmpty: { // No puede ser vacio
+//                      message: 'El primer apellido es requerido.'
+//                  }
+//              }
+//          },
+//         sexo: {
+//              validators: {
+//                   notEmpty: { // No puede ser vacio
+//                      message: 'Debe seleccionar un sexo.'
+//                  }
+//              }
+//          },
+//         fecha_nacimiento: {
+//              validators: {
+//                   notEmpty: { // No puede ser vacio
+//                      message: 'Debe introducir una fecha de nacimiento.'
+//                  }
+//              }
+//          },   
+//           cedula: {
+//              validators: {
+
+//                  notEmpty: { // No puede ser vacio
+//                      message: 'Debe introducir una cédula.'
+//                  },
+//                  stringLength: {
+//                      max: 10,
+//                      message: 'La cédula no debe tener mas de 8 numeros'
+//                  }                 
+//              }
+//          },
+//         fecha_ingreso: {
+//              validators: {
+//                  notEmpty: { // No puede ser vacio
+//                      message: 'Debe introducir una fecha de ingreso en el ministerio.'
+//                  }               
+//              }
+//          },
+//         estado: {
+//              validators: {
+//                  notEmpty: { // No puede ser vacio
+//                      message: 'Por favor seleccione un estado.'
+//                  }               
+//              }
+//          },
+//         direccion: {
+//              validators: {
+//                  notEmpty: { // No puede ser vacio
+//                      message: 'Por favor seleccione una parroquia.'
+//                  }               
+//              }
+//          },
+//         ubicacion: {
+//              validators: {
+//                  notEmpty: { // No puede ser vacio
+//                      message: 'Debe introducir una ubicación.'
+//                  }               
+//              }
+//          }                   
+
+// }
+// });
+$('#infoExtra').formValidation({
 	 framework: 'bootstrap',
      feedbackIcons: {
          valid: 'glyphicon glyphicon-ok',
@@ -11,88 +90,7 @@ $('#registro_persona').formValidation({
          nombre: {
              validators: {
                   notEmpty: { // No puede ser vacio
-                     message: 'El primer nombre es requerido.'
-                 }
-             }
-         },
-         apellido: {
-             validators: {
-                  notEmpty: { // No puede ser vacio
-                     message: 'El primer apellido es requerido.'
-                 }
-             }
-         },
-        sexo: {
-             validators: {
-                  notEmpty: { // No puede ser vacio
-                     message: 'Debe seleccionar un sexo.'
-                 }
-             }
-         },
-        fecha_nacimiento: {
-             validators: {
-                  notEmpty: { // No puede ser vacio
-                     message: 'Debe introducir una fecha de nacimiento.'
-                 }
-             }
-         },   
-          cedula: {
-             validators: {
-
-                 notEmpty: { // No puede ser vacio
-                     message: 'Debe introducir una cédula.'
-                 },
-                 stringLength: {
-                     max: 10,
-                     message: 'La cédula no debe tener mas de 8 numeros'
-                 }                 
-             }
-         },
-        fecha_ingreso: {
-             validators: {
-                 notEmpty: { // No puede ser vacio
-                     message: 'Debe introducir una fecha de ingreso en el ministerio.'
-                 }               
-             }
-         },
-        estado: {
-             validators: {
-                 notEmpty: { // No puede ser vacio
-                     message: 'Por favor seleccione un estado.'
-                 }               
-             }
-         },
-        direccion: {
-             validators: {
-                 notEmpty: { // No puede ser vacio
-                     message: 'Por favor seleccione una parroquia.'
-                 }               
-             }
-         },
-        ubicacion: {
-             validators: {
-                 notEmpty: { // No puede ser vacio
-                     message: 'Debe introducir una ubicación.'
-                 }               
-             }
-         }                   
-
-}
-});
-//esto captura el ID del formulario al cual se le aplicaran las validaciones.
-//dichas validaciones son al campo por nombre
-$('#registro_hijo').formValidation({
-	 framework: 'bootstrap',
-     feedbackIcons: {
-         valid: 'glyphicon glyphicon-ok',
-         invalid: 'glyphicon glyphicon-remove',
-         validating: 'glyphicon glyphicon-refresh'
-     },
-     fields: {
-         nombre: {
-             validators: {
-                  notEmpty: { // No puede ser vacio
-                     message: 'El primer nombre es requerido.'
+                     message: 'El primer nombre es rasdasdasasequerido.'
                  },
                  regexp: { // Solo estos caracteres pueden ser usados
                      regexp: /^[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz]+$/,
@@ -166,7 +164,7 @@ $('#my-wizard')
    //info.direction
    
    //use e.preventDefault to cancel
-
+ 
     var fv=$('#registro_persona').data('formValidation'), //Instancia del validador
 
     step=data.step, //Paso en el que nos encontramos
@@ -176,16 +174,15 @@ $('#my-wizard')
 
      // Validate the container
      fv.validateContainer($container);
-
-     // var isValidStep = fv.isValidContainer($container);
+      var isValidStep = fv.isValidContainer($container);
       
-     // if (isValidStep === false || isValidStep === null) {
-     // e.preventDefault();
-     // }else{
-     //    send_registro_persona();
-     //    showElementos('modificarDatos');
-     //    send_consulta_info();
-     // }
+      if (isValidStep === false || isValidStep === null) {
+        e.preventDefault();
+    }else{
+         send_registro_persona();
+         showElementos('modificarDatos');
+         send_consulta_info();
+     }
 })
 .on('changed.fu.wizard', function() {
 
