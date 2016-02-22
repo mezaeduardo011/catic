@@ -75,7 +75,6 @@
 									</div>
 								</div>
 							</div>
-							<hr>
 							<div class="form-group">
 								<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
 								
@@ -107,9 +106,7 @@
 									</div>
 								</div>
 							</div>
-							
-							<hr>
-							<div class="form-group">
+								<div class="form-group">
 								<label class="control-label  col-sm-3 no-padding-right" for="fecha_nacimiento">Fecha de nacimiento: </label>
 								<div class="col-sm-2">
 									<div class="input-group">
@@ -143,11 +140,7 @@
 									</div>
 								</div>
 								
-							</div>
-							
-							
-							<div class="hr hr-dotted"></div>
-							
+							</div>															
 							<div class="space-2"></div>
 							<div class="form-group">
 								<label class="control-label col-sm-3 no-padding-right" for="cedula">Télefono: </label>
@@ -203,11 +196,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="hr hr-dotted"></div>
 							<div align="center" class="col-sm-6">
 								<label class="control-label col-sm-5 no-padding-right" for="estado">Cargo: </label>
 								<div class    ="input-group">
-									<select name="cargo" id="cargo" class="selectpicker show-tick input-sm form-control">
+									<select name="cargo" id="cargo" class="selectpicker show-tick input-sm form-control" data-live-search="true">
 									</select>
 								</div>
 							</div>
@@ -215,7 +207,7 @@
 							<div align="center" class="col-sm-5">
 								<label class="control-label col-sm-1 no-padding-right" for="coordinacion">Coordinación: </label>
 								<div class    ="input-group">
-									<select name="coordinacion" id="coordinacion" class="selectpicker show-tick input-sm form-control">
+									<select name="coordinacion" id="coordinacion" class="selectpicker show-tick input-sm form-control" data-live-search="true">
 									</select>
 								</div>
 							</div>
@@ -313,7 +305,7 @@
 							</div>
 
 							<div id="infoExtra" hidden>
-								<hr>							
+							<hr>							
 								<h3 align="center" class="lighter block blue">Ahora podra registrar un maximo de 5 hijos</h3>
 							</div>
 							<div id="infoHijos" class="col-sm-16" hidden><!-- informacion de los hijos -->
@@ -402,7 +394,7 @@
 							<div align="center">
 								<button class="btn btn-primary" onclick="send_consulta_hijo();
 								showElementos('tablaHijos');hiddenElementos('infoHijos');hiddenElementos('infoExtra');showElementos('AgregarOtro');
-								send_registro_persona();" id="registrarHijo">
+								send_registro_persona();">
 								<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
 								Registrar
 								</button>
@@ -477,7 +469,7 @@
 												
 												<label class="blue">
 													<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres"
-													onchange="showElementos('infoPadresAmbos');hiddenElementos('infoPadreUnico');" value="16" />
+													onchange="showElementos('infoPadresAmbos');hiddenElementos('infoPadresUno');" value="16" />
 													<span class="lbl"> Ambos</span>
 												</label>
 												&nbsp;
@@ -489,9 +481,8 @@
 											
 										</tr>
 									</table>
-																	<hr>
-
 								</div>
+								<hr>
 								
 								<div id="infoPadresAmbos" class="col-sm-16" hidden><!-- informacion de los Padres -->
 								<h3 align="center" class="lighter block blue">Información del padre de la persona</h3>
@@ -546,9 +537,8 @@
 											</div>
 										</div>
 									</div>
-																	<hr>
-
 								</div>
+								<hr>
 								<br>
 								<h3 align="center" class="lighter block blue">Información de la madre de la persona</h3>
 								<div id="infoMadre">
@@ -607,9 +597,9 @@
 									<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
 									Registrar
 									</button>
-								</div>								<hr>
-
+								</div>
 								</div><!--  Fin informacion de los Padres -->
+								<hr>
 								
 								
 								<div id="infoPadreUnico" class="col-sm-16" hidden><!-- informacion de los Padres -->
@@ -724,9 +714,9 @@
 											</tbody>  <!-- div tabla  -->
 										</table>
 										</div>	<!-- final div tabla			 -->
-																			<hr>
-
+										
 									</div>
+									<hr>
 									
 								</div>
 								
@@ -793,7 +783,7 @@
 															</label>
 															&nbsp;
 															<label class="blue">
-																<input autocomplete="off" value="no" type="radio" class="ace" name="deporte" onchange="hiddenElementos('deporteSelect');borrarCheckbox();"/>
+																<input autocomplete="off" value="no" type="radio" class="ace" name="deporte" onchange="hiddenElementos('deporteSelect');"/>
 																<span class="lbl"> No</span>
 															</label>
 														</td>
@@ -922,4 +912,3 @@
 						
 					</form>
 					</div><!-- /.page-content -->
-																							<button class="btn" id="gritter-center">Regular</button>

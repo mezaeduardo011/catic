@@ -8,6 +8,19 @@
 			parent::__construct();
 			$this->_personal = $this->loadModel('personal');
 			$this->_pdf = $this->getLibrary('SIGESP','utilitario');
+
+			$this->_sidebar_menu =array(
+					array(
+				'id' => 'insert_new',
+				'title' => 'Nueva Persona',
+				'link' => BASE_URL . 'personal' . DS . 'index'
+						),
+			 		array(
+			 	'id' => 'listar',
+			 	'title' => 'Listado de  Persona',
+			 	'link' => BASE_URL . 'personal' . DS . 'listing'
+			 			)
+					);		
 		}
 
 		/* Funcion Index donde se inicializa todo lo basico que  sera usado por el controlador*/
@@ -28,7 +41,7 @@
 
 			$listado = $this->_personal->getHijosModel();
 			$this->_view->_listado = $listado;
-			$this->_view->render('personal');
+			$this->_view->render('personal','','',$this->_sidebar_menu);
 	
 		}
 
@@ -58,26 +71,28 @@
 				unset($_POST['municipio']);
 				$persona= $this->ConvertirArray($_POST);
 				//$this->imprimirArreglo($persona);
-				$prueba=$this->_personal->insertPersonModel($persona);
-				print_r($prueba);die();
+				$this->_personal->insertPersonModel($persona);
 		}
 
 		function Insert_InfoAdicional(){
+
 			//$_POST=$_GET;
 			unset($_POST['url']);
 			unset($_POST['medicina']);
-			$postRecibido= $this->ConvertirArray($_POST);
+			$infoAdicional= $this->ConvertirArray($_POST);
 
 			if($_POST['deporte']=='on'){
-					unset($postRecibido[':deporte']);
+
 					$check = $this->valCheckbox(6);
 					$arregloPost = $this->ConvertirArraySql($check);
-					$infoAdicional=$this->borrarCheckbox(6,$postRecibido);
+					unset($infoAdicional[':deporte']);
 					$this->_personal->InsertInfoAdicional($infoAdicional,$arregloPost);
 
 			}else{
-					unset($postRecibido[':deporte']);
-					$this->_personal->InsertInfoAdicional($postRecibido,'{0}');		
+
+					unset($infoAdicional[':deporte']);
+					//print_r($infoAdicional);die();
+					$this->_personal->InsertInfoAdicional($infoAdicional,'{0}');		
 			}	
 
 		}
@@ -108,7 +123,7 @@
 
 			$listado = $this->_personal->getPersonal();
 			$this->_view->_listado = $listado;
-			$this->_view->render('consulta_personal');
+			$this->_view->render('consulta_personal','','',$this->_sidebar_menu);
 
 		}
 
