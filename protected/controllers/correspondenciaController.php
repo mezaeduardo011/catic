@@ -5,17 +5,16 @@
 		protected $_sidebar_menu;
 		private $_correspondencia;
 		
-		public function __construct(){
-	
+		public function __construct(){	
 			parent::__construct();
 			$this->_correspondencia = $this->loadModel('correspondencia');
 						$this->_sidebar_menu =array(
 					array(
 				'id' => 'insert_new',
 				'title' => 'Agregar nueva carpeta',
-				'link' => BASE_URL . 'personal' . DS . 'index'
+				'link' => BASE_URL . 'correspondencia' . DS . 'agregar_carpeta'
 						)
-										);//cierre del sidebar
+										);
 		}
 		
 		function index(){
@@ -30,15 +29,15 @@
 		}
 
 		function registro_correspondencia(){
-			$this->_view->setJs(array("pickList"));
+				$this->_view->setJs(array("pickList"));
 				$correspondencia= $this->ConvertirArray($_POST);
-				//$this->imprimirArreglo($correspondencia);
 				$this->_correspondencia->insertCorrespondencia($correspondencia);
-
 		}
+
 		function registro(){
 					$this->_view->setJs(array("Librerias/bootstrap-select",
-												"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min","pickList"));
+												"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
+												"pickList","correspondencia/select"));
 					$this->_view->setCss(array("bootstrap-select",
 												"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));
 				
@@ -48,6 +47,22 @@
 		}
 		function consulta_correspondencia(){
 				$this->_view->render('consulta_correspondencia');
+		}
+
+		function agregar_carpeta(){
+				$carpeta= $this->ConvertirArray($_POST);
+				$this->_correspondencia->insertCarpeta($carpeta);
+		}
+
+		function selectCarpetas() {			
+					$result = $this->_correspondencia->getCarpetas();
+					$data = array();
+
+					for ($i = 0; $i < count($result); $i++) {
+						$data[$i] = array("value"=>$result[$i]['id_carpeta_correspondencia'],"option"=>$result[$i]['carpeta']);
+					}
+					echo json_encode($data);
 		}		
+
 
 }?>

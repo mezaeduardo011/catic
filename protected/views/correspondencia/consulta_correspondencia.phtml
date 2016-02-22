@@ -9,7 +9,7 @@
 	<div align="center" id="AgregarOtro" >
 		<button class="btn btn-primary" onclick="pickOpen('prod', 'id_prod',
 		'<?php echo BASE_URL."correspondencia/registro" ?>',
-		90, 53, 90, 90);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);">
+		90, 70, 90, 60);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);">
 		<i class      ="glyphicon glyphicon-plus"></i>
 		Registrar una correspondencia
 		</button>
@@ -51,22 +51,9 @@
 										<td><?php echo $persona['tipo']; ?></td>
 										<td class="center">
 												<div class="hidden-sm hidden-xs action-buttons">
-													<a class="btn-app  btn-detalles  btn-sm" id="detalle_persona"
-														onclick="pickOpen('prod', 'id_prod',
-														'<?php echo BASE_URL."personal/update/". $persona['id_persona'] ?>',
-														90, 96, 85, 1);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
-														style=cursor:pointer; >
-														<i class="glyphicon glyphicon-search"></i>
-														Detalles
-													</a>
-													<a class="btn-app  btn-imprimir  btn-sm" id="detalle_persona" target="_blank"
-														href="<?php echo BASE_URL."pdf/pdfDetallePersona/". $persona['id_persona'] ?>" >
-														<i class="ace-icon fa fa-print bigger fa-lg"></i>
-														Imprimir
-													</a>
 													<a class="btn-app btn-eliminar btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
 														<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>
-														Eliminar
+														Archivar
 													</a>
 												</div>
 										</td>

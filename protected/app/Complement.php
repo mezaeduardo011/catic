@@ -26,7 +26,6 @@
 
 
 				function ConvertirArray($VarPost){
-							 //$arregloNuevo= array();									
 								foreach ($VarPost as $newArrayKey => $valor) {		
 										$arregloNuevo[':'.$newArrayKey]=$valor;
 								}		 					

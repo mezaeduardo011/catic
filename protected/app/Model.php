@@ -5,20 +5,7 @@
 		public function __construct() {
 			$this->_db = new DataBase();
 		}
-		public function registroPdo($imprimir=FALSE,$query,$datos){
-
-			if($imprimir==true){
-				// 	echo $query."---";
-				// 	echo "SELECT registrar_vacaciones"."(";
-				// foreach($_POST as $key => $valor){
-
-				// 	echo $_POST[$key].",";
-
-				// }
-				// 	echo ");";			
-			
-			}else{
-
+		public function registroPdo($query,$datos){
 					try {
 
 						$this->_db->beginTransaction();
@@ -30,7 +17,6 @@
 						echo "Error :: ".$e->getMessage();
 						exit();
 					}
-			}
 		}
 
 		public function selectPdo($query){
