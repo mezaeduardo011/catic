@@ -177,15 +177,20 @@ $('#my-wizard')
      // Validate the container
      fv.validateContainer($container);
 
-     // var isValidStep = fv.isValidContainer($container);
+      var isValidStep = fv.isValidContainer($container);
       
-     // if (isValidStep === false || isValidStep === null) {
-     // e.preventDefault();
-     // }else{
-     //    send_registro_persona();
-     //    showElementos('modificarDatos');
-     //    send_consulta_info();
-     // }
+      if (isValidStep === false || isValidStep === null) {
+        e.preventDefault();
+      }else{
+        
+        if(step=1){
+
+            send_registro_persona('empleado');
+            showElementos('modificarDatos');
+
+        }
+         send_consulta_info();
+      }
 })
 .on('changed.fu.wizard', function() {
 

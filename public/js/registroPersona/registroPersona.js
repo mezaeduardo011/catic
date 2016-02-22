@@ -1,21 +1,24 @@
-function send_registro_persona() {
+function send_registro_persona(tipo_persona) {
+
+    var tipo = tipo_persona;
 
     //alert("/catic/personal/insertPerson?"+request(document.getElementById('divPersona')));
-    //if (request(document.getElementById('divPersona')) != "") {
-        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoHijos')), null, true);
-    // };
-    // if (request(document.getElementById('infoHijos')) != "") {
-    //     send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoHijos')), null, true);
-    // };
-    // if (request(document.getElementById('infoPadre')) != "") {
-    //     send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadre')), null, true);
-    // };
-    // if (request(document.getElementById('infoMadre')) != "") {
-    //     send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoMadre')), null, true);
-    // };
-    // if (request(document.getElementById('infoPadreUnico')) != "") {
-    //     send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadreUnico')), null, true);
-    // };
+    if (request(document.getElementById('divPersona')) != "" && tipo ='empleado') {
+        alert("funciona");
+        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
+    };
+
+    if (request(document.getElementById('infoHijos')) != "" && tipo='hijo') {
+         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoHijos')), null, true);
+     };
+    
+    if (request(document.getElementById('infoPadre')) != "" && request(document.getElementById('infoMadre')) != "" && tipo='padre') {
+        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadre')), null, true);
+    };
+
+    if (request(document.getElementById('infoPadreUnico')) != "" && tipo='padre') {
+         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadreUnico')), null, true);
+    };
 }
 
 function send_registro_InfoAdicional() {
@@ -24,7 +27,7 @@ function send_registro_InfoAdicional() {
 }
 
 function response_registro_persona(response) {
-    alert("Registro Exitoso");
+    //alert("Registro Exitoso");
 
 }
 
