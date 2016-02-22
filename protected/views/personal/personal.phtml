@@ -47,9 +47,7 @@
 							</li>
 						</ul>
 					</div>
-					
-					<hr />
-					
+						<br>			
 					<div class="step-content pos-rel">
 						<div class="step-pane active" data-step="1" id="divPersona">
 							<input type="text" name="tipo_persona" value="empleada" hidden></input>
@@ -237,8 +235,7 @@
 								</div>
 							</div>
 							<br><br>
-							<div class="hr hr-dotted"></div>
-							
+							<br>
 							<div class="form-group">
 								<label class="control-label col-sm-3 no-padding-right" for="ubicacion">Ubicación: </label>
 								<div class="col-sm-9">
@@ -252,7 +249,6 @@
 									</div>
 								</div>
 							</div>
-							<hr>
 							<!-- 								<div align="center" >
 								<label class="control-label no-padding-right" for="parroquia">Coordinacion a la cual pertenecera esta persona: </label>
 								<div class    ="input-group">
@@ -394,7 +390,7 @@
 							<div align="center">
 								<button class="btn btn-primary" onclick="send_consulta_hijo();
 								showElementos('tablaHijos');hiddenElementos('infoHijos');hiddenElementos('infoExtra');showElementos('AgregarOtro');
-								send_registro_persona();">
+								send_registro_persona();" id="registrarHijo">
 								<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
 								Registrar
 								</button>
@@ -783,7 +779,7 @@
 															</label>
 															&nbsp;
 															<label class="blue">
-																<input autocomplete="off" value="no" type="radio" class="ace" name="deporte" onchange="hiddenElementos('deporteSelect');"/>
+																<input autocomplete="off" value="no" type="radio" class="ace" name="deporte" onchange="hiddenElementos('deporteSelect');borrarCheckbox();"/>
 																<span class="lbl"> No</span>
 															</label>
 														</td>
@@ -893,7 +889,6 @@
 								</div>
 							</div>
 							
-							<hr />
 							<div class="wizard-actions">
 								<button class="btn btn-prev">
 								<i class="ace-icon fa fa-arrow-left"></i>

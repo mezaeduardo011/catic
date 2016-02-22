@@ -33,7 +33,7 @@
 			$this->_view->setJs(array("pickList"));
 				$correspondencia= $this->ConvertirArray($_POST);
 				//$this->imprimirArreglo($correspondencia);
-				$this->_correspondencia->insertCorrespondencia($correspondencia);		
+				$this->_correspondencia->insertCorrespondencia($correspondencia);
 
 		}
 		function registro(){

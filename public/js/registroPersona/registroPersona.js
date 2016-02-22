@@ -96,3 +96,27 @@ function borrar_datos_tabla(id_tabla) {
     }
     return true;
 }
+
+$("#registrarHijo").click(function() {
+$.ajax({
+    url: BASE_URL + 'personal/getHijos', //apuntamos a persons/loadSexo
+    type: 'POST',
+    dataType: 'json',
+})
+
+.done(function(data) { // si todo funciona
+
+
+    for (var i = 0; i < data.length; i++) {
+        if (data[i]['numeracion'] == 5) {
+            alert('Ya tiene registrado el maximo de hijos');
+            hiddenElementos('AgregarOtro');
+        }
+    }
+    alert($data);
+})
+
+.fail(function() { //si da error decimos error
+    alert("Error");
+});
+});

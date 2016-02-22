@@ -31,10 +31,13 @@
 				Session::set('time', time());
 
 				 switch ($data['perfil_referencial']) {
-					case 68:
+					case 60:
 
-						$usuario=Session::set('user', $data['nombre'].', '.$data['apellido']);					
+
+						Session::set('user', $data['nombre'].', '.$data['apellido']);	
 						$this->_view->redirect('personal');
+
+
 
 					break;
 					
