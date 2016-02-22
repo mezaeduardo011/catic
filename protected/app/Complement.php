@@ -10,11 +10,11 @@
 					return $data;
 				}
 
-				function borrarCheckbox($contador,$arreglo){		
+				function borrarCheckbox($contador){
 						for ($i = 0; $i <= $contador; $i++) {
-								unset($arreglo [':check'.$i]);
+								unset($infoAdicional[':check'.$i]);
 						}
-					return $arreglo;
+					return $data;
 				}				
 
 

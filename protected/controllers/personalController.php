@@ -71,26 +71,28 @@
 				unset($_POST['municipio']);
 				$persona= $this->ConvertirArray($_POST);
 				//$this->imprimirArreglo($persona);
-				$prueba=$this->_personal->insertPersonModel($persona);
-				print_r($prueba);die();
+				$this->_personal->insertPersonModel($persona);
 		}
 
 		function Insert_InfoAdicional(){
+
 			//$_POST=$_GET;
 			unset($_POST['url']);
 			unset($_POST['medicina']);
-			$postRecibido= $this->ConvertirArray($_POST);
+			$infoAdicional= $this->ConvertirArray($_POST);
 
 			if($_POST['deporte']=='on'){
-					unset($postRecibido[':deporte']);
+
 					$check = $this->valCheckbox(6);
 					$arregloPost = $this->ConvertirArraySql($check);
-					$infoAdicional=$this->borrarCheckbox(6,$postRecibido);
+					unset($infoAdicional[':deporte']);
 					$this->_personal->InsertInfoAdicional($infoAdicional,$arregloPost);
 
 			}else{
-					unset($postRecibido[':deporte']);
-					$this->_personal->InsertInfoAdicional($postRecibido,'{0}');		
+
+					unset($infoAdicional[':deporte']);
+					//print_r($infoAdicional);die();
+					$this->_personal->InsertInfoAdicional($infoAdicional,'{0}');		
 			}	
 
 		}
@@ -157,9 +159,7 @@
 				"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion","pickList"));
 
 				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter",
-											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));		
-
-																
+											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));							
 				$persona = $this->_personal->getUnicaPersona($id);
 				$this->_view->_persona = $persona;
 				$this->_view->render('actualizar_persona','','pickList');
