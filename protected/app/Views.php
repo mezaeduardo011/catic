@@ -41,7 +41,7 @@
 					            'link'=> BASE_URL . 'vacaciones'
 						      )
 								,array(
-					            'id' => 'actividades',
+					            'id' => 'actividad_institucional',
 					            'title'   => 'Actividades',
 					            'link'=> BASE_URL . 'actividad_institucional'
 						      )
@@ -126,7 +126,7 @@
 						include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'statements.phtml';
 						// include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'header.phtml';
 						// include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'imagalery.phtml';
-						// include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'sidebar.phtml';
+						 include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'sidebar.phtml';
 						 include_once $view_route;
 						 include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'footer.phtml';
 					break;

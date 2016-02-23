@@ -1,31 +1,35 @@
 function send_registro_persona() {
 
     //alert("/catic/personal/insertPerson?"+request(document.getElementById('divPersona')));
-    //if (request(document.getElementById('divPersona')) != "") {
-        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoHijos')), null, true);
-    // };
-    // if (request(document.getElementById('infoHijos')) != "") {
-    //     send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoHijos')), null, true);
-    // };
-    // if (request(document.getElementById('infoPadre')) != "") {
-    //     send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadre')), null, true);
-    // };
-    // if (request(document.getElementById('infoMadre')) != "") {
-    //     send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoMadre')), null, true);
-    // };
-    // if (request(document.getElementById('infoPadreUnico')) != "") {
-    //     send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadreUnico')), null, true);
-    // };
+    if (request(document.getElementById('divPersona')) != "") {
+        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
+    };
+    if (request(document.getElementById('infoHijos')) != "") {
+        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_hijo', request(document.getElementById('infoHijos')), null, true);
+    };
+    if (request(document.getElementById('infoPadre')) != "") {
+        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadre')), null, true);
+    };
+    if (request(document.getElementById('infoMadre')) != "") {
+        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoMadre')), null, true);
+    };
+    if (request(document.getElementById('infoPadreUnico')) != "") {
+        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadreUnico')), null, true);
+    };
 }
 
 function send_registro_InfoAdicional() {
-    //alert("/catic/personal/Insert_InfoAdicional?"+request(document.getElementById('informacion_adicional')));
     send_ajax('POST', '../../catic/personal/Insert_InfoAdicional', 'response_registro_persona', request(document.getElementById('informacion_adicional')), null, true);
 }
 
 function response_registro_persona(response) {
-    alert("Registro Exitoso");
+   //lert("Registro Exitoso");
 
+}
+
+function response_registro_hijo(response) {
+    //alert("Registro de hijo exitoso");
+    showElementos('tablaHijos');hiddenElementos('infoHijos');hiddenElementos('infoExtra');showElementos('AgregarOtro');
 }
 
 function send_consulta_hijo(id) {
@@ -64,9 +68,8 @@ function send_consulta_info(id) {
 
 
 function response_consulta_info(response) {
-
     var tbl = document.getElementById('infoDatos');
-
+        tbl.style.color = '#ffffff';
     if (borrar_datos_tabla('infoDatos')) {
         var len = response.length;
         var lastRow, row, nombre, apellido, espacio;
@@ -99,13 +102,12 @@ function borrar_datos_tabla(id_tabla) {
 
 $("#registrarHijo").click(function() {
 $.ajax({
-    url: BASE_URL + 'personal/getHijos', //apuntamos a persons/loadSexo
+    url: BASE_URL + 'personal/getHijos', 
     type: 'POST',
     dataType: 'json',
 })
 
-.done(function(data) { // si todo funciona
-
+.done(function(data) { 
 
     for (var i = 0; i < data.length; i++) {
         if (data[i]['numeracion'] == 5) {
@@ -116,7 +118,7 @@ $.ajax({
     alert($data);
 })
 
-.fail(function() { //si da error decimos error
+.fail(function() {
     alert("Error");
 });
 });

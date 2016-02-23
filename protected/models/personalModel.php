@@ -35,7 +35,7 @@
 
 		public function getInfoDatosModel(){
 	
-				$query = " SELECT nombre,apellido FROM persona ORDER BY id_persona DESC LIMIT 1;";
+				$query = " SELECT nombre,apellido,id_persona FROM persona ORDER BY id_persona DESC LIMIT 1;";
 				$result=$this->selectPdo($query);
 				return $result;		
 		}

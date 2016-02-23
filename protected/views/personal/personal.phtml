@@ -1,4 +1,3 @@
-<div class    ="page-content" ><!-- /.page-content -->
 <form class   ="form-horizontal" role="form"  method="post"  id="registro_persona" name="registro_persona" >
 	
 	
@@ -7,16 +6,15 @@
 			<div class  id="inicio" align="center">
 				<h4 class="widget-title">Registro de persona.</h4>
 			</div>
-			<div id="infoDatosDiv" hidden >
+			<div id="infoDatosDiv" hidden="" >
 				<div  class="col-sm-3">
-					<table>
-										<td class="center">Registrando datos de: </td>
-					</table>
+								<h5 class="widget-title">Registrando datos de:</h5>
 					<table id="infoDatos">
-								<td class="center"></td>
+								<td class="center" ></td>
 					</table>
 					
 				</div>
+				<br>
 				<br>
 				<br>
 			</div>
@@ -388,9 +386,7 @@
 								
 							</div>
 							<div align="center">
-								<button class="btn btn-primary" onclick="send_consulta_hijo();
-								showElementos('tablaHijos');hiddenElementos('infoHijos');hiddenElementos('infoExtra');showElementos('AgregarOtro');
-								send_registro_persona();" id="registrarHijo">
+								<button class="btn btn-primary" onclick="send_consulta_hijo();send_registro_persona();" id="registrarHijo">
 								<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
 								Registrar
 								</button>
@@ -907,3 +903,5 @@
 						
 					</form>
 					</div><!-- /.page-content -->
+	
+</div>

@@ -32,7 +32,7 @@
 			"moment","pickList","Librerias/jquery.maskedinput","utilidades"));
 			$this->_view->setCss(array("bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));	
 
-				$listado = $this->_personal->getPersonal();
+				$listado = $this->_vacaciones->getPersonalDisponible();
 				$this->_view->_listado = $listado;
 				$this->_view->render('registro_vacaciones','','',$this->_sidebar_menu);
 	
@@ -42,11 +42,12 @@
 
 		function registro_vacaciones(){
 					unset($_POST['dynamic-table_length']);
-					$check = $this->valCheckbox( $_POST['contador']);	
+					$check = $this->valCheckbox( $_POST['contador']);
+					$contador=$_POST['contador'];	
 					unset($_POST['contador']);								
 					$checkSeleccionados = $this->ConvertirArraySql($check);
 					$arregloValido = $this->ConvertirArray($_POST);
-					$vacaciones=$this->borrarCheckbox(1,$arregloValido);
+					$vacaciones=$this->borrarCheckbox($contador,$arregloValido);
 					//$this->imprimirArreglo($vacaciones);
 					$this->_vacaciones->registroVacaciones($vacaciones,$checkSeleccionados);
 

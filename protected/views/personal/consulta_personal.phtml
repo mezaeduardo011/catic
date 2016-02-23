@@ -1,4 +1,3 @@
-<div class="page-content ">
 	<div class="widget-box">
 		<div class="alert alert-info" align="center">
 			<h4>Consulta de personas registradas en el sistema <i class="fa fa-users fa-lg"></i></h4>
@@ -30,6 +29,7 @@
 										</tr>
 									</thead>
 									<tbody>
+									<?php if(count($this->_listado) >= 1): ?>
 										<?php foreach ($this->_listado as $persona): ?>
 										<tr>
 											<td class="center"><?php echo $persona['numeracion'];?></td>
@@ -61,17 +61,34 @@
 											</td>
 										</tr>
 										<?php endforeach ?>
+										<?php else: ?>
+											<tr>
+												<td colspan="8" align="center">
+													<div class="alert alert-danger">
+														<b>
+															<font size="5">
+																No hay personal registrado.
+															</font>
+														</b>
+													</div>
+												</td>
+
+											</tr>
+											<?php endif; ?> 										
 									</tbody>
 								</table>
+								<br>
 								</div><!-- /.col -->
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-			<br>
+			
 			</div><!-- /.page-content -->
+		</div>
 		</div>
 		<div id="prod"></div>
 		<div id="resultado" align="center"></div>
 		<div  id='id_fondo_opaco' class="fondo_opaco" style="display:none"></div>
+
