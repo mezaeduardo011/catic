@@ -3,6 +3,7 @@ function send_registro_persona(tipo_persona) {
     var tipo = tipo_persona;
 
     //alert("/catic/personal/insertPerson?"+request(document.getElementById('divPersona')));
+<<<<<<< HEAD
     if (request(document.getElementById('divPersona')) != "" && tipo ='empleado') {
         alert("funciona");
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
@@ -22,13 +23,16 @@ function send_registro_persona(tipo_persona) {
 }
 
 function send_registro_InfoAdicional() {
-    //alert("/catic/personal/Insert_InfoAdicional?"+request(document.getElementById('informacion_adicional')));
     send_ajax('POST', '../../catic/personal/Insert_InfoAdicional', 'response_registro_persona', request(document.getElementById('informacion_adicional')), null, true);
 }
 
 function response_registro_persona(response) {
     //alert("Registro Exitoso");
+}
 
+function response_registro_hijo(response) {
+    //alert("Registro de hijo exitoso");
+    showElementos('tablaHijos');hiddenElementos('infoHijos');hiddenElementos('infoExtra');showElementos('AgregarOtro');
 }
 
 function send_consulta_hijo(id) {
@@ -67,9 +71,8 @@ function send_consulta_info(id) {
 
 
 function response_consulta_info(response) {
-
     var tbl = document.getElementById('infoDatos');
-
+        tbl.style.color = '#ffffff';
     if (borrar_datos_tabla('infoDatos')) {
         var len = response.length;
         var lastRow, row, nombre, apellido, espacio;
@@ -99,3 +102,26 @@ function borrar_datos_tabla(id_tabla) {
     }
     return true;
 }
+
+$("#registrarHijo").click(function() {
+$.ajax({
+    url: BASE_URL + 'personal/getHijos', 
+    type: 'POST',
+    dataType: 'json',
+})
+
+.done(function(data) { 
+
+    for (var i = 0; i < data.length; i++) {
+        if (data[i]['numeracion'] == 5) {
+            alert('Ya tiene registrado el maximo de hijos');
+            hiddenElementos('AgregarOtro');
+        }
+    }
+    alert($data);
+})
+
+.fail(function() {
+    alert("Error");
+});
+});

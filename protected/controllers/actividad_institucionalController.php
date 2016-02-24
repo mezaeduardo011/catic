@@ -14,7 +14,13 @@
 		}
 		
 		function index(){
+			$this->_view->setJs(array(
+			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools",
+			"Librerias/dataTables.colVis","tables","pickList","Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
+			"Librerias/jquery.dataTables","Librerias/bootstrap-timepicker.min","actividades/actividades"));
 
+			$this->_view->setCss(array(
+			"datepicker","bootstrap-datepicker","bootstrap-timepicker.min"));			
 			$listado = $this->_persona->getPersonal(FALSE,1);
 			$this->_view->_listado = $listado;
 			$this->_view->render('registro_de_actividad');

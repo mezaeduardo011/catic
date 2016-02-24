@@ -12,12 +12,12 @@
 			$this->_sidebar_menu =array(
 					array(
 				'id' => 'insert_new',
-				'title' => 'Nueva Persona',
+				'title' => 'Agregar nueva persona',
 				'link' => BASE_URL . 'personal' . DS . 'index'
 						),
 			 		array(
 			 	'id' => 'listar',
-			 	'title' => 'Listado de  Persona',
+			 	'title' => 'Consultar personal registrado',
 			 	'link' => BASE_URL . 'personal' . DS . 'listing'
 			 			)
 					);		
@@ -26,7 +26,7 @@
 		/* Funcion Index donde se inicializa todo lo basico que  sera usado por el controlador*/
 		
 		function index(){
-	
+			
 			$this->_view->setJs(array(
 			"Librerias/formValidation","Librerias/bootstrapValidator.min","validaciones",
 			"Librerias/fuelux.wizard","form-wizard",
@@ -75,24 +75,21 @@
 		}
 
 		function Insert_InfoAdicional(){
-
 			//$_POST=$_GET;
 			unset($_POST['url']);
 			unset($_POST['medicina']);
-			$infoAdicional= $this->ConvertirArray($_POST);
+			$postRecibido= $this->ConvertirArray($_POST);
 
 			if($_POST['deporte']=='on'){
-
+					unset($postRecibido[':deporte']);
 					$check = $this->valCheckbox(6);
 					$arregloPost = $this->ConvertirArraySql($check);
-					unset($infoAdicional[':deporte']);
+					$infoAdicional=$this->borrarCheckbox(6,$postRecibido);
 					$this->_personal->InsertInfoAdicional($infoAdicional,$arregloPost);
 
 			}else{
-
-					unset($infoAdicional[':deporte']);
-					//print_r($infoAdicional);die();
-					$this->_personal->InsertInfoAdicional($infoAdicional,'{0}');		
+					unset($postRecibido[':deporte']);
+					$this->_personal->InsertInfoAdicional($postRecibido,'{0}');		
 			}	
 
 		}
@@ -127,28 +124,12 @@
 
 		}
 
+
 		function update($id = false){
 			
 			//Si le damos al boton modificar.
 			if ($_SERVER['REQUEST_METHOD']=='POST') {
-				
-				$persona = array(
-
-						':id' => $_POST['id'] ,
-						':cedula' => $_POST['cedula'] ,
-						':nombre' => $_POST['nombre'] ,
-						':apellido' => $_POST['apellido'] ,
-						':sexo' => $_POST['sexo'] ,
-						':fecha_nacimiento' => $_POST['fecha_nacimiento'] ,
-						':telefono' => $_POST['telefono'],
-						':correo' => $_POST['correo'],
-						':fecha_ingreso' => $_POST['fecha_ingreso']
-
-				);
-
-				$this->_personal->updatePersonal($persona);	
-				$this->_view->redirect('personal/actualizar_persona/'.$persona[':id']);
-
+		
 				}else{	
 				$this->_view->setJs(array(
 				"Librerias/formValidation","Librerias/bootstrapValidator.min","validaciones",
@@ -157,7 +138,6 @@
 				"Librerias/jquery.maskedinput",
 				"registroPersona/registroPersona",
 				"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion","pickList"));
-
 				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter",
 											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));							
 				$persona = $this->_personal->getUnicaPersona($id);
@@ -165,16 +145,7 @@
 				$this->_view->render('actualizar_persona','','pickList');
 				
 				}
-
 		}
-
-		function delete($id){
-
-			$this->_personal->deletePersonal($id);
-			$this->_view->redirect('personal/listing');
-
-		}
-
 
 		function SelectEstado() {
 			

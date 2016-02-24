@@ -10,12 +10,13 @@
 					return $data;
 				}
 
-				function borrarCheckbox($contador){
+				function borrarCheckbox($contador,$arreglo){		
 						for ($i = 0; $i <= $contador; $i++) {
-								unset($infoAdicional[':check'.$i]);
+								unset($arreglo [':check'.$i]);
 						}
-					return $data;
+					return $arreglo;
 				}				
+				
 
 
 				function ConvertirArraySql($arregloPhp){
@@ -25,7 +26,6 @@
 
 
 				function ConvertirArray($VarPost){
-							 //$arregloNuevo= array();									
 								foreach ($VarPost as $newArrayKey => $valor) {		
 										$arregloNuevo[':'.$newArrayKey]=$valor;
 								}		 					

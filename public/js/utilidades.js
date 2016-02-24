@@ -38,4 +38,10 @@ input.value = num;
 else{ alert('Solo se permiten numeros');
 input.value = input.value.replace(/[^\d\.]*/g,'');
 }
-}   
+}  
+function borrarCheckbox(){
+  for (i=0;i<document.registro_persona.elements.length;i++)
+          if(document.registro_persona.elements[i].type == "checkbox"){
+         document.registro_persona.elements[i].checked=0; 
+      }
+ }

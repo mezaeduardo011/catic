@@ -1,4 +1,3 @@
-<div class    ="page-content" ><!-- /.page-content -->
 <form class   ="form-horizontal" role="form"  method="post"  id="registro_persona" name="registro_persona" >
 	
 	
@@ -7,16 +6,15 @@
 			<div class  id="inicio" align="center">
 				<h4 class="widget-title">Registros de persona.</h4>
 			</div>
-			<div id="infoDatosDiv" hidden >
+			<div id="infoDatosDiv" hidden="" >
 				<div  class="col-sm-3">
-					<table>
-						<td class="center">Registrando datos de: </td>
-					</table>
+					<h5 class="widget-title">Registrando datos de:</h5>
 					<table id="infoDatos">
-						<td class="center"></td>
+						<td class="center" ></td>
 					</table>
 					
 				</div>
+				<br>
 				<br>
 				<br>
 			</div>
@@ -47,9 +45,7 @@
 							</li>
 						</ul>
 					</div>
-					
-					<hr />
-					
+					<br>
 					<div class="step-content pos-rel">
 						<div class="step-pane active" data-step="1" id="divPersona">
 							<input type="text" name="tipo_persona" value="empleada" hidden></input>
@@ -237,8 +233,7 @@
 								</div>
 							</div>
 							<br><br>
-							<div class="hr hr-dotted"></div>
-							
+							<br>
 							<div class="form-group">
 								<label class="control-label col-sm-3 no-padding-right" for="ubicacion">Ubicación: </label>
 								<div class="col-sm-9">
@@ -252,7 +247,6 @@
 									</div>
 								</div>
 							</div>
-							<hr>
 							<!-- 								<div align="center" >
 								<label class="control-label no-padding-right" for="parroquia">Coordinacion a la cual pertenecera esta persona: </label>
 								<div class    ="input-group">
@@ -391,9 +385,13 @@
 								
 							</div>
 							<div align="center">
+								<<<<<<< HEAD
 								<button class="btn btn-primary" onclick="send_consulta_hijo();
 								showElementos('tablaHijos');hiddenElementos('infoHijos');hiddenElementos('infoExtra');showElementos('AgregarOtro');
 								send_registro_persona('hijo');">
+								=======
+								<button class="btn btn-primary" onclick="send_consulta_hijo();send_registro_persona();" id="registrarHijo">
+								>>>>>>> 66bce1ef59e79aeef65f40a1a9aa2bf81975869d
 								<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
 								Registrar
 								</button>
@@ -689,8 +687,8 @@
 												
 												<!-- 	<td class="center">
 													<div class="hidden-sm hidden-xs action-buttons">
-																			<a class="btn-app  btn-primary  btn-sm" id="detalle_persona"
-																									onclick="pickOpen('prod', 'id_prod',
+																				<a class="btn-app  btn-primary  btn-sm" id="detalle_persona"
+																											onclick="pickOpen('prod', 'id_prod',
 															'<?php echo BASE_URL."personal/update/". $persona['id_persona'] ?>',
 															90, 80, 70, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
 															style=cursor:pointer; >
@@ -739,7 +737,11 @@
 															</label>
 															&nbsp;
 															<label class="blue">
+																<<<<<<< HEAD
 																<input autocomplete="off" value="no" type="radio" class="ace" name="vehiculos"  onchange=""/>
+																=======
+																<input autocomplete="off" value="no" type="radio" class="ace" name="deporte" onchange="hiddenElementos('deporteSelect');borrarCheckbox();"/>
+																>>>>>>> 66bce1ef59e79aeef65f40a1a9aa2bf81975869d
 																<span class="lbl"> No</span>
 															</label>
 														</td>
@@ -888,7 +890,6 @@
 								</div>
 							</div>
 							
-							<hr />
 							<div class="wizard-actions">
 								<button class="btn btn-prev">
 								<i class="ace-icon fa fa-arrow-left"></i>
@@ -906,4 +907,10 @@
 						</div>
 						
 					</form>
+					<<<<<<< HEAD
 					</div><!-- /.page-content -->
+					=======
+					</div><!-- /.page-content -->
+					
+				</div>
+				>>>>>>> 66bce1ef59e79aeef65f40a1a9aa2bf81975869d

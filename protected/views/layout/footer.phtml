@@ -1,3 +1,5 @@
+            
+                <br><br><br>
             <div class="footer">
                 <div class="footer-inner">
                     <div class="footer-content">
@@ -9,7 +11,6 @@
                     </div>
                 </div>
             </div>
-        </div><!-- /.main-container -->
 
      <!-- basic scripts -->
         <script src="<?php echo PUBLIC_URL;?>/js/Librerias/ace-extra.js"></script> 
@@ -41,7 +42,8 @@
         <!-- Calendario de Inputs -->
         <script type="text/javascript">
             jQuery(function($) {
-                $('.date-picker').datepicker({
+
+                 $('.date-picker').datepicker({
                        clearBtn: true,
                        autoclose: true,
                     language: "es",
@@ -61,10 +63,10 @@
 
                   $(document).ready(function () { 
                     var selector = function (dateStr) {
-                            var d1 = $('#fecha_desde').datepicker('getDate');
-                            var d2 = $('#fecha_hasta').datepicker('getDate');
-                            $('#fecha_desde').datepicker("option", "maxDate",d2); //new line           
-                            $('#fecha_hasta').datepicker("option", "minDate",d1); // new line
+                            var d1 = $('#desde').datepicker('getDate');
+                            var d2 = $('#hasta').datepicker('getDate');
+                            $('#desde').datepicker("option", "maxDate",d2); //new line           
+                            $('#hasta').datepicker("option", "minDate",d1); // new line
                             var diff = 1;
                             if (d1 && d2) {
                                 diff = diff + Math.floor((d2.getTime() - d1.getTime()) / 86400000);
@@ -73,8 +75,9 @@
                             //$('.minim').val(d1)
                         }    
 
-                    $('#fecha_desde,#fecha_hasta').change(selector)
+                    $('#desde,#hasta').change(selector)
                     });
+
 
                 $.mask.definitions['~']='[+-]';
                 $('.input-mask-date').mask('99/99/9999');
@@ -82,18 +85,6 @@
                 $('.input-mask-eyescript').mask('~9.99 ~9.99 999');
                 $(".input-mask-product").mask("a*-999-a999",{placeholder:" ",completed:function(){alert("You typed the following: "+this.val());}});
 
-
-           
-
-                $('#gritter-center').on(ace.click_event, function(){
-                    $.gritter.add({
-                        title: 'This is a centered notification',
-                        text: 'Just add a "gritter-center" class_name to your $.gritter.add or globally to $.gritter.options.class_name',
-                        class_name: 'gritter-info gritter-center'
-                    });
-            
-                    return false;
-                });
         });
 
         </script>

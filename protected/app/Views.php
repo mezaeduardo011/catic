@@ -21,15 +21,18 @@
 				'href'	=> BASE_URL . 'login/close'
 			);
 			
-
-
+			if(Session::get('level')==60){
 			$menu = array(
 								array(
 			  	 				'id' => 'index',
 			  	 				'title' 	=> 'Inicio',
 			  	 				'link'=> BASE_URL . 'index'
-						  	 	),array(
-					            'id' => 'personas',
+						  	 	)						      
+					  	 );
+				}else{
+			$menu = array(
+								array(
+					            'id' => 'personal',
 					            'title'   => 'Control del personal',
 					            'link'=> BASE_URL . 'personal'
 						      ),array(
@@ -38,12 +41,12 @@
 					            'link'=> BASE_URL . 'vacaciones'
 						      )
 								,array(
-					            'id' => 'actividades',
+					            'id' => 'actividad_institucional',
 					            'title'   => 'Actividades',
 					            'link'=> BASE_URL . 'actividad_institucional'
 						      )
 						      ,array(
-					            'id' => 'correspondencias',
+					            'id' => 'correspondencia',
 					            'title'   => 'Correspondencias',
 					            'link'=> BASE_URL . 'correspondencia'
 						      ),array(
@@ -52,7 +55,7 @@
 					            'link'=> BASE_URL . 'administracion'
 						      )						      
 					  	 );	
-
+					 }
 
 			$js = array();
 			$css = array();
@@ -123,7 +126,7 @@
 						include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'statements.phtml';
 						// include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'header.phtml';
 						// include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'imagalery.phtml';
-						// include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'sidebar.phtml';
+						 include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'sidebar.phtml';
 						 include_once $view_route;
 						 include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'footer.phtml';
 					break;

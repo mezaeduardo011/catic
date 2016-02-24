@@ -1,13 +1,19 @@
-<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-	<div class="list-group">
-		<a  class="list-group-item active">Menu</a>
-		
-		<?php  if ($_view_params['sidebar_menu']):?>
-		<?php for ($i = 0; $i < count($_view_params['sidebar_menu']); $i++):?>
-		<a href="<?php echo $_view_params['sidebar_menu'][$i]['link']; ?>"class="list-group-item"><?php echo $_view_params['sidebar_menu'][$i]['title'];?></a>
-		<?php endfor;?>
-		<?php endif;?>
-		
-		
-	</div>
+ <div class    ="page-content"><!-- /.page-content -->
+
+   <div class="sidebar responsive ">
+    <div class="list-group">
+        <div class="alert alert-info" align="center">
+            <h5>Acciones</h5>
+        </div> 
+        <?php  if ($_view_params['sidebar_menu']):?>
+        <?php for ($i = 0; $i < count($_view_params['sidebar_menu']); $i++):?>
+        <a href="<?php echo $_view_params['sidebar_menu'][$i]['link']; ?>"class="list-group-item">
+        <?php echo $_view_params['sidebar_menu'][$i]['title'];?></a>
+        <?php endfor;?>
+        <?php endif;?>     
+        
+    </div>
 </div>
+                   <div class="main-content" >
+                        <div class="main-content-inner">
+                   

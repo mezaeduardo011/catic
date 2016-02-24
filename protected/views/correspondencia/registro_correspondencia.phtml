@@ -1,4 +1,6 @@
-<div class="page-content">
+	
+    <div class    ="page-content"><!-- /.page-content -->
+
 	<div class="widget-box">
 		<div class="alert alert-info" align="center">
 			<h4>Registro de correspondencia <i class="fa fa-file-text-o"></i></h4>
@@ -83,7 +85,10 @@
 				</tr>
 			</table>
 			<br>
-			<div align="center">
+			<div align="center" class="col-sm-12">
+					<div>
+						
+					</div>
 								<label class="control-label col-sm-5 no-padding-right" for="tipo">Tipo de correspondencia:</label>
 								<div class="col-sm-1">
 									<div class="clearfix">
@@ -106,7 +111,40 @@
 									</div>
 								</div>				
 			</div>	
-			<br><br>		
+			<br><br>
+<hr>
+			<div align="center">
+								<label class="control-label col-sm-5 no-padding-right" for="tipo">Estatus:</label>
+								<div class="col-sm-1">
+									<div class="clearfix">
+										<div class="col-sm-12">
+											<label class="line-height-1 blue">
+												<input autocomplete="off"  value="Proceso" type="radio" class="ace" name="estatus" />
+												<span class="lbl"> Proceso</span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-1">
+									<div class="clearfix">
+										<div class="col-sm-12">
+											<label class="line-height-1 blue">
+												<input autocomplete="off"  value="Archivada" type="radio" class="ace" name="estatus" />
+												<span class="lbl"> Archivada</span>
+											</label>
+										</div>
+									</div>
+								</div>				
+			</div>
+			<br><br><br>
+							<div align="center" class="col-sm-12">
+								<label class="control-label" for="carpetas">Carpeta destino: </label>
+								<div class    ="input-group">
+									<select name="carpetas" id="carpetas" class="selectpicker show-tick input-sm form-control" data-live-search="true">
+									</select>
+								</div>
+							</div>			
+			<br><br><br>					
 			<div class="clearfix form-actions" align="center">
 				<div>
 					<button class="btn btn-success" type="submit" onclick="closePickList()">
