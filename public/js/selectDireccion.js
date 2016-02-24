@@ -114,9 +114,27 @@ $(document).ready(
 			$('#coordinacion').selectpicker('refresh');
 		})
 
-		.fail(function() {//si da error decimos error
+		.fail(function() {
 			alert("Error cargando las coordinaciones");
 		});
 
+		$.ajax({
+			url: BASE_URL +'amonestacion/selectTipoAmonestaciones', 
+			type: 'POST',
+			dataType: 'json',		
+		})
+
+		.done(function(data) { 
+			$('#tipo_amonestacion').empty();
+			$('#tipo_amonestacion').append('<option value="">Seleccione un tipo...</option>');
+			for (var i=0; i<data.length; i++) {
+				$('#tipo_amonestacion').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+			}	
+			$('#tipo_amonestacion').selectpicker('refresh');
+		})
+
+		.fail(function() {//si da error decimos error
+			alert("Error cargando los tipos de amonestaciones");
+		});
 
 });

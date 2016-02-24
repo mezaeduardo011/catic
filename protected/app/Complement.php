@@ -10,6 +10,18 @@
 					return $data;
 				}
 
+				function valCheckboxUnico($contador){		
+						for ($i = 0; $i <= $contador; $i++) {
+							if(isset($_POST['check'.$i]) && !($_POST['check'.$i]==" ")){
+								$data[$i] =  $_POST['check'.$i];
+								}
+						}
+					 foreach ($data as $i => $valor) {
+					     $checkSeleccionado=$data[$i];
+					  }
+					return $checkSeleccionado;
+				}				
+
 				function borrarCheckbox($contador,$arreglo){		
 						for ($i = 0; $i <= $contador; $i++) {
 								unset($arreglo [':check'.$i]);
@@ -26,6 +38,7 @@
 
 
 				function ConvertirArray($VarPost){
+								$arregloNuevo=array();
 								foreach ($VarPost as $newArrayKey => $valor) {		
 										$arregloNuevo[':'.$newArrayKey]=$valor;
 								}		 					
