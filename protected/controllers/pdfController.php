@@ -20,7 +20,6 @@
 			$this->_view->_persona  = $persona;
 
 				$this->_view->render('pdfDetallePersona', 'personal', 'pdf','');
-			// clase  metodo 	  vista    carpeta dentro de views 
 
 		}
 

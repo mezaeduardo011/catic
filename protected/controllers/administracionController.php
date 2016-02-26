@@ -1,34 +1,34 @@
 <?php 
-	class usuariosController extends Controller{
+	class administracionController extends Controller{
 
-		private $_usuario;
+		private $_administracion;
 		private $_personal;
 		
 		public function __construct(){
 
 			//Hereda el constructor del Controlador Frontal para hacer el llamado a su modelo correspondiente
 			parent::__construct();
-			$this->_usuario = $this->loadModel('usuarios');
+			$this->_administracion = $this->loadModel('administracion');
 			$this->_personal = $this->loadModel('personal');
 
 		}
 		
 
 		function index(){
-	
-
-				$this->_view->setJs(array(
-				"Librerias/formValidation","Librerias/bootstrapValidator.min","validaciones",
-				"Librerias/fuelux.wizard","form-wizard",
-				"Librerias/bootstrap-datepicker",
-				"Librerias/jquery.maskedinput",
-				"registroPersona/registroPersona"));
-
-				//Se pinta la vista con el metodo render.
-				$this->_view->render('administracion');
+			$this->_view->setJs(array("Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",				
+			"administracion/administracion"));
+			$this->_view->setCss(array(
+			"datepicker"));
+			$this->_view->render('administracion');
 	
 		}
 	
+
+		function registrarFechas(){
+		$fechas=$this->ConvertirArraySql($_POST);
+		$this->_administracion->insertFechas($fechas);
+
+		}
 
 		function usuarios(){
 
@@ -36,7 +36,7 @@
 			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools","Librerias/dataTables.colVis","tables",
 			"pickList"));
 
-			$listado = $this->_usuario->getUsuarios();
+			$listado = $this->_administracion->getUsuarios();
 
 			$this->_view->_listado = $listado;
 

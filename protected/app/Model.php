@@ -19,6 +19,21 @@
 					}
 		}
 
+		public function registroPdoArray($query,$datos){
+					try {
+
+						$this->_db->beginTransaction();
+						$this->_db->prepare($query)->execute();
+						$this->_db->commit();
+					}
+					catch (Exception $e){
+						$this->_db->rollBack();
+						echo "Error :: ".$e->getMessage();
+						exit();
+					}
+		}
+
+
 		public function selectPdo($query){
 			$auxiliar = $this->_db->query($query);
 				try {
