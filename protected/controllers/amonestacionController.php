@@ -58,17 +58,22 @@
 
 		}
 
-		function confirmacion(){
-				//$_POST=$_GET;
-				//$this->imprimirArreglo($_POST);
-				print_r($_POST);
-				//$this->_view->_datos=$datos;
-				// $persona = $this->_personal->getUnicaPersona($id);
-				// $this->_view->_persona = $persona;
+		function confirmacionAjax(){
+
+			$data['tipo_amonestacion_confirmacion']=$_POST['tipo_amonestacion'];
+			$data['coordinacion_confirmacion']= $_POST['coordinacion'];
+			echo json_encode($data);
+				//$this->_view->render('confirmacion_amonestacion','','pickList');
+				
+			
+		}
+
+		function confirmacionVista(){
+
 				$this->_view->render('confirmacion_amonestacion','','pickList');
 				
 			
-		}		
+		}				
 
 		function selectTipoAmonestaciones() {
 			
@@ -95,5 +100,19 @@
 					echo json_encode($data);
 
 		}		
+
+	function asignarAmonestacion($id= FALSE){		
+		
+		if(isset($id)&& !empty($id)){	
+						$this->_view->setJs(array("pickList"));		
+				$datos = $this->_amonestacion->getActividadUnica($id);
+				$this->_view->_datos = $datos;				
+				$this->_view->render('asignar_amonestacion','','pickList');			
+		}else {
+			
+			$this->_amonestacion->finalizarActividad($_POST['id_actividad_institucional']);			
+			
+		}
+	}		
 	}
 ?>

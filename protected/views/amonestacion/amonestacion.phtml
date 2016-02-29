@@ -77,12 +77,14 @@
 													<td class="center"><?php echo $persona['fecha_ingreso'];?></td>
 													<td class="center"><?php echo $persona['telefono'];?></td>
 													<th class="center">
-														<a class="btn-app  btn-primary  btn-sm">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" value="<?php echo $persona['id_persona']; ?>" name="<?php echo 'check'.$cont ?>"/>
-																<span class="lbl"></span>
-															</label>
-														</a>
+													<a class="btn-app  btn-primary  btn-sm" id="detalle_persona"
+														onclick="pickOpen('prod', 'id_prod',
+														'<?php echo BASE_URL."amonestacion/confirmacionVista/". $persona['id_persona'].'/44' ?>',
+														90, 96, 85, 1);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
+														style=cursor:pointer; >
+														<i class="ace-icon fa fa-floppy-o fa-lg"></i>
+														Asignar amonestacion
+													</a>
 														<input type="hidden" value="<?php echo $cont?>" name="contador" id="contador">
 													</th>
 												</tr>
@@ -94,13 +96,7 @@
 								</div>
 							</div>
 							<br>
-														<br>
-							<div align="center">
-								<button class="btn btn-primary" type="submit" align="center">
-								<i class="ace-icon fa fa-floppy-o fa-lg"></i>
-								Registrar amonestacion
-								</button>
-							</div>
+
 						</form>
 						<br>
 					</div>

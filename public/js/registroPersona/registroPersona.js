@@ -145,15 +145,7 @@ $('#fecha_ingreso').datepicker({
     todayHighlight: true,
     endDate: "2015/12/31"
 });
-$('#fecha_nacimiento').datepicker({
-    clearBtn: true,
-    autoclose: true,
-    language: "es",
-    daysOfWeekHighlighted: "0,1,2,3,4,5,6",
-    todayHighlight: true,
-    endDate: "1998/12/31",
 
-});
 jQuery(function($) {
     $.mask.definitions['~'] = '[+-]';
     $('.input-mask-date').mask('99/99/9999');

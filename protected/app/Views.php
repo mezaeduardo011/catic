@@ -55,9 +55,13 @@
 					            'link'=> BASE_URL . 'amonestacion'
 						      )	,array(
 					            'id' => 'adiministracion',
-					            'title'   => 'Administracion de sistema',
+					            'title'   => 'Sistema',
 					            'link'=> BASE_URL . 'administracion'
-						      ),						      
+						      )	,array(
+					            'id' => 'prueba',
+					            'title'   => 'Prueba',
+					            'link'=> BASE_URL . 'prueba'
+						      )						      
 					  	 );	
 					 }
 

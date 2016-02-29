@@ -11,19 +11,19 @@
 					<div class="col-sm-4">
 						<label class="" for="tipo_amonestacion">Tipo de amonestacion: </label>
 						<div class    ="input-group">
-							<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control" name="tipo_amonestacion" id="tipo_amonestacion" type="text" value="<?php echo $this->_datos['tipo_amonestacion'];?>" />
+							<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control" name="tipo_amonestacion" id="tipo_amonestacion_confirmacion" type="text"/>
 						</div>
 					</div class="col-sm-4">
 					<div class="col-sm-4">
 						<label class="" for="coordinacion">Coordinación: </label>
 						<div class    ="input-group">
-							<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control" name="tipo_amonestacion" id="tipo_amonestacion" type="text"  value="<?php echo $this->_datos['coordinacion'];?>"/>
+							<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control" name="tipo_amonestacion" id="tipo_amonestacion" type="text" />
 						</div>
 					</div class="col-sm-4">
 					<div class="col-sm-4">
 						<label>Fecha de amonestacion</label>
 						<div class="col-sm-7 input-group">
-							<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha" id="fecha" type="date" data-date-format="yyyy-mm-dd"  value="<?php echo $this->_datos['fecha'];?>"/>
+							<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha" id="fecha" type="date" data-date-format="yyyy-mm-dd"  />
 							<span class   ="input-group-addon">
 								<i class      ="fa 	fa-calendar  bigger-110"></i>
 							</span>
@@ -34,7 +34,7 @@
 					<br>
 					<div class="col-sm-12"><label>Motivo de la amonestacion:</label>
 					<textarea id="form-field-11" align"center" class="autosize-transition input-sm form-control" name="medicina_text"
-					style="width:500px;height:100px" ><?php print_r($this->_datos);?></textarea>
+					style="width:500px;height:100px" ></textarea>
 				</div>
 				<br><br><br><br><br><br><hr>
 			</div class="col-sm-4">
