@@ -31,7 +31,6 @@
     //fucion con la cual obtenemos  los datos 
     function obten_datos(cedula,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9)
     {
-        
         //alert("destino: "+destino+" destino2: "+destino2+" destino3: "+destino3+" destino4: "+destino4+" destino5: "+destino5+" destino6: "+destino6+" destino7: "+destino7+" destino8: "+destino8+" destino9:"+destino9);
         cedular= document.getElementById(cedula);
         destino = document.getElementById(destino);
@@ -63,5 +62,7 @@
                 success: function(json){
                     LlenarDatos(json,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9);
                         }
-            });     
+            });               
+       
+  
     }

@@ -1,5 +1,4 @@
             
-                <br><br><br>
             <div class="footer">
                 <div class="footer-inner">
                     <div class="footer-content">
@@ -11,6 +10,9 @@
                     </div>
                 </div>
             </div>
+            
+    </div>
+
 
      <!-- basic scripts -->
         <script src="<?php echo PUBLIC_URL;?>/js/Librerias/ace-extra.js"></script> 
@@ -37,54 +39,14 @@
      
 </html>
 
+<script >
+    $('#fecha_nacimiento').datepicker({
+    clearBtn: true,
+    autoclose: true,
+    language: "es",
+    daysOfWeekHighlighted: "0,1,2,3,4,5,6",
+    todayHighlight: true,
+    endDate: "1998/12/31",
 
-        <!-- inline scripts related to this page -->
-        <!-- Calendario de Inputs -->
-        <script type="text/javascript">
-            jQuery(function($) {
-
-                 $('.date-picker').datepicker({
-                       clearBtn: true,
-                       autoclose: true,
-                    language: "es",
-                    daysOfWeekHighlighted: "0,1,2,3,4,5,6",
-                    todayHighlight: true,
-                });
-                //or change it into a date range picker
-                $('.input-daterange').datepicker({
-                    clearBtn: true,
-                    language: "es",
-                    daysOfWeekHighlighted: "0,1,2,3,4,5,6",
-                    autoclose: true,
-                    todayHighlight: true,
-
-
-                });
-
-                  $(document).ready(function () { 
-                    var selector = function (dateStr) {
-                            var d1 = $('#desde').datepicker('getDate');
-                            var d2 = $('#hasta').datepicker('getDate');
-                            $('#desde').datepicker("option", "maxDate",d2); //new line           
-                            $('#hasta').datepicker("option", "minDate",d1); // new line
-                            var diff = 1;
-                            if (d1 && d2) {
-                                diff = diff + Math.floor((d2.getTime() - d1.getTime()) / 86400000);
-                            }
-                            $('#dias_habiles').val(diff);
-                            //$('.minim').val(d1)
-                        }    
-
-                    $('#desde,#hasta').change(selector)
-                    });
-
-
-                $.mask.definitions['~']='[+-]';
-                $('.input-mask-date').mask('99/99/9999');
-                $('.input-mask-phone').mask('(9999) 999-9999');
-                $('.input-mask-eyescript').mask('~9.99 ~9.99 999');
-                $(".input-mask-product").mask("a*-999-a999",{placeholder:" ",completed:function(){alert("You typed the following: "+this.val());}});
-
-        });
-
-        </script>
+});
+</script>

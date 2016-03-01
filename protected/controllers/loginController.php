@@ -26,25 +26,14 @@
 
 				Session::set('authenticated', true);
 				Session::set('level', $data['perfil_referencial']);
-			
+				Session::set('user', $data['nombre'].', '.$data['apellido']);	
 				
 				Session::set('time', time());
 
 				 switch ($data['perfil_referencial']) {
-					case 60:
-
-
-						Session::set('user', $data['nombre'].', '.$data['apellido']);	
+					case 60:						
 						$this->_view->redirect('personal');
-
-
-
 					break;
-					
-				// 	default:
-				// 		Session::set('user', $data['nombres'].', '.$data['apellidos']);
-				// 		$this->_view->redirect();
-				// 	break;
 				 }
 			}else {
 		

@@ -117,7 +117,7 @@ function showBoxAux(objID,url){
 	f.document.open();
 	f.document.write("<center>");
 	f.document.write("<br><br>");
-	f.document.write("<img src='../catic/public/img/search.png'>");
+	//f.document.write("<img src='../catic/public/img/search.png'>");
 	f.document.write("<span style='padding-left:10px;font-family:Arial;font-size:9pt;font-weight:bold'>Por favor espere...</span>");
 	f.document.write("</center>");
 	f.document.close();

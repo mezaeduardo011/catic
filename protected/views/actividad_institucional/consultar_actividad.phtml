@@ -1,66 +1,92 @@
-
-	<form action="<?php  echo BASE_URL;?>actividad_institucional/insert" method="post">
-			<div class="page-header">
-				<h1>
-					Personal disponible para la actividad
-					<small>
-					<i class="ace-icon fa fa-angle-double-right"></i>
-					Por favor agregue a las personas que asistiran a la actividad.
-					</small>
-				</h1>
+<div class="widget-box">
+<form action="<?php  echo BASE_URL;?>actividad_institucional/insert" method="post">
+			<div class="alert alert-info" align="center">
+				<h4>Personas asignadas a la actividad <i class="fa fa-users fa-lg"></i></h4>
 			</div>
-																				
-				<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-								<thead>
-										<tr>
-										<th >#</th>
-										<th >Nombre De La Actividad</th>
-										<th >Fecha</th>
-										<th >Hora</th>
-										<th >Ubicación</th>
-										<th colspan="100%">
-											<div align="center">Acciones</div>
-										</th>
-										</tr>
-								</thead>
-								<tbody>
-										<?php $cont=0; foreach ($this->_listado as $persona): $cont++;?>
-										<tr>
-										<td ><?php echo $persona['numeracion'];?></td>
-										<td ><?php echo $persona['nombre_actividad']; ?></td>
-										<td ><?php echo $persona['fecha_actividad']; ?></td>
-										<td ><?php echo $persona['hora_actividad']; ?></td>
-										<td ><?php echo $persona['ubicacion']; ?></td>
-										<th> 
-										<div align="center">
-								<a class="btn-app  btn-primary  btn-sm" style=cursor:pointer;
-								onclick="
-								pickOpen('PickList', 'PickList', 
-								'<?php echo BASE_URL."actividad_institucional/personasAsignadas/". $persona['id_actividad_institucional']?>', 90, 25, 80, 200);"
-								>
-										
-											<i class="glyphicon glyphicon-search"></i>
-												Detalles
-												
-											</a>																				
-										</div>
-										</th>
-										<th><div align="center">
-											<a class="btn-app btn-danger btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_actividad_institucional'] ?>">
-												<i class="ace-icon fa fa-times bigger fa-lg"></i>
+<!-- 	<div class="page-header">
+		<h1>
+		Personal disponible para la actividad
+		<small>
+		<i class="ace-icon fa fa-angle-double-right"></i>
+		Por favor agregue a las personas que asistiran a la actividad.
+		</small>
+		</h1>
+	</div> -->
+	<hr>
+	<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th >#</th>
+				<th >Nombre De La Actividad</th>
+				<th >Fecha</th>
+				<th >Hora</th>
+				<th >Ubicación</th>
+				<th colspan="" rowspan="" headers="" scope="">Estatus</th>
+				<th colspan="100%">
+					<div align="center">Acciones</div>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $cont=0; foreach ($this->_listado as $actividad): $cont++;?>
+			<tr>
+				<td ><?php echo $actividad['numeracion'];?></td>
+				<td ><?php echo $actividad['nombre_actividad']; ?></td>
+				<td ><?php echo $actividad['fecha_actividad']; ?></td>
+				<td ><?php echo $actividad['hora_actividad']; ?></td>
+				<td ><?php echo $actividad['ubicacion']; ?></td>
+				<td ><?php echo $actividad['status']; ?></td>
+											<td class="center">
+												<div class="hidden-sm hidden-xs action-buttons">
+													<a class="btn-app  btn-success  btn-sm" id="detalle_persona"
+														onclick="pickOpen('prod', 'id_prod',
+														'<?php echo BASE_URL."actividad_institucional/detalles/". $actividad['id_actividad_institucional'] ?>',
+														90, 55, 90, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
+														style=cursor:pointer; >
+														<i class="glyphicon glyphicon-search"></i>
+														Detalles
+													</a>
+													<?php if($actividad['status']!='Actividada finalizada'):?>
+													<a class="btn-app  btn-imprimir  btn-sm" id="detalle_persona"
+														onclick="pickOpen('prod', 'id_prod',
+														'<?php echo BASE_URL."actividad_institucional/fin/". $actividad['id_actividad_institucional'] ?>',
+														90, 55, 90, 50);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
+														style=cursor:pointer; >
+														<i class="glyphicon glyphicon-search"></i>
+														Finalizar
+													</a>
+													
+													<a class="btn-app btn-eliminar btn-sm" href="<?php echo BASE_URL."actividad_institucional/delete/". $actividad['id_actividad_institucional'] ?>">
+														<i class="glyphicon glyphicon-remove-circle"></i>
+														Cancelar
+													</a>
+													<?php endif?>													
+												</div>
+											</td>
+		</tr>
+		<?php endforeach ?>
 
-												Cancelar
-											</a>											
-										</div>
-										</th>
-										</tr>
-										<?php endforeach ?>
-								<input type="hidden" value="<?php echo $cont?>" name="contador"  >
-							</tbody>
-				</table>
-
-	</form>
-								<div id="PickList" style="width: 100%;display:none"></div>
-			                    <div  id='id_fondo_opaco' class="fondo_opaco" style="display:none"></div>
+		<input type="hidden" value="<?php echo $cont?>" name="contador"  >
+	</tbody>
+</table>
+<hr>
+</form>	
 </div>
 
+		<div id="prod"></div>
+		<div id="resultado" align="center"></div>
+		<div  id='id_fondo_opaco' class="fondo_opaco" style="display:none"></div>
+</div>
+<BR></BR>
+<BR></BR>
+<BR></BR>
+<BR></BR>
+<BR></BR>
+<BR></BR>
+<BR></BR>
+<BR></BR>
+<BR></BR><BR></BR>
+<BR></BR>
+<BR></BR><BR></BR>
+<BR></BR>
+<BR></BR>

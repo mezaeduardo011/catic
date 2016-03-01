@@ -3068,7 +3068,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 .nav>li>a {
 	position: relative;
 	display: block;
-	padding: 10px 15px
+	padding: 0px 7px;
 }
 .nav>li>a:hover, .nav>li>a:focus {
 	text-decoration: none;
@@ -4206,8 +4206,9 @@ a.list-group-item .list-group-item-heading {
 }
 a.list-group-item:hover, a.list-group-item:focus {
 	text-decoration: none;
-	color: #555;
-	background-color: #f5f5f5
+	color: #FFFAFA;
+	background-color: #A61601;
+	border: 1px;
 }
 .list-group-item.disabled, .list-group-item.disabled:hover, .list-group-item.disabled:focus {
 	background-color: #eee;

@@ -28,7 +28,7 @@
 		function index(){
 			
 			$this->_view->setJs(array(
-			"Librerias/formValidation","Librerias/bootstrapValidator.min","validaciones",
+			"Librerias/formValidation","Librerias/bootstrapValidator.min",
 			"Librerias/fuelux.wizard","form-wizard",
 			"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
 			"Librerias/jquery.maskedinput","Librerias/jquery.gritter", 

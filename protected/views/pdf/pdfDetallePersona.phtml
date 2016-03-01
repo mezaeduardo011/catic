@@ -114,7 +114,7 @@ html {
 }
 .cuerpo {
   font-family: "Times New Roman", serif;
-  margin: 20mm 8mm 22mm 8mm;
+  margin: 1mm 8mm 22mm 8mm;
 }
 </style>
 <body>
@@ -153,56 +153,35 @@ html {
         </tr>
 
         <tr >
-        <th class="center" >Dirección</th>
-        <th class="center">Telefonos</th>
+        <th class="center">Fecha de nacimiento</th>
+        <th class="center">Edad</th>
         <th class="center">Correo</th>
         </tr>
 
         <tr>
-        <td align="center"><?php echo $this->_persona[0]['ubicacion'] ?></td>
-        <td align="center" ><?php echo $this->_persona[0]['telefono'] ?>////<?php echo $this->_persona[0]['otro_telefono'] ?></td>
-        <td align="center" ><?php echo $this->_persona[0]['correo'] ?>></td>
-        </tr>
-
-
-        <tr>
-        <th class="center">Fecha de nacimiento</th>
-        <th class="center">Edad</th>
-        <th class="center">Estado civil</th>
-        </tr>
-        <tr>
         <td align="center"><?php echo $this->_persona[0]['fecha_nacimiento'] ?></td>
         <td align="center"><?php echo $this->_persona[0]['edad'] ?></td>
-        <td align="center">FALTA</td>
+        <td align="center" ><?php echo $this->_persona[0]['correo'] ?></td>
         </tr>
 
-        <tr>
-        <th class="center">Nivel academico</th>
-        <th class="center">Educación primaria</th>
-        <th class="center">Educación secundaria</th>
-        </tr>
-        <tr>
-        <td align="center">FALTA</td>
-        <td align="center">FALTA</td>
-        <td align="center">FALTA</td>
-        </tr>
 
         <tr>
-        <th class="center">Educación superior</th>
-        <th class="center">Cursos y talleres</th>
-        <th class="center">Post-grado</th>
+        <th class="center">Telefonos</th>
+        <th class="center">Edad</th>
+        <th class="center">Sexo</th>
         </tr>
         <tr>
-        <td align="center">FALTA</td>
-        <td align="center">FALTA</td>
-        <td align="center">FALTA</td>
+        <td align="center" ><?php echo $this->_persona[0]['telefono'] ?>*<?php echo $this->_persona[0]['otro_telefono'] ?></td>
+        <td align="center"><?php echo $this->_persona[0]['edad'] ?></td>
+        <td align="center"><?php echo $this->_persona[0]['sexo'] ?></td>
         </tr>
 
-        <tr>
+        <!-- <tr>
         <th class="center">Cantidad de hijos</th>
         <th class="center">Nombres y apellidos de los hijos</th>
         <th class="center">Nivel academico de los hijos</th>
         </tr>
+
         <tr>
         <td align="center">FALTA</td>
         <td align="center">FALTA</td>
@@ -229,22 +208,56 @@ html {
         <td align="center">FALTA</td>
         <td align="center">FALTA</td>
         <td align="center">FALTA</td>
-        </tr>
+        </tr> -->
 
         <tr>
-        <th class="center" >Medicamento de por vida</th>
-        <th class="center">Factor RH</th>
-        <th class="center">Practica algún deporte</th>
+        <th class="center" >Fecha de ingreso</th>
+        <th class="center">Coordinación</th>
+        <th class="center">Cargo</th>
         </tr>
         <tr>
-        <td align="center">FALTA</td>
-        <td align="center">FALTA</td>
+        <td align="center" ><?php echo $this->_persona[0]['fecha_ingreso'] ?></td>
+        <td align="center" ><?php echo $this->_persona[0]['c'] ?></td>
         <td align="center">FALTA</td>
         </tr>
     </table>
+
+
+    <div class="page-header" align="center">
+        <h2>
+        Dirección
+        </h2>
+    </div>
+    <table id="dynamic-table" align="center" class="CSSTableGenerator">
+
+        <tr >
+        <th class="center" >Estado</th>
+        <th class="center">Municipio</th>
+        <th class="center">Parroquia</th>
+        </tr>
+
+        <tr>
+        <td align="center"><?php echo $this->_persona[0]['estado'] ?></td>
+        <td align="center" ><?php echo $this->_persona[0]['municipio'] ?></td>
+        <td align="center" ><?php echo $this->_persona[0]['parroquia'] ?></td>
+        </tr>
+        </tr>
+    </table>  
+   <table id="dynamic-table" align="center" class="CSSTableGenerator">
+        <tr >
+        <th class="center" >Ubicación</th>
+      
+        </tr>
+
+        <tr>
+        <td align="center"><?php echo $this->_persona[0]['ubicacion'] ?></td>
+        </tr>
+    </table>        
+
+
 </div>
-<br>
-<br>
+
+
 <br>
 <br>
 <br>

@@ -59,12 +59,16 @@ body {
 	margin: 0;
 	padding: 8px 20px 24px
 }
+.divBlanco {
+	background-color: #fff;
+}
 .page-header {
 	margin: 0 0 12px;
 	border-bottom: 1px dotted #e2e2e2;
 	padding-bottom: 16px;
 	padding-top: 7px
 }
+
 .page-header h1 {
 	padding: 0;
 	margin: 0 8px;
@@ -276,7 +280,7 @@ pre.prettyprint {
 border-radius: 17px 17px 0px 0px;
 -moz-border-radius: 17px 17px 0px 0px;
 -webkit-border-radius: 17px 17px 0px 0px;
-border: 1px solid #000000;
+border: 1px solid #8C0C0C;
 }
 .alert .close {
 	font-size: 16px
@@ -1111,17 +1115,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c1203', end
 .ace-nav>li:first-child {
 	border-left-width: 0
 }
-.ace-nav>li>a {
-	background-color: rgba(222,25,3,1);
-	color: #FFF;
-	display: block;
-	line-height: inherit;
-	text-align: center;
-	height: 100%;
-	width: auto;
-	min-width: 50px;
-	padding: 0 8px;
-	position: relative
+/*Cambio*/
+.ace-nav > li > a {
+    background-color: rgba(222, 25, 3, 1);
+    color: #fff;
+    display: block;
+    line-height: inherit;
+    min-width: 1px;
+    padding: 1px;
+    position: relative;
+    text-align: right;
+    width: auto;
 }
 .ace-nav>li>a>.ace-icon {
 	display: inline-block;
@@ -8380,7 +8384,8 @@ input.ace+.lbl.padding-0::before {
 	width: 1px
 }
 .form-group select, .form-group textarea, .form-group input[type=text], .form-group input[type=password], .form-group input[type=datetime], .form-group input[type=datetime-local], .form-group input[type=date], .form-group input[type=month], .form-group input[type=time], .form-group input[type=week], .form-group input[type=number], .form-group input[type=email], .form-group input[type=url], .form-group input[type=search], .form-group input[type=tel], .form-group input[type=color] {
-	background: #FFF
+	background: #F6F6F6;
+	
 }
 .form-group.has-success input, .form-group.has-success select, .form-group.has-success textarea {
 	border-color: #9cc573;

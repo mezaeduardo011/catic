@@ -50,10 +50,18 @@
 					            'title'   => 'Correspondencias',
 					            'link'=> BASE_URL . 'correspondencia'
 						      ),array(
+					            'id' => 'amonestacion',
+					            'title'   => 'Amonestaciones',
+					            'link'=> BASE_URL . 'amonestacion'
+						      )	,array(
+					            'id' => 'biometrico',
+					            'title'   => 'Biometrico',
+					            'link'=> BASE_URL . 'biometrico'
+						      )	,array(
 					            'id' => 'adiministracion',
-					            'title'   => 'Administracion del sistema',
+					            'title'   => 'Administracion de sistema',
 					            'link'=> BASE_URL . 'administracion'
-						      )						      
+						      )					      
 					  	 );	
 					 }
 
@@ -124,11 +132,11 @@
 
 					default:
 						include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'statements.phtml';
-						// include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'header.phtml';
+						 //include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'header.phtml';
 						// include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'imagalery.phtml';
-						 include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'sidebar.phtml';
+						include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'sidebar.phtml';
 						 include_once $view_route;
-						 include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'footer.phtml';
+						include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'footer.phtml';
 					break;
 				}
 				

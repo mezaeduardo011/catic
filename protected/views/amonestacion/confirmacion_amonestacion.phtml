@@ -1,0 +1,52 @@
+<div class    ="page-content" ><!-- /.page-content -->
+<div class="widget-box">
+	<form action="<?php  echo BASE_URL;?>amonestacion/registro_amonestacion" method="post">
+		<div class="alert alert-info" align="center">
+			<h4>Confirmacion de amonestacion <i class="fa fa-users fa-lg"></i></h4>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="col-sm-12" align="center" id="sandbox-container">
+					<div class="col-sm-4">
+						<label class="" for="tipo_amonestacion">Tipo de amonestacion: </label>
+						<div class    ="input-group">
+							<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control" name="tipo_amonestacion" id="tipo_amonestacion_confirmacion" type="text"/>
+						</div>
+					</div class="col-sm-4">
+					<div class="col-sm-4">
+						<label class="" for="coordinacion">Coordinación: </label>
+						<div class    ="input-group">
+							<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control" name="tipo_amonestacion" id="tipo_amonestacion" type="text" />
+						</div>
+					</div class="col-sm-4">
+					<div class="col-sm-4">
+						<label>Fecha de amonestacion</label>
+						<div class="col-sm-7 input-group">
+							<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha" id="fecha" type="date" data-date-format="yyyy-mm-dd"  />
+							<span class   ="input-group-addon">
+								<i class      ="fa 	fa-calendar  bigger-110"></i>
+							</span>
+						</div>
+					</div class="col-sm-4">
+				</div>
+				<div class="col-sm-12" align="center">
+					<br>
+					<div class="col-sm-12"><label>Motivo de la amonestacion:</label>
+					<textarea id="form-field-11" align"center" class="autosize-transition input-sm form-control" name="medicina_text"
+					style="width:500px;height:100px" ></textarea>
+				</div>
+				<br><br><br><br><br><br><hr>
+			</div class="col-sm-4">
+			<br><br><br>
+			<hr>
+			<br>
+		</form>
+		<br>
+	</div>
+</div>
+</div>
+<div id="prod"></div>
+<div id="resultado" align="center"></div>
+<div  id='id_fondo_opaco' class="fondo_opaco" style="display:none"></div>
+</div>

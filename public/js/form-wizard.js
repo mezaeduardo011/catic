@@ -174,8 +174,9 @@ $('#my-wizard')
     // El contenedor en el que se encuentra el form
     $container = $('#registro_persona').find('.step-pane[data-step="' + step +'"]');
 
+
      // Validate the container
-     /*fv.validateContainer($container);
+     fv.validateContainer($container);
 
      var isValidStep = fv.isValidContainer($container);
       
@@ -186,9 +187,10 @@ $('#my-wizard')
         send_registro_persona();
       };
             
+
         showElementos('modificarDatos');
         send_consulta_info();
-     }*/
+     }
 })
 .on('changed.fu.wizard', function() {
 
