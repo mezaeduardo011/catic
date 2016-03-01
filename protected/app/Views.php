@@ -39,29 +39,31 @@
 					            'id' => 'vacaciones',
 					            'title'   => 'Vacaciones',
 					            'link'=> BASE_URL . 'vacaciones'
-						      )
-								,array(
-					            'id' => 'actividad_institucional',
-					            'title'   => 'Actividades',
-					            'link'=> BASE_URL . 'actividad_institucional'
-						      )
-						      ,array(
-					            'id' => 'correspondencia',
-					            'title'   => 'Correspondencias',
-					            'link'=> BASE_URL . 'correspondencia'
+						      ),array(
+					            'id' => 'permisos',
+					            'title'   => 'Permisos',
+					            'link'=> BASE_URL . 'permisos'
 						      ),array(
 					            'id' => 'amonestacion',
 					            'title'   => 'Amonestaciones',
 					            'link'=> BASE_URL . 'amonestacion'
-						      )	,array(
+						      ),array(
+					            'id' => 'actividad_institucional',
+					            'title'   => 'Actividades',
+					            'link'=> BASE_URL . 'actividad_institucional'
+						      ),array(
+					            'id' => 'correspondencia',
+					            'title'   => 'Correspondencias',
+					            'link'=> BASE_URL . 'correspondencia'
+						      ),array(
 					            'id' => 'biometrico',
 					            'title'   => 'Biometrico',
 					            'link'=> BASE_URL . 'biometrico'
-						      )	,array(
+						      ),array(
 					            'id' => 'adiministracion',
 					            'title'   => 'Administracion de sistema',
 					            'link'=> BASE_URL . 'administracion'
-						      )					      
+						      )				      
 					  	 );	
 					 }
 

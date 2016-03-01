@@ -47,14 +47,11 @@
                         
                         <!-- menu de login -->
                         <li class="light-blue">
-                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                                
-                                <span class="user-info">
-                                    <small>Bienvenido,</small>
-                                    <?php echo Session::get('user') ?>
-                                </span>                                
-                                <i class="ace-icon fa fa-caret-down"></i>
-                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                            <i class="fa fa-user fa-2x"></i>
+                            <?php echo  utf8_decode(Session::get('level') );?>
+                            <span class="caret"></span>
+                        </a>
                             <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                                 <li>
                                     <a href="#">

@@ -1,0 +1,144 @@
+	<div class="widget-box">
+		<form action="<?php  echo BASE_URL;?>vacaciones/registro_vacaciones" method="post">
+			<div class="alert alert-info" align="center">
+				<h4>Registro de permiso<i class="fa fa-users fa-lg"></i></h4>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-sm-12" align="center" id="sandbox-container">
+															<div class=" col-sm-4">
+																<label>Desde:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Hasta:</label>
+																<div class="input-daterange input-group">
+																	<input type="text" class="input-sm form-control" name="start" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-exchange"></i>
+																	</span>
+																	<input type="text" class="input-sm form-control" name="end" />
+																</div>
+															</div>							
+								<div class="col-sm-4" align="center">
+								
+									<label>Rango de duración:</label>
+									<div class="col-sm-4 input-group">
+										<input autocomplete="off"  class  ="input-sm form-control" name="duracion" id="duracion" type="text"  />
+										<span class   ="input-group-addon">
+											<i class      ="fa 	fa-calculator bigger-110"></i>
+										</span>
+									</div>
+									<br>
+								</div>								
+								<div class="col-sm-1" >
+								<label>Rango en:</label>
+									<div class="col-sm-2 input-group">
+											<div class="col-sm-2">
+												<div class="clearfix">
+													<div>
+														<label class="line-height-1 blue">
+															<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
+															<span class="lbl"> Dias</span>
+														</label>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-2">
+												<div class="clearfix">
+													<div class="col-sm-12">
+														<label class="line-height-1 blue">
+															<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
+															<span class="lbl"> Horas</span>
+														</label>
+													</div>
+												</div>
+											</div>
+									</div>
+								</div>	
+								<div class="col-sm-3" >
+								<label>Tipo de :</label>
+									<div class="col-sm-4 input-group">
+											<div class="col-sm-7">
+												<div class="clearfix">
+													<div>
+														<label class="line-height-1 blue">
+															<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
+															<span class="lbl"> Permiso</span>
+														</label>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-5">
+												<div class="clearfix">
+													<div class="col-sm-12">
+														<label class="line-height-1 blue">
+															<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
+															<span class="lbl"> Reposo</span>
+														</label>
+													</div>
+												</div>
+											</div>
+									</div>
+								</div>									
+
+							</div>
+
+			
+					<div class="" align="center">
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="table-header">
+									Personas disponibles.
+								</div>
+								<div>
+									<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th class="center">
+													<label class="pos-rel">
+														#
+													</label>
+													<th class="center">Cedula</th>
+													<th class="center">Nombres</th>
+													<th class="center">Apellidos</th>
+													<th class="center">Fecha de ingreso</th>
+													<th class="center">Teléfono</th>
+													<th class="center">Seleccione</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php $cont=0; foreach ($this->_listado as $persona): $cont++;?>
+												<tr>
+													<td class="center"><?php echo $persona['numeracion'];?></td>
+													<td><?php echo $persona['cedula']; ?></td>
+													<td><?php echo $persona['nombre']; ?>&nbsp;&nbsp;<?php echo $persona['nombre2']; ?></td>
+													<td><?php echo $persona['apellido']; ?>&nbsp;&nbsp;<?php echo $persona['apellido2']; ?></td>
+													<td class="center"><?php echo $persona['fecha_ingreso'];?></td>
+													<td class="center"><?php echo $persona['telefono'];?></td>
+													<th class="center">
+														<a class="btn-app  btn-primary  btn-sm">
+															<label class="pos-rel">
+																<input type="checkbox" class="ace" value="<?php echo $persona['id_persona']; ?>" name="<?php echo 'check'.$cont ?>"/>
+																<span class="lbl"></span>
+															</label>
+														</a>
+														<input type="hidden" value="<?php echo $cont?>" name="contador" id="contador">
+													</th>
+												</tr>
+												<?php endforeach ?>
+											</tbody>
+										</table>
+										</div><!-- /.col -->
+									</div>
+								</div>
+							</div>
+							<br>
+							<div align="center">
+								<button class="btn btn-primary" type="submit" align="center">
+								<i class="ace-icon fa fa-floppy-o fa-lg"></i>
+								Registrar permiso
+								</button>
+							</div>
+						</form>
+						<br>
+					</div>
+				</div>
+			</div>

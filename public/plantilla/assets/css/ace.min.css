@@ -6984,8 +6984,8 @@ button.:active {
 	color: #444
 }
 .dropdown-yellow>li:hover>a, .dropdown-yellow>li>a:focus, .dropdown-yellow>li>a:active, .dropdown-yellow>li.active>a, .dropdown-yellow>li.active:hover>a {
-	background: #fee188;
-	color: #444
+	background: rgba(156,18,3,1);
+	color: #fff;
 }
 .dropdown-yellow2>li:hover>a, .dropdown-yellow2>li>a:focus, .dropdown-yellow2>li>a:active, .dropdown-yellow2>li.active>a, .dropdown-yellow2>li.active:hover>a {
 	background: #f9e8b3;
