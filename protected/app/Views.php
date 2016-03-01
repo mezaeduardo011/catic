@@ -54,14 +54,14 @@
 					            'title'   => 'Amonestaciones',
 					            'link'=> BASE_URL . 'amonestacion'
 						      )	,array(
-					            'id' => 'adiministracion',
-					            'title'   => 'Sistema',
-					            'link'=> BASE_URL . 'administracion'
+					            'id' => 'biometrico',
+					            'title'   => 'Biometrico',
+					            'link'=> BASE_URL . 'biometrico'
 						      )	,array(
-					            'id' => 'prueba',
-					            'title'   => 'Prueba',
-					            'link'=> BASE_URL . 'prueba'
-						      )						      
+					            'id' => 'adiministracion',
+					            'title'   => 'Administracion de sistema',
+					            'link'=> BASE_URL . 'administracion'
+						      )					      
 					  	 );	
 					 }
 
