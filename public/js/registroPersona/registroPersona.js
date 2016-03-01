@@ -3,8 +3,7 @@ function send_registro_persona(tipo_persona) {
     var tipo = tipo_persona;
 
     //alert("/catic/personal/insertPerson?"+request(document.getElementById('divPersona')));
-<<<<<<< HEAD
-    if (request(document.getElementById('divPersona')) != "" && tipo ='empleado') {
+    if (request(document.getElementById('divPersona')) != "" && tipo ='empleada') {
         alert("funciona");
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
     };

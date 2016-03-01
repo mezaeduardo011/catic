@@ -54,14 +54,27 @@
 		}
 
 		function consulta_vacaciones(){
-			$this->_view->setJs(array(
-			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools",
-			"Librerias/dataTables.colVis","tables","pickList"));
-
-			$listado = $this->_vacaciones->getVacaciones();
-			$this->_view->_listado = $listado;
+			$this->_view->setJs(array("pickList","Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","jgrid"));
+			$this->_view->setCss(array("ui.jqgrid"));
 			$this->_view->render('consulta_vacaciones','','',$this->_sidebar_menu);
 
+		}
+
+		function personal_vacaciones(){
+			$listado = $this->_vacaciones->getVacaciones();
+			echo json_encode($listado); 
+		}
+
+		function leyendo_txt(){
+			$file = fopen("/var/www/catic/public/horario_laboral/2016-02-26", "r") or exit("Unable to open file!");
+			//Output a line of the file until the end is reached
+			while(!feof($file)){
+
+				echo fgets($file). "<br />";
+
+			}
+
+			fclose($file);
 		}
 
 

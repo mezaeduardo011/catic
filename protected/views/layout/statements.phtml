@@ -12,13 +12,14 @@
         <!-- alert personalizado -->
         <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>css/wow-alert.css" />
         <!-- ace styles -->
-        <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>plantilla/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+       
         <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>css/form.css" />
         <?php if(isset($_view_params['css'])&&count($_view_params['css'])): ?>
         <?php for($i=0;$i<count($_view_params['css']);$i++): ?>
         <link rel="stylesheet" href="<?php echo $_view_params['css'][$i]; ?>" type="text/css" />
         <?php endfor; ?>
         <?php endif;?>
+         <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>plantilla/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
     </head>
     <body class="no-skin" >
         <div id="navbar" class="navbar navbar-default">
