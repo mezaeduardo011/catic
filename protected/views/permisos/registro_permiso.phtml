@@ -1,7 +1,7 @@
 	<div class="widget-box">
-		<form action="<?php  echo BASE_URL;?>vacaciones/registro_vacaciones" method="post">
+		<form action="<?php  echo BASE_URL;?>permisos/registro_permiso" method="post">
 			<div class="alert alert-info" align="center">
-				<h4>Registro de permiso<i class="fa fa-users fa-lg"></i></h4>
+				<h4>Registro de permiso/reposo<i class="fa fa-users fa-lg"></i></h4>
 			</div>
 			<br>
 			<div class="row">
@@ -10,11 +10,11 @@
 															<div class=" col-sm-4">
 																<label>Desde:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Hasta:</label>
 																<div class="input-daterange input-group">
-																	<input type="text" class="input-sm form-control" name="start" />
+																	<input type="text" class="input-sm form-control" name="desde" />
 																	<span class="input-group-addon">
 																		<i class="fa fa-exchange"></i>
 																	</span>
-																	<input type="text" class="input-sm form-control" name="end" />
+																	<input type="text" class="input-sm form-control" name="hasta" />
 																</div>
 															</div>							
 								<div class="col-sm-4" align="center">
@@ -27,15 +27,21 @@
 										</span>
 									</div>
 									<br>
-								</div>								
-								<div class="col-sm-1" >
-								<label>Rango en:</label>
+								</div>	
+								<table >
+								<tr>
+										<td><label>Rango en:</label></td>
+										<td><label>Tipo de registro:</label></td>
+
+								</tr>
+								<tr>
+										<td>
 									<div class="col-sm-2 input-group">
 											<div class="col-sm-2">
 												<div class="clearfix">
 													<div>
 														<label class="line-height-1 blue">
-															<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
+															<input autocomplete="off"  value="Dias" type="radio" class="ace" name="tipo_rango" />
 															<span class="lbl"> Dias</span>
 														</label>
 													</div>
@@ -45,22 +51,21 @@
 												<div class="clearfix">
 													<div class="col-sm-12">
 														<label class="line-height-1 blue">
-															<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
+															<input autocomplete="off"  value="Horas" type="radio" class="ace" name="tipo_rango" />
 															<span class="lbl"> Horas</span>
 														</label>
 													</div>
 												</div>
 											</div>
-									</div>
-								</div>	
-								<div class="col-sm-3" >
-								<label>Tipo de :</label>
+									</div>											
+										</td>										
+										<td>
 									<div class="col-sm-4 input-group">
 											<div class="col-sm-7">
 												<div class="clearfix">
 													<div>
 														<label class="line-height-1 blue">
-															<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
+															<input autocomplete="off"  value="7" type="radio" class="ace" name="tipo_registro" />
 															<span class="lbl"> Permiso</span>
 														</label>
 													</div>
@@ -70,14 +75,17 @@
 												<div class="clearfix">
 													<div class="col-sm-12">
 														<label class="line-height-1 blue">
-															<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
+															<input autocomplete="off"  value="6" type="radio" class="ace" name="tipo_registro" />
 															<span class="lbl"> Reposo</span>
 														</label>
 													</div>
 												</div>
 											</div>
-									</div>
-								</div>									
+									</div>										
+										</td>
+									
+								</tr>								
+								</table>															
 
 							</div>
 

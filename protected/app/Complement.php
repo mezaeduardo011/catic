@@ -45,6 +45,13 @@
 							return $arregloNuevo;
 						}
 
+				function ConvertirArrayCheck($VarPost){
+								$arregloNuevo=array();
+								foreach ($VarPost as $newArrayKey => $valor) {		
+										$arregloNuevo[':checks']=$valor;
+								}		 					
+							return $arregloNuevo;
+						}
 
 				function imprimirArreglo($arreglo){
 					echo '<pre>';print_r($arreglo);echo '</pre>';die();								

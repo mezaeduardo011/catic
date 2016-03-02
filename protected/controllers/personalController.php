@@ -28,7 +28,7 @@
 		function index(){
 			
 			$this->_view->setJs(array(
-			"Librerias/formValidation","Librerias/bootstrapValidator.min","validaciones",
+			"Librerias/formValidation","Librerias/bootstrapValidator.min",
 			"Librerias/fuelux.wizard","form-wizard",
 			"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
 			"Librerias/jquery.maskedinput","Librerias/jquery.gritter", 
@@ -61,10 +61,8 @@
 		     echo json_encode(array("data" => $data));
 		}
 
-		/*Inserciones o Actualizaciones*/
 
 		function insertPerson(){
-
 				//$_POST=$_GET;
 				unset($_POST['url']);
 				unset($_POST['estado']);
@@ -94,7 +92,6 @@
 
 		}
 
-		/*Consultas*/	
 
 		function getInfoDatos(){
 		
@@ -127,7 +124,6 @@
 
 		function update($id = false){
 			
-			//Si le damos al boton modificar.
 			if ($_SERVER['REQUEST_METHOD']=='POST') {
 		
 				}else{	

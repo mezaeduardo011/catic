@@ -21,11 +21,11 @@
 														#
 													</label>
 												</th>
-												<th class="center">Fecha de solicitud</th>
-												<th class="center">Dias habiles</th>
-												<th class="center">Fecha de reincorporacion</th>
-												<th class="center">Nombre y apellido de la persona</th>
+												<th class="center">Persona amonestada</th>
 												<th class="center">Coordinacion</th>
+												<th class="center">Motivo</th>
+												<th class="center">Tipo amonestacion</th>
+												<th class="center">Fecha</th>		
 												<th class="center">Acciones</th>													
 											</tr>
 										</thead>
@@ -33,11 +33,11 @@
 											<?php foreach ($this->_listado as $persona): ?>
 											<tr>
 												<td class="center"><?php echo $persona['numeracion'];?></td>
-												<td class="center"><?php echo $persona['fecha_solicitud'];?></td>										
-												<td class="center" ><?php echo $persona['dias_correspondientes']; ?></td>
-												<td class="center" ><?php echo $persona['reincorporacion']; ?></td>
 												<td class="center" ><?php echo $persona['nombre']; ?>&nbsp;&nbsp;<?php echo $persona['nombre2']; ?></td>
-												<td class="center" ><?php echo $persona['coordinacion']; ?></td>									
+												<td class="center" ><?php echo $persona['coordinacion']; ?></td>
+												<td class="center" ><?php echo $persona['motivo']; ?></td>												
+												<td class="center"><?php echo $persona['tipo_amonestacion'];?></td>										
+												<td class="center" ><?php echo $persona['fecha']; ?></td>									
 												<td class="center">
 													<div class="hidden-sm hidden-xs action-buttons">	
 														<a class="btn-app btn-eliminar btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
@@ -58,7 +58,14 @@
 			</div>
 				<br>	
 			</div>
-			
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br><br>
+			<br>
+			<br><br>
 		<div id="prod"></div>
 		<div id="resultado" align="center"></div>
 		<div  id='id_fondo_opaco' class="fondo_opaco" style="display:none"></div>

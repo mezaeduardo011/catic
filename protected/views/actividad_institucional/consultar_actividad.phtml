@@ -35,7 +35,7 @@
 				<td ><?php echo $actividad['fecha_actividad']; ?></td>
 				<td ><?php echo $actividad['hora_actividad']; ?></td>
 				<td ><?php echo $actividad['ubicacion']; ?></td>
-				<td ><?php echo $actividad['status']; ?></td>
+				<td ><?php echo $actividad['status_actividad']; ?></td>
 											<td class="center">
 												<div class="hidden-sm hidden-xs action-buttons">
 													<a class="btn-app  btn-success  btn-sm" id="detalle_persona"
@@ -46,7 +46,7 @@
 														<i class="glyphicon glyphicon-search"></i>
 														Detalles
 													</a>
-													<?php if($actividad['status']!='Actividada finalizada'):?>
+													<?php if($actividad['status_actividad']!='Actividada finalizada'):?>
 													<a class="btn-app  btn-imprimir  btn-sm" id="detalle_persona"
 														onclick="pickOpen('prod', 'id_prod',
 														'<?php echo BASE_URL."actividad_institucional/fin/". $actividad['id_actividad_institucional'] ?>',

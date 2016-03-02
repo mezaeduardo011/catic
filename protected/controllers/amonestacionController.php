@@ -30,7 +30,7 @@
 
 			$this->_view->setCss(array("bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone","bootstrap-select"));	
 
-				$listado = $this->_amonestacion->getPersonalDisponible();
+				$listado = $this->_personal->getPersonalDisponible();
 				$this->_view->_listado = $listado;
 				$this->_view->render('amonestacion','','',$this->_sidebar_menu);
 	
@@ -52,7 +52,7 @@
 			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools",
 			"Librerias/dataTables.colVis","tables","pickList"));
 
-			$listado = $this->_amonestacion->getVacaciones();
+			$listado = $this->_amonestacion->getAmonestaciones();
 			$this->_view->_listado = $listado;
 			$this->_view->render('consulta_amonestaciones','','',$this->_sidebar_menu);
 

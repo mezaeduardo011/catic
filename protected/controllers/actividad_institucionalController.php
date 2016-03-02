@@ -33,7 +33,7 @@
 
 			$this->_view->setCss(array(
 			"datepicker","bootstrap-datepicker","bootstrap-timepicker.min"));			
-			$listado = $this->_persona->getPersonal(FALSE,1);
+			$listado = $this->_persona->getPersonalDisponible();
 			$this->_view->_listado = $listado;
 			$this->_view->render('registro_de_actividad','','',$this->_sidebar_menu);
 	

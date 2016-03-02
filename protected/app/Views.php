@@ -41,7 +41,7 @@
 					            'link'=> BASE_URL . 'vacaciones'
 						      ),array(
 					            'id' => 'permisos',
-					            'title'   => 'Permisos',
+					            'title'   => 'Permisos/Reposos',
 					            'link'=> BASE_URL . 'permisos'
 						      ),array(
 					            'id' => 'amonestacion',
@@ -61,7 +61,7 @@
 					            'link'=> BASE_URL . 'biometrico'
 						      ),array(
 					            'id' => 'adiministracion',
-					            'title'   => 'Administracion de sistema',
+					            'title'   => 'Sistema',
 					            'link'=> BASE_URL . 'administracion'
 						      )				      
 					  	 );	
@@ -135,7 +135,7 @@
 					default:
 						include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'statements.phtml';
 						 //include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'header.phtml';
-						// include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'imagalery.phtml';
+						 // include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'imagalery.phtml';
 						include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'sidebar.phtml';
 						 include_once $view_route;
 						include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'footer.phtml';

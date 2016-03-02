@@ -185,7 +185,6 @@ $('#my-wizard')
       if (step==1) { 
         send_registro_persona();
       };
-            
         showElementos('modificarDatos');
         send_consulta_info();
      }

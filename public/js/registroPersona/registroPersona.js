@@ -1,5 +1,3 @@
-
-
 function send_registro_persona() {
 
     //alert("/catic/personal/insertPerson?"+request(document.getElementById('divPersona')));

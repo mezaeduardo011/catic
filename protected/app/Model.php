@@ -6,6 +6,7 @@
 			$this->_db = new DataBase();
 		}
 		public function registroPdo($query,$datos){
+				
 					try {
 
 						$this->_db->beginTransaction();

@@ -11,47 +11,16 @@
 			;
 		}
 
-		public function getPersonal($id = FALSE){
-
-				$query = "SELECT ROW_NUMBER() OVER (ORDER BY id_persona) AS numeracion,*,S.referencia AS sexo from persona P, referencial S
-							WHERE p.sexo_referencial= S.id_referencial";
-
-	
-
-			$auxiliar = $this->_db->query($query);
-				try {
-				$this->_db->beginTransaction();
-				$result= $auxiliar->fetchAll();
-				$this->_db->commit();
-				}
-				catch (Exception $e){
-					
-					$this->_db-rollBack();
-					echo "Error :: ".$e->getMessage();
-					exit();
-					
-				}
-				
-				return $result;
-			
-		}		
-
-
-
-		//Insercion de la persona nueva
 		public function insertActividad($actividad,$arrayPsql){
-			$query=$this->query = "SELECT registro_actividad(:nombre_actividad,:fecha_actividad,:hora,:ubicacion,'$arrayPsql')";
-			$this->registroPdo($query,$actividad);
+				$query=$this->query = "SELECT registro_actividad(:nombre_actividad,:fecha_actividad,:hora,:ubicacion,'$arrayPsql')";
+				$this->registroPdo($query,$actividad);
 		}
 
 		public function getActividad(){
-				$query = "SELECT ROW_NUMBER() OVER (ORDER BY A.id_actividad_institucional) AS numeracion,*,R.referencia as status FROM actividad_institucional A
-						INNER JOIN persona_x_actividad_institucional B ON A.id_actividad_institucional = B.id_actividad_institucional
-						INNER JOIN referencial R ON R.id_referencial = A.status";			
-						$result=$this->selectPdo($query);
-						return $result;
-					
-				}
+				$query = "SELECT * FROM actividades";			
+				$result=$this->selectPdo($query);
+				return $result;			
+		}
 
 		public function getActividadUnica($id){
 				$query = "SELECT ROW_NUMBER() OVER (ORDER BY A.id_actividad_institucional) AS numeracion,*,R.referencia as status FROM actividad_institucional A
