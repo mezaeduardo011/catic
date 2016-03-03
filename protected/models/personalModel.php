@@ -79,14 +79,7 @@
 	}
 
 	public function getUnicaPersona($id){
-			$query = "SELECT (SELECT date_part('year',age( fecha_nacimiento )) ) as edad,S.referencia as sexo,C.referencia as C,E.direccion as Estado, M.direccion as Municipio,P.direccion as Parroquia,* 
-			from persona PER, referencial S, persona_empleada P2, direccion E, direccion M, direccion P, referencial C
-			WHERE PER.sexo_referencial= S.id_referencial
-			AND P2.coordinacion_referencial = C.id_referencial
-			AND  E.id_direccion=M.id_padre 
-			AND M.id_direccion=P.id_padre
-			AND P.id_direccion=direccion_referencial
-					AND	PER.id_persona = '".$id."'";
+			$query = "SELECT * FROM persona_unica WHERE id_persona = '".$id."'";
 				$result=$this->selectPdo($query);
 				return $result;
 		

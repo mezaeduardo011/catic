@@ -353,7 +353,7 @@
 									<div class="col-sm-8">
 										<div class="col-sm-4">
 											<div class="input-group">
-												<input onkeypress="return numeros(event);" onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" />
+												<input onkeypress="return numeros(event);" onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento_hijo" type="date" data-date-format="yyyy-mm-dd" />
 												<span class   ="input-group-addon">
 													<i class      ="fa fa-calendar bigger-110"></i>
 												</span>
@@ -401,22 +401,12 @@
 								Agregar otro hijo
 								</button>
 							</div>
-							<div id="tablaHijos" hidden>
-									<br>
-									<table id="tablaHijosAdd" class="table table-striped table-bordered table-hover">
-										<thead>
-											<tr>
-												<th>Nombres</th>
-												<th class="hidden-480">Apellidos</th>
-												<th class="center">Sexo</th>
-												<th class="center">Edad</th>
-											</tr>
-										</thead>
-										
-										<tbody>
-										</tbody>  <!-- div tabla  -->
-									</table>
-							</div>	<!-- final div tabla			 -->		
+							<div id="tablaHijos" hidden="">									
+										<div id="tabla_consulta" align="center" class="widget-box">
+												<table  id="tablaInfoHijos"></table>
+												<div id="tablaInfoHijosDiv"></div>
+										</div>
+							</div>			
 							</div>
 						<hr>						
 					</div>

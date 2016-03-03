@@ -167,27 +167,27 @@ $('#my-wizard')
    
    //use e.preventDefault to cancel
 
-    var fv=$('#registro_persona').data('formValidation'), //Instancia del validador
+    // var fv=$('#registro_persona').data('formValidation'), //Instancia del validador
 
-    step=data.step, //Paso en el que nos encontramos
+    // step=data.step, //Paso en el que nos encontramos
 
-    // El contenedor en el que se encuentra el form
-    $container = $('#registro_persona').find('.step-pane[data-step="' + step +'"]');
+    // // El contenedor en el que se encuentra el form
+    // $container = $('#registro_persona').find('.step-pane[data-step="' + step +'"]');
 
-     // Validate the container
-     fv.validateContainer($container);
+    //  // Validate the container
+    //  fv.validateContainer($container);
 
-     var isValidStep = fv.isValidContainer($container);
+    //  var isValidStep = fv.isValidContainer($container);
       
-     if (isValidStep === false || isValidStep === null) {
-     e.preventDefault();
-     }else{
-      if (step==1) { 
-        send_registro_persona();
-      };
-        showElementos('modificarDatos');
-        send_consulta_info();
-     }
+    //  if (isValidStep === false || isValidStep === null) {
+    //  e.preventDefault();
+    //  }else{
+    //   if (step==1) { 
+         send_registro_persona();
+    //   };
+    //     showElementos('modificarDatos');
+    //     send_consulta_info();
+    //  }
 })
 .on('changed.fu.wizard', function() {
 

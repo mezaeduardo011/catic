@@ -33,11 +33,13 @@
 			"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
 			"Librerias/jquery.maskedinput","Librerias/jquery.gritter", 
 			"registroPersona/registroPersona",
-			"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion"));
+			"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion",
+			"Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","registroPersona/tablaHijos"));
 
 			$this->_view->setCss(array(
 			"datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter","bootstrap-datepicker",
-			"bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));
+			"bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone",
+			"ui.jqgrid"));
 
 			$listado = $this->_personal->getHijosModel();
 			$this->_view->_listado = $listado;

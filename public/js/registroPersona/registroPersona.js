@@ -1,11 +1,13 @@
 function send_registro_persona() {
 
-    //alert("/catic/personal/insertPerson?"+request(document.getElementById('divPersona')));
+    alert("/catic/personal/insertPerson?"+request(document.getElementById('divPersona')));
     if (request(document.getElementById('divPersona')) != "") {
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
     };
     if (request(document.getElementById('infoHijos')) != "") {
+
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_hijo', request(document.getElementById('infoHijos')), null, true);
+
     };
     if (request(document.getElementById('infoPadre')) != "") {
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadre')), null, true);
@@ -114,11 +116,13 @@ $("#registrarHijo").click(function() {
 
         for (var i = 0; i < data.length; i++) {
             if (data[i]['numeracion'] == 5) {
+
+
                 alert('Ya tiene registrado el maximo de hijos');
                 hiddenElementos('AgregarOtro');
             }
         }
-        alert($data);
+            $('#tablaInfoHijos').jqGrid('setGridParam',{url:BASE_URL+"personal/getHijos", datatype:"json"}).trigger("reloadGrid");
     })
 
     .fail(function() {
