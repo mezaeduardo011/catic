@@ -15,7 +15,6 @@
 
     
 
-     <!-- basic scripts -->
         <script src="<?php echo PUBLIC_URL;?>/js/Librerias/ace-extra.js"></script> 
         <script src="<?php echo PUBLIC_URL;?>/js/Librerias/jquery.js"></script>
         <script src="<?php echo PUBLIC_URL;?>/js/Librerias/bootstrap.js"></script>
@@ -23,12 +22,9 @@
             if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo PUBLIC_URL;?>plantilla/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
         </script> 
 
-        <!-- ace scripts -->
         <script src="<?php echo PUBLIC_URL;?>/js/Librerias/ace-elements.js"></script>
         <script src="<?php echo PUBLIC_URL;?>/js/Librerias/ace.min.js"></script>
-         <!-- scripts para alert personalizado  -->
         <script type="text/javascript" src="<?php echo PUBLIC_URL;?>js/wow-alert.js"></script>
-        <!-- Funcionalidades -->
         <script type="text/javascript" src="<?php echo PUBLIC_URL;?>js/ajax.js"></script>
                 <?php  if (isset($_view_params['js']) && count($_view_params['js'])): ?>
         <?php   for ($i = 0; $i < count($_view_params['js']); $i++):  ?>
@@ -48,6 +44,5 @@
     daysOfWeekHighlighted: "0,1,2,3,4,5,6",
     todayHighlight: true,
     endDate: "1998/12/31",
-
 });
 </script>
