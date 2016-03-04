@@ -6,7 +6,7 @@
 			<h4>Registro de correspondencia <i class="fa fa-file-text-o"></i></h4>
 		</div>
 		<!-- PAGE CONTENT BEGINS -->
-		<form class="form-horizontal" role="form" action="<?php  echo BASE_URL;?>correspondencia/registro_correspondencia" method="post" >
+		<form class="form-horizontal" role="form" action="<?php  echo BASE_URL;?>correspondencia/registro_correspondencia" method="post" id="formulario">
 			<br>
 			<table align="center">
 				<!---- Labels ---->
@@ -147,11 +147,11 @@
 			<br><br><br>					
 			<div class="clearfix form-actions" align="center">
 				<div>
-					<button class="btn btn-success" type="submit" onclick="closePickList()">
+					<button class="btn btn-success" type="submit" onclick="closePickList();" id="prueba">
 						<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
 					Registrar
 					</button>
-					&nbsp; &nbsp; &nbsp;							
+					&nbsp; &nbsp; &nbsp;												
 					<button class="btn" type="reset">
 					<i class="ace-icon fa fa-undo bigger-110"></i>
 					Restaurar valores
@@ -169,4 +169,5 @@
 	</div>
 </body>
 </html>
+
 

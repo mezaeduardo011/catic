@@ -50,16 +50,12 @@
 		/*API del sistema SIGESP para cargar datos de personas ya registradas*/
 
 		public function BuscarCedula(){
-
 		  	 //18019742
 		     $cedula= $_POST['cedular'];
 		     $cedula=str_replace('.','', $cedula); 
 		     $cliente = new ClienteApiSigesp();
-
 		     $resp = $cliente->getServicio('datos_empleado',array('cedula'=> $cedula));
-
 		     $data = !!$resp->errores['error']?$resp->cuerpo_response:$resp->cuerpo_response->data;
-
 		     echo json_encode(array("data" => $data));
 		}
 
@@ -79,7 +75,6 @@
 			unset($_POST['url']);
 			unset($_POST['medicina']);
 			$postRecibido= $this->ConvertirArray($_POST);
-
 			if($_POST['deporte']=='on'){
 					unset($postRecibido[':deporte']);
 					$check = $this->valCheckbox(6);

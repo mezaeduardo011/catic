@@ -18,13 +18,8 @@
 		}
 		
 		function index(){
-			$this->_view->setJs(array(
-			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools","Librerias/dataTables.colVis","tables",
-			"pickList"));	
-					$correspondenciasRegistradas=$this->_correspondencia->getCorrespondencia();
-				$this->_view->_listado = $correspondenciasRegistradas;
-				$coordinacion = $this->_correspondencia->getCoordinacion();
-				$this->_view->_coordinacion = $coordinacion;
+			$this->_view->setJs(array("Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","correspondencia/consulta_correspondencia","pickList","correspondencia/correspondencia"));	
+			$this->_view->setCss(array("ui.jqgrid"));
 				$this->_view->render('consulta_correspondencia','','',$this->_sidebar_menu);	
 		}
 
@@ -37,7 +32,9 @@
 		function registro(){
 					$this->_view->setJs(array("Librerias/bootstrap-select",
 												"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
-												"pickList","correspondencia/select"));
+												"pickList","correspondencia/select","correspondencia/correspondencia",
+											"Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src"));
+
 					$this->_view->setCss(array("bootstrap-select",
 												"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));
 				
@@ -46,7 +43,8 @@
 				$this->_view->render('registro_correspondencia','','pickList');	
 		}
 		function consulta_correspondencia(){
-				$this->_view->render('consulta_correspondencia');
+					$listado=$this->_correspondencia->getCorrespondencia();
+					echo json_encode(array("correspondencia"=>$listado));					
 		}
 
 		function agregar_carpeta(){

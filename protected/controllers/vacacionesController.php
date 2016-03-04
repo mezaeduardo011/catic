@@ -57,7 +57,6 @@
 			$this->_view->setJs(array("pickList","Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","jgrid"));
 			$this->_view->setCss(array("ui.jqgrid"));
 			$this->_view->render('consulta_vacaciones','','',$this->_sidebar_menu);
-
 		}
 
 		function personal_vacaciones(){

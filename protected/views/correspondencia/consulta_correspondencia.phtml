@@ -22,52 +22,19 @@
 						Correspondencias registradas
 					</div>
 					<div>
-						<form action="<?php  echo BASE_URL;?>personal/listing" method="post">
-							<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-								<thead>
-									<tr>
-										<th>Nº</th>							
-										<th>Oficina</th>
-										<th>Asunto</th>
-										<th>Instruccion</th>
-										<th>Fecha</th>
-										<th>tipo</th>
-										<th class="center">Acciones</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach ($this->_listado as $persona): ?>
-									<tr>
-										<td class="center">
-											<?php echo $persona['numeracion'];?>
-										</td>
-										<td>
-											<?php echo $persona['oficina']; ?>
-										</td>
-										<td><?php echo $persona['asunto']; ?></td>
-										<td ><?php echo $persona['instruccion']; ?></td>
-										<td><?php echo $persona['fecha']; ?></td>
-										<td><?php echo $persona['tipo']; ?></td>
-										<td class="center">
-												<div class="hidden-sm hidden-xs action-buttons">
-													<a class="btn-app btn-eliminar btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
-														<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>
-														Archivar
-													</a>
-												</div>
-										</td>
-									</tr>
-									<?php endforeach ?>
-								</tbody>
-							</table>
-							<hr>
+							<div id="tabla_consulta" class="col-xs-12" align="center">
+							<table id="consulta_correspondencia"></table>
+							<div id="jqGridPager"></div>
+							</div>
+							
 							</div><!-- /.col -->
-						</form>
 					</div>
 				</div>
+				<hr><br>
 			</div>
 			</div><!-- /.row -->
 			<div id="prod"></div>
 			<div id="resultado" align="center"></div>
 			<div  id='id_fondo_opaco' class="fondo_opaco" style="display:none"></div>
 </div>
+<br>
