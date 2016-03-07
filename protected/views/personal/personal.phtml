@@ -59,7 +59,7 @@
 
 							    <div class="form-group">
 										<div class="input-group">
-											<a class="btn btn-primary" onclick="obten_datos('cedula','nombre','nombre2','apellido','apellido2','fecha_nacimiento','telefono','fecha_ingreso','correo','ubicacion');">
+											<a class="btn btn-primary" onclick="obten_datos('cedula','nombre','nombre2','apellido','apellido2','fecha_nacimiento','telefono','fecha_ingreso','correo','ubicacion','direccion');">
 												Buscar en SIGESP
 												<i class="glyphicon glyphicon-search"></i>
 											</a>
@@ -87,103 +87,81 @@
 							<hr>
 							<div class="form-group">							
 											<label class="control-label" for="sexo">Sexo:</label>
+											<div class="radio">
 											<label class="line-height-1 blue">
-												<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
+												<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" 
+												/>
 												<span class="lbl"> Masculino</span>
-											</label>
+											</label>												
+											</div>
+											<div class="radio">
 											<label class="line-height-1 blue">
 												<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
 												<span class="lbl"> Femenino</span>
-											</label>
+											</label>												
+											</div>
+
 								
 							</div>	
 							&nbsp;&nbsp;
 							<div class="form-group">
 								<label class="control-label" for="fecha_nacimiento">Fecha de nacimiento: </label>
-										<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" size="8" />								
+										<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento" type="date" data-date-format="yyyy-mm-dd" size="8" />							
 							</div>	
 							&nbsp;	&nbsp;
 							<div class="form-group">
 								<label class="control-label" for="cedula">Fecha de ingreso: </label>
 											<input onkeypress="return numeros(event);" onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_ingreso" id="fecha_ingreso" type="date" data-date-format="yyyy-mm-dd" size="8" />
-
 							</div>	
 							<hr>																	
 							<div class="form-group">
 								<label class="control-label" for="cedula">Télefono: </label>
 											<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" size="12"/>
 							</div>
-
 							<div class="form-group">
 										<label class="control-label" for="cedula">Otro télefono: </label>
 													<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="otro_telefono" name="otro_telefono" size="12"/>
-							</div>							
-														
-
+							</div>	
 							<div class="form-group">
 										<label class="control-label" for="cedula">Correo personal: </label>
 													<input autocomplete="off" class  ="input-sm form-control" type="text"  name="correo" id="correo" size="30"/>
 
 							</div>
 							<hr>
-							<div align="center" class="col-sm-6">
+							<div align="center" class="form-group">
 								<label class="control-label" for="estado">Cargo: </label>
-								<div class    ="input-group">
-									<select name="cargo" id="cargo" class="selectpicker show-tick input-sm form-control" data-live-search="true">
+									<select name="cargo" id="cargo" class="selectpicker show-tick input-sm form-control">
 									</select>
-								</div>
-							</div>
-							
-							<div align="center" class="col-sm-5">
+							</div>							
+							<div align="center" class="form-group">
 								<label class="control-label" for="coordinacion">Coordinación: </label>
-								<div class    ="input-group">
-									<select name="coordinacion" id="coordinacion" class="selectpicker show-tick input-sm form-control" data-live-search="true">
+									<select name="coordinacion" id="coordinacion" class="selectpicker show-tick input-sm form-control">
 									</select>
-								</div>
 							</div>
-							<br><br>
-							<div class="hr hr-dotted"></div>
-							<div align="center" class="col-sm-4">
-								<label class="control-label col-sm-2 no-padding-right" for="estado">Estado: </label>
-								<div class    ="input-group">
+								<hr>
+							<div align="center" class="form-group">
+								<label class="control-label" for="estado">Estado: </label>
 									<select name="estado" id="estado" class="selectpicker show-tick input-sm form-control" data-live-search="true">
 									</select>
-								</div>
 							</div>
 							
-							<div align="center" class="col-sm-4">
-								<label class="control-label col-sm-2 no-padding-right" for="municipio">Municipio: </label>
-								<div class    ="input-group">
+							<div align="center" class="form-group">
+								<label class="control-label" for="municipio">Municipio: </label>
 									<select name="municipio" id="municipio" class="selectpicker show-tick input-sm form-control" data-live-search="true">
 									</select>
-								</div>
 							</div>
 							
-							<div align="center" class="col-sm-4">
-								<label class="control-label col-sm-2 no-padding-right" for="parroquia">Parroquia: </label>
-								<div class    ="input-group">
+							<div align="center" class="form-group">
+								<label class="control-label" for="parroquia">Parroquia: </label>
 									<select name="direccion" id="direccion" class="selectpicker show-tick input-sm form-control" data-live-search="true">
 									</select>
-								</div>
 							</div>
 							<br><hr>
 							<div class="form-group">
 								<label class="control-label" for="ubicacion">Ubicación: </label>
 											<input autocomplete="off" class  ="input-sm form-control" type="text" id="ubicacion" name="ubicacion" placeholder="Zona donde vive la persona" size="80" />
 						
-							</div>
-							<!-- 								<div align="center" >
-								<label class="control-label no-padding-right" for="parroquia">Coordinacion a la cual pertenecera esta persona: </label>
-								<div class    ="input-group">
-									<select  id="coordinacion" name="coordinacion">
-										<option value ="" default selected>Seleccione una coordinacion...</option>
-										<?php foreach ($this->_coordinaciones as $parroquia):?>
-										<option value ="<?php  echo $parroquia['id_referencial']; ?>"><?php  echo $parroquia['referencia']; ?></option>
-										<?php endforeach ?>
-									</select>
-								</div>
-							</div> -->
-							
+							</div>							
 							<div  id="modificarDatos" hidden align="center">
 								<button class="btn btn-primary">
 								Actualizar

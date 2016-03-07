@@ -46,15 +46,31 @@
 	}
 
 	public function getDireccionMunicipio($id){
+			if($id==true){
 			$query = "SELECT Distinct M.id_direccion,M.direccion AS Municipio FROM direccion E, direccion M, direccion P
-			WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND M.id_padre='".$id."' ORDER BY municipio;";			
+			WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND M.id_padre='".$id."' ORDER BY municipio;";				
+		}else{
+			$query = "SELECT Distinct M.id_direccion,M.direccion AS Municipio FROM direccion E, direccion M, direccion P
+			WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre  ORDER BY municipio;"			;
+		}
+
+
 			$result=$this->selectPdo($query);
 			return $result;			
 	}
 
-	public function getDireccionParroquia($id=false){
+	public function getDireccionParroquia($id=false,$cedula=false){
+			if($cedula==true){
+			$query = "SELECT Parr.* from parroquias Parr
+						INNER JOIN persona AS P on P.direccion_referencial= Parr.id_direccion
+						WHERE cedula='".$cedula."'";					
+			}elseif($id==true){
 			$query = "SELECT Distinct P.id_direccion,P.direccion as Parroquia,P.id_referencial from direccion E, direccion M, direccion P
-			WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND P.id_padre='".$id."'";			
+			WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND P.id_padre='".$id."'";					
+			}else{
+			$query = "SELECT Parr.* from parroquias Parr";					
+			}
+		
 			$result=$this->selectPdo($query);
 			return $result;			
 	}

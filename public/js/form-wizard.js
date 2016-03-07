@@ -22,7 +22,7 @@ $('#registro_persona').formValidation({
                  }
              }
          },
-        sexo: {
+        sexos: {
              validators: {
                   notEmpty: { // No puede ser vacio
                      message: 'Debe seleccionar un sexo.'
@@ -62,6 +62,27 @@ $('#registro_persona').formValidation({
                  }               
              }
          },
+        municipio: {
+             validators: {
+                 notEmpty: { // No puede ser vacio
+                     message: 'Por favor seleccione un municipio.'
+                 }               
+             }
+         },
+        cargo: {
+             validators: {
+                 notEmpty: { // No puede ser vacio
+                     message: 'Por favor seleccione un cargo.'
+                 }               
+             }
+         },
+        coordinacion: {
+             validators: {
+                 notEmpty: { // No puede ser vacio
+                     message: 'Por favor seleccione un coordinacion.'
+                 }               
+             }
+         },
         direccion: {
              validators: {
                  notEmpty: { // No puede ser vacio
@@ -79,82 +100,6 @@ $('#registro_persona').formValidation({
 
 }
 });
-//esto captura el ID del formulario al cual se le aplicaran las validaciones.
-//dichas validaciones son al campo por nombre
-$('#registro_hijo').formValidation({
-	 framework: 'bootstrap',
-     feedbackIcons: {
-         valid: 'glyphicon glyphicon-ok',
-         invalid: 'glyphicon glyphicon-remove',
-         validating: 'glyphicon glyphicon-refresh'
-     },
-     fields: {
-         nombre: {
-             validators: {
-                  notEmpty: { // No puede ser vacio
-                     message: 'El primer nombre es requerido.'
-                 },
-                 regexp: { // Solo estos caracteres pueden ser usados
-                     regexp: /^[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz]+$/,
-                     message: 'El nombre solo puede contener letras.'
-                 }
-             }
-         },
-          nombre2: {
-             validators: {
-                 regexp: { // Solo estos caracteres pueden ser usados
-                     regexp: /^[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz]+$/,
-                     message: 'El nombre solo puede contener letras.'
-                 }
-             }
-         },
-         apellido: {
-             validators: {
-                  notEmpty: { // No puede ser vacio
-                     message: 'El primer apellido es requerido.'
-                 },
-                 regexp: { // Solo estos caracteres pueden ser usados
-                     regexp: /^[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz]+$/,
-                     message: 'El apellido solo puede contener letras.'
-                 }
-             }
-         },
-          apellido2: {
-             validators: {
-                 regexp: { // Solo estos caracteres pueden ser usados
-                     regexp: /^[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz]+$/,
-                     message: 'El apellido solo puede contener letras.'
-                 }
-             }
-         },
-        sexo: {
-             validators: {
-                  notEmpty: { // No puede ser vacio
-                     message: 'Debe seleccionar un sexo.'
-                 }
-             }
-         },
-        fecha_nacimiento: {
-             validators: {
-                  notEmpty: { // No puede ser vacio
-                     message: 'Debe introducir una fecha de nacimiento.'
-                 }
-             }
-         },   
-          cedula: {
-             validators: {
-                 regexp: { // Solo estos caracteres pueden ser usados
-                     regexp: /^[0-9]+$/,
-                     message: 'La cedula solo puede contener numeros.'
-                 },
-                 stringLength: {
-                     max: 8,
-                     message: 'La cédula no debe tener mas de 8 numeros'
-                 }                 
-             }
-         }
-}
-});
 
 $('#my-wizard')
 .ace_wizard({
@@ -167,27 +112,27 @@ $('#my-wizard')
    
    //use e.preventDefault to cancel
 
-    // var fv=$('#registro_persona').data('formValidation'), //Instancia del validador
+    var fv=$('#registro_persona').data('formValidation'), //Instancia del validador
 
-    // step=data.step, //Paso en el que nos encontramos
+    step=data.step, //Paso en el que nos encontramos
 
-    // // El contenedor en el que se encuentra el form
-    // $container = $('#registro_persona').find('.step-pane[data-step="' + step +'"]');
+    // El contenedor en el que se encuentra el form
+    $container = $('#registro_persona').find('.step-pane[data-step="' + step +'"]');
 
-    //  // Validate the container
-    //  fv.validateContainer($container);
+     // Validate the container
+     fv.validateContainer($container);
 
-    //  var isValidStep = fv.isValidContainer($container);
+     var isValidStep = fv.isValidContainer($container);
       
-    //  if (isValidStep === false || isValidStep === null) {
-    //  e.preventDefault();
-    //  }else{
-    //   if (step==1) { 
+     if (isValidStep === false || isValidStep === null) {
+     e.preventDefault();
+     }else{
+      if (step==1) { 
          send_registro_persona();
-    //   };
-    //     showElementos('modificarDatos');
-    //     send_consulta_info();
-    //  }
+      };
+        showElementos('modificarDatos');
+        send_consulta_info();
+     }
 })
 .on('changed.fu.wizard', function() {
 

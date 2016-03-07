@@ -1,6 +1,6 @@
 function send_registro_persona() {
 
-    alert("/catic/personal/insertPerson?"+request(document.getElementById('divPersona')));
+    alert("/catic/personal/insertPerson?" + request(document.getElementById('divPersona')));
     if (request(document.getElementById('divPersona')) != "") {
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
     };
@@ -122,30 +122,15 @@ $("#registrarHijo").click(function() {
                 hiddenElementos('AgregarOtro');
             }
         }
-            $('#tablaInfoHijos').jqGrid('setGridParam',{url:BASE_URL+"personal/getHijos", datatype:"json"}).trigger("reloadGrid");
+        $('#tablaInfoHijos').jqGrid('setGridParam', {
+            url: BASE_URL + "personal/getHijos",
+            datatype: "json"
+        }).trigger("reloadGrid");
     })
 
     .fail(function() {
         alert("Error");
     });
-});
-
-$('#fecha_nacimiento').datepicker({
-    clearBtn: true,
-    autoclose: true,
-    language: "es",
-    daysOfWeekHighlighted: "0,1,2,3,4,5,6",
-    todayHighlight: true,
-    endDate: "1998/12/31",
-
-});
-$('#fecha_ingreso').datepicker({
-    clearBtn: true,
-    autoclose: true,
-    language: "es",
-    daysOfWeekHighlighted: "0,1,2,3,4,5,6",
-    todayHighlight: true,
-    endDate: "2015/12/31"
 });
 
 jQuery(function($) {
@@ -159,5 +144,38 @@ jQuery(function($) {
             alert("You typed the following: " + this.val());
         }
     });
+
+});
+
+$(document).ready(function() {
+
+
+
+    $('#fecha_ingreso').datepicker({
+        format: 'mm/dd/yyyy',
+        clearBtn: true,
+        autoclose: true,
+        language: "es",
+        daysOfWeekHighlighted: "0,1,2,3,4,5,6",
+        todayHighlight: true
+    })
+        .on('changeDate', function(e) {
+            $('#registro_persona').formValidation('revalidateField', 'fecha_ingreso');
+        });
+
+    $('#fecha_nacimiento').datepicker({
+
+        format: 'mm/dd/yyyy',
+        clearBtn: true,
+        autoclose: true,
+        language: "es",
+        daysOfWeekHighlighted: "0,1,2,3,4,5,6",
+        todayHighlight: true,
+        endDate: "12/31/1998"
+
+    })
+        .on('changeDate', function(e) {
+            $('#registro_persona').formValidation('revalidateField', 'fecha_nacimiento');
+        });
 
 });

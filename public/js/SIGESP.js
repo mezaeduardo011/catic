@@ -7,7 +7,7 @@
     }
 
     //funcion que llena los datos 
-    function LlenarDatos(text,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9)
+    function LlenarDatos(text,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9,destino10)
     {
             //alert(''+JSON.stringify(text));
 
@@ -23,15 +23,17 @@
             destino7.value = text.data.fecha_ingreso;
             destino8.value = text.data.correo_electronico;
             destino9.value = text.data.direccion;
+            llenar_direccion(text.data.parroquia_direccion,text.data.municipio_direccion,text.data.estado_direccion);
+
         }else{
             alert("El usuario no esta registrado en el sistema SIGESP");
         }
     }
     
     //fucion con la cual obtenemos  los datos 
-    function obten_datos(cedula,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9)
+    function obten_datos(cedula,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9,destino10)
     {
-        //alert("destino: "+destino+" destino2: "+destino2+" destino3: "+destino3+" destino4: "+destino4+" destino5: "+destino5+" destino6: "+destino6+" destino7: "+destino7+" destino8: "+destino8+" destino9:"+destino9);
+        //alert("destino: "+destino+" destino2: "+destino2+" destino3: "+destino3+" destino4: "+destino4+" destino5: "+destino5+" destino6: "+destino6+" destino7: "+destino7+" destino8: "+destino8+" destino9:"+destino9+"Destino 10:- .I."+destino10);
         cedular= document.getElementById(cedula);
         destino = document.getElementById(destino);
         destino2 = document.getElementById(destino2);
@@ -42,6 +44,7 @@
         destino7 = document.getElementById(destino7);
         destino8 = document.getElementById(destino8);
         destino9 = document.getElementById(destino9);
+        destino10 = document.getElementById(destino10);
 
         LimpiarInput(destino);
         LimpiarInput(destino2);
@@ -60,9 +63,86 @@
                 url: BASE_URL +'personal/BuscarCedula',
                 data: {cedular: cedular.value},
                 success: function(json){
-                    LlenarDatos(json,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9);
+                    LlenarDatos(json,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9,destino10);
                         }
             });               
        
   
     }
+
+ function llenar_direccion(parroquia,municipio,estado){
+        $.ajax({
+            url: BASE_URL +'personal/SelectParroquiaGeneral', //apuntamos a persons/loadSexo
+            type: 'POST',
+            dataType: 'json',       
+        })
+
+        .done(function(data) { // si todo funciona
+            $('#direccion').empty();
+            $('#direccion').append('<option value="">Seleccione un direccion...</option>');
+            for (var i=0; i<data.length; i++) {
+                if (data[i].option.toUpperCase()==parroquia) {
+                    $('#direccion').append('<option selected="selected" value="'+ data[i].value+'">'+data[i].option +'</option>');
+
+                }else{
+                    $('#direccion').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }
+
+            }   
+            $('#direccion').selectpicker('refresh');
+        })
+
+        .fail(function() {//si da error decimos error
+            alert("Error cargando la parroquia");
+        });
+//Ajax para los municipios
+        $.ajax({
+            url: BASE_URL +'personal/SelectMunicipioGeneral', //apuntamos a persons/loadSexo
+            type: 'POST',
+            dataType: 'json',       
+        })
+
+        .done(function(data) { // si todo funciona
+            $('#municipio').empty();
+            $('#municipio').append('<option value="">Seleccione un municipio...</option>');
+            for (var i=0; i<data.length; i++) {
+                if (data[i].option.toUpperCase()==municipio) {
+                    $('#municipio').append('<option selected="selected" value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }else{
+                    $('#municipio').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }
+
+            }   
+            $('#municipio').selectpicker('refresh');
+        })
+
+        .fail(function() {//si da error decimos error
+            alert("Error cargando el municipio");
+        }); 
+//Fin ajax municipios    
+
+//Ajax para los estados
+        $.ajax({
+            url: BASE_URL +'personal/SelectEstado', //apuntamos a persons/loadSexo
+            type: 'POST',
+            dataType: 'json',       
+        })
+
+        .done(function(data) { // si todo funciona
+            $('#estado').empty();
+            $('#estado').append('<option value="">Seleccione un estado...</option>');
+            for (var i=0; i<data.length; i++) {
+                if (data[i].option.toUpperCase()==estado) {
+                    $('#estado').append('<option selected="selected" value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }else{
+                    $('#estado').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }
+
+            }   
+            $('#estado').selectpicker('refresh');
+        })
+
+        .fail(function() {//si da error decimos error
+            alert("Error cargando el estado");
+        });    
+ }    

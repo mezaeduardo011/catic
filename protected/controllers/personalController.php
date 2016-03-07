@@ -50,13 +50,21 @@
 		/*API del sistema SIGESP para cargar datos de personas ya registradas*/
 
 		public function BuscarCedula(){
-		  	 //18019742
-		     $cedula= $_POST['cedular'];
+			$cedula= '18.019.742';
+
+			$parroquia = $this->_personal->getDireccionParroquia(false,false);
+
+				$parroquiaData = array();
+						
+	for ($i = 0; $i < count($parroquia); $i++) {
+		$parroquiaData[$i] = array("parroquia"=>$parroquia[$i]["parroquia"],"municipio"=>$parroquia[$i]["municipio"],"estado"=>$parroquia[$i]["estado"]);
+	}
+		  	 //18019742 
 		     $cedula=str_replace('.','', $cedula); 
 		     $cliente = new ClienteApiSigesp();
 		     $resp = $cliente->getServicio('datos_empleado',array('cedula'=> $cedula));
 		     $data = !!$resp->errores['error']?$resp->cuerpo_response:$resp->cuerpo_response->data;
-		     echo json_encode(array("data" => $data));
+		     echo json_encode(array("data" => $data,"direccion"=>$parroquiaData));
 		}
 
 
@@ -153,6 +161,7 @@
 
 		}
 
+
 		function SelectMunicipio() {
 
 			if (isset($_POST["selected"])) {
@@ -167,6 +176,20 @@
 			echo json_encode($data);
 
 		}
+
+		function SelectMunicipioGeneral() {
+
+				$result = $this->_personal->getDireccionMunicipio(false);
+				$data = array();
+						
+				for ($i = 0; $i < count($result); $i++) {
+					$data[$i] = array("id"=>$result[$i]["id_direccion"],"option"=>$result[$i]["municipio"]);
+				}
+			 						
+			echo json_encode($data);
+
+		}
+
 
 		function SelectParroquia() {
 
@@ -183,6 +206,20 @@
 
 		}
 		
+
+		function SelectParroquiaGeneral() {
+
+				$result = $this->_personal->getDireccionParroquia();
+				$data = array();
+						
+				for ($i = 0; $i < count($result); $i++) {
+					$data[$i] = array("id"=>$result[$i]["id_direccion"],"option"=>$result[$i]["parroquia"]);
+				}
+						
+			echo json_encode($data);
+
+		}
+
 		function SelectCargo(){		
 
 					$result = $this->_personal->getCargos();

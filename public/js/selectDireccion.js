@@ -14,7 +14,8 @@ $(document).ready(
 			$('#estado').empty();
 			$('#estado').append('<option value="">Seleccione un estado...</option>');
 			for (var i=0; i<data.length; i++) {
-				$('#estado').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+					$('#estado').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+
 			}	
 			$('#estado').selectpicker('refresh');
 		})

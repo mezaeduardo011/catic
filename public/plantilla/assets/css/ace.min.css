@@ -8388,8 +8388,8 @@ input.ace+.lbl.padding-0::before {
 	
 }
 .form-group.has-success input, .form-group.has-success select, .form-group.has-success textarea {
-	border-color: #9cc573;
-	color: #8bad4c;
+	border-color: #70e000;
+	color: #649805;
 	-webkit-box-shadow: none;
 	box-shadow: none
 }
