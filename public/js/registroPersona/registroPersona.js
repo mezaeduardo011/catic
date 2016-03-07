@@ -126,15 +126,6 @@ $("#registrarHijo").click(function() {
     });
 });
 
-$('#fecha_nacimiento').datepicker({
-    clearBtn: true,
-    autoclose: true,
-    language: "es",
-    daysOfWeekHighlighted: "0,1,2,3,4,5,6",
-    todayHighlight: true,
-    endDate: "1998/12/31",
-
-});
 $('#fecha_ingreso').datepicker({
     clearBtn: true,
     autoclose: true,
@@ -157,3 +148,24 @@ jQuery(function($) {
     });
 
 });
+
+$(document).ready(function() {
+
+    $('#fecha_nacimiento').datepicker({
+
+        format: 'mm/dd/yyyy',
+        clearBtn: true,
+        autoclose: true,
+        language: "es",
+        daysOfWeekHighlighted: "0,1,2,3,4,5,6",
+        todayHighlight: true,
+        endDate: "12/31/1998"
+
+    })
+
+    .on('changeDate', function(e) {
+        // Revalidate the date field
+        $('#registro_persona').formValidation('revalidateField', 'fecha_nacimiento');
+    });
+    
+ });

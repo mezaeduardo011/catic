@@ -22,7 +22,7 @@ $('#registro_persona').formValidation({
                  }
              }
          },
-        sexo: {
+        sexos: {
              validators: {
                   notEmpty: { // No puede ser vacio
                      message: 'Debe seleccionar un sexo.'
