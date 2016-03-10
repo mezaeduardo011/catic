@@ -148,6 +148,19 @@
 				}
 		}
 
+		function delete($id=false){ 
+					if(isset($_POST['cedula'])&& !empty($_POST['cedula'])){
+						print_r($_POST['id']);
+						$this->_personal->deletePersona($_POST['id']);
+						$this->_view->redirect('personal/listing');
+					}else{
+						$persona = $this->_personal->getUnicaPersona($id);
+						$this->_view->_persona = $persona;
+						$this->_view->render('eliminar_persona', '','persons',$this->_sidebar_menu);						
+					}
+
+		}		
+
 		function SelectEstado() {
 			
 					$result = $this->_personal->getDireccionEstado();
@@ -183,7 +196,7 @@
 				$data = array();
 						
 				for ($i = 0; $i < count($result); $i++) {
-					$data[$i] = array("id"=>$result[$i]["id_direccion"],"option"=>$result[$i]["municipio"]);
+					$data[$i] = array("value"=>$result[$i]["id_direccion"],"option"=>$result[$i]["municipio"]);
 				}
 			 						
 			echo json_encode($data);
@@ -213,7 +226,7 @@
 				$data = array();
 						
 				for ($i = 0; $i < count($result); $i++) {
-					$data[$i] = array("id"=>$result[$i]["id_direccion"],"option"=>$result[$i]["parroquia"]);
+					$data[$i] = array("value"=>$result[$i]["id_direccion"],"option"=>$result[$i]["parroquia"]);
 				}
 						
 			echo json_encode($data);

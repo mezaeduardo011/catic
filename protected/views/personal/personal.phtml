@@ -1,3 +1,6 @@
+<!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido -->
+<div class="main-content" >
+	<div class="main-content-inner">
 
 <form class   ="form-inline center" role="form"  method="post"  id="registro_persona" name="registro_persona" >
 	
@@ -220,73 +223,49 @@
 									<input autocomplete="off" type="hidden" name="ubicacion" value="-">
 									<input autocomplete="off" type="hidden" name="cargo" value="0">
 									<input autocomplete="off" type="hidden" name="coordinacion" value="0">
-									
-									<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
-									
-									<div class="col-xs-12 col-sm-7">
-										<div class="col-sm-6">
-											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
-											type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control" />
-										</div>
-										<div class="col-sm-6">
-											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
-											type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
-										</div>
-									</div>
 								</div>
+							<div class="form-group">
+								<label class="control-label ">Nombres:</label>
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+										type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control"/>
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+										type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
+							</div>
+							<div class="space-2"></div>
+							
+							<div class="form-group">
+								<label class="control-label">Apellidos:</label>
 								
-								<div class="space-2"></div>
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+										type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+										type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
+							</div>					<br>	<br>		
+							<div class="form-group">							
+											<label class="control-label" for="sexo">Sexo:</label>
+											<div class="radio">
+											<label class="line-height-1 blue">
+												<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" 
+												/>
+												<span class="lbl"> Masculino</span>
+											</label>												
+											</div>
+											<div class="radio">
+											<label class="line-height-1 blue">
+												<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
+												<span class="lbl"> Femenino</span>
+											</label>												
+											</div>
+
 								
-								<div class="form-group">
-									<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
-									
-									<div class="col-xs-12 col-sm-7">
-										<div class="col-sm-6">
-											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
-										</div>
-										<div class="col-sm-6">
-											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Fecha de nacimiento: </label>
-									<div class="col-sm-8">
-										<div class="col-sm-4">
-											<div class="input-group">
-												<input onkeypress="return numeros(event);" onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento_hijo" type="date" data-date-format="yyyy-mm-dd" />
-												<span class   ="input-group-addon">
-													<i class      ="fa fa-calendar bigger-110"></i>
-												</span>
-											</div>
-										</div>
-										<div class="col-sm-8">
-											<div>
-												<label class="control-label col-sm-3 no-padding-right" for="sexo">Sexo:</label>
-											</div>
-											<div class="col-sm-2">
-												<div class="clearfix">
-													<div>
-														<label class="line-height-1 blue">
-															<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" />
-															<span class="lbl"> Masculino</span>
-														</label>
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-2">
-												<div class="clearfix">
-													<div class="col-sm-12">
-														<label class="line-height-1 blue">
-															<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
-															<span class="lbl"> Femenino</span>
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>								
-								</div>
+							</div>	
+							&nbsp;&nbsp;
+							<div class="form-group">
+								<label class="control-label" for="fecha_nacimiento">Fecha de nacimiento: </label>
+										<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento_hijo" type="date" data-date-format="yyyy-mm-dd" size="8" />							
+							</div>	
+														<hr>
+
 								<div align="center">
 									<button class="btn btn-primary" onclick="send_consulta_hijo();send_registro_persona('empleada');" id="registrarHijo">
 									<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
@@ -351,7 +330,7 @@
 												
 												<label class="blue">
 													<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres"
-													onchange="showElementos('infoPadresAmbos');hiddenElementos('infoPadresUno');hiddenElementos('saltos');" value="16" />
+													onchange="showElementos('infoPadresAmbos');hiddenElementos('infoPadreUnico');hiddenElementos('saltos');" value="16" />
 													<span class="lbl"> Ambos</span>
 												</label>
 												&nbsp;
@@ -384,45 +363,28 @@
 										<input autocomplete="off" type="hidden" name="direccion" value="0">
 										<input autocomplete="off" type="hidden" name="ubicacion" value="-">
 										<input autocomplete="off" type="hidden" name="sexos" value="0">
-										<div class="form-group">
-											
-											<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
-											
-											<div class="col-xs-12 col-sm-7">
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control" />
-												</div>
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
-												</div>
-											</div>
-										</div>
-										<div class="space-2"></div>
-										<div class="form-group">
-											<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
-											
-											<div class="col-xs-12 col-sm-7">
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
-												</div>
-												<div class="col-sm-6">
-													<input  style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Telefono: </label>
-											<div class="col-sm-8">
-												<div class="col-sm-4">
-													<div class="input-group">
-														<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" />
-														<span class   ="input-group-addon">
-															<i class      ="ace-icon fa fa-phone"></i>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
+							<div class="form-group">
+								<label class="control-label ">Nombres:</label>
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+										type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control"/>
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+										type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
+							</div>
+							<div class="space-2"></div>
+							
+							<div class="form-group">
+								<label class="control-label">Apellidos:</label>
+								
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+										type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
+										<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+										type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
+							</div>					<br>	<br>		
+									<div class="form-group">
+										<label class="control-label" for="cedula">Télefono: </label>
+													<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" size="12"/>
+									</div>
+
 									</div>
 									<hr>
 									<br>
@@ -437,44 +399,28 @@
 										<input autocomplete="off" type="hidden" name="direccion" value="0">
 										<input autocomplete="off" type="hidden" name="ubicacion" value="-">
 										<input autocomplete="off" type="hidden" name="sexos" value="0">
-										<div class="form-group">
-											<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
+											<div class="form-group">
+												<label class="control-label ">Nombres:</label>
+														<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+														type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control"/>
+														<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+														type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
+											</div>
+											<div class="space-2"></div>
 											
-											<div class="col-xs-12 col-sm-7">
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control" />
-												</div>
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
-												</div>
-											</div>
-										</div>
-										<div class="space-2"></div>
-										<div class="form-group">
-											<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
-											
-											<div class="col-xs-12 col-sm-7">
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
-												</div>
-												<div class="col-sm-6">
-													<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Telefono: </label>
-											<div class="col-sm-8">
-												<div class="col-sm-4">
-													<div class="input-group">
-														<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" />
-														<span class   ="input-group-addon">
-															<i class      ="ace-icon fa fa-phone"></i>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
+											<div class="form-group">
+												<label class="control-label">Apellidos:</label>
+												
+														<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+														type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
+														<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+														type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
+											</div>					<br>	<br>		
+							<div class="form-group">
+								<label class="control-label" for="cedula">Télefono: </label>
+											<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" size="12"/>
+							</div>
+							<hr>
 									</div>
 									<div align="center">
 										<button class="btn btn-primary" onclick="send_consulta_hijo();
@@ -485,72 +431,55 @@
 										</button>
 									</div>
 								</div><!--  Fin informacion de los Padres -->
-								<hr>															
-								<div id="infoPadreUnico" class="col-sm-16" hidden><!-- informacion de los Padres -->
-									<br>
-									
-									<div class="form-group">
-										<input autocomplete="off" type="hidden" name="cedula" value="-">
-										<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
-										<input autocomplete="off" type="hidden" name="fecha_nacimiento" value="2016-01-01">
-										<input autocomplete="off" type="hidden" name="telefono" value="-">
-										<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
-										<input autocomplete="off" type="hidden" name="correo" value="-">
-										<input autocomplete="off" type="hidden" name="direccion" value="0">
-										<input autocomplete="off" type="hidden" name="ubicacion" value="-">
-										<input autocomplete="off" type="hidden" name="sexos" value="0">
-										
-										<label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
-										
-										<div class="col-xs-12 col-sm-7">
-											<div class="col-sm-6">
-												<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control" />
+																					
+								<div id="infoPadreUnico" class="col-sm-16" hidden><!-- informacion infoPadreUnico -->
+											<hr>	
+											<br>											
+											<div class="form-group">
+												<input autocomplete="off" type="hidden" name="cedula" value="-">
+												<input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
+												<input autocomplete="off" type="hidden" name="fecha_nacimiento" value="2016-01-01">
+												<input autocomplete="off" type="hidden" name="telefono" value="-">
+												<input autocomplete="off" type="hidden" name="otro_telefono" value="-">
+												<input autocomplete="off" type="hidden" name="correo" value="-">
+												<input autocomplete="off" type="hidden" name="direccion" value="0">
+												<input autocomplete="off" type="hidden" name="ubicacion" value="-">
+												<input autocomplete="off" type="hidden" name="sexos" value="0">
+											</div>													
+											<div class="form-group">
+												<label class="control-label ">Nombres:</label>
+														<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+														type   ="text" name="nombre" id="nombre" placeholder="Primer Nombre" class="input-sm form-control"/>
+														<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+														type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
 											</div>
-											<div class="col-sm-6">
-												<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="nombre2" id="nombre2" placeholder="Segundo Nombre" class="input-sm form-control" />
+											<div class="space-2"></div>
+											
+											<div class="form-group">
+												<label class="control-label">Apellidos:</label>
+												
+														<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+														type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
+														<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+														type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
+											</div>					<br>	<br>		
+											<div class="form-group">
+												<label class="control-label" for="cedula">Télefono: </label>
+															<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" size="12"/>
 											</div>
-										</div>
-									</div>
-									
-									<div class="space-2"></div>
-									
-									<div class="form-group">
-										<label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
-										
-										<div class="col-xs-12 col-sm-7">
-											<div class="col-sm-6">
-												<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido" id="apellido" placeholder="Primer apellido" class="input-sm form-control" />
+											<hr>
+											<div align="center">
+												<button class="btn btn-primary" onclick="send_consulta_hijo();
+												showElementos('tablaPadres');hiddenElementos('infoPadres');hiddenElementos('infoExtra');showElementos('AgregarOtroPadre');
+												send_registro_persona('padre')">
+												<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+												Registrar
+												</button>
 											</div>
-											<div class="col-sm-6">
-												<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off" type   ="text" name="apellido2" id="apellido2" placeholder="Segundo apellido" class="input-sm form-control" />
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-sm-3 no-padding-right" for="fecha_nacimiento">Telefono: </label>
-										<div class="col-sm-8">
-											<div class="col-sm-4">
-												<div class="input-group">
-													<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" />
-													<span class   ="input-group-addon">
-														<i class      ="ace-icon fa fa-phone"></i>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<div align="center">
-										<button class="btn btn-primary" onclick="send_consulta_hijo();
-										showElementos('tablaPadres');hiddenElementos('infoPadres');hiddenElementos('infoExtra');showElementos('AgregarOtroPadre');
-										send_registro_persona('padre')">
-										<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
-										Registrar
-										</button>
-									</div>
-									<br><br><br><br><br><br><br><br><br>
-								</div><!--  Fin informacion de los Padres -->
-								<hr>
+											<br><br><br><br><br><br><br><br><br>
+											<hr>
+								</div><!--  Fin infoPadreUnico -->
+								
 								<div align="center" id="AgregarOtroPadre" hidden>
 									<button class="btn btn-primary" onclick="showElementos('infoPadres');hiddenElementos('AgregarOtroPadre');">
 									<i class      ="glyphicon glyphicon-plus"></i>
@@ -788,7 +717,6 @@
 					</button>
 				</div>
 	</div>
-						
 </form>
 
 </div>

@@ -1,21 +1,23 @@
-    
- <div class    ="page-content" ><!-- /.page-content -->
-
-<div class="sidebar responsive divBlanco ">
-    <div class="list-group">
-        <div class="alert alert-info " align="center">
-            <h5>Acciones</h5>
-        </div>
-        <?php  if ($_view_params['sidebar_menu']):?>
-        <?php for ($i = 0; $i < count($_view_params['sidebar_menu']); $i++):?>
-        <a href="<?php echo $_view_params['sidebar_menu'][$i]['link']; ?>"class="list-group-item">
-        <?php echo $_view_params['sidebar_menu'][$i]['title'];?></a>
-        <?php endfor;?>
-        <?php endif;?>
-        
-    </div>
-</div>
-    
- <div class="main-content" >
-     <div class="main-content-inner">
-                   
+<!-- ------ --><!-- ------ --><!-- ------ --><!-- ------ --><!-- ------ --><!-- ------ --><!-- ------ --><!-- ------ -->
+<!-- inicio_main-container --><!-- inicio_main-container --><!-- inicio_main-container --><!-- inicio_main-container --><!-- inicio_main-container --><!-- inicio_main-container --><!-- inicio_main-container --><!-- inicio_main-container -->
+    <div class="main-container" >
+            <!-- statements --><!-- statements --><!-- statements --><!-- statements --><!-- statements --><!-- statements --><!-- statements --><!-- statements -->
+            
+            <!-- sidebar --><!-- sidebar --><!-- sidebar --><!-- sidebar --><!-- sidebar --><!-- sidebar --><!-- sidebar --><!-- sidebar -->
+            <!-- inicio_page_content --><!-- inicio_page_content --><!-- inicio_page_content --><!-- inicio_page_content --><!-- inicio_page_content --><!-- inicio_page_content --><!-- inicio_page_content --><!-- inicio_page_content -->
+                        <div class    ="page-content" >
+                                    <!-- sidebar --><!-- sidebar --><!-- sidebar --><!-- sidebar --><!-- sidebar --><!-- sidebar --><!-- sidebar --><!-- sidebar -->
+                                            <div class="sidebar responsive divBlanco ">
+                                                <div class="list-group">
+                                                    <div class="alert alert-info " align="center">
+                                                        <h5>Acciones</h5>
+                                                    </div>
+                                                    <?php  if ($_view_params['sidebar_menu']):?>
+                                                    <?php for ($i = 0; $i < count($_view_params['sidebar_menu']); $i++):?>
+                                                    <a href="<?php echo $_view_params['sidebar_menu'][$i]['link']; ?>"class="list-group-item">
+                                                    <?php echo $_view_params['sidebar_menu'][$i]['title'];?></a>
+                                                    <?php endfor;?>
+                                                    <?php endif;?>
+                                                </div>
+                                            </div>
+                                    <!-- fin_sidebar --><!-- fin_sidebar --><!-- fin_sidebar --><!-- fin_sidebar --><!-- fin_sidebar --><!-- fin_sidebar --><!-- fin_sidebar --><!-- fin_sidebar -->

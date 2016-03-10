@@ -1,6 +1,5 @@
     var BASE_URL = "http://localhost/catic/";
 
-    //funcion que limpia los campos
     function LimpiarInput(destino)
     {
         destino.value="";   
@@ -30,7 +29,6 @@
         }
     }
     
-    //fucion con la cual obtenemos  los datos 
     function obten_datos(cedula,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9,destino10)
     {
         //alert("destino: "+destino+" destino2: "+destino2+" destino3: "+destino3+" destino4: "+destino4+" destino5: "+destino5+" destino6: "+destino6+" destino7: "+destino7+" destino8: "+destino8+" destino9:"+destino9+"Destino 10:- .I."+destino10);
@@ -71,38 +69,41 @@
     }
 
  function llenar_direccion(parroquia,municipio,estado){
+
+//Ajax para los estados
         $.ajax({
-            url: BASE_URL +'personal/SelectParroquiaGeneral', //apuntamos a persons/loadSexo
+            url: BASE_URL +'personal/SelectEstado', 
             type: 'POST',
             dataType: 'json',       
         })
 
-        .done(function(data) { // si todo funciona
-            $('#direccion').empty();
-            $('#direccion').append('<option value="">Seleccione un direccion...</option>');
+        .done(function(data) { 
+            $('#estado').empty();
+            $('#estado').append('<option value="">Seleccione un estado...</option>');
             for (var i=0; i<data.length; i++) {
-                if (data[i].option.toUpperCase()==parroquia) {
-                    $('#direccion').append('<option selected="selected" value="'+ data[i].value+'">'+data[i].option +'</option>');
-
+                if (data[i].option.toUpperCase()==estado) {
+                    $('#estado').append('<option  selected="selected" value="'+ data[i].value+'">'+data[i].option +'</option>');
                 }else{
-                    $('#direccion').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+                    $('#estado').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
                 }
 
             }   
-            $('#direccion').selectpicker('refresh');
+            $('#estado').selectpicker('refresh');
         })
 
-        .fail(function() {//si da error decimos error
-            alert("Error cargando la parroquia");
+        .fail(function() {
+            alert("Error cargando el estado");
         });
-//Ajax para los municipios
+
+
+
         $.ajax({
-            url: BASE_URL +'personal/SelectMunicipioGeneral', //apuntamos a persons/loadSexo
+            url: BASE_URL +'personal/SelectMunicipioGeneral', 
             type: 'POST',
             dataType: 'json',       
         })
 
-        .done(function(data) { // si todo funciona
+        .done(function(data) { 
             $('#municipio').empty();
             $('#municipio').append('<option value="">Seleccione un municipio...</option>');
             for (var i=0; i<data.length; i++) {
@@ -116,33 +117,36 @@
             $('#municipio').selectpicker('refresh');
         })
 
-        .fail(function() {//si da error decimos error
+        .fail(function() {
             alert("Error cargando el municipio");
         }); 
 //Fin ajax municipios    
 
-//Ajax para los estados
         $.ajax({
-            url: BASE_URL +'personal/SelectEstado', //apuntamos a persons/loadSexo
+            url: BASE_URL +'personal/SelectParroquiaGeneral', 
             type: 'POST',
             dataType: 'json',       
         })
 
-        .done(function(data) { // si todo funciona
-            $('#estado').empty();
-            $('#estado').append('<option value="">Seleccione un estado...</option>');
+        .done(function(data) { 
+            $('#direccion').empty();
+            $('#direccion').append('<option value="">Seleccione una parroquia...</option>');
             for (var i=0; i<data.length; i++) {
-                if (data[i].option.toUpperCase()==estado) {
-                    $('#estado').append('<option selected="selected" value="'+ data[i].value+'">'+data[i].option +'</option>');
+                if (data[i].option.toUpperCase()==parroquia) {
+                    $('#direccion').append('<option  selected="selected" value="'+ data[i].value+'">'+data[i].option +'</option>');
+
                 }else{
-                    $('#estado').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+                    $('#direccion').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
                 }
 
             }   
-            $('#estado').selectpicker('refresh');
+            $('#direccion').selectpicker('refresh');
         })
 
-        .fail(function() {//si da error decimos error
-            alert("Error cargando el estado");
-        });    
+        .fail(function() {
+            alert("Error cargando la parroquia");
+        });
+
+
+    
  }    

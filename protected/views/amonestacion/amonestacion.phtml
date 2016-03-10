@@ -1,107 +1,115 @@
-	<div class="widget-box divBlanco">
-		<form action="<?php  echo BASE_URL;?>amonestacion/registro_amonestacion" method="post">
-			<div class="alert alert-info" align="center">
-				<h4>Registro de amonestacion <i class="fa fa-users fa-lg"></i></h4>
-			</div>
-			<br>
-			<div class="row">
-				<div class="col-xs-12">
-				<div id="info_registro">
-					
-				
-					<div class="col-sm-12" align="center" id="sandbox-container">
-						<div class="col-sm-4">
-								<label class="" for="tipo_amonestacion">Tipo de amonestacion: </label>
-								<div class    ="input-group">
-									<select name="tipo_amonestacion" id="tipo_amonestacion" class="selectpicker show-tick input-sm form-control" data-live-search="true">
-									</select>
-								</div>
-						</div class="col-sm-4">
-						<div class="col-sm-4">
-								<label class="" for="coordinacion">Coordinación: </label>
-								<div class    ="input-group">
-									<select name="coordinacion" id="coordinacion" class="selectpicker show-tick input-sm form-control" data-live-search="true">
-									</select>
-								</div>
-						</div class="col-sm-4">
-						<div class="col-sm-4">
-							<label>Fecha de amonestacion</label>
-							<div class="col-sm-7 input-group">
-								<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha" id="fecha" type="date" data-date-format="yyyy-mm-dd" />
-								<span class   ="input-group-addon">
-									<i class      ="fa 	fa-calendar  bigger-110"></i>
-								</span>
-							</div>
-						</div class="col-sm-4">
-					</div>
-					<div class="col-sm-12" align="center">
-						<br>						
-						<div class="col-sm-12"><label>Describa aquí el motivo de la amonestacion:</label>
-						<textarea id="form-field-11" align"center" class="autosize-transition input-sm form-control" name="motivo"
-						 style="width:500px;height:100px"></textarea>
+<!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido -->
+<div class="main-content" >
+	<div class="main-content-inner">
+<div class="widget-box divBlanco">
+<form action="<?php  echo BASE_URL;?>amonestacion/registro_amonestacion" method="post">
+	<div class="alert alert-info" align="center">
+		<h4>Registro de amonestacion <i class="fa fa-users fa-lg"></i></h4>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-12">
+		<div id="info_registro">
+			
+		
+			<div class="col-sm-12" align="center" id="sandbox-container">
+				<div class="col-sm-4">
+						<label class="" for="tipo_amonestacion">Tipo de amonestacion: </label>
+						<div class    ="input-group">
+							<select name="tipo_amonestacion" id="tipo_amonestacion" class="selectpicker show-tick input-sm form-control" data-live-search="true">
+							</select>
 						</div>
-						<br><br><br><br><br><br><hr>
-					</div class="col-sm-4">
+				</div class="col-sm-4">
+				<div class="col-sm-4">
+						<label class="" for="coordinacion">Coordinación: </label>
+						<div class    ="input-group">
+							<select name="coordinacion" id="coordinacion" class="selectpicker show-tick input-sm form-control" data-live-search="true">
+							</select>
+						</div>
+				</div class="col-sm-4">
+				<div class="col-sm-4">
+					<label>Fecha de amonestacion</label>
+					<div class="col-sm-7 input-group">
+						<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha" id="fecha" type="date" data-date-format="yyyy-mm-dd" />
+						<span class   ="input-group-addon">
+							<i class      ="fa 	fa-calendar  bigger-110"></i>
+						</span>
 					</div>
-					<br><br><br>
-					<hr>
-					<div class="" align="center">
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="table-header">
-									Seleccione a la persona a la que se le asignara la amonestacion (Solo una persona por amonestacion).
-								</div>
-								<div>
-									<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-										<thead>
-											<tr>
-												<th class="center">
-													<label class="pos-rel">
-														#
-													</label>
-													<th class="center">Cedula</th>
-													<th class="center">Nombres</th>
-													<th class="center">Apellidos</th>
-													<th class="center">Fecha de ingreso</th>
-													<th class="center">Teléfono</th>
-													<th class="center">Seleccione</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php $cont=0; foreach ($this->_listado as $persona): $cont++;?>
-												<tr>
-													<td class="center"><?php echo $persona['numeracion'];?></td>
-													<td><?php echo $persona['cedula']; ?></td>
-													<td><?php echo $persona['nombre']; ?>&nbsp;&nbsp;<?php echo $persona['nombre2']; ?></td>
-													<td><?php echo $persona['apellido']; ?>&nbsp;&nbsp;<?php echo $persona['apellido2']; ?></td>
-													<td class="center"><?php echo $persona['fecha_ingreso'];?></td>
-													<td class="center"><?php echo $persona['telefono'];?></td>
-													<th class="center">
-													<a class="btn-app  btn-primary  btn-sm" id="detalle_persona"
-														onclick="pickOpen('prod', 'id_prod',
-														'<?php echo BASE_URL."amonestacion/confirmacionVista/". $persona['id_persona'].'/44' ?>',
-														90, 96, 85, 1);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);"
-														style=cursor:pointer; >
-														<i class="ace-icon fa fa-floppy-o fa-lg"></i>
-														Asignar amonestacion
-													</a>
-														<input type="hidden" value="<?php echo $cont?>" name="contador" id="contador">
-													</th>
-												</tr>
-												<?php endforeach ?>
-											</tbody>
-										</table>
-										</div><!-- /.col -->
-									</div>
-								</div>
-							</div>
-							<br>
-
-						</form>
-						<br>
-					</div>
-				</div>
+				</div class="col-sm-4">
 			</div>
-		<div id="prod"></div>
-		<div id="resultado" align="center"></div>
-		<div  id='id_fondo_opaco' class="fondo_opaco" style="display:none"></div>
+			<div class="col-sm-12" align="center">
+				<br>						
+				<div class="col-sm-12"><label>Describa aquí el motivo de la amonestacion:</label>
+				<textarea id="form-field-11" align"center" class="autosize-transition input-sm form-control" name="motivo"
+				 style="width:500px;height:100px"></textarea>
+				</div>
+				<br><br><br><br><br><br><hr>
+			</div class="col-sm-4">
+			</div>
+			<br><br><br>
+			<hr>
+			<div class="" align="center">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="table-header">
+							Seleccione a la persona a la que se le asignara la amonestacion (Solo una persona por amonestacion).
+						</div>
+						<div>
+							<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+								<thead>
+									<tr>
+										<th class="center">
+											<label class="pos-rel">
+												#
+											</label>
+											<th class="center">Cedula</th>
+											<th class="center">Nombres</th>
+											<th class="center">Apellidos</th>
+											<th class="center">Fecha de ingreso</th>
+											<th class="center">Teléfono</th>
+											<th class="center">Seleccione</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php $cont=0; foreach ($this->_listado as $persona): $cont++;?>
+										<tr>
+											<td class="center"><?php echo $persona['numeracion'];?></td>
+											<td><?php echo $persona['cedula']; ?></td>
+											<td><?php echo $persona['nombre']; ?>&nbsp;&nbsp;<?php echo $persona['nombre2']; ?></td>
+											<td><?php echo $persona['apellido']; ?>&nbsp;&nbsp;<?php echo $persona['apellido2']; ?></td>
+											<td class="center"><?php echo $persona['fecha_ingreso'];?></td>
+											<td class="center"><?php echo $persona['telefono'];?></td>
+											<th class="center">
+												<label class="pos-rel">
+										<input type="radio" class="ace input-lg" value="<?php echo $persona['id_persona']; ?>" name="id_persona"/>
+										<span class="lbl bigger-120"> </span>
+												</label>
+											</th>
+										</tr>
+										<?php endforeach ?>
+									</tbody>
+								</table>
+								</div><!-- /.col -->
+							</div>
+						</div>
+					</div>
+					<br>
+						<div align="center">
+							<button class="btn btn-success" type="submit" align="center">
+							<i class="ace-icon fa fa-floppy-o fa-lg"></i>
+							Registrar vacaciones
+							</button>
+						</div>
+						<br>
+				</form>
+				<br>
+			</div>
+		</div>
+	</div>
+
+<div id="prod"></div>
+<div id="resultado" align="center"></div>
+<div  id='id_fondo_opaco' class="fondo_opaco" style="display:none"></div>
+</div>
+</div>	
+<!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido -->

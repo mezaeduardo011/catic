@@ -1,48 +1,37 @@
-            
-            <div class="footer">
-                <div class="footer-inner">
-                    <div class="footer-content">
-                        <span class="bigger-120">
-                            <span class="blue bolder">MPPIC</span>
-                            Ministerio Para El Poder Popular De Industria Y Comercio.
-                        </span>
-
-                    </div>
-                </div>
-            </div>
-            
-    </div>
-
+                                            <script src="<?php echo PUBLIC_URL;?>/js/Librerias/ace-extra.js"></script>
+                                            <script src="<?php echo PUBLIC_URL;?>/js/Librerias/jquery.js"></script>
+                                            <script src="<?php echo PUBLIC_URL;?>/js/Librerias/bootstrap.js"></script>
+                                            <script type="text/javascript">
+                                            if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo PUBLIC_URL;?>plantilla/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+                                            </script>
+                                            <script src="<?php echo PUBLIC_URL;?>/js/Librerias/ace-elements.js"></script>
+                                            <script src="<?php echo PUBLIC_URL;?>/js/Librerias/ace.min.js"></script>
+                                            <script type="text/javascript" src="<?php echo PUBLIC_URL;?>js/wow-alert.js"></script>
+                                            <script type="text/javascript" src="<?php echo PUBLIC_URL;?>js/ajax.js"></script>
+                                            <?php  if (isset($_view_params['js']) && count($_view_params['js'])): ?>
+                                            <?php   for ($i = 0; $i < count($_view_params['js']); $i++):  ?>
+                                            <script src="<?php echo $_view_params['js'][$i]; ?>"></script>
+                                            <?php   endfor; ?>
+                                            <?php  endif;?>
+                
+                                                        
     
+                        </div>  
+            <!-- fin_page_content --><!-- fin_page_content --><!-- fin_page_content --><!-- fin_page_content --><!-- fin_page_content --><!-- fin_page_content --><!-- fin_page_content --><!-- fin_page_content -->
 
-        <script src="<?php echo PUBLIC_URL;?>/js/Librerias/ace-extra.js"></script> 
-        <script src="<?php echo PUBLIC_URL;?>/js/Librerias/jquery.js"></script>
-        <script src="<?php echo PUBLIC_URL;?>/js/Librerias/bootstrap.js"></script>
-        <script type="text/javascript">
-            if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo PUBLIC_URL;?>plantilla/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-        </script> 
+                                            <div class="footer">
+                                                <div class="footer-inner">
+                                                    <div class="footer-content">
+                                                        <span class="bigger-120">
+                                                            <span class="blue bolder">MPPIC</span>
+                                                            Ministerio Para El Poder Popular De Industria Y Comercio.
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-        <script src="<?php echo PUBLIC_URL;?>/js/Librerias/ace-elements.js"></script>
-        <script src="<?php echo PUBLIC_URL;?>/js/Librerias/ace.min.js"></script>
-        <script type="text/javascript" src="<?php echo PUBLIC_URL;?>js/wow-alert.js"></script>
-        <script type="text/javascript" src="<?php echo PUBLIC_URL;?>js/ajax.js"></script>
-                <?php  if (isset($_view_params['js']) && count($_view_params['js'])): ?>
-        <?php   for ($i = 0; $i < count($_view_params['js']); $i++):  ?>
-        <script src="<?php echo $_view_params['js'][$i]; ?>"></script>
-        <?php   endfor; ?>
-        <?php  endif;?>
-
-    </body>
-     
+                        
+    </div>
+<!-- fin_main-container --><!-- fin_main-container --><!-- fin_main-container --><!-- fin_main-container --><!-- fin_main-container --><!-- fin_main-container --><!-- fin_main-container --><!-- fin_main-container -->            
+</body>             
 </html>
-<script >
-    $('#fecha_nacimiento_hijo').datepicker({
-    clearBtn: true,
-    autoclose: true,
-    language: "es",
-    daysOfWeekHighlighted: "0,1,2,3,4,5,6",
-    todayHighlight: true,
-    endDate: "1998/12/31",
-});
-</script>
-

@@ -35,7 +35,14 @@ $('#registro_persona').formValidation({
                      message: 'Debe introducir una fecha de nacimiento.'
                  }
              }
-         },   
+         },
+         fecha_nacimiento_hijo: {
+             validators: {
+                  notEmpty: { // No puede ser vacio
+                     message: 'Debe introducir una fecha de nacimiento.'
+                 }
+             }
+         },    
           cedula: {
              validators: {
 

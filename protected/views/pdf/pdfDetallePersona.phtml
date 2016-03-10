@@ -252,9 +252,33 @@ html {
         <tr>
         <td align="center"><?php echo $this->_persona[0]['ubicacion'] ?></td>
         </tr>
-    </table>        
+    </table> 
+    <?php if($this->_hijos!=null): ?>       
+        <div class="page-header" align="center">
+        <h2>
+        Información de los hijos
+        </h2>
+    </div>
+    <table id="dynamic-table" align="center" class="CSSTableGenerator">
 
+        <tr >
+        <th class="center" >Nombres</th>
+        <th class="center">Apellidos</th>
+        <th class="center">Fecha. Nac</th>
+        <th class="center">Edad</th>
+        <th class="center">Sexo</th>
+        </tr>
 
+        <tr>
+        <td align="center"><?php echo $this->_hijos[0]['nombre'] ?>&nbsp;<?php echo $this->_hijos[0]['nombre2'] ?></td>
+        <td align="center"><?php echo $this->_hijos[0]['apellido'] ?>&nbsp;<?php echo $this->_hijos[0]['apellido2'] ?></td>
+        <td align="center" ><?php echo $this->_hijos[0]['fecha_nacimiento'] ?></td>
+        <td align="center" ><?php echo $this->_hijos[0]['edad'] ?></td>
+        <td align="center" ><?php echo $this->_hijos[0]['sexo'] ?></td>
+        </tr>
+        </tr>
+    </table>
+    <?php endif ?>  
 </div>
 
 

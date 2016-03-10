@@ -14966,7 +14966,7 @@ img.editable-click:hover {
 	border-left: 1px solid #E1E1E1
 }
 .ui-jqgrid .ui-jqgrid-hdiv {
-	background-color: #eff3f8;
+	background-color: #E1E1E1;
 	border: 1px solid #D3D3D3;
 	border-width: 1px 0 0 1px;
 	line-height: 15px;
@@ -15490,7 +15490,7 @@ th[aria-selected=true] .ui-jqgrid-sortable {
 	background-color: #8b9aa3
 }
 .ui-jqgrid .ui-jqgrid-htable .ui-search-toolbar th {
-	height: 30px;
+	height: 37px;
 	padding-top: 2px;
 	white-space: normal
 }

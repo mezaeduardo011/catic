@@ -42,15 +42,11 @@
 
 		function registro_vacaciones(){
 					unset($_POST['dynamic-table_length']);
-					$check = $this->valCheckbox( $_POST['contador']);
-					$contador=$_POST['contador'];	
 					unset($_POST['contador']);								
-					$checkSeleccionados = $this->ConvertirArraySql($check);
-					$arregloValido = $this->ConvertirArray($_POST);
-					$vacaciones=$this->borrarCheckbox($contador,$arregloValido);
+					$vacaciones = $this->ConvertirArray($_POST);
 					//$this->imprimirArreglo($vacaciones);
-					$this->_vacaciones->registroVacaciones($vacaciones,$checkSeleccionados);
-
+					$this->_vacaciones->registroVacaciones($vacaciones);
+					$this->_view->redirect('vacaciones/consulta_vacaciones');
 		}
 
 		function consulta_vacaciones(){

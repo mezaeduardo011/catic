@@ -32,14 +32,10 @@
 
 		function registro_permiso(){
 					unset($_POST['dynamic-table_length']);
-					$check = $this->valCheckbox( $_POST['contador']);
-					$contador=$_POST['contador'];	
-					unset($_POST['contador']);	
-					$arregloValido = $this->ConvertirArray($_POST);
-					$checkSeleccionado = $this->ConvertirArrayCheck($check);
-					$vacaciones=$this->borrarCheckbox($contador,$arregloValido);
-					//$this->imprimirArreglo($vacaciones);
-					$this->_permisos->registroPermisos($vacaciones,$checkSeleccionado);
+					unset($_POST['contador']);								
+					$permiso = $this->ConvertirArray($_POST);
+					//$this->imprimirArreglo($permiso);
+					$this->_permisos->registroPermisos($permiso);
 
 		}		
 }?>

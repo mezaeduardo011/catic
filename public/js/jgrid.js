@@ -9,26 +9,32 @@ $(document).ready(function () {
             })
             
             $(grid_selector).jqGrid({
-                url: BASE_URL+"vacaciones/personal_vacaciones",
-                mtype: "GET",
-                styleUI : 'Bootstrap',
-                datatype: "json",
+            hoverrows:false,
+            "viewrecords":true,
+            "jsonReader":{"repeatitems":false,"subgrid":{"repeatitems":false}},
+            "gridview":true,
+             url: BASE_URL+"vacaciones/personal_vacaciones",
+            "loadonce": true,
+            "rowNum":10,
+            "height":200,
+            "autowidth":true,
+            "sortname":"OrderID",
+            "rowList":[10,30,40],
+            "datatype":"json",
+
                 colModel: [
-                    { label: '#', name: 'numeracion', key: true, width: 20 },
-                    { label: 'Coordinacion', name: 'coordinacion', width: 150 },
-                    { label: 'Nombres', name: 'nombres', width: 150 },
-                    { label:'Fecha de solicitud', name: 'fecha_solicitud', width: 90 },
-                    { label:'Inicio', name: 'desde', width: 50 },
-                    { label:'Fin', name: 'hasta', width: 50 },
-                    { label:'Reincorporacion', name: 'reincorporacion', width: 80 },
-                    { label:'Dias hábiles', name: 'dias_correspondientes', width: 70 }
+                    { label: '#', name: 'numeracion', key: true, width: 20,"search":false },
+                    { label: 'Coordinacion', name: 'coordinacion', width: 150 ,"search":true},
+                    { label: 'Nombres', name: 'nombres', width: 120 ,"search":true},
+                    { label:'Fecha de solicitud', name: 'fecha_solicitud', width: 90,"search":true },
+                    { label:'Inicio', name: 'desde', width: 50,"search":true },
+                    { label:'Fin', name: 'hasta', width: 50 ,"search":true},
+                    { label:'Reincorporacion', name: 'reincorporacion', width: 80,"search":true },
+                    { label:'Dias hábiles', name: 'dias_correspondientes', width: 70,"search":true },
+
                 ],
 
                 jsonReader: {repeatitems:false, root:"vacaciones"},
-                viewrecords: true,
-                height: 250,
-                rowNum: 20,
-                rowList:[10,20,30],
                 pager: grid_pager,
                 multiselect: true,
                 loadComplete : function() {
@@ -37,12 +43,12 @@ $(document).ready(function () {
                             updatePagerIcons(table);
                         }, 0);
                     },
-                multiboxonly: true,
-                autowidth: true,
-                loadonce:true
+                multiboxonly: true
 
             });
 
+
+            jQuery(grid_selector).jqGrid('filterToolbar',{"stringResult":true});
             jQuery(grid_selector).jqGrid('navGrid',grid_pager,
                     {   //navbar options
                         edit:false,

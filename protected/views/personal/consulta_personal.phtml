@@ -1,4 +1,7 @@
-	<div class="widget-box divBlanco">
+<!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido -->
+<div class="main-content" >
+	<div class="main-content-inner">
+<div class="widget-box divBlanco">
 		<div class="alert alert-info" align="center">
 			<h4>Consulta de personas registradas en el sistema <i class="fa fa-users fa-lg"></i></h4>
 		</div>
@@ -12,6 +15,7 @@
 						</div>
 						<div>
 							<form action="<?php  echo BASE_URL;?>personal/listing" method="post">
+
 								<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
@@ -49,11 +53,12 @@
 														Detalles
 													</a>
 													<a class="btn-app  btn-imprimir  btn-sm" id="detalle_persona" target="_blank"
-														href="<?php echo BASE_URL."pdf/pdfDetallePersona/". $persona['id_persona'] ?>" >
+														href="<?php echo BASE_URL."pdf/pdfDetallePersona/". $persona['id_persona'].'/'.$persona['id_persona_empleada'] ?>" >
 														<i class="ace-icon fa fa-print bigger fa-lg"></i>
 														Imprimir
 													</a>
-													<a class="btn-app btn-eliminar btn-sm" href="<?php echo BASE_URL."personal/delete/". $persona['id_persona'] ?>">
+													<a class="btn-app btn-eliminar btn-sm" 
+													href="<?php echo BASE_URL."personal/delete/". $persona['id_persona']?>">
 														<i class="ace-icon fa fa-trash-o bigger fa-lg"></i>
 														Eliminar
 													</a>

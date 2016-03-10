@@ -13,13 +13,12 @@
 	
 		}
 
-		function pdfDetallePersona($id=false){
-
+		function pdfDetallePersona($id=false,$id_persona_empleada=false){
+			$hijos = $this->_personal->getHijosEmpleado($id_persona_empleada);
+			$this->_view->_hijos  = $hijos;
 			$persona = $this->_personal->getUnicaPersona($id);
-			//$this->imprimirArreglo($persona);
 			$this->_view->_persona  = $persona;
-
-				$this->_view->render('pdfDetallePersona', 'personal', 'pdf','');
+			$this->_view->render('pdfDetallePersona', 'personal', 'pdf','');
 
 		}
 

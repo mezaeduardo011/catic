@@ -20,29 +20,21 @@
 	}
 	
 	public function getPersonal(){	
-			$query = "SELECT * FROM personal_completo";
-			$result=$this->selectPdo($query);
-			return $result;		
+			return $this->selectPdo($query="SELECT * FROM personal_completo");
 	}
 
-	public function getInfoDatosModel(){	
-			$query = " SELECT nombre,apellido,id_persona FROM persona ORDER BY id_persona DESC LIMIT 1;";
-			$result=$this->selectPdo($query);
-			return $result;		
+	public function getInfoDatosModel(){				
+			return $this->selectPdo($query=" SELECT nombre,apellido,id_persona FROM persona ORDER BY id_persona DESC LIMIT 1;");
 	}
 
-	public function getHijosModel(){	
-			$query = "SELECT * FROM hijos_registro";
-			$result=$this->selectPdo($query);
-			return $result;
-		
+	public function getHijosModel(){				
+			return $this->selectPdo($query = "SELECT * FROM hijos_registro");	
 	}
 			
 	public function getDireccionEstado(){
 			$query = " SELECT DISTINCT E.id_direccion,E.direccion as Estado from direccion E, direccion M, direccion P
 			WHERE  E.id_direccion=M.id_padre and M.id_direccion=P.id_padre";			
-			$result=$this->selectPdo($query);
-			return $result;			
+			return $this->selectPdo($query);
 	}
 
 	public function getDireccionMunicipio($id){
@@ -54,53 +46,47 @@
 			WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre  ORDER BY municipio;"			;
 		}
 
-
-			$result=$this->selectPdo($query);
-			return $result;			
+			return $this->selectPdo($query);	
 	}
 
 	public function getDireccionParroquia($id=false,$cedula=false){
 			if($cedula==true){
-			$query = "SELECT Parr.* from parroquias Parr
-						INNER JOIN persona AS P on P.direccion_referencial= Parr.id_direccion
-						WHERE cedula='".$cedula."'";					
+			$query = "SELECT * FROM parroquias_x_cedula	WHERE cedula='".$cedula."'";					
 			}elseif($id==true){
 			$query = "SELECT Distinct P.id_direccion,P.direccion as Parroquia,P.id_referencial from direccion E, direccion M, direccion P
 			WHERE  E.id_direccion=M.id_padre AND M.id_direccion=P.id_padre AND P.id_padre='".$id."'";					
 			}else{
 			$query = "SELECT Parr.* from parroquias Parr";					
 			}
-		
-			$result=$this->selectPdo($query);
-			return $result;			
+			return $this->selectPdo($query);	
 	}
 
 
 	public function getCoordinaciones(){
-			$query = "SELECT id_referencial as id_coordinacion, referencia as coordinacion FROM referencial WHERE referencial_id = 9 AND id_referencial !=9;";			
-			$result=$this->selectPdo($query);
-			return $result;			
+			$query = "SELECT id_referencial as id_coordinacion, referencia as coordinacion FROM referencial WHERE referencial_id = 9 AND id_referencial !=9;";
+			return $this->selectPdo($query);	
 	}		
 
 	public function getCargos(){
 			$query = "SELECT C.id_referencial as id_cargo, C.referencia as cargo FROM referencial C  WHERE C.referencial_id=79 and C.id_referencial!=79 ORDER BY id_referencial;";			
-			$result=$this->selectPdo($query);
-			return $result;			
+			return $this->selectPdo($query);
 	}
 
 	public function getPersonalDisponible(){
-			$query = "SELECT * FROM personal_disponible";
-			$result=$this->selectPdo($query);
-			return $result;		
+			return $this->selectPdo($query = "SELECT * FROM personal_disponible");
 	}
 
 	public function getUnicaPersona($id){
-			$query = "SELECT * FROM persona_unica WHERE id_persona = '".$id."'";
-				$result=$this->selectPdo($query);
-				return $result;
-		
+			return $this->selectPdo($query = "SELECT * FROM persona_unica WHERE id_persona = '".$id."'");
 	}			
-					
+
+	public function getHijosEmpleado($id){
+			return $this->selectPdo($query = "SELECT H.* FROM hijos_empleados H INNER JOIN familiar f ON f.id_persona_empleada='".$id."'");
+	}
+
+	public function deletePersona($id){
+			return $this->selectPdo($query = "UPDATE persona_empleada SET status_referencial= 99 where id_persona='".$id."'");	
+	}				
 }
 ?>
 

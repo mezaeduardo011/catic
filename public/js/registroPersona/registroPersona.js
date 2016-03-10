@@ -1,6 +1,6 @@
 function send_registro_persona() {
 
-    alert("/catic/personal/insertPerson?" + request(document.getElementById('divPersona')));
+    //alert("/catic/personal/insertPerson?" + request(document.getElementById('divPersona')));
     if (request(document.getElementById('divPersona')) != "") {
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
     };
@@ -25,7 +25,7 @@ function send_registro_InfoAdicional() {
 }
 
 function response_registro_persona(response) {
-    //lert("Registro Exitoso");
+    alert("Registro Exitoso");
 
 }
 
@@ -152,7 +152,6 @@ $(document).ready(function() {
 
 
     $('#fecha_ingreso').datepicker({
-        format: 'mm/dd/yyyy',
         clearBtn: true,
         autoclose: true,
         language: "es",
@@ -165,13 +164,12 @@ $(document).ready(function() {
 
     $('#fecha_nacimiento').datepicker({
 
-        format: 'mm/dd/yyyy',
         clearBtn: true,
         autoclose: true,
         language: "es",
         daysOfWeekHighlighted: "0,1,2,3,4,5,6",
         todayHighlight: true,
-        endDate: "12/31/1998"
+        endDate: "1998/12/31"
 
     })
         .on('changeDate', function(e) {

@@ -1,0 +1,54 @@
+	<!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido -->
+<div class="main-content" >
+	<div class="main-content-inner">
+<div class="widget-box">
+		<form action="<?php  echo BASE_URL;?>personal/delete" method="post" class="form-inline center">
+		<input type="hidden" name="id" value="<?php echo $this->_persona[0]['id_persona'] ?>"/>
+			<div class="alert alert-info" align="center">
+				<h4>Eliminar persona <i class="fa fa-users fa-lg"></i></h4>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-sm-12" align="center" id="sandbox-container">
+								<div class="col-sm-4">
+							    <div class="form-group">
+								<label for="cedula">Cédula: </label>
+											<input onkeypress="return numeros(event);" maxlength="10" onkeyup="format(this)" autocomplete="off" type   ="text" name="cedula" id="cedula" class="input-sm form-control" value="<?php echo $this->_persona[0]['cedula'] ?>" />
+							    </div>
+								</div>
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label class="control-label ">Nombre:</label>
+												<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+												type   ="text" name="nombre" id="nombre" class="input-sm form-control" value="<?php echo $this->_persona[0]['nombre'] ?>"/>
+									</div>
+								</div>								
+								<div class="col-sm-4" align="center">
+								<div class="form-group">
+									<label class="control-label">Apellido:</label>									
+											<input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
+											type   ="text" name="apellido" id="apellido" class="input-sm form-control" value="<?php echo $this->_persona[0]['apellido'] ?>"/>
+								</div>
+								</div>								
+
+
+					</div><br><br>
+					<hr>
+							<div align="center">
+								<button class="btn btn-primary" type="submit" align="center">
+								<i class="ace-icon fa fa-floppy-o fa-lg"></i>
+								Eliminar
+								</button>
+
+						<a href="<?php  echo BASE_URL . 'personal' . DS . 'listing'; ?>"><button type="button"
+	 					class= "btn btn-primary">Regresar</button></a>								
+							</div>
+						</form>
+						<br>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>	
+<!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido -->
