@@ -34,23 +34,65 @@
 								array(
 					            'id' => 'personal',
 					            'title'   => 'Control del personal',
-					            'link'=> BASE_URL . 'personal'
-						      ),array(
-					            'id' => 'vacaciones',
-					            'title'   => 'Vacaciones',
-					            'link'=> BASE_URL . 'vacaciones'
-						      ),array(
-					            'id' => 'permisos',
-					            'title'   => 'Permisos/Reposos',
-					            'link'=> BASE_URL . 'permisos'
-						      ),array(
-					            'id' => 'amonestacion',
-					            'title'   => 'Amonestaciones',
-					            'link'=> BASE_URL . 'amonestacion'
+					            'link'=> BASE_URL . 'personal',
+					            'submenu' => array(
+						            	array(
+										'id' => 'insert_new',
+										'title' => 'Registrar persona',
+										'link' => BASE_URL . 'personal' . DS . 'index'
+												),
+									 		array(
+									 	'id' => 'listar',
+									 	'title' => 'Consultar personal registrado',
+									 	'link' => BASE_URL . 'personal' . DS . 'listing'
+									 			),array(
+										'id' => 'insert_new',
+										'title' => 'Asignar vacaciones',
+										'link' => BASE_URL . 'vacaciones' . DS . 'index'
+												),array(
+										'id' => 'insert_new',
+										'title' => 'Consultar vacaciones',
+										'link' => BASE_URL . 'vacaciones' . DS . 'consulta_vacaciones'
+/*										'submenuHijo' => array(
+											 		array(
+											 	'id' => 'listar',
+											 	'title' => 'Consultar vacaciones',
+											 	'link' => BASE_URL . 'vacaciones' . DS . 'consulta_vacaciones'
+											 			),array(
+												'id' => 'insert_new',
+												'title' => 'Registrar permiso',
+												'link' => BASE_URL . 'permisos' . DS . 'agregar_carpeta'
+														)
+
+
+										)*/
+												),array(
+										'id' => 'insert_new',
+										'title' => 'Asignar amonestacion',
+										'link' => BASE_URL . 'amonestacion' . DS . 'index'
+												),
+									 		array(
+									 	'id' => 'listar',
+									 	'title' => 'Consultar amonestaciones',
+									 	'link' => BASE_URL . 'amonestacion' . DS . 'consulta_amonestaciones'
+									 			)					            	
+					            )//Fin del submenu									 			
 						      ),array(
 					            'id' => 'actividad_institucional',
 					            'title'   => 'Actividades',
-					            'link'=> BASE_URL . 'actividad_institucional'
+					            'link'=> BASE_URL . 'actividad_institucional',
+					       	    'submenu' => array(
+											array(
+										'id' => 'insert_new',
+										'title' => 'Registrar nueva actividad',
+										'link' => BASE_URL . 'actividad_institucional' . DS . 'index'
+												),
+									 		array(
+									 	'id' => 'listar',
+									 	'title' => 'Consultar actividades',
+									 	'link' => BASE_URL . 'actividad_institucional' . DS . 'consultaDeActividad'
+									 			)					            	
+					            )//Fin del submenu	
 						      ),array(
 					            'id' => 'correspondencia',
 					            'title'   => 'Correspondencias',
