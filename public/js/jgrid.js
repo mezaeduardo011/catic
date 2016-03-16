@@ -184,11 +184,20 @@ $(document).ready(function () {
                         dataType: "json",
 
                         success: function(msg){
-                            alert(JSON.stringify(msg));
+                            $("#dialog-confirm").dialog('close');
+
+                            $(grid_selector).jqGrid('setGridParam', {
+                                url: BASE_URL+"vacaciones/personal_vacaciones",
+                                datatype: "json"
+                            }).trigger("reloadGrid");
+
+                            alert('Vacacion Cancelada');
+
                         },
 
                         error: function(res, status, exeption) {
                             alert(JSON.stringify(res));
+                            $("#dialog-confirm").dialog('close');
                         }
 
                     });
