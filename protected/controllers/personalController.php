@@ -12,13 +12,35 @@
 			$this->_sidebar_menu =array(
 					array(
 				'id' => 'insert_new',
-				'title' => 'Agregar nueva persona',
+				'title' => 'Registrar persona',
 				'link' => BASE_URL . 'personal' . DS . 'index'
 						),
 			 		array(
 			 	'id' => 'listar',
 			 	'title' => 'Consultar personal registrado',
 			 	'link' => BASE_URL . 'personal' . DS . 'listing'
+			 			),array(
+				'id' => 'insert_new',
+				'title' => 'Asignar vacaciones',
+				'link' => BASE_URL . 'vacaciones' . DS . 'index'
+						),
+			 		array(
+			 	'id' => 'listar',
+			 	'title' => 'Consultar vacaciones',
+			 	'link' => BASE_URL . 'vacaciones' . DS . 'consulta_vacaciones'
+			 			),array(
+				'id' => 'insert_new',
+				'title' => 'Registrar permiso',
+				'link' => BASE_URL . 'permisos' . DS . 'agregar_carpeta'
+						),array(
+				'id' => 'insert_new',
+				'title' => 'Asignar amonestacion',
+				'link' => BASE_URL . 'amonestacion' . DS . 'index'
+						),
+			 		array(
+			 	'id' => 'listar',
+			 	'title' => 'Consultar amonestaciones',
+			 	'link' => BASE_URL . 'amonestacion' . DS . 'consulta_amonestaciones'
 			 			)
 					);		
 		}
@@ -43,6 +65,7 @@
 
 			$listado = $this->_personal->getHijosModel();
 			$this->_view->_listado = $listado;
+
 			$this->_view->render('personal','','',$this->_sidebar_menu);
 	
 		}
@@ -115,17 +138,20 @@
 		}
 
 		function listing(){
+			$this->_view->setJs(array("pickList","Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","registroPersona/consulta"));
+			$this->_view->setCss(array("ui.jqgrid"));
 
-			$this->_view->setJs(array(
-			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools",
-			"Librerias/dataTables.colVis","tables","pickList"));
-
-			$listado = $this->_personal->getPersonal();
-			$this->_view->_listado = $listado;
 			$this->_view->render('consulta_personal','','',$this->_sidebar_menu);
 
 		}
 
+
+		function personasTabla(){
+			$listado = $this->_personal->getPersonal();
+			$this->_view->_listado = $listado;
+			echo json_encode(array("personal"=>$listado)); 
+
+		}
 
 		function update($id = false){
 			
@@ -154,9 +180,10 @@
 						$this->_personal->deletePersona($_POST['id']);
 						$this->_view->redirect('personal/listing');
 					}else{
+			$this->_view->setJs(array("pickList","Librerias/jqGrid/jquery.jqGrid.src","registroPersona/consulta"));						
 						$persona = $this->_personal->getUnicaPersona($id);
 						$this->_view->_persona = $persona;
-						$this->_view->render('eliminar_persona', '','persons',$this->_sidebar_menu);						
+						$this->_view->render('eliminar_persona', '','pickList',$this->_sidebar_menu);						
 					}
 
 		}		

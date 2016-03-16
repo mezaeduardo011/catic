@@ -18,6 +18,8 @@
 			$this->_view->_hijos  = $hijos;
 			$persona = $this->_personal->getUnicaPersona($id);
 			$this->_view->_persona  = $persona;
+			$deporte = $this->_personal->getDeportes($id_persona_empleada);
+			$this->_view->_deporte = $deporte;
 			$this->_view->render('pdfDetallePersona', 'personal', 'pdf','');
 
 		}

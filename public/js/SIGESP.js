@@ -9,20 +9,28 @@
     function LlenarDatos(text,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9,destino10)
     {
             //alert(''+JSON.stringify(text));
-
         if(typeof(text.data.nombres) != "undefined"){
             var nombres = text.data.nombres.split(' ');
             var apellidos = text.data.apellidos.split(' ');     
             destino.value = nombres[0];
-            destino2.value = nombres[1];
+            if(nombres[1]!=null || nombres[1]!= undefined){
+                destino2.value = nombres[1];
+            }            
             destino3.value = apellidos[0];
-            destino4.value = apellidos[1];
+
+            if(apellidos[1]!=null || apellidos[1]!= undefined){
+                destino4.value = apellidos[1];
+            } 
+            
+
             destino5.value = text.data.fecha_nacimiento;
             destino6.value = text.data.telefono_celular;
             destino7.value = text.data.fecha_ingreso;
             destino8.value = text.data.correo_electronico;
             destino9.value = text.data.direccion;
             llenar_direccion(text.data.parroquia_direccion,text.data.municipio_direccion,text.data.estado_direccion);
+            llenar_cargo(text.data.cargo_original);
+            seleccionar_sexo(text.data.genero);
 
         }else{
             alert("El usuario no esta registrado en el sistema SIGESP");
@@ -150,3 +158,44 @@
 
     
  }    
+
+ function llenar_cargo(cargo){
+
+//Ajax para los cargos
+        $.ajax({
+            url: BASE_URL +'personal/SelectCargo', 
+            type: 'POST',
+            dataType: 'json',       
+        })
+
+        .done(function(data) { 
+            $('#cargo').empty();
+            $('#cargo').append('<option value="">Seleccione un cargo...</option>');
+            for (var i=0; i<data.length; i++) {
+                if (data[i].option.toUpperCase()==cargo) {
+                    $('#cargo').append('<option  selected="selected" value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }else{
+                    $('#cargo').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }
+
+            }   
+            $('#cargo').selectpicker('refresh');
+        })
+
+        .fail(function() {
+            alert("Error cargando el cargo");
+        });
+    
+ }    
+
+ function seleccionar_sexo(sexo){
+var checkbox = document.getElementsByName('sexos');
+            if(sexo!=null){
+                if (sexo=='Femenino') {
+                    checkbox[1].checked = true;
+                }
+                if(sexo=='Masculino'){
+                     checkbox[0].checked = true;
+                }
+            }                
+ }   

@@ -84,6 +84,10 @@
 			return $this->selectPdo($query = "SELECT H.* FROM hijos_empleados H INNER JOIN familiar f ON f.id_persona_empleada='".$id."'");
 	}
 
+	public function getDeportes($id){
+			return $this->selectPdo($query = "SELECT * FROM info_adicional WHERE id_persona_empleada='".$id."'");
+	}	
+
 	public function deletePersona($id){
 			return $this->selectPdo($query = "UPDATE persona_empleada SET status_referencial= 99 where id_persona='".$id."'");	
 	}				

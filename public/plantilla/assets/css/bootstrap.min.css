@@ -2953,7 +2953,7 @@ tbody.collapse.in {
 	padding-right: 0
 }
 .input-group .form-control {
-	position: relative;
+	
 	z-index: 2;
 	float: left;
 	width: 100%;
@@ -4027,14 +4027,10 @@ border-radius: 18px 18px 0px 0px;
 }
 .alert-info {
 
-background: rgba(156,18,3,1);
-background: -moz-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(156,18,3,1)), color-stop(100%, rgba(179,27,0,1)));
-background: -webkit-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
-background: -o-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
-background: -ms-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
-background: linear-gradient(to bottom, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c1203', endColorstr='#b31b00', GradientType=0 );
+background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #787878), color-stop(0.5, #5E5E5E), color-stop(0.51, #707070), color-stop(1, #838383));
+background-image: -moz-linear-gradient(center bottom, #891A1A 0%, #8F4545 50%, #A73F3F 51%, #984343 100%);
+background-color: #c81a1a;
+
 }
 .alert-info hr {
 	border-top-color: #a6e1ec
