@@ -45,13 +45,22 @@
 				}	
 
 
+			 $cont=0;
+			 for($i=0;$i<count($arregloValido);$i++){
+			 	if(isset($arregloValido[$i][1])){
+			 		$cont++;
+			 	}
+			 	//echo '<pre>';print_r($arregloValido[$i][1]);echo '</pre>';
+			 }
+			 	echo $cont;
+				die();
 			return $arregloValido;		
 		}
 
 		function guardarHorarioDiario(){
 
 				$datosValidos=$this->leerTxt();
-
+				
 				for($k=0;$k<count($datosValidos);$k++){
 							$cedula = number_format($datosValidos[$k][1], 0, '.', '.');
 							$fechaBiometrico = $datosValidos[$k][0];
@@ -66,8 +75,8 @@
 									':id_biometrico' => $datosValidos[$k][7]
 						);					
 						
-						//$this->imprimirArreglo($horario);
-						$this->_biometrico->insertHorario($horario);
+						$this->imprimirArreglo($horario);
+						//$this->_biometrico->insertHorario($horario);
 				}
 				//$this->imprimirArreglo($datosValidos);			
 		}

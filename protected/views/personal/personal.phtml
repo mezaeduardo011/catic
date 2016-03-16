@@ -176,39 +176,11 @@
 					
 					<div class="step-pane" data-step="2">
 						<div>
-							<div id="preguntaHijos">
-								<table align="center">
-									<tr>
-										<td>
-											<label for="">¿Esta persona tiene hijos?</label>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-											&nbsp;
-											
-											<label class="blue">
-												<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos"
-												onchange="showElementos('infoHijos');showElementos('infoExtra');hiddenElementos('preguntaHijos');" value="16" />
-												<span class="lbl"> Si</span>
-											</label>
-											&nbsp;
-											<label class="blue">
-												<input autocomplete="off"  value="16" type="radio" class="ace" name="hijos" onchange="hiddenElementos('infoHijos')"/>
-												<span class="lbl"> No</span>
-											</label>
-										</td>
-										
-									</tr>
-								</table>
-								<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-							</div>
-							<div id="infoExtra" hidden>
+							<div id="infoExtra" >
 								<hr>
-								<h3 align="center" class="lighter block blue">Ahora podra registrar un maximo de 5 hijos</h3>
+								<h3 align="center" class="lighter block blue">Ahora podrá registrar un máximo de 5 hijos</h3>
 							</div>
-							<div id="infoHijos" class="col-sm-16" hidden><!-- informacion de los hijos -->
+							<div id="infoHijos" class="col-sm-16"><!-- informacion de los hijos -->
 							
 								<br>
 								
@@ -293,55 +265,25 @@
 							
 							<div class="step-pane" data-step="3">
 								<div>
-									<div id="preguntaPadres">
-										<table align="center">
-											<tr>
-												<td>
-													<label for="">¿Esta persona tiene Padres?</label>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-													&nbsp;
-													
-													<label class="blue">
-														<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres"
-														onchange="showElementos('preguntaPadresAmbos');hiddenElementos('preguntaPadres');hiddenElementos('infoPadreUnico');" value="16" />
-														<span class="lbl"> Si</span>
-													</label>
-													&nbsp;
-													<label class="blue">
-														<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoPadres')"/>
-														<span class="lbl"> No</span>
-													</label>
-												</td>
-												
-											</tr>
-										</table>
-										<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-									</div>
 									
-									<div id="preguntaPadresAmbos" hidden>
-										<table align="center">
-											<td>
-												&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-												&nbsp;
-												
+									<div id="preguntaPadresAmbos" >
+												<div id="pregunta">
+													<label for="">Si esta persona tiene sus padres vivos seleccione una opción</label>
+												</div>
+												<div id="continuar" hidden="">
+													<label for="">Puede continuar y omitir este registro</label>
+												</div>												
 												<label class="blue">
 													<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres"
-													onchange="showElementos('infoPadresAmbos');hiddenElementos('infoPadreUnico');hiddenElementos('saltos');" value="16" />
+													onchange="showElementos('infoPadresAmbos');hiddenElementos('infoPadreUnico');hiddenElementos('saltos');hiddenElementos('pregunta');showElementos('continuar');" value="16" />
 													<span class="lbl"> Ambos</span>
 												</label>
-												&nbsp;
+											
 												<label class="blue">
-													<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoPadresAmbos');showElementos('infoPadreUnico');hiddenElementos('saltos');" />
+													<input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoPadresAmbos');showElementos('infoPadreUnico');hiddenElementos('saltos');hiddenElementos('pregunta');showElementos('continuar');" />
 													<span class="lbl"> Solo uno de ellos</span>
 												</label>
-											</td>
-											
-										</tr>
-									</table>
+									
 									<div id="saltos">
 									<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 										
@@ -537,31 +479,26 @@
 									<div class="informacion_adicional" id="informacion_adicional">
 										<div class="center">
 											<div>
-												<table align="center">
-													<tr>
-														<td>
-															<label for="">¿Esta persona tiene vehiculos?</label>
-														</td>
-														<td><label for="">Tipo de vivienda</label></td>
-													</tr>
-													<tr>
-														<td>
-															&nbsp; &nbsp; &nbsp;
+											
 															
+													
+															
+															<div>
+															<label for="">¿Esta persona tiene vehículos?</label>
+															</div>
 															<label class="blue">
 																<input autocomplete="off" type="radio" class="ace" name="vehiculos"
 																onchange="" value="si" />
 																<span class="lbl"> Si</span>
 															</label>
-															&nbsp;
+														
 															<label class="blue">
 																<input autocomplete="off" value="no" type="radio" class="ace" name="vehiculos"  onchange=""/>
 																<span class="lbl"> No</span>
 															</label>
-														</td>
-														<td>
-															&nbsp; &nbsp; &nbsp;
-															
+																<div>
+																<label for="">Tipo de vivienda</label>
+																</div>												
 															<label class="blue">
 																<input autocomplete="off" type="radio" class="ace" name="vivienda"
 																onchange="" value="73" />
@@ -572,133 +509,93 @@
 																<input autocomplete="off" value="74" type="radio" class="ace" name="vivienda"  onchange=""/>
 																<span class="lbl"> Propia</span>
 															</label>
-														</td>
-													</table>
+
 												</div>
 												<hr>
 												<div>
-													<table align="center">
-														<tr>
-															<td>
-																<label for="">¿Practica algun deporte?</label>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																&nbsp; &nbsp; &nbsp;
+
+																
+																<div>
+																	<label for="">¿Practica algún deporte?</label>
+																</div>
 																
 																<label class="blue">
 																	<input autocomplete="off" type="radio" class="ace" name="deporte"
 																	onchange="showElementos('deporteSelect');" />
 																	<span class="lbl"> Si</span>
 																</label>
-																&nbsp;
 																<label class="blue">
 																	<input autocomplete="off" value="no" type="radio" class="ace" name="deporte" onchange="hiddenElementos('deporteSelect');borrarCheckbox();"/>
 																	<span class="lbl"> No</span>
 																</label>
-															</td>
-															
-														</tr>
-													</table>
+
 												</div>
 												<div class="space-2"></div>
 												<div id="deporteSelect" hidden>
-													<table align="center">
-														<tr>
-															<td>
-																<label for="">Deportes que practica</label>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																&nbsp; &nbsp; &nbsp;
+																<div>
+																	<label for="">Deportes que practica</label>
+																</div>
 																
+
 																<label class="blue">
 																	<input autocomplete="off" type="checkbox" id="check1" class="ace" name="<?php echo 'check0'; ?>"
 																	onchange="" value="65" id="deporte"/>
-																	<span class="lbl"> Futbol</span>
+																	<span class="lbl"> Fútbol</span>
 																</label>
-																&nbsp;
 																<label class="blue">
 																	<input autocomplete="off" value="66" id="check2" type="checkbox" class="ace" name="<?php echo 'check1' ?>" onchange=""/>
 																	<span class="lbl"> Basquet</span>
 																</label>
-																&nbsp;
 																<label class="blue">
 																	<input autocomplete="off" value="67" id="check3" type="checkbox" class="ace" name="<?php echo 'check2' ?>" onchange=""/>
 																	<span class="lbl"> Boleyball</span>
 																</label>
-																&nbsp;
 																<label class="blue">
 																	<input autocomplete="off" value="68" id="check4" type="checkbox" class="ace" name="<?php echo 'check3' ?>" onchange=""/>
 																	<span class="lbl"> Beisbol</span>
 																</label>
-																&nbsp;
 																<label class="blue">
 																	<input autocomplete="off" value="69" id="check5" type="checkbox" class="ace" name="<?php echo 'check4'?>" onchange=""/>
 																	<span class="lbl"> Softball</span>
 																</label>
-																&nbsp;
 																<label class="blue">
 																	<input autocomplete="off" value="70" id="check6" type="checkbox" class="ace" name="<?php echo 'check5' ?>" onchange=""/>
 																	<span class="lbl"> Ajedrez</span>
 																</label>
-																&nbsp;
 																<label class="blue">
 																	<input autocomplete="off" value="80" id="check7" type="checkbox" class="ace" name="<?php echo 'check6' ?>" onchange=""/>
 																	<span class="lbl"> Otro</span>
 																</label>
-															</td>
-															
-														</tr>
-													</table>
+
 												</div>
 												<hr>
 												<div>
-													<table align="center">
-														<tr>
-															<td>
-																<label for="">¿Esta persona toma algún medicamento de por vida?</label>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																&nbsp; &nbsp; &nbsp;
+																<div>
+																	<label for="">¿Esta persona toma algún medicamento de por vida?</label>
+																</div>
 																
+
 																<label class="blue">
 																	<input autocomplete="off" type="radio" class="ace" name="medicina"
 																	onchange="showElementos('medicamentos');"/>
 																	<span class="lbl"> Si</span>
 																</label>
-																&nbsp;
 																<label class="blue">
 																	<input autocomplete="off" value="no" type="radio" class="ace" name="medicina" onchange="hiddenElementos('medicamentos');"/>
 																	<span class="lbl"> No</span>
 																</label>
-															</td>
-															
-														</tr>
-													</table>
 												</div>
 												<div id="medicamentos" hidden>
 													<hr>
-													<table align="center">
-														<tr>
-															<td>
-																<label for="">Medicamentos que toma esta persona:</label>
-															</td>
-														</tr>
-														<tr>
-															<td>
+																<div>
+																	<label for="">Medicamentos que toma esta persona:</label>
+																</div>
+																
+
 																<textarea id="form-field-11" align"center" class="autosize-transition input-sm form-control" name="medicina_text"></textarea>
-															</td>
-															
-														</tr>
-													</table>
+
 												</div>
 											</div>
-											<br><br><br><br><br><br><br><br><br><br><br><br>
 										</div>
 									</div>
 								</div>
