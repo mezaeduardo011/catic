@@ -16,7 +16,7 @@
 
 		function index(){
 			$this->_view->setJs(array("Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",				
-			"administracion/administracion"));
+			"administracion/administracion","utilidades","pickList"));
 			$this->_view->setCss(array(
 			"datepicker"));
 			$this->_view->render('administracion');

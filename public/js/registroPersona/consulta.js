@@ -215,7 +215,7 @@ $(document).ready(function () {
     if (id_persona!=undefined && id_persona!=null) {
               pickOpen('prod', 'id_prod',BASE_URL+'personal/delete/'+id_persona,
 
-        93, 30, 50, 60);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
+        93, 30, 50, 16);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
     }else{
         alert('Por favor seleccione una fila');
     }

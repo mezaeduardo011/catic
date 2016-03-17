@@ -47,16 +47,18 @@
 
 		}
 
-		function consulta_amonestaciones(){
-			$this->_view->setJs(array(
-			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools",
-			"Librerias/dataTables.colVis","tables","pickList"));
-
-			$listado = $this->_amonestacion->getAmonestaciones();
-			$this->_view->_listado = $listado;
+		function listar_amonestaciones(){
+			$this->_view->setJs(array("pickList","Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","amonestacion/tablaAmonestaciones"));
+			$this->_view->setCss(array("ui.jqgrid"));
 			$this->_view->render('consulta_amonestaciones','','',$this->_sidebar_menu);
 
 		}
+
+		function consulta_amonestaciones(){
+			$listado = $this->_amonestacion->getAmonestaciones();
+			echo json_encode(array("vacaciones"=>$listado)); 
+
+		}		
 
 		function confirmacionAjax(){
 

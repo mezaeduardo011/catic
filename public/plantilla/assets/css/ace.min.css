@@ -9,7 +9,8 @@ body {
 	font-family: 'Open Sans';
 	font-size: 13px;
 	color: #393939;
-	line-height: 1.5
+	line-height: 1.5 
+	background-image: url("/var/www/html/catic/public/img/fondo.png");
 }
 .main-container:before {
 	display: block;
