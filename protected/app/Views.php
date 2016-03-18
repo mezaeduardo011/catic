@@ -120,10 +120,10 @@
 					            'title'   => 'Biometrico',
 					            'link'=> BASE_URL . 'biometrico'
 						      ),array(
-					            'id' => 'adiministracion',
+					            'id' => 'actividad_institucional',
 					            'title'   => 'Sistema',
-					            'link'=> BASE_URL . 'administracion'
-						      )				      
+					            'link'=> BASE_URL . 'administracion' . DS . 'usuarios'
+						      )	      
 					  	 );	
 				}else{
 			$menu = array(

@@ -15,13 +15,24 @@
 
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+				if ($_POST['user_name']==null || $_POST['user_name']=="" ) {
+			 		$this->_view->_error = 'Debe ingresar un usuario.';
+				 	$this->_view->render('access', '','login');
+				 	exit();
+			    }
+				if ($_POST['password']==null || $_POST['password']=="" ) {
+			 		$this->_view->_error = 'Debe ingresar una contraseña.';
+				 	$this->_view->render('access', '','login');
+				 	exit();
+			    }			    				
+
 				$data = $this->_login->getUser($_POST['user_name'], $_POST['password']);
 						
-				// if ($data==null || $data=="") {
-				// 	$this->_view->_error = 'Usuario o contraseña no existen';
-				// 	$this->_view->render('access', '','login');
-				// 	exit();
-				// }
+				if ($data==null || $data=="") {
+			 		$this->_view->_error = 'El usuario o contraseña no existen.';
+				 	$this->_view->render('access', '','login');
+				 	exit();
+			    }
 			    
 
 				Session::set('authenticated', true);

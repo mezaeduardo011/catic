@@ -14,7 +14,7 @@ $(document).ready(function () {
         hoverrows:false,
         viewrecords:true,
         gridview:true,
-        url: BASE_URL+"personal/personasTabla",
+        url: BASE_URL+"administracion/getUsuarios",
         loadonce: true,
         rowNum:10,
         height:200,
@@ -26,18 +26,15 @@ $(document).ready(function () {
         colModel: [
 
             { label: 'id', name: 'id_persona', key: true, width: 1,"search":false },
-            { label: 'id_persona_empleada', name: 'id_persona_empleada', key: true, width: 1,"search":false },
-            { label: 'cedula', name: 'cedula', key: true, width: 20,"search":true },
-            { label: 'Nombres', name: 'nombres', key: true, width: 20,"search":true },
-            { label: 'Apellidos', name: 'apellidos', key: true, width: 20,"search":true },
+            { label: 'Nombre y apellido', name: 'nombres', key: true, width: 20,"search":true },
+            { label: 'Usuario', name: 'usuario', key: true, width: 20,"search":true },
             { label: 'Coordinación', name: 'coordinacion', key: true, width: 20,"search":true },
-            { label: 'Cargo', name: 'cargo', key: true, width: 20,"search":true },
-            { label: 'Fecha de ingreso', name: 'fecha_ingreso', key: true, width: 20,"search":true },
+            { label: 'Perfil', name: 'perfil', key: true, width: 20,"search":true },
 
 
         ],
 
-        jsonReader: {repeatitems:false, root:"personal"},
+        jsonReader: {repeatitems:false, root:"usuarios"},
         pager: grid_pager,
         multiselect: true,
 
@@ -46,7 +43,6 @@ $(document).ready(function () {
 
             var table = this;
             $(grid_selector).jqGrid("hideCol", "id_persona");
-             $(grid_selector).jqGrid("hideCol", "id_persona_empleada");
 
             //Para asignarle a la tabla estilo de botones bootstrap
             setTimeout(function(){
@@ -122,36 +118,6 @@ $(document).ready(function () {
         }
     })
 
-    $(grid_selector).navButtonAdd(grid_pager,
-    {
-        buttonicon: "ace-icon fa fa-search-plus grey",
-        title: "Detalles de persona",
-        caption: 'Detalles de persona',
-        position: "last",
-        onClickButton: detalles_persona
-    });
-
-    function detalles_persona() {
-        var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
-                                
-        if(columna_check.length>0){
-            var id_persona = [];
-            for(var i=0,ids=columna_check.length;i<ids; i++){
-                id_persona.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona'));
-            }
-        }
-
-    if (id_persona!=undefined && id_persona!=null) {
-              pickOpen('prod', 'id_prod',BASE_URL+'personal/update/'+id_persona,
-
-        90, 96, 85, 1);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
-    }else{
-        alert('Por favor seleccione una fila');
-    }
-
-
-
-    }
                 function updatePagerIcons(table) {
                     var replacement = 
                     {
@@ -168,41 +134,13 @@ $(document).ready(function () {
                     })
                 }
 
-    $(grid_selector).navButtonAdd(grid_pager,
-    {
-        buttonicon: "ace-icon fa fa-print fx-1 green",
-        title: "Imprimir detalles persona",
-        caption: 'Imprimir detalles de persona',
-        position: "last",
-        onClickButton: imprimir_detalles
-    });
 
-    function imprimir_detalles() {
-        var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
-                                
-        if(columna_check.length>0){
-            var id_persona = [];
-            var id_persona_empleada = [];
-            for(var i=0,ids=columna_check.length;i<ids; i++){
-                id_persona.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona'));
-                id_persona_empleada.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona_empleada'));
-            }
-        }
-    if (id_persona!=undefined && id_persona!=null) {
-              window.open(BASE_URL+'pdf/pdfDetallePersona/'+id_persona+'/'+id_persona_empleada);
-    }else{
-        alert('Por favor seleccione una fila');
-    }
-
-
-
-    }  
 
     $(grid_selector).navButtonAdd(grid_pager,
     {
         buttonicon: "ace-icon fa fa-trash-o red",
-        title: "Eliminar persona",
-        caption: 'Eliminar persona',
+        title: "Eliminar usuario",
+        caption: 'Eliminar usuario',
         position: "last",
         onClickButton: eliminar_persona
     });

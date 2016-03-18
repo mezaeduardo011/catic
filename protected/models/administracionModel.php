@@ -22,6 +22,12 @@
 				return $result;		
 		}
 
+		public function getUsuarios(){
+				$query = "SELECT * from vista_usuarios";
+				$result=$this->selectPdo($query);
+				return $result;		
+		}		
+
 	
 	}
 ?>

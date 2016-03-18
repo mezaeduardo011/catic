@@ -43,6 +43,12 @@ $(document).ready(function () {
 
             });
 
+            $(window).on("resize", function () {
+    var $grid = $(grid_selector),
+        newWidth = $grid.closest(".ui-jqgrid").parent().width();
+    $grid.jqGrid("setGridWidth", newWidth, true);
+});
+
             jQuery(grid_selector).jqGrid('navGrid',grid_pager,
                     {   //navbar options
                         edit:false,

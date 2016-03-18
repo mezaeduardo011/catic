@@ -32,7 +32,6 @@ $(document).ready(function () {
             { label: 'Apellidos', name: 'apellidos', key: true, width: 20,"search":true },
             { label: 'Coordinación', name: 'coordinacion', key: true, width: 20,"search":true },
             { label: 'Cargo', name: 'cargo', key: true, width: 20,"search":true },
-            { label: 'Fecha de ingreso', name: 'fecha_ingreso', key: true, width: 20,"search":true },
 
 
         ],
@@ -122,36 +121,6 @@ $(document).ready(function () {
         }
     })
 
-    $(grid_selector).navButtonAdd(grid_pager,
-    {
-        buttonicon: "ace-icon fa fa-search-plus grey",
-        title: "Detalles de persona",
-        caption: 'Detalles de persona',
-        position: "last",
-        onClickButton: detalles_persona
-    });
-
-    function detalles_persona() {
-        var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
-                                
-        if(columna_check.length>0){
-            var id_persona = [];
-            for(var i=0,ids=columna_check.length;i<ids; i++){
-                id_persona.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona'));
-            }
-        }
-
-    if (id_persona!=undefined && id_persona!=null) {
-              pickOpen('prod', 'id_prod',BASE_URL+'personal/update/'+id_persona,
-
-        90, 96, 85, 1);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
-    }else{
-        alert('Por favor seleccione una fila');
-    }
-
-
-
-    }
                 function updatePagerIcons(table) {
                     var replacement = 
                     {
@@ -168,67 +137,7 @@ $(document).ready(function () {
                     })
                 }
 
-    $(grid_selector).navButtonAdd(grid_pager,
-    {
-        buttonicon: "ace-icon fa fa-print fx-1 green",
-        title: "Imprimir detalles persona",
-        caption: 'Imprimir detalles de persona',
-        position: "last",
-        onClickButton: imprimir_detalles
-    });
-
-    function imprimir_detalles() {
-        var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
-                                
-        if(columna_check.length>0){
-            var id_persona = [];
-            var id_persona_empleada = [];
-            for(var i=0,ids=columna_check.length;i<ids; i++){
-                id_persona.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona'));
-                id_persona_empleada.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona_empleada'));
-            }
-        }
-    if (id_persona!=undefined && id_persona!=null) {
-              window.open(BASE_URL+'pdf/pdfDetallePersona/'+id_persona+'/'+id_persona_empleada);
-    }else{
-        alert('Por favor seleccione una fila');
-    }
-
-
-
-    }  
-
-    $(grid_selector).navButtonAdd(grid_pager,
-    {
-        buttonicon: "ace-icon fa fa-trash-o red",
-        title: "Eliminar persona",
-        caption: 'Eliminar persona',
-        position: "last",
-        onClickButton: eliminar_persona
-    });
-
-    function eliminar_persona() {
-        var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
-                                
-        if(columna_check.length>0){
-            var id_persona = [];
-            for(var i=0,ids=columna_check.length;i<ids; i++){
-                var personas = $(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona');
-                id_persona.push(personas);
-            }
-        }
-
-    if (id_persona!=undefined && id_persona!=null) {
-              pickOpen('prod', 'id_prod',BASE_URL+'personal/delete/'+id_persona,
-
-        93, 30, 50, 16);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
-    }else{
-        alert('Por favor seleccione una fila');
-    }
-
-
-
-    }       
+    
 });
 
 $("#eliminarPersona").click(function() {

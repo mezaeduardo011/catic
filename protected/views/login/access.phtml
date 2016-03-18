@@ -46,7 +46,7 @@
                   
                   <span class="white" id="id-text2">CATIC</span>
                 </h1>
-                <h4 class="blue" id="id-company-text">MPPIC</h4>
+          
               </div>
 
               <div class="space-6"></div>
@@ -56,12 +56,13 @@
                   <div class="widget-body">
                     <div class="widget-main">
                       <h4 class="header blue lighter bigger">
-                        Introduzca sus datos para iniciar sesión 
+                        Introduzca sus datos 
                       </h4>
 
                       <div class="space-6"></div>
 
                      <form class="form-vertical login-form" action='<?php echo BASE_URL . 'login/signIn'?>' method="post">
+                     <?php if (isset($this->_error)) echo $this->_error; ?>
                         <fieldset>
                           <label class="block clearfix">
                             <span class="block input-icon input-icon-right">
@@ -80,7 +81,7 @@
                           <div class="space"></div>
 
                           <div align="center">
-                            <button type="submit" class="width-35  btn btn-sm btn-primary">
+                            <button type="submit" class="width-35  btn btn-sm btn-success">
                               
                               Ingresar
                             </button>
