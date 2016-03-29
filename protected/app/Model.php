@@ -8,9 +8,10 @@
 		public function registroPdo($query,$datos){
 				
 					try {
-
 						$this->_db->beginTransaction();
-						$this->_db->prepare($query)->execute($datos);
+						$auxiliar= $this->_db->prepare($query);
+						$auxiliar->execute($datos);
+						$result= $auxiliar->fetchAll();	
 						$this->_db->commit();
 					}
 					catch (Exception $e){
@@ -18,6 +19,7 @@
 						echo "Error :: ".$e->getMessage();
 						exit();
 					}
+					return $result[0][0];
 		}
 
 		public function registroPdoArray($query,$datos){

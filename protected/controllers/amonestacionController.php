@@ -6,6 +6,7 @@
 			parent::__construct();
 			$this->_amonestacion = $this->loadModel('amonestacion');
 			$this->_personal = $this->loadModel('personal');
+			$this->_pdf = $this->getLibrary('dompdf','dompdf_config.inc');
 			$this->_sidebar_menu =array(
 					array(
 				'id' => 'insert_new',
@@ -37,13 +38,12 @@
 		}
 
 		function registro_amonestacion(){
-					unset($_POST['dynamic-table_length']);
-					$checkSeleccionado = $this->valCheckboxUnico( $_POST['contador'] );
-					$contador=$_POST['contador'];	
-					unset($_POST['contador']);								
-					$arregloValido = $this->ConvertirArray($_POST);
-					$amonestacion=$this->borrarCheckbox($contador,$arregloValido);
-					$this->_amonestacion->registroAmonestacion($amonestacion,$checkSeleccionado);
+			unset($_POST['dynamic-table_length']);			
+			$amonestacion = $this->ConvertirArray($_POST);
+			//$this->imprimirArreglo($amonestacion);
+			$this->_amonestacion->registroAmonestacion($amonestacion);					
+			$this->_view->redirect('amonestacion/listar_amonestaciones');
+
 
 		}
 
@@ -59,26 +59,9 @@
 			echo json_encode(array("vacaciones"=>$listado)); 
 
 		}		
+		
 
-		function confirmacionAjax(){
-
-			$data['tipo_amonestacion_confirmacion']=$_POST['tipo_amonestacion'];
-			$data['coordinacion_confirmacion']= $_POST['coordinacion'];
-			echo json_encode($data);
-				//$this->_view->render('confirmacion_amonestacion','','pickList');
-				
-			
-		}
-
-		function confirmacionVista(){
-
-				$this->_view->render('confirmacion_amonestacion','','pickList');
-				
-			
-		}				
-
-		function selectTipoAmonestaciones() {
-			
+		function selectTipoAmonestaciones() {			
 					$result = $this->_amonestacion->getTipoAmonestacion();
 					$data = array();
 
@@ -87,7 +70,6 @@
 					}
 
 					echo json_encode($data);
-
 		}		
 
 		function SelectCoordinaciones(){

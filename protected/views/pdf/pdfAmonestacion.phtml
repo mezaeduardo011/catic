@@ -1,0 +1,76 @@
+<?php ob_start(); ?>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>Amonestacion</title>
+     <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>css/pdf.css" />
+</head>
+<body>
+<div class="cintillo">
+        <img src="/var/www/html/catic/public/img/cintillo.jpg" width="100%" height="80">
+</div> 
+
+<?php //echo '<pre>';print_r($this->_datos);echo '</pre>'; ?>
+<p align="center">ACTA</p>
+<p class="acta">  
+En el día de hoy <?php 
+
+	echo date("d")." de ";
+	switch(date("M")) {
+			case "Jan" : echo "Enero";
+						break;
+			case "Feb" : echo "Febrero";
+						break;
+			case "Mar" : echo "Marzo";
+						break;
+			case "Apr" : echo "Abril";
+						break;
+			case "May" : echo "Mayo";
+						break;
+			case "Jun" : echo "Junio";
+						break;
+			case "Jul" : echo "Julio";
+						break;
+			case "Ago" : echo "Agosto";
+						break;
+			case "Sep" : echo "Septiembre";
+						break;
+			case "Oct" : echo "Octubre";
+						break;
+			case "Nov" : echo "Noviembre";
+						break;
+			case "Dec" : echo "Diciembre";
+				}
+
+?><?php echo " del ".date("y");?>, siendo las <?php  echo date("H:i");?> aproximadamente, yo, <?php echo  utf8_decode(Session::get('user') );?>,
+titular de la cédula de identidad Nº <?php echo  utf8_decode(Session::get('cedula') );?>, en mi condición de <?php echo  utf8_decode(Session::get('perfil') );?> , adscrito a la __________, 
+del Ministerio del Poder Popular para  Industrias, cumpliendo con mis funciones de supervisión, pude constatar 
+que el ciudadano(a) <?php echo $this->_datos[0]['nombres'];?>,  titular de la cédula de identidad Nº <?php echo $this->_datos[0]['cedula'];?>, quien se desempeña 
+como <?php echo $this->_datos[0]['cargo'];?>, al momento de la supervisión realizada por quien suscribe a las <?php  echo date("H:i");?>, no se encontraba en 
+su puesto ni lugar de trabajo, razón por la cual procedo a levantar la presente Acta, a fin de dejar constancia 
+que el mismo abandonó su lugar de labores, ubicado en <?php echo $this->_datos[0]['coordinacion'];?>, no terminando la jornada laboral 
+la cual finaliza a las ___________, sin que el(la) trabajador(a) haya hecho acto de presencia ni  notificado la 
+razón de su salida intespectiva y por ende, el abandono de las tareas que le han sido encomendadas.  Para el momento 
+se encuentran como testigos los ciudadanos _____________, titular de la cédula de identidad Nº____________ quien se 
+desempeña como ______  y ______________________  titular de la cédula de identidad Nº__________,quien a su vez se 
+desempeña como __________, en la _______________________________ y pueden dar fe de lo aquí expresado.</p>
+
+ <footer>
+ <div align="center">
+     <?php echo date("m/d/Y"); ?>
+ </div>
+ </footer>
+   
+</body>
+
+
+
+    
+
+<?php
+$dompdf = new DOMPDF();
+$dompdf->load_html(ob_get_clean());
+$dompdf->render();
+$pdf = $dompdf->output();
+$dompdf->stream('Detalles_de:'. $this->_persona[0]['nombre'].'_'. $this->_persona[0]['apellido'],array('Attachment'=>0));
+?>

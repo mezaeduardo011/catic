@@ -11,8 +11,10 @@ class indexController extends Controller{
 	
 	function  index(){
 
-		//Session::get('authenticated')
-		
+			
+			$this->_view->setJs(array("jquery.fancybox.pack","jquery.flexslider","custom"));
+
+			$this->_view->setCss(array("flexslider"));		
 		$this->_view->render('index');
 
 	

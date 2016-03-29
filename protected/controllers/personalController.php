@@ -56,7 +56,7 @@
 			"Librerias/jquery.maskedinput","Librerias/jquery.gritter", 
 			"registroPersona/registroPersona",
 			"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion",
-			"Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","registroPersona/tablaHijos"));
+			"Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","registroPersona/tablaHijos","registroPersona/tablaPadres","registroPersona/actualizar_persona"));
 
 			$this->_view->setCss(array(
 			"datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter","bootstrap-datepicker",
@@ -73,7 +73,7 @@
 		/*API del sistema SIGESP para cargar datos de personas ya registradas*/
 
 		public function BuscarCedula(){
-			$cedula= '18.019.742';
+			$cedula= $_POST['cedular'];
 
 			$parroquia = $this->_personal->getDireccionParroquia(false,false);
 
@@ -90,6 +90,17 @@
 		     echo json_encode(array("data" => $data,"direccion"=>$parroquiaData));
 		}
 
+		function confirmarCedula(){
+			if($_SERVER['REQUEST_METHOD'] == 'POST'){
+				$listado = $this->_personal->getPersonal($_POST['cedula']);
+				if($listado!=null && $listado !=" "){
+					$data=1;
+					echo json_encode($data);
+				}
+			}
+					
+
+		}
 
 		function insertPerson(){
 				//$_POST=$_GET;
@@ -120,6 +131,48 @@
 
 		}
 
+	public function actualizarPersona(){
+		$datos = $_POST;
+		unset($datos['datos'][0]['estado']);
+		unset($datos['datos'][0]['municipio']);
+		$id = $this->_personal->getInfoDatosModel();
+		unset($id[0]['nombre']);
+		unset($id[0][0]);
+		unset($id[0]['apellido']);
+		unset($id[0][1]);
+		unset($id[0][2]);
+
+		$personal = 
+
+			array(
+					'cedula' => $datos['datos'][0]['cedula'],		
+					'nombre1' => $datos['datos'][0]['primer_nombre'],
+					'nombre2' => $datos['datos'][0]['segundo_nombre'],
+					'apellido1' => $datos['datos'][0]['primer_apellido'],
+					'apellido2' => $datos['datos'][0]['segundo_apellido'],
+					'sexo' => $datos['datos'][0]['sexo'],
+					'fecha_nacimiento' => $datos['datos'][0]['fecha_nacimiento'],
+					'fecha_ingreso' => $datos['datos'][0]['fecha_ingreso'],	
+					'telefono' => $datos['datos'][0]['telefono'],
+					'otro_telefono' => $datos['datos'][0]['otro_telefono'],
+					'correo' => $datos['datos'][0]['correo'],
+					'cargo' => $datos['datos'][0]['cargo'],		
+					'coordinacion' => $datos['datos'][0]['coordinacion'],
+					'parroquia' => $datos['datos'][0]['parroquia'],
+					'ubicacion' => $datos['datos'][0]['ubicacion']
+			);
+
+		$empleado =
+
+			array(
+					'id_empleado' => $id[0]['id_persona']
+			);
+		array_push($personal, $empleado['id_empleado']);
+		$personal = $this->ConvertirArray($personal);
+		$id_empleado = $this->ConvertirArray($empleado);
+		$response= $this->_personal->actualizarEmpleado($personal);
+		print_r($response);
+	}
 
 		function getInfoDatos(){
 		
@@ -130,15 +183,18 @@
 		}
 
 		function getHijos(){
-		
 			$listado = $this->_personal->getHijosModel();
-			$this->_view->_listado = $listado;
 			echo json_encode($listado);
+		}
 
+		function getPadres(){		
+			$listado = $this->_personal->getPadresModel();
+			echo json_encode($listado);
 		}
 
 		function listing(){
-			$this->_view->setJs(array("pickList","Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","registroPersona/consulta"));
+			$this->_view->setJs(array("pickList","Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","registroPersona/consulta",
+			"utilidades","Librerias/bootstrap-select"));
 			$this->_view->setCss(array("ui.jqgrid"));
 
 			$this->_view->render('consulta_personal','','',$this->_sidebar_menu);
@@ -166,12 +222,22 @@
 				"registroPersona/registroPersona",
 				"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion","pickList"));
 				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter",
-											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));							
+											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));	
+							
 				$persona = $this->_personal->getUnicaPersona($id);
 				$this->_view->_persona = $persona;
 				$this->_view->render('actualizar_persona','','pickList');
 				
 				}
+		}
+
+		function llenarEstado($id_persona){
+			$persona = $this->_personal->getUnicaPersona($id_persona);
+			$data=array();
+			$data[0]=$persona[0]['parroquia'];
+			$data[1]=$persona[0]['municipio'];
+			$data[2]=$persona[0]['estado'];
+				echo json_encode($data);
 		}
 
 		function delete($id=false){ 

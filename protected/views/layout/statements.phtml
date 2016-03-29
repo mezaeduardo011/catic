@@ -52,22 +52,11 @@
                                 </a>
                                 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="page-profile.html">
-                                            <i class="fa fa-user"></i>
-                                            &nbsp;&nbsp;My Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="page-calendar.html">
-                                            <i class="fa fa-calendar"></i>
-                                            &nbsp;&nbsp;My Calendar
-                                        </a>
-                                    </li>
+ 
                                     <li>
                                         <a href="page-settings.html">
                                             <i class="fa fa-cogs"></i>
-                                            &nbsp;&nbsp;Settings
+                                           Cambiar contraseña
                                         </a>
                                     </li>
                                     <li class="divider"></li>
@@ -91,7 +80,7 @@
 
                                     <li>
                                     <a href="<?php echo $_view_params['menu'][$i]['link'] ;?>"><?php  echo $_view_params['menu'][$i]['title']; ?></a>
-                                    <?php  if ($_view_params['menu'][$i]['submenu']):?>
+                                    <?php  if (isset($_view_params['menu'][$i]['submenu'])):?>
                                      <ul class="submenu">
                                     
                                     <?php  for ($j= 0; $j < count($_view_params['menu'][$i]['submenu']); $j++):?>

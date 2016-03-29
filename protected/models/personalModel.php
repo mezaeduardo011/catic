@@ -18,9 +18,18 @@
 			$query=$this->query = "SELECT registro_informacion_adicional(:vehiculos,:vivienda,'$arregloPost',:medicina_text);";
 			$this->registroPdo($query,$infoAdicional);
 	}
-	
-	public function getPersonal(){	
-			return $this->selectPdo($query="SELECT * FROM personal_completo");
+
+	public function actualizarEmpleado($persona){
+		$query=$this->query = "SELECT update_persona(:0,:cedula,:nombre1,:nombre2,:apellido1,:apellido2,:sexo,:fecha_nacimiento,:fecha_ingreso,:telefono,:otro_telefono,:correo,:cargo,:coordinacion,:parroquia,:ubicacion);";
+		return $this->registroPdo($query,$persona);
+	}
+		
+	public function getPersonal($cedula=false){
+			if($cedula==true){
+				return $this->selectPdo($query="SELECT * FROM personal_completo WHERE cedula='".$cedula."'");
+			}else{
+				return $this->selectPdo($query="SELECT * FROM personal_completo");
+			}			
 	}
 
 	public function getInfoDatosModel(){				
@@ -29,6 +38,10 @@
 
 	public function getHijosModel(){				
 			return $this->selectPdo($query = "SELECT * FROM hijos_registro");	
+	}
+
+	public function getPadresModel(){				
+			return $this->selectPdo($query = "SELECT * FROM padres_registro");	
 	}
 			
 	public function getDireccionEstado(){

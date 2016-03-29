@@ -5,9 +5,7 @@ function send_registro_persona() {
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
     };
     if (request(document.getElementById('infoHijos')) != "") {
-
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_hijo', request(document.getElementById('infoHijos')), null, true);
-
     };
     if (request(document.getElementById('infoPadre')) != "") {
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadre')), null, true);
@@ -25,7 +23,7 @@ function send_registro_InfoAdicional() {
 }
 
 function response_registro_persona(response) {
-    alert("Registro Exitoso");
+   // alert("Registro Exitoso");
 
 }
 
@@ -148,9 +146,6 @@ jQuery(function($) {
 });
 
 $(document).ready(function() {
-
-
-
     $('#fecha_ingreso').datepicker({
         clearBtn: true,
         autoclose: true,
@@ -158,12 +153,11 @@ $(document).ready(function() {
         daysOfWeekHighlighted: "0,1,2,3,4,5,6",
         todayHighlight: true
     })
-        .on('changeDate', function(e) {
-            $('#registro_persona').formValidation('revalidateField', 'fecha_ingreso');
-        });
+    .on('changeDate', function(e) {
+        $('#registro_persona').formValidation('revalidateField', 'fecha_ingreso');
+    });
 
     $('#fecha_nacimiento').datepicker({
-
         clearBtn: true,
         autoclose: true,
         language: "es",
@@ -172,8 +166,18 @@ $(document).ready(function() {
         endDate: "1998/12/31"
 
     })
-        .on('changeDate', function(e) {
-            $('#registro_persona').formValidation('revalidateField', 'fecha_nacimiento');
-        });
+    .on('changeDate', function(e) {
+        $('#registro_persona').formValidation('revalidateField', 'fecha_nacimiento');
+    });
 
+    $('#fecha_nacimiento_hijo').datepicker({
+        clearBtn: true,
+        autoclose: true,
+        language: "es",
+        daysOfWeekHighlighted: "0,1,2,3,4,5,6",
+        todayHighlight: true
+    })
+    .on('changeDate', function(e) {
+        $('#registro_persona').formValidation('revalidateField', 'fecha_nacimiento_hijo');
+    });
 });

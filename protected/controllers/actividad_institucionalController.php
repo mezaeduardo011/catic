@@ -69,8 +69,9 @@
 		function detalles($id = false){
 			$this->_view->setJs(array(
 			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools",
-			"Librerias/dataTables.colVis","tables","pickList","Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
-			"Librerias/jquery.dataTables","Librerias/bootstrap-timepicker.min","actividades/actividades"));							
+			"Librerias/dataTables.colVis","tables","pickList","Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min","Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","actividades/consulta",
+			"Librerias/jquery.dataTables","Librerias/bootstrap-timepicker.min","actividades/actividades"));	
+			$this->_view->setCss(array("ui.jqgrid"));						
 				$actividad = $this->_actividad->getDetalles($id);
 				$this->_view->_actividad = $actividad;
 				$this->_view->render('detalles','','pickList');

@@ -19,7 +19,7 @@
 	define('SHEET_ORIENTATION', 'P');
 	define('LANGUAJE_PDF', 'en');
 	define('CHARSET_PDF', 'utf-8');
-	define('APP_NAME', ' Control administrativo de tecnología información y comunicación.');
+	define('APP_NAME', ' Control Administrativo De Tecnología Información y Comunicación');
 	define('APP_LOGO', '');
 	define('APP_OTHER', '');
 	define('SESSION_TIME', 20);

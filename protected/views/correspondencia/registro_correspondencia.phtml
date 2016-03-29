@@ -6,11 +6,12 @@
 			<h4>Registro de correspondencia <i class="fa fa-envelope fa-lg"></i></h4>
 		</div>
 		<!-- PAGE CONTENT BEGINS -->
-		<form class="form-inline center" role="form" action="<?php  echo BASE_URL;?>correspondencia/registro_correspondencia" method="post" id="formulario">
+		<form class="form-inline center" role="form"  method="post" id="formulario">
 			<br>
 					
-					
-						<div>
+
+				<div id="correspondencia">					
+						<div class="form-group">
 							<label>Asunto:</label>
 							<input type="text" class="input-sm form-control" name="asunto" id="asunto" size="25">
 
@@ -23,81 +24,82 @@
 						</div>					
 
 
-			<br>
-
-						<div>
+						<br>
+	
+						<div class="form-group">
 						<label>Coordinación Asignada:</label>
-						<div class="input-group">
 							<select  class="selectpicker show-tick input-sm form-control" id="coordinacion" name="coordinacion">
 								<option value="" default selected>Seleccione una coordinación</option>
 								<?php foreach ($this->_coordinacion as $coordinacion):?>
 								<option value ="<?php  echo $coordinacion['id_referencial']; ?>"><?php  echo $coordinacion['referencia']; ?></option>
 								<?php endforeach ?>
-							</select>
+							</select>							
 						</div>
-						<label>Fecha:</label>
-						<input class="input-sm form-control date-picker" name="fecha" id="fecha" type="date" data-date-format="yyyy-mm-dd" />				
-							
-						</div>
-						<br><br>
-						<div class="form-group">
-							<label class="control-label">Tipo de correspondencia:</label>
 
-							<div class="col-xs-12 col-sm-10">
-								<div  class="col-xs-12 col-sm-8">
+						<input hidden  name="fecha" id="fecha" type="text" data-date-format="yyyy-mm-dd" value="<?php echo date("Y/m/d"); ?>" />				
+							
+						<br><br>
+						<table class="center" align="center">
+							<tr><td></td>
+								<td><label class="control-label">Tipo de correspondencia:</label></td>
+								<td></td>
+								<td><label class="control-label">Estatus:</label></td>
+							</tr>
+							<tr>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td>
+						<div class="form-group">
+
 									<label class="line-height-1 blue">
 										<input autocomplete="off"  value="Entregada" type="radio" class="ace" name="tipo" />
 										<span class="lbl"> Entregada</span>
 									</label>
-								</div>
 
-								<div class="col-xs-1 col-sm-4">
 									<label class="line-height-1 blue">
 										<input autocomplete="off"  value="Recibida" type="radio" class="ace" name="tipo" />
 										<span class="lbl"> Recibida</span>
 									</label>
-								</div>
-							</div>
-						</div>	
-
-						<div class="form-group">
-							<label class="control-label">Estatus:</label>
-
-							<div class="col-xs-12 col-sm-10">
-								<div class="col-xs-12 col-sm-4">
+						</div>									
+								</td>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td>
 									<label class="line-height-1 blue">
 												<input autocomplete="off"  value="Proceso" type="radio" class="ace" name="estatus" />
 												<span class="lbl"> Proceso</span>
 									</label>
-								</div>
 
-								<div class="col-xs-1 col-sm-6">
 									<label class="line-height-1 blue">
 												<input autocomplete="off"  value="Archivada" type="radio" class="ace" name="estatus" />
 												<span class="lbl"> Archivada</span>
 									</label>
-								</div>
-							</div>
-						</div>
-						<br><br>	
-						<div>
+								</td>
+							</tr>
+						</table>
+	
+						<br>
+						<div class="form-group">
 						<label class="control-label" for="carpetas">Carpeta destino: </label>
-								<div class    ="input-group">
 									<select name="carpetas" id="carpetas" class="selectpicker show-tick input-sm form-control" data-live-search="true">
-									</select>
-								</div>						
-																		
+									</select>																		
 						</div>											
 
-
-<hr>
+					
+				</div>
+					<hr>
 
 				<div class="clearfix form-actions" align="center">
 				<div>
-					<button class="btn btn-success" type="submit" onclick="closePickList();" id="prueba">
+					<a class="btn btn-success" type="submit" onclick="send_correspondencia();" id="registroCorrespondencia">
 						<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
 					Registrar
-					</button>
+					</a>
 					&nbsp; &nbsp; &nbsp;												
 					<button class="btn" type="reset">
 					<i class="ace-icon fa fa-undo bigger-110"></i>

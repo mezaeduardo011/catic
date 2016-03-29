@@ -19,18 +19,13 @@ function response_registro_persona(response) {
 
 
  $(document).ready(function() {
-     var selector = function(dateStr) {         
-	      		desde = $('#tipo_amonestacion').val();
-	      		dias = $('#coordinacion').val();
-	     		$.post(
-	         		BASE_URL+"amonestacion/confirmacionAjax", 
-	     			{ tipo_amonestacion: desde, coordinacion: dias},
-	     			function(data){
-	     				alert(data['tipo_amonestacion_confirmacion']);
-	     		 		$('#tipo_amonestacion_confirmacion').val(data['tipo_amonestacion_confirmacion']);
-	     		 		$('#reincorporacion_confirmacion').val(data['coordinacion_confirmacion']);
-	     			}, 
-	     			"json");
-     }
-     $('#tipo_amonestacion,#coordinacion').change(selector)
+            $('#fecha').datepicker({
+        clearBtn: true,
+        autoclose: true,
+        language: "es",
+        daysOfWeekHighlighted: "0,1,2,3,4,5,6",
+        todayHighlight: true
+    })
  });
+
+

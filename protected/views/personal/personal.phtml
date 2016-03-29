@@ -1,24 +1,18 @@
 <!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido -->
 <div class="main-content" >
 	<div class="main-content-inner">
-
 <form class   ="form-inline center" role="form"  method="post"  id="registro_persona" name="registro_persona" >
-	
-	
 	<div class="widget-box">
 		<div class="alert alert-info ">
-
 			<div class  id="inicio" align="center">
 				<h4 class="widget-title">Registro de persona.</h4>
 			</div>
-
 			<div id="infoDatosDiv" hidden="" >
 				<div  class="col-sm-3">
 					<h5 class="widget-title">Registrando datos de:</h5>
 					<table id="infoDatos">
 						<td class="center" ></td>
 					</table>
-					
 				</div>
 				<br>
 				<br>
@@ -56,8 +50,11 @@
 						<div class="step-pane active" data-step="1" id="divPersona">
 							<input type="text" name="tipo_persona" value="empleada" hidden></input>
 							    <div class="form-group">
+
+<!-- EMPLEADO -->
+
 								<label for="cedula">Cédula: </label>
-											<input onkeypress="return numeros(event);" maxlength="10" onkeyup="format(this)" autocomplete="off" type   ="text" name="cedula" id="cedula" class="input-sm form-control" />
+									<input onkeypress="return numeros(event);" maxlength="10" onkeyup="format(this)" autocomplete="off" type="text" name="cedula" id="cedula" class="input-sm form-control" />
 							    </div>
 
 							    <div class="form-group">
@@ -92,14 +89,14 @@
 											<label class="control-label" for="sexo">Sexo:</label>
 											<div class="radio">
 											<label class="line-height-1 blue">
-												<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" 
+												<input autocomplete="off"  value="16" type="radio" class="ace" name="sexos" id="sexo_empleado"
 												/>
 												<span class="lbl"> Masculino</span>
 											</label>												
 											</div>
 											<div class="radio">
 											<label class="line-height-1 blue">
-												<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" />
+												<input autocomplete="off"  value="17" type="radio" class="ace" name="sexos" id="sexo_empleado"/>
 												<span class="lbl"> Femenino</span>
 											</label>												
 											</div>
@@ -113,16 +110,16 @@
 							</div>	
 							&nbsp;	&nbsp;
 							<div class="form-group">
-								<label class="control-label" for="cedula">Fecha de ingreso: </label>
+								<label class="control-label" for="fecha_ingreso">Fecha de ingreso: </label>
 											<input onkeypress="return numeros(event);" onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_ingreso" id="fecha_ingreso" type="date" data-date-format="yyyy-mm-dd" size="8" />
 							</div>	
 							<hr>																	
 							<div class="form-group">
-								<label class="control-label" for="cedula">Télefono: </label>
+								<label class="control-label" for="telefono">Télefono: </label>
 											<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="telefono" name="telefono" size="12"/>
 							</div>
 							<div class="form-group">
-										<label class="control-label" for="cedula">Otro télefono: </label>
+										<label class="control-label" for="otro_telefono">Otro télefono: </label>
 													<input autocomplete="off" class  ="input-sm form-control input-mask-phone" type="text" id="otro_telefono" name="otro_telefono" size="12"/>
 							</div>	
 							<div class="form-group">
@@ -132,7 +129,7 @@
 							</div>
 							<hr>
 							<div align="center" class="form-group">
-								<label class="control-label" for="estado">Cargo: </label>
+								<label class="control-label" for="cargo">Cargo: </label>
 									<select name="cargo" id="cargo" class="selectpicker show-tick input-sm form-control">
 									</select>
 							</div>							
@@ -166,14 +163,14 @@
 						
 							</div>							
 							<div  id="modificarDatos" hidden align="center">
-								<button class="btn btn-primary">
+								<button class="btn btn-primary" onclick="enviar_datos('cedula','nombre','nombre2','apellido','apellido2','sexo_empleado','fecha_nacimiento','fecha_ingreso','telefono','otro_telefono','correo','cargo','coordinacion','estado','municipio','direccion','ubicacion')">
 								Actualizar
 								<i class="glyphicon glyphicon-search"></i>
 								</button>
 							</div>
 						</form>
 					</div>
-					
+<!-- FIN EMPLEADO -->
 					<div class="step-pane" data-step="2">
 						<div>
 							<div id="infoExtra" >
@@ -233,8 +230,8 @@
 							</div>	
 							&nbsp;&nbsp;
 							<div class="form-group">
-								<label class="control-label" for="fecha_nacimiento">Fecha de nacimiento: </label>
-										<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento" id="fecha_nacimiento_hijo" type="date" data-date-format="yyyy-mm-dd" size="8" />							
+								<label class="control-label" for="fecha_nacimiento_hijo">Fecha de nacimiento: </label>
+										<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_nacimiento_hijo" id="fecha_nacimiento_hijo" type="date" data-date-format="yyyy-mm-dd" size="8" />							
 							</div>	
 														<hr>
 

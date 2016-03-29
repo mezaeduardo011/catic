@@ -1,7 +1,7 @@
 $(document).ready(function () {
             var BASE_URL = "http://localhost/catic/"; 
-            var grid_selector = "#jqGrid";
-            var grid_pager = "#jqGridPager";
+            var grid_selector = "#tablaInfoPadres";
+            var grid_pager    = "#tablaInfoPadresDiv";
 
             //resize to fit page size
             $(window).on('resize.jqGrid', function () {
@@ -9,33 +9,22 @@ $(document).ready(function () {
             })
             
             $(grid_selector).jqGrid({
-            hoverrows:false,
-            "viewrecords":true,
-            "jsonReader":{"repeatitems":false,"subgrid":{"repeatitems":false}},
-            "gridview":true,
-             url: BASE_URL+"amonestacion/consulta_amonestaciones",
-            "loadonce": true,
-            "rowNum":10,
-            "height":200,
-            "autowidth":true,
-            "sortname":"OrderID",
-            "rowList":[10,30,40],
-            "datatype":"json",
-
+                url: BASE_URL+"personal/getPadres",
+                mtype: "GET",
+                styleUI : 'Bootstrap',
+                datatype: "json",
                 colModel: [
-
-                    { label: '#', name: 'numeracion', key: true, width: 20,"search":false },
-                    { label: 'Coordinacion', name: 'coordinacion', width: 60 ,"search":true},
-                    { label: 'Nombres', name: 'nombres', width: 60 ,"search":true},
-                    { label:'Tipo de amonestacion', name: 'tipo_amonestacion', width: 60,"search":true },
-                    { label:'Motivo', name: 'motivo', width: 50 ,"search":true},
-                    { label: 'id_persona', name: 'id_persona', key: false, width: 1,"search":false },
-                    { label: 'id_amonestaciones', name: 'id_amonestaciones', key: false, width: 1,"search":false },
-   
+                    { label: 'Nombres', name: 'nombres', key: true, width: 200 },
+                    { label: 'Apellidos', name: 'apellidos', width: 150 },
+                    { label: 'Teléfono', name: 'telefono', width: 150 },
 
                 ],
 
                 jsonReader: {repeatitems:false, root:"vacaciones"},
+                viewrecords: true,
+                height: "auto",
+                rowNum: 20,
+                rowList:[10,20,30],
                 pager: grid_pager,
                 multiselect: true,
                 loadComplete : function() {
@@ -44,12 +33,12 @@ $(document).ready(function () {
                             updatePagerIcons(table);
                         }, 0);
                     },
-                multiboxonly: true
+                multiboxonly: true,
+                autowidth: true,
+                loadonce:true
 
             });
-                $(grid_selector).jqGrid("hideCol", "id_amonestaciones");
-              $(grid_selector).jqGrid("hideCol", "id_persona");
-            jQuery(grid_selector).jqGrid('filterToolbar',{"stringResult":true});
+
             jQuery(grid_selector).jqGrid('navGrid',grid_pager,
                     {   //navbar options
                         edit:false,
@@ -58,11 +47,11 @@ $(document).ready(function () {
                         addicon: 'ace-icon fa fa-plus-circle purple',
                         del: false,
                         delicon: 'ace-icon fa fa-trash-o red',
-                        search: false,
+                        search: true,
                         searchicon : 'ace-icon fa fa-search orange',
-                        refresh: false,
+                        refresh: true,
                         refreshicon : 'ace-icon fa fa-refresh green',
-                        view: false,
+                        view: true,
                         viewicon : 'ace-icon fa fa-search-plus grey',
                     },
                     {
@@ -108,36 +97,6 @@ $(document).ready(function () {
                         if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
                     })
                 }
-
-    $(grid_selector).navButtonAdd(grid_pager,
-    {
-        buttonicon: "ace-icon fa fa-print fx-1 green",
-        title: "Imprimir detalles persona",
-        caption: 'Imprimir reporte',
-        position: "last",
-        onClickButton: imprimir_reporte
-    });
-
-    function imprimir_reporte() {
-        var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
-                                
-        if(columna_check.length>0){
-            var id_persona = [];
-            var id_amonestaciones = [];
-            for(var i=0,ids=columna_check.length;i<ids; i++){
-                id_persona.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona'));
-                id_amonestaciones.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_amonestaciones'));
-            }
-        }
-    if (id_persona!=undefined && id_persona!=null) {
-              window.open(BASE_URL+'pdf/pdfAmonestacion/'+id_persona+'/'+id_amonestaciones);
-    }else{
-        alert('Por favor seleccione una fila');
-    }
-
-
-
-    }                 
 
 
         });

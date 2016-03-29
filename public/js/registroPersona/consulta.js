@@ -1,6 +1,7 @@
+ var BASE_URL = "http://localhost/catic/"; 
 $(document).ready(function () {
 
-    var BASE_URL = "http://localhost/catic/"; 
+   
     var grid_selector = "#consulta_personas_tabla";
     var grid_pager = "#jqGridPager";
 
@@ -27,7 +28,7 @@ $(document).ready(function () {
 
             { label: 'id', name: 'id_persona', key: true, width: 1,"search":false },
             { label: 'id_persona_empleada', name: 'id_persona_empleada', key: true, width: 1,"search":false },
-            { label: 'cedula', name: 'cedula', key: true, width: 20,"search":true },
+            { label: 'Cédula', name: 'cedula', key: true, width: 20,"search":true },
             { label: 'Nombres', name: 'nombres', key: true, width: 20,"search":true },
             { label: 'Apellidos', name: 'apellidos', key: true, width: 20,"search":true },
             { label: 'Coordinación', name: 'coordinacion', key: true, width: 20,"search":true },
@@ -145,6 +146,8 @@ $(document).ready(function () {
               pickOpen('prod', 'id_prod',BASE_URL+'personal/update/'+id_persona,
 
         90, 96, 85, 1);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
+
+        llenarEstado(id_persona);
     }else{
         alert('Por favor seleccione una fila');
     }
@@ -241,3 +244,108 @@ $("#eliminarPersona").click(function() {
 
   
 });
+
+
+function llenarEstado(id_persona){
+        
+        var parroquia=" ";  
+
+        $.ajax({
+            url: BASE_URL +'personal/llenarEstado/'+id_persona, 
+            type: 'POST',
+            dataType: 'json',       
+        })
+
+        .done(function(data) { // si todo funciona
+
+           $.each(data, function(key, value) {
+              parroquia.push(key.value);
+           });            
+             parroquia = data[0];
+             municipio = data[1];
+             estado    = data[2]; 
+
+        })
+
+        .fail(function() {//si da error decimos error
+            alert("Error cargando la parroquia");
+        });
+
+        //---------------------------------------    
+alert(parroquia);
+
+        $.ajax({
+            url: BASE_URL +'personal/SelectEstado', 
+            type: 'POST',
+            dataType: 'json',       
+        })
+
+        .done(function(data) { // si todo funciona
+            $('#direccion').empty();
+            $('#direccion').append('<option value="">Seleccione un direccion...</option>');
+            for (var i=0; i<data.length; i++) {
+                if (data[i].option==parroquia) {
+                    alert('hola');
+                    $('#direccion').append('<option selected="selected" value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }else{
+                    $('#direccion').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }
+
+            }   
+            $('#direccion').selectpicker('refresh');
+        })
+
+        .fail(function() {//si da error decimos error
+            alert("Error cargando la parroquia");
+        });
+//Ajax para los municipios
+        $.ajax({
+            url: BASE_URL +'personal/SelectMunicipioGeneral', //apuntamos a persons/loadSexo
+            type: 'POST',
+            dataType: 'json',       
+        })
+
+        .done(function(data) { // si todo funciona
+            $('#municipio').empty();
+            $('#municipio').append('<option value="">Seleccione un municipio...</option>');
+            for (var i=0; i<data.length; i++) {
+                if (data[i].option==municipio) {
+                    $('#municipio').append('<option selected="selected" value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }else{
+                    $('#municipio').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }
+
+            }   
+            $('#municipio').selectpicker('refresh');
+        })
+
+        .fail(function() {//si da error decimos error
+            alert("Error cargando el municipio");
+        }); 
+//Fin ajax municipios    
+
+//Ajax para los estados
+        $.ajax({
+            url: BASE_URL +'personal/SelectEstado', //apuntamos a persons/loadSexo
+            type: 'POST',
+            dataType: 'json',       
+        })
+
+        .done(function(data) { // si todo funciona
+            $('#estado').empty();
+            $('#estado').append('<option value="">Seleccione un estado...</option>');
+            for (var i=0; i<data.length; i++) {
+                if (data[i].option==estado) {
+                    $('#estado').append('<option selected="selected" value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }else{
+                    $('#estado').append('<option value="'+ data[i].value+'">'+data[i].option +'</option>');
+                }
+
+            }   
+            $('#estado').selectpicker('refresh');
+        })
+
+        .fail(function() {//si da error decimos error
+            alert("Error cargando el estado");
+        }); 
+}

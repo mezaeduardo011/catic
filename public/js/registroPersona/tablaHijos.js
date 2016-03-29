@@ -16,7 +16,7 @@ $(document).ready(function () {
                 colModel: [
                     { label: 'Nombre', name: 'nombre', key: true, width: 200 },
                     { label: 'Apellido', name: 'apellido', width: 150 },
-                    { label: 'Sexo', name: 'sexo_referencial', width: 150 },
+                    { label: 'Sexo', name: 'sexo', width: 150 },
                     { label: 'Edad', name: 'edad', width: 150 },   
                     { label: 'Fecha de nacimiento', name: 'fecha_nacimiento', width: 200 }
 

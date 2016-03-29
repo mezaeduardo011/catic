@@ -69,6 +69,7 @@
                 url: BASE_URL +'personal/BuscarCedula',
                 data: {cedular: cedular.value},
                 success: function(json){
+
                     LlenarDatos(json,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9,destino10);
                         }
             });               
