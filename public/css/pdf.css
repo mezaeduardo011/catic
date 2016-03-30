@@ -127,6 +127,7 @@ footer {
 .cintillo {
     font-family: Arial;
     margin: 0mm 0mm 0mm 0mm;
+    padding: 0;
 }
 .cuerpo {
     font-family: Arial, serif;
@@ -140,7 +141,8 @@ footer {
     font-size: 14px;
     text-align: justify;
     font-family: Ariala, sans-serif;
-    line-height: 1,5;
-    margin: 100px;
+    line-height: 2;
+    margin-left: 70px;
+    margin-right: 70px;
     padding: 1px;
 }

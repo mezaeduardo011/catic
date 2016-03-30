@@ -1,6 +1,6 @@
 <div class="widget-box divBlanco">
 	<div class="alert alert-info" align="center">
-		<h4>Personas asignadas a la actividad: <i class="fa fa-users fa-lg"></i></h4>
+		<h4>Personas asignadas a la actividad: <?php echo $this->_actividad[0]['nombre_actividad'];?> <i class="fa fa-users fa-lg"></i></h4>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
@@ -8,25 +8,21 @@
 				<div class="col-xs-12">
 					<div>
 						<form action="<?php  echo BASE_URL;?>personal/listing" method="post">
-							<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+							<table class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
 										<th >#</th>
-										<th >Primer Nombre</th>
-										<th >Segundo Nombre</th>
-										<th >Primer Apellido</th>
-										<th >Segundo Apellido</th>
+										<th >Nombres</th>
+										<th >Coordinación</th>
 										<th >Teléfono</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($this->_actividad as $persona):?>
+									<?php $i=0; foreach ($this->_actividad as $persona): $i++;?>
 									<tr>
 										<td ><?php echo $persona['numeracion'];?></td>
-										<td ><?php echo $persona['nombre'];?></td>
-										<td ><?php echo $persona['nombre2']; ?></td>
-										<td ><?php echo $persona['apellido']; ?></td>
-										<td ><?php echo $persona['apellido2']; ?></td>
+										<td ><?php echo $persona['nombre'];?><?php echo $persona['apellido']; ?></td>
+										<td ><?php echo $persona['coordinacion']; ?></td>
 										<td ><?php echo $persona['telefono']; ?></td>
 									</tr>
 									<?php endforeach ?>
@@ -39,19 +35,17 @@
 			</div>
 
 		</div>
-					<div class="row">
-							<div class="col-xs-12">
-								<div class="row">
-									<div id="tabla_consulta" class="col-xs-12">
-										<!-- PAGE CONTENT BEGINS -->
-									<table id="jqGrid"></table>
-									<div id="jqGridPager"></div>
-									<!-- PAGE CONTENT ENDS -->
-									</div><!-- /.col -->
-								</div>
-							</div>
-					</div><!-- /.row -->		
-	</div><hr>
+	
+	</div>
+	<?php if($i==1):?>
+	<br><br><br><br><br><br><br>
+	<?php elseif($i==2):?>
+	<br><br><br><br><br><br>
+	<?php elseif($i==3):?>
+	<br><br><br><br>
+	<?php elseif($i==4):?>
+	<br><br>
+	<?php endif ?>
 	<div  align="center">		
 	<button class="btn btn-eliminar" onclick="closePickList()">
 	<i class      ="fa fa-reply-all"></i>
