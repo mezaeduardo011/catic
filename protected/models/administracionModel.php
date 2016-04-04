@@ -22,6 +22,17 @@
 				return $result;		
 		}
 
+		public function getUsuarios(){
+				$query = "SELECT * from vista_usuarios";
+				$result=$this->selectPdo($query);
+				return $result;		
+		}	
+
+		public function agregarUsuario($id){
+			$query=$this->query = "SELECT registro_usuario('$id')";
+			$this->registroPdoArray($query,$id);
+		}			
+
 	
 	}
 ?>

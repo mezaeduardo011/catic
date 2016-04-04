@@ -26,6 +26,9 @@
 		function registro_correspondencia(){
 				$this->_view->setJs(array("pickList"));
 				$correspondencia= $this->ConvertirArray($_POST);
+				// $_POST=$_GET;
+				// unset($_POST['url']);
+				// $this->imprimirArreglo($_POST);
 				$this->_correspondencia->insertCorrespondencia($correspondencia);
 		}
 
@@ -33,7 +36,7 @@
 					$this->_view->setJs(array("Librerias/bootstrap-select",
 												"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
 												"pickList","correspondencia/select","correspondencia/correspondencia",
-											"Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src"));
+											"Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","utilidades"));
 
 					$this->_view->setCss(array("bootstrap-select",
 												"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));
@@ -60,7 +63,18 @@
 						$data[$i] = array("value"=>$result[$i]['id_carpeta_correspondencia'],"option"=>$result[$i]['carpeta']);
 					}
 					echo json_encode($data);
-		}		
+		}
+
+	function archivar($id= FALSE){				
+		if(isset($id)&& !empty($id)){	
+				$this->_view->setJs(array("pickList"));		
+				$datos = $this->_correspondencia->getCorrespondencia($id);
+				$this->_view->_datos = $datos;				
+				$this->_view->render('archivar','','pickList');		
+		}else {
+			$this->_correspondencia->arvhivarModel($_POST['id_correspondencia'],TRUE);			
+		}
+	}				
 
 
 }?>

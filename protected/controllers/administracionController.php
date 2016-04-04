@@ -16,7 +16,7 @@
 
 		function index(){
 			$this->_view->setJs(array("Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",				
-			"administracion/administracion"));
+			"administracion/administracion","utilidades","pickList"));
 			$this->_view->setCss(array(
 			"datepicker"));
 			$this->_view->render('administracion');
@@ -31,29 +31,31 @@
 		}
 
 		function usuarios(){
-
-			$this->_view->setJs(array(
-			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools","Librerias/dataTables.colVis","tables",
-			"pickList"));
-
-			$listado = $this->_administracion->getUsuarios();
-
-			$this->_view->_listado = $listado;
-
+			$this->_view->setJs(array("pickList","Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","administracion/consulta"));
+			$this->_view->setCss(array("ui.jqgrid"));
 			$this->_view->render('usuarios');
 		}
 
+
+		function getUsuarios(){
+			$listado = $this->_administracion->getUsuarios();
+			$this->_view->_listado = $listado;
+			echo json_encode(array("usuarios"=>$listado));			
+		}
 		function listarPersonal(){
 				
-			$this->_view->setJs(array(
-			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools","Librerias/dataTables.colVis","tables",
-			"pickList"));
-
+			$this->_view->setJs(array("pickList","Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","administracion/personalCompleto"));
+			$this->_view->setCss(array("ui.jqgrid"));
 			$listado = $this->_personal->getPersonal();
 
 			$this->_view->_listado = $listado;
 
 			$this->_view->render('personalCompleto','','pickList');
 		}
+	function agregar($id= FALSE){			
+
+			$this->_administracion->agregarUsuario($id);			
+		}			
+
 	}
 ?>

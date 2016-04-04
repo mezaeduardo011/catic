@@ -36,6 +36,29 @@
 					$permiso = $this->ConvertirArray($_POST);
 					//$this->imprimirArreglo($permiso);
 					$this->_permisos->registroPermisos($permiso);
+					$this->_view->redirect('permisos/listar_permisos');
+		}	
 
+			function listar_permisos(){
+			$this->_view->setJs(array("pickList","Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","permisos/tablaPermisos"));
+			$this->_view->setCss(array("ui.jqgrid"));
+			$this->_view->render('consulta','','',$this->_sidebar_menu);
+
+		}
+
+		function consultar_permisos(){
+			$listado = $this->_permisos->getPermisos();
+			echo json_encode(array("vacaciones"=>$listado)); 
 		}		
+
+	function fin($id= FALSE){
+		if(isset($id)&& !empty($id)){	
+				$this->_view->setJs(array("pickList"));		
+				$datos = $this->_permisos->getPermisos($id);
+				$this->_view->_datos = $datos;				
+				$this->_view->render('finalizar_permiso','','pickList');		
+		}else {
+			$this->_permisos->finalizarPermiso($_POST['id_permisos'],false);			
+		}
+	}		
 }?>

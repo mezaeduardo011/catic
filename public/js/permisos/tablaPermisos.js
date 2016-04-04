@@ -1,6 +1,6 @@
 $(document).ready(function () {
             var BASE_URL = "http://localhost/catic/"; 
-            var grid_selector = "#consulta_correspondencia";
+            var grid_selector = "#jqGrid";
             var grid_pager = "#jqGridPager";
 
             //resize to fit page size
@@ -9,49 +9,48 @@ $(document).ready(function () {
             })
             
             $(grid_selector).jqGrid({
-                url: BASE_URL+"correspondencia/consulta_correspondencia",
-                mtype: "GET",
-                styleUI : 'Bootstrap',
-                datatype: "json",
+            hoverrows:false,
+            "viewrecords":true,
+            "jsonReader":{"repeatitems":false,"subgrid":{"repeatitems":false}},
+            "gridview":true,
+             url: BASE_URL+"permisos/consultar_permisos",
+            "loadonce": true,
+            "rowNum":10,
+            "height":200,
+            "autowidth":true,
+            "sortname":"OrderID",
+            "rowList":[10,30,40],
+            "datatype":"json",
+
                 colModel: [
-                    { label: 'N°', name: 'numeracion', width: 20 },
-                    { label: 'Asunto', name: 'asunto', width: 150 },
-                    { label: 'Oficina', name: 'oficina', width: 150 },
-                    { label:'Instrucción', name: 'instruccion', width: 90 },
-                    { label:'Fecha', name: 'fecha', width: 50 },
-                    { label:'Tipo', name: 'tipo', width: 50 },  
-                    { label:'Estatus', name: 'estatus', width: 50 },                                     
-                    { label:'Coordinacion encargada', name: 'coordinacion', width: 120 },
-                    { label:'Coordinacion encargada', name: 'id_correspondencia', width: 1 },
+                    { label: '#', name: 'numeracion', key: true, width: 20,"search":false },
+                    { label: 'Coordinacion', name: 'coordinacion', width: 150 ,"search":true},
+                    { label: 'Nombres', name: 'nombres', width: 120 ,"search":true},
+                    { label:'Desde', name: 'desde', width: 50,"search":true },
+                    { label:'Hasta', name: 'hasta', width: 50 ,"search":true},
+                    { label:'Dias', name: 'dias', width: 25,"search":true },
+                    { label:'Horas', name: 'horas', width: 25,"search":true },
+                    { label: 'Estatus', name: 'estatus', key: true, width: 40,"search":false },
+                     { label: '#', name: 'id_permisos', key: true, width: 20,"search":false },
 
                 ],
 
-                jsonReader: {repeatitems:false, root:"correspondencia"},
-                viewrecords: true,
-                height: 250,
-                rowNum: 20,
-                rowList:[10,20,30],
+                jsonReader: {repeatitems:false, root:"vacaciones"},
                 pager: grid_pager,
                 multiselect: true,
                 loadComplete : function() {
-                        $(grid_selector).jqGrid("hideCol", "id_correspondencia");
+                     $(grid_selector).jqGrid("hideCol", "id_permisos");
                         var table = this;
                         setTimeout(function(){
                             updatePagerIcons(table);
                         }, 0);
                     },
-                multiboxonly: true,
-                autowidth: true,
-                loadonce:true
+                multiboxonly: true
 
             });
 
-            $(window).on("resize", function () {
-    var $grid = $(grid_selector),
-        newWidth = $grid.closest(".ui-jqgrid").parent().width();
-    $grid.jqGrid("setGridWidth", newWidth, true);
-});
 
+            jQuery(grid_selector).jqGrid('filterToolbar',{"stringResult":true});
             jQuery(grid_selector).jqGrid('navGrid',grid_pager,
                     {   //navbar options
                         edit:false,
@@ -110,38 +109,43 @@ $(document).ready(function () {
                         if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
                     })
                 }
+
     $(grid_selector).navButtonAdd(grid_pager,
     {
-        buttonicon: "ace-icon fa fa-search-plus grey",
-        title: "Archivar correspondencia",
-        caption: 'Archivar correspondencia',
+        buttonicon: "ace-icon fa fa-times-circle red",
+        title: "Finalizar permiso o reposo",
+        caption: 'Finalizar permiso o reposo',
         position: "last",
-        onClickButton: archivar
+        onClickButton: finalizar_actividad
     });
 
-    function archivar() {
+    function finalizar_actividad() {
         var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
                                 
         if(columna_check.length>0){
-            var id_correspondencia = [];
+            var id_permisos = [];
+            var status_actividad = [];
             for(var i=0,ids=columna_check.length;i<ids; i++){
-                id_correspondencia.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_correspondencia'));
+                id_permisos.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_permisos'));
+                status_actividad.push($(grid_selector).jqGrid('getCell', columna_check[i], 'status_actividad'));
             }
         }
+        if (id_permisos!=undefined && id_permisos!=null) {
+            if (status_actividad=="Actividada finalizada") {
+               alert('Este permiso ya fue finalizado');
+            }
+            else if(status_actividad=="Cancelada"){
+               alert('Este permiso fue cancelado');
+            }
+            else{ 
+                 pickOpen('prod', 'id_prod',BASE_URL+'permisos/fin/'+id_permisos+"/TRUE",
+                60, 30, 300, 80);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);                     
+            }
 
-    if (id_correspondencia!=undefined && id_correspondencia!=null) {
-              pickOpen('prod', 'id_prod',BASE_URL+'correspondencia/archivar/'+id_correspondencia,
-
-        90, 96, 85, 1);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
-
-        llenarEstado(id_correspondencia);
-    }else{
-        alert('Por favor seleccione una fila');
-    }
-
-
-
-    }                
+        }else{
+            alert('Seleccione un permiso o reposo');
+        }
+    }                 
 
 
         });

@@ -3,154 +3,103 @@
 
 	<div class="widget-box">
 		<div class="alert alert-info" align="center">
-			<h4>Registro de correspondencia <i class="fa fa-file-text-o"></i></h4>
+			<h4>Registro de correspondencia <i class="fa fa-envelope fa-lg"></i></h4>
 		</div>
 		<!-- PAGE CONTENT BEGINS -->
-		<form class="form-horizontal" role="form" action="<?php  echo BASE_URL;?>correspondencia/registro_correspondencia" method="post" id="formulario">
+		<form class="form-inline center" role="form"  method="post" id="formulario">
 			<br>
-			<table align="center">
-				<!---- Labels ---->
-				<tr>
-					<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-					<td><label>Asunto:</label></td>
-					<td></td>
-					<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-					<td><label>Oficina:</label></td>
-				</tr>
-				<!-- Fin de los Labels -->
-				<!---------------------->
-				<!---------------------->
-				<!-- Inputs o selects -->
-				<tr>
-					<td></td>
-					<td>
-						<div class="input-group">
+					
+
+				<div id="correspondencia">					
+						<div class="form-group">
+							<label>Asunto:</label>
 							<input type="text" class="input-sm form-control" name="asunto" id="asunto" size="25">
-							<span class="input-group-addon">
-								<i class="fa fa-cc"></i>
-							</span>
-						</div>
-					</td>
-					<td></td>
-					<td>&nbsp;</td>
-					<td>
-						<div class="input-group">
+
+								
+							<label>Oficina:</label>					
 							<input class="input-sm form-control" name="oficina" id="oficina" type="text" size="25" />
-							<span class="input-group-addon">
-								<i class="fa fa-archive"></i>
-							</span>
-						</div>
-					</td>
-				</tr>
-				<!------------Fin de los inputs------------>
-			</table>
-			<br>
-			<table align="center">
-				<tr>
-					<td><label>Instruccion:</label></td>
-					<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-					<td><label>Coordinación Asignada:</label></td>
-					<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-					<td><label>Fecha:</label></td>
-				</tr>
-				<tr>
-					<td>
-						<div class="input-group">
+
+							<label>Instruccion:</label>
 							<input class="input-sm form-control" name="instruccion" id="instruccion" type="text" size="25" />
-							<span class="input-group-addon">
-								<i class="fa fa-file-text"></i>
-							</span>
-						</div>
-					</td>
-					<td>&nbsp;</td>
-					<td>
-						<div class="input-group">
+						</div>					
+
+
+						<br>
+	
+						<div class="form-group">
+						<label>Coordinación Asignada:</label>
 							<select  class="selectpicker show-tick input-sm form-control" id="coordinacion" name="coordinacion">
 								<option value="" default selected>Seleccione una coordinación</option>
 								<?php foreach ($this->_coordinacion as $coordinacion):?>
 								<option value ="<?php  echo $coordinacion['id_referencial']; ?>"><?php  echo $coordinacion['referencia']; ?></option>
 								<?php endforeach ?>
-							</select>
+							</select>							
 						</div>
-					</td>
-					<td></td>
-					<td>
-						<div class="input-group">
-							<input class="input-sm form-control date-picker" name="fecha" id="fecha" type="date" data-date-format="yyyy-mm-dd" />
-							<span class="input-group-addon">
-								<i class="fa fa-calendar bigger-110"></i>
-							</span>
-						</div>
-					</td>
-				</tr>
-			</table>
-			<br>
-			<div align="center" class="col-sm-12">
-					<div>
-						
-					</div>
-								<label class="control-label col-sm-5 no-padding-right" for="tipo">Tipo de correspondencia:</label>
-								<div class="col-sm-1">
-									<div class="clearfix">
-										<div class="col-sm-12">
-											<label class="line-height-1 blue">
-												<input autocomplete="off"  value="Entregada" type="radio" class="ace" name="tipo" />
-												<span class="lbl"> Entregada</span>
-											</label>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-1">
-									<div class="clearfix">
-										<div class="col-sm-12">
-											<label class="line-height-1 blue">
-												<input autocomplete="off"  value="Recibida" type="radio" class="ace" name="tipo" />
-												<span class="lbl"> Recibida</span>
-											</label>
-										</div>
-									</div>
-								</div>				
-			</div>	
-			<br><br>
-<hr>
-			<div align="center">
-								<label class="control-label col-sm-5 no-padding-right" for="tipo">Estatus:</label>
-								<div class="col-sm-1">
-									<div class="clearfix">
-										<div class="col-sm-12">
-											<label class="line-height-1 blue">
+
+						<input hidden  name="fecha" id="fecha" type="text" data-date-format="yyyy-mm-dd" value="<?php echo date("Y/m/d"); ?>" />				
+							
+						<br><br>
+						<table class="center" align="center">
+							<tr><td></td>
+								<td><label class="control-label">Tipo de correspondencia:</label></td>
+								<td></td>
+								<td><label class="control-label">Estatus:</label></td>
+							</tr>
+							<tr>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td>
+						<div class="form-group">
+
+									<label class="line-height-1 blue">
+										<input autocomplete="off"  value="Entregada" type="radio" class="ace" name="tipo" />
+										<span class="lbl"> Entregada</span>
+									</label>
+
+									<label class="line-height-1 blue">
+										<input autocomplete="off"  value="Recibida" type="radio" class="ace" name="tipo" />
+										<span class="lbl"> Recibida</span>
+									</label>
+						</div>									
+								</td>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td>
+									<label class="line-height-1 blue">
 												<input autocomplete="off"  value="Proceso" type="radio" class="ace" name="estatus" />
 												<span class="lbl"> Proceso</span>
-											</label>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-1">
-									<div class="clearfix">
-										<div class="col-sm-12">
-											<label class="line-height-1 blue">
+									</label>
+
+									<label class="line-height-1 blue">
 												<input autocomplete="off"  value="Archivada" type="radio" class="ace" name="estatus" />
 												<span class="lbl"> Archivada</span>
-											</label>
-										</div>
-									</div>
-								</div>				
-			</div>
-			<br><br><br>
-							<div align="center" class="col-sm-12">
-								<label class="control-label" for="carpetas">Carpeta destino: </label>
-								<div class    ="input-group">
+									</label>
+								</td>
+							</tr>
+						</table>
+	
+						<br>
+						<div class="form-group">
+						<label class="control-label" for="carpetas">Carpeta destino: </label>
 									<select name="carpetas" id="carpetas" class="selectpicker show-tick input-sm form-control" data-live-search="true">
-									</select>
-								</div>
-							</div>			
-			<br><br><br>					
-			<div class="clearfix form-actions" align="center">
+									</select>																		
+						</div>											
+
+					
+				</div>
+					<hr>
+
+				<div class="clearfix form-actions" align="center">
 				<div>
-					<button class="btn btn-success" type="submit" onclick="closePickList();" id="prueba">
+					<a class="btn btn-success" type="submit" onclick="send_correspondencia();closePickList()" id="registroCorrespondencia">
 						<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
 					Registrar
-					</button>
+					</a>
 					&nbsp; &nbsp; &nbsp;												
 					<button class="btn" type="reset">
 					<i class="ace-icon fa fa-undo bigger-110"></i>
