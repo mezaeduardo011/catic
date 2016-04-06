@@ -146,6 +146,7 @@ jQuery(function($) {
 });
 
 $(document).ready(function() {
+
     $('#fecha_ingreso').datepicker({
         clearBtn: true,
         autoclose: true,
