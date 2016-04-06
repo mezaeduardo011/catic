@@ -1,36 +1,48 @@
 function send_registro_persona() {
-
-    //alert("/catic/personal/insertPerson?" + request(document.getElementById('divPersona')));
-    if (request(document.getElementById('divPersona')) != "") {
-        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
-    };
-    if (request(document.getElementById('infoHijos')) != "") {
-
-        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_hijo', request(document.getElementById('infoHijos')), null, true);
-
-    };
-    if (request(document.getElementById('infoPadre')) != "") {
-        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadre')), null, true);
-    };
-    if (request(document.getElementById('infoMadre')) != "") {
-        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoMadre')), null, true);
-    };
-    if (request(document.getElementById('infoPadreUnico')) != "") {
-        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('infoPadreUnico')), null, true);
-    };
 }
+
+$("#registrarPersona").click(function() {
+ send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona_empleada', request(document.getElementById('divPersona')), null, true);   
+});
+
+$("#registrarHijo").click(function() {
+ send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_hijo', request(document.getElementById('infoHijos')), null, true);
+});
+$("#registrarAmbosPadres").click(function() {
+    //alert("/catic/personal/insertPerson?" + request(document.getElementById('infoPadreUnico')));
+        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona_padre', request(document.getElementById('infoPadre')), null, true);
+        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona_padre', request(document.getElementById('infoMadre')), null, true);
+        $('#tablaInfoPadres').jqGrid('setGridParam', {
+            url: BASE_URL + "personal/getPadres",
+            datatype: "json"
+        }).trigger("reloadGrid");    
+});
+$("#registrarPadre").click(function() {
+    if (request(document.getElementById('infoPadreUnico')) != "") {
+        send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona_padre', request(document.getElementById('infoPadreUnico')), null, true);
+    };
+        $('#tablaInfoPadres').jqGrid('setGridParam', {
+            url: BASE_URL + "personal/getPadres",
+            datatype: "json"
+        }).trigger("reloadGrid");    
+});
 
 function send_registro_InfoAdicional() {
-    send_ajax('POST', '../../catic/personal/Insert_InfoAdicional', 'response_registro_persona', request(document.getElementById('informacion_adicional')), null, true);
+    send_ajax('POST','../../catic/personal/Insert_InfoAdicional', 'response_registro_infoAdicional', request(document.getElementById('informacion_adicional')), null, true);
 }
-
-function response_registro_persona(response) {
+function response_registro_persona_empleada(response) {
+    hiddenElementos('registrarPersona');send_consulta_info();showElementos('modificarDatos');
     alert("Registro Exitoso");
-
+}
+function response_registro_infoAdicional(response) {
+    alert("Registro Exitoso");
+}
+function response_registro_persona_padre(response) {
+    showElementos('tablaPadresAdd');hiddenElementos('infoPadres');hiddenElementos('infoExtra');showElementos('AgregarOtroPadre');
+   // alert("Registro Exitoso");
 }
 
 function response_registro_hijo(response) {
-    //alert("Registro de hijo exitoso");
     showElementos('tablaHijos');
     hiddenElementos('infoHijos');
     hiddenElementos('infoExtra');
@@ -66,9 +78,8 @@ function response_consulta_hijo(response) {
 
 
 
-function send_consulta_info(id) {
+function send_consulta_info() {
     send_ajax('POST', '../../catic/personal/getInfoDatos', 'response_consulta_info', 'Familiar - Hijo', null, true);
-    showElementos('infoDatosDiv');
 }
 
 
@@ -77,17 +88,15 @@ function response_consulta_info(response) {
     tbl.style.color = '#ffffff';
     if (borrar_datos_tabla('infoDatos')) {
         var len = response.length;
-        var lastRow, row, nombre, apellido, espacio;
+        var lastRow, row, nombre, apellido;
         lastRow = tbl.rows.length;
         row = tbl.insertRow(lastRow);
         nombre = row.insertCell(0);
-        espacio = row.insertCell(1);
-        apellido = row.insertCell(2);
+        apellido = row.insertCell(1);
         nombre.innerHTML = response[i]['nombre'];
-        espacio.innerHTML = '&nbsp;&nbsp;&nbsp;'
         apellido.innerHTML = response[i]['apellido'];
+        showElementos('infoDatosDiv');
     }
-
     return false;
 }
 
@@ -113,14 +122,18 @@ $("#registrarHijo").click(function() {
     })
 
     .done(function(data) {
-
+        //alert(data.length);
+        contador = 0;
         for (var i = 0; i < data.length; i++) {
-            if (data[i]['numeracion'] == 5) {
-
-
+            if (i == 4) {
                 alert('Ya tiene registrado el maximo de hijos');
                 hiddenElementos('AgregarOtro');
-            }
+                }
+            contador ++;
+        }
+        //alert(contador);
+        if(contador < 5 ){
+            alert('registro exitoso');
         }
         $('#tablaInfoHijos').jqGrid('setGridParam', {
             url: BASE_URL + "personal/getHijos",
@@ -148,7 +161,6 @@ jQuery(function($) {
 });
 
 $(document).ready(function() {
-
     $('#fecha_ingreso').datepicker({
         clearBtn: true,
         autoclose: true,
@@ -156,12 +168,11 @@ $(document).ready(function() {
         daysOfWeekHighlighted: "0,1,2,3,4,5,6",
         todayHighlight: true
     })
-        .on('changeDate', function(e) {
-            $('#registro_persona').formValidation('revalidateField', 'fecha_ingreso');
-        });
+    .on('changeDate', function(e) {
+        $('#registro_persona').formValidation('revalidateField', 'fecha_ingreso');
+    });
 
     $('#fecha_nacimiento').datepicker({
-
         clearBtn: true,
         autoclose: true,
         language: "es",
@@ -170,8 +181,18 @@ $(document).ready(function() {
         endDate: "1998/12/31"
 
     })
-        .on('changeDate', function(e) {
-            $('#registro_persona').formValidation('revalidateField', 'fecha_nacimiento');
-        });
+    .on('changeDate', function(e) {
+        $('#registro_persona').formValidation('revalidateField', 'fecha_nacimiento');
+    });
 
+    $('#fecha_nacimiento_hijo').datepicker({
+        clearBtn: true,
+        autoclose: true,
+        language: "es",
+        daysOfWeekHighlighted: "0,1,2,3,4,5,6",
+        todayHighlight: true
+    })
+    .on('changeDate', function(e) {
+        $('#registro_persona').formValidation('revalidateField', 'fecha_nacimiento_hijo');
+    });
 });

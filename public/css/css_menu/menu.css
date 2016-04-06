@@ -4,13 +4,13 @@
     padding: 0;
 }
 #nav {
-    font-family: "Lucida Sans Unicode",Verdana,Arial,sans-serif;
+    font-family: "Arial";
     font-size: 13px;
     height: 36px;
     list-style: none outside none;
     margin: 10px auto;
     text-shadow: 0 -1px 3px #202020;
-    width: 1500px;
+    width: 1250px;
 
     /* border radius */
     -moz-border-radius: 4px;

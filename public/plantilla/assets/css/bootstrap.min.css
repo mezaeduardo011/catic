@@ -837,7 +837,7 @@ html {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Arial", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	line-height: 1.42857143;
 	color: #333;
@@ -2442,14 +2442,14 @@ textarea.input-lg, textarea.form-group-lg .form-control, select[multiple].input-
 	background-color: #333
 }
 .btn-primary {
-	color: #fff;
+color: #fff;
 background: rgba(156,18,3,1);
 background: -moz-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(156,18,3,1)), color-stop(100%, rgba(179,27,0,1)));
 background: -webkit-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
 background: -o-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
 background: -ms-linear-gradient(top, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
-background: linear-gradient(to bottom, rgba(156,18,3,1) 0%, rgba(179,27,0,1) 100%);
+background: linear-gradient(to bottom, rgb(171, 32, 17) 0%, rgb(132, 44, 28) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c1203', endColorstr='#b31b00', GradientType=0 );
 border: 1px solid #000000;
 }

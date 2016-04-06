@@ -1,0 +1,43 @@
+<form action="<?php  echo BASE_URL;?>correspondencia/archivar" method="post">
+<div class="widget-box divBlanco">
+	<div class="alert alert-info" align="center">
+		<h4>Arvhivara la siguiente correspondencia <?php echo $this->_datos[0]['asunto']; ?></h4>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-12">
+					<div>
+						
+ 	<input type="text" hidden value="<?php echo $this->_datos[0]['id_correspondencia']; ?>" name="id_correspondencia">
+
+
+
+							</div><!-- /.col -->
+<br>
+
+			<div align="center">
+				<div>
+					<button class="btn btn-success" type="submit" onclick="closePickList()">
+						<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+					Finalizar
+					</button>
+					&nbsp; &nbsp; &nbsp;			
+					<a class="btn btn-primary" type="submit" onclick="closePickList()">
+					<i class      ="fa fa-reply-all"></i>
+					Salir
+					</a>										
+				</div>
+			</div>
+						</form>
+					</div>
+				</div>
+
+		</div>
+					</div>
+
+		<br>
+	</div>
+	<div id="prod"></div>
+	<div id="resultado" align="center"></div>
+	<div  id='id_fondo_opaco' class="fondo_opaco" style="display:none"></div>

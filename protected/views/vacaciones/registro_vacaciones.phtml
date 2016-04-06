@@ -5,65 +5,50 @@
 <div class="widget-box">
 	<form action="<?php  echo BASE_URL;?>vacaciones/registro_vacaciones" method="post">
 		<div class="alert alert-info" align="center">
-			<h4>Asignacion de vacaciones <i class="fa fa-users fa-lg"></i></h4>
+			<h4>Asignacion de vacaciones <i class="glyphicon glyphicon-calendar"></i></h4>
 		</div>
 		<br>
 			<div class="row">
 				<div class="col-xs-12">
 						<div class="col-sm-12" align="center" id="sandbox-container">
-									<div class="col-sm-4">
+									<div class="col-sm-2">
 										<label>Fecha de solicitud:</label>
-										<div class="col-sm-7 input-group">
+										
 											<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fecha_solicitud" id="fecha_solicitud" type="date" data-date-format="yyyy-mm-dd"  />
-											<span class   ="input-group-addon">
-												<i class      ="fa 	fa-calendar  bigger-110"></i>
-											</span>
-										</div>
+
+										
 									</div>
-									<div class="col-sm-4">
+									<div class="col-sm-2">
 										<label>Fecha de inicio:</label>
-										<div class="col-sm-7 input-group">
 											<input autocomplete="off" type="text" class="input-sm form-control date-picker" name="desde" id="desde" placeholder="Desde"  data-date-format="yyyy-mm-dd"/>
-											<span class   ="input-group-addon">
-												<i class      ="fa 	fa-calendar  bigger-110"></i>
-											</span>
-										</div>
 									</div>								
-									<div class="col-sm-4" align="center">
+									<div class="col-sm-3" align="center">
 									
 										<label>Días hábiles correspondientes:</label>
 										<div class="col-sm-4 input-group">
 											<input autocomplete="off"  class  ="input-sm form-control" name="dias_habiles" id="dias_habiles" type="text"  />
-											<span class   ="input-group-addon">
+											<span class   ="input-group-addon" style="cursor:pointer;">
 												<i class      ="fa 	fa-calculator bigger-110"></i>
 											</span>
 										</div>
 										<br>
-									</div>		
+									</div>
+									<div class="col-sm-2" align="center">
+										<label>Fecha final:</label>
+											<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="hasta" id="hasta" type="date" data-date-format="yyyy-mm-dd" readonly="" />
+
+
+									</div>	
+									<div class="col-sm-2" align="center">
+										<label>Fecha de reincorporacion:</label>
+											<input type="text" class="input-sm form-control date-picker" name="reincorporacion" id="reincorporacion" data-date-format="yyyy-mm-dd" readonly=""/>
+
+
+									</div>																				
+										
 						</div>
 
-						<div class="col-sm-12" align="center">
-									<div class="col-sm-6">
-										<label>Fecha final:</label>
-										<div class="col-sm-5 input-group">
-											<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="hasta" id="hasta" type="date" data-date-format="yyyy-mm-dd" readonly="" />
-											<span class   ="input-group-addon">
-												<i class      ="fa 	fa-calendar  bigger-110"></i>
-											</span>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<label>Fecha de reincorporacion:</label>
-										<div class="col-sm-5 input-group">
-											<input type="text" class="input-sm form-control date-picker" name="reincorporacion" id="reincorporacion" data-date-format="yyyy-mm-dd" readonly=""/>
-											<span class   ="input-group-addon">
-												<i class      ="fa 	fa-calendar  bigger-110"></i>
-											</span>
-										</div>
-									</div>	
-									<br><br><br>
-						<hr>
-						</div>
+
 
 				
 						<div class="" align="center">

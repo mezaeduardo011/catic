@@ -1,34 +1,77 @@
 <!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido -->
 <div class="main-content" >
 	<div class="main-content-inner">
-<div class="widget-box">
-		<div class="alert alert-info" align="center">
-			<h4>Registro de fechas feriadas del año <i class="fa fa-users fa-lg"></i></h4>
-		</div>
-<form action="<?php  echo BASE_URL;?>administracion/registrarFechas" method="post" accept-charset="utf-8">
-<div class="" align="center">
-								
-		<div class="col-sm-12">
-		<label class="control-label " for="fechas">Fechas feriadas:</label>
-			<div class="input-group">
-				<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fechas" id="fechas" type="date" data-date-format="yyyy-mm-dd" />
-				<span class   ="input-group-addon">
-					<i class      ="fa fa-calendar bigger-110"></i>
-				</span>
+		<div class="widget-box">
+			<div class="alert alert-info" align="center">
+				<h4>Registro de fechas feriadas del año <i class="fa fa-users fa-lg"></i></h4>
 			</div>
-		</div>					
+			<br>
+		<div align="center">
+					<a class="btn btn-success btn-next" data-last="Finish" onclick="
+					showElementos('fechas_div');">
+					Registrar fechas
+					<i class="fa fa-calendar bigger-110"></i>
+					</a>	
+		</div>
 
-</div>
-			<br>	<br><br>
-
-							<div align="center"><hr>
-								<button class="btn btn-primary" onclick="send_consulta_hijo();send_registro_persona();" id="registrarHijo">
-								<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
-								Registrar
-								</button>
+				<form action="<?php  echo BASE_URL;?>administracion/registrarFechas" method="post" accept-charset="utf-8">
+				<div id="fechas_div" hidden="">
+						<div class="col-sm-12">
+							<label class="control-label " for="fechas">Fechas feriadas:</label>
+							<div class="input-group">
+								<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="fechas" id="fechas" type="date" data-date-format="yyyy-mm-dd" />
+								<span class   ="input-group-addon">
+									<i class      ="fa fa-calendar bigger-110"></i>
+								</span>
 							</div>
-</form>		
-</div>
+						</div>
+				<br><br>
+						<div align="center"><hr>
+							<button class="btn btn-success" onclick="send_consulta_hijo();send_registro_persona();hiddenElementos('fechas_div');" id="registrarHijo">
+							<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+							Registrar
+							</button>
+						</div>	
+						<hr>				
+				</div>
+
+			</form>	
+	<hr>
+		<div align="center">
+					<a class="btn btn-success btn-next" data-last="Finish" onclick="
+					showElementos('carpetas');">
+					Registrar carpetas para correspondencias.
+					<i class="fa fa-users fa-lg"></i>
+					</a>	
+		</div>	
+		<br>
+
+				<form class="form-inline center" action="<?php  echo BASE_URL;?>administracion/registrarFechas" method="post" accept-charset="utf-8">
+				<div id="carpetas"  align="center" hidden="">
+				<table align="ceter" >
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;
+					<label class="control-label " for="fechas">Nombre de la carpeta:</label></td>
+					<tr>
+						<td>
+						<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control" name="carpeta" id="carpeta" type="text" 
+								 />
+						</td>
+					</tr>
+				</table>
+
+						<div align="center">
+						<hr>
+							<button class="btn btn-success" onclick="send_consulta_hijo();send_registro_persona();hiddenElementos('carpetas');" id="registrarHijo">
+							<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
+							Registrar
+							</button>
+						</div>	
+						<hr>				
+				</div>
+
+			</form>							
+
+		</div>
 	</div>
-</div>	
+</div>
 <!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido -->

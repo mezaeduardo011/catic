@@ -1,37 +1,41 @@
 $(document).ready(function () {
+            var aux; 
             var BASE_URL = "http://localhost/catic/"; 
-            var grid_selector = "#tablaInfoHijos";
-            var grid_pager    = "#tablaInfoHijosDiv";
+            var grid_selector2 = "#tablaInfoHijos";
+            var paginador    = "#tablaInfoHijosDiv";
+            
 
             //resize to fit page size
             $(window).on('resize.jqGrid', function () {
-                $(grid_selector).jqGrid( 'setGridWidth', $("#caja").width() );
+                $(grid_selector2).jqGrid( 'setGridWidth', $("#caja").width() );
             })
             
-            $(grid_selector).jqGrid({
+            $(grid_selector2).jqGrid({
                 url: BASE_URL+"personal/getHijos",
                 mtype: "GET",
                 styleUI : 'Bootstrap',
                 datatype: "json",
                 colModel: [
-                    { label: 'Nombre', name: 'nombre', key: true, width: 200 },
+
+                    { label: 'id', name: 'id_persona', width: 1},
+                    { label: 'Nombre', name: 'nombre', width: 200 },
                     { label: 'Apellido', name: 'apellido', width: 150 },
-                    { label: 'Sexo', name: 'sexo_referencial', width: 150 },
+                    { label: 'Sexo', name: 'sexo', width: 150 },
                     { label: 'Edad', name: 'edad', width: 150 },   
                     { label: 'Fecha de nacimiento', name: 'fecha_nacimiento', width: 200 }
 
-
                 ],
 
-                jsonReader: {repeatitems:false, root:"vacaciones"},
+                jsonReader: {repeatitems:false},
                 viewrecords: true,
                 height: "auto",
                 rowNum: 20,
                 rowList:[10,20,30],
-                pager: grid_pager,
+                pager: paginador,
                 multiselect: true,
                 loadComplete : function() {
                         var table = this;
+                        $(grid_selector2).jqGrid("hideCol", "id_persona");
                         setTimeout(function(){
                             updatePagerIcons(table);
                         }, 0);
@@ -42,47 +46,59 @@ $(document).ready(function () {
 
             });
 
-            jQuery(grid_selector).jqGrid('navGrid',grid_pager,
-                    {   //navbar options
+            jQuery(grid_selector2).jqGrid('navGrid',paginador,
+                    {  
                         edit:false,
                         editicon: 'ace-icon fa fa-pencil blue',
                         add:false,
                         addicon: 'ace-icon fa fa-plus-circle purple',
                         del: false,
                         delicon: 'ace-icon fa fa-trash-o red',
-                        search: true,
+                        search: false,
                         searchicon : 'ace-icon fa fa-search orange',
-                        refresh: true,
+                        refresh: false,
                         refreshicon : 'ace-icon fa fa-refresh green',
-                        view: true,
+                        view: false,
                         viewicon : 'ace-icon fa fa-search-plus grey',
-                    },
-                    {
-                        //search form
-                        recreateForm: true,
-                        afterShowSearch: function(e){
-                            var form = $(e[0]);
-                            form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
-                            style_search_form(form);
+                        cloneToTop: false
+                    }
+            )
+
+            $(grid_selector2).navButtonAdd(paginador,{
+                id: "eliminarHijo",
+                buttonicon: "ace-icon fa fa-trash-o red",
+                title: "Eliminar Hijo",
+                caption: 'Eliminar Hijo',
+                position: "last",
+                onClickButton: eliminar_hijo
+            });
+
+            function eliminar_hijo() {
+                var columna_check = $(grid_selector2).jqGrid("getGridParam", "selarrrow")
+                                
+                if(columna_check.length>0){
+                    var id_persona = [];
+                    for(var i=0,ids=columna_check.length;i<ids; i++){
+                        id_persona.push($(grid_selector2).jqGrid('getCell', columna_check[i], 'id_persona'));
+                    }
+                }
+
+                if (id_persona!=undefined && id_persona!=null) {
+
+                    $.ajax({
+                        type: 'post',
+                        url: BASE_URL +'personal/eliminarHijo',
+                        data: {id_persona},                
+                        success: function (data){
+                            alert(data);
+                            $(grid_selector2).jqGrid('setGridParam',{datatype:'json'}).trigger('reloadGrid');          
                         },
-                        afterRedraw: function(){
-                            style_search_filters($(this));
+                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            alert(textStatus);
                         }
-                        ,
-                        multipleSearch: true,
-                        /**
-                        multipleGroup:true,
-                        showQuery: true
-                        */
-                    },
-                    {
-                        //view record form
-                        recreateForm: true,
-                        beforeShowForm: function(e){
-                            var form = $(e[0]);
-                            form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
-                        }
-                    })
+                    });
+                }
+            }
 
             //replace icons with FontAwesome icons like above
                 function updatePagerIcons(table) {
@@ -103,4 +119,3 @@ $(document).ready(function () {
 
 
         });
- 

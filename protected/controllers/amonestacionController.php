@@ -6,6 +6,7 @@
 			parent::__construct();
 			$this->_amonestacion = $this->loadModel('amonestacion');
 			$this->_personal = $this->loadModel('personal');
+			$this->_pdf = $this->getLibrary('dompdf','dompdf_config.inc');
 			$this->_sidebar_menu =array(
 					array(
 				'id' => 'insert_new',
@@ -37,46 +38,30 @@
 		}
 
 		function registro_amonestacion(){
-					unset($_POST['dynamic-table_length']);
-					$checkSeleccionado = $this->valCheckboxUnico( $_POST['contador'] );
-					$contador=$_POST['contador'];	
-					unset($_POST['contador']);								
-					$arregloValido = $this->ConvertirArray($_POST);
-					$amonestacion=$this->borrarCheckbox($contador,$arregloValido);
-					$this->_amonestacion->registroAmonestacion($amonestacion,$checkSeleccionado);
+			unset($_POST['dynamic-table_length']);			
+			$amonestacion = $this->ConvertirArray($_POST);
+			//$this->imprimirArreglo($amonestacion);
+			$this->_amonestacion->registroAmonestacion($amonestacion);					
+			$this->_view->redirect('amonestacion/listar_amonestaciones');
+
 
 		}
 
-		function consulta_amonestaciones(){
-			$this->_view->setJs(array(
-			"Librerias/jquery.dataTables","Librerias/jquery.dataTables.bootstrap","Librerias/dataTables.tableTools",
-			"Librerias/dataTables.colVis","tables","pickList"));
-
-			$listado = $this->_amonestacion->getAmonestaciones();
-			$this->_view->_listado = $listado;
+		function listar_amonestaciones(){
+			$this->_view->setJs(array("pickList","Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","amonestacion/tablaAmonestaciones"));
+			$this->_view->setCss(array("ui.jqgrid"));
 			$this->_view->render('consulta_amonestaciones','','',$this->_sidebar_menu);
 
 		}
 
-		function confirmacionAjax(){
+		function consulta_amonestaciones(){
+			$listado = $this->_amonestacion->getAmonestaciones();
+			echo json_encode(array("vacaciones"=>$listado)); 
 
-			$data['tipo_amonestacion_confirmacion']=$_POST['tipo_amonestacion'];
-			$data['coordinacion_confirmacion']= $_POST['coordinacion'];
-			echo json_encode($data);
-				//$this->_view->render('confirmacion_amonestacion','','pickList');
-				
-			
-		}
+		}		
+		
 
-		function confirmacionVista(){
-
-				$this->_view->render('confirmacion_amonestacion','','pickList');
-				
-			
-		}				
-
-		function selectTipoAmonestaciones() {
-			
+		function selectTipoAmonestaciones() {			
 					$result = $this->_amonestacion->getTipoAmonestacion();
 					$data = array();
 
@@ -85,7 +70,6 @@
 					}
 
 					echo json_encode($data);
-
 		}		
 
 		function SelectCoordinaciones(){

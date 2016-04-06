@@ -11,24 +11,59 @@
 	public function insertPersonModel($persona){
 			$query=$this->query = "SELECT registro_persona(:tipo_persona,:nombre,:nombre2,:apellido,:apellido2,:sexos,
 			:fecha_nacimiento,:cedula,:fecha_ingreso,:telefono,:correo,:direccion,:ubicacion,:otro_telefono,:cargo,:coordinacion);";
-			$this->registroPdo($query,$persona);
+			return $this->registroPdo($query,$persona);
 	}
+
+ 	public function eliminarHijo($id_hijo){
+ 		
+ 		$query = "DELETE FROM persona where id_persona = $id_hijo";
+ 		$this->selectPdo($query);
+
+ 	}
+
+ 	public function eliminarPadre($id_padre){
+ 		
+ 		$query = "DELETE FROM persona where id_persona = $id_padre";
+ 		$this->selectPdo($query);
+
+ 	}
 
 	public function InsertInfoAdicional($infoAdicional,$arregloPost){
 			$query=$this->query = "SELECT registro_informacion_adicional(:vehiculos,:vivienda,'$arregloPost',:medicina_text);";
 			$this->registroPdo($query,$infoAdicional);
 	}
-	
-	public function getPersonal(){	
-			return $this->selectPdo($query="SELECT * FROM personal_completo");
+
+	public function actualizarEmpleado($persona){
+		$query=$this->query = "SELECT update_persona(:0,:cedula,:nombre1,:nombre2,:apellido1,:apellido2,:sexo,:fecha_nacimiento,:fecha_ingreso,:telefono,:otro_telefono,:correo,:cargo,:coordinacion,:parroquia,:ubicacion);";
+		return $this->registroPdo($query,$persona);
+	}
+		
+	public function getPersonal($cedula=false){
+			if($cedula==true){
+				return $this->selectPdo($query="SELECT * FROM personal_completo WHERE cedula='".$cedula."'");
+			}else{
+				return $this->selectPdo($query="SELECT * FROM personal_completo");
+			}			
 	}
 
 	public function getInfoDatosModel(){				
-			return $this->selectPdo($query=" SELECT nombre,apellido,id_persona FROM persona ORDER BY id_persona DESC LIMIT 1;");
+			return $this->selectPdo(
+				$query="SELECT p.nombre,p.apellido,p.id_persona,pe.id_persona_empleada 
+				FROM persona as p INNER JOIN persona_empleada AS pe ON pe.id_persona = p.id_persona ORDER BY id_persona DESC LIMIT 1;");
 	}
 
-	public function getHijosModel(){				
-			return $this->selectPdo($query = "SELECT * FROM hijos_registro");	
+	public function getHijosModel($id_persona_empleada=false){
+			if ($id_persona_empleada != false){
+			return $this->selectPdo($query = "SELECT * FROM hijos_registro WHERE id_persona_empleada =
+				$id_persona_empleada");	
+		}
+	}
+
+	public function getPadresModel($id_persona_empleada=false){				
+			if ($id_persona_empleada != false){
+			return $this->selectPdo($query = "SELECT * FROM padres_registro WHERE id_persona_empleada =
+				$id_persona_empleada");	
+		}				
 	}
 			
 	public function getDireccionEstado(){

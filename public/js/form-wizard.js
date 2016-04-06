@@ -133,17 +133,9 @@ $('#my-wizard')
       
     //  if (isValidStep === false || isValidStep === null) {
     //  e.preventDefault();
-    //  }else{
-    //   if (step==1) { 
-    //      send_registro_persona();
-    //   };
-    //     showElementos('modificarDatos');
-    //     send_consulta_info();
     //  }
 })
-.on('changed.fu.wizard', function() {
-
-  
+.on('changed.fu.wizard', function(e,data) {
 })
 .on('finished.fu.wizard', function(e) {
    send_registro_InfoAdicional();

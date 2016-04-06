@@ -15,10 +15,10 @@
 				return $result;			
 		}
 
-		public function registroAmonestacion($amonestacion,$id_persona){
+		public function registroAmonestacion($amonestacion){
 				$query=$this->query = "INSERT INTO amonestaciones(tipo_amonestacion_referencial,coordinacion_referencial,fecha,motivo,id_persona)
 						                VALUES
-						                ( :tipo_amonestacion,:coordinacion,:fecha,:motivo,'$id_persona'); ";
+						                ( :tipo_amonestacion,:coordinacion,:fecha,:motivo,:id_persona); ";
 				$this->registroPdo($query,$amonestacion);
 		}
 
@@ -26,7 +26,11 @@
 				$query = "SELECT * FROM total_amonestaciones";
 				$result=$this->selectPdo($query);
 				return $result;
-		}					
+		}
+			
+		public function amonestacionPersona($id_persona,$id_amonestacion){				
+				return $result=$this->selectPdo($query = "SELECT * FROM amonestacion_persona WHERE id_persona=".$id_persona." AND id_amonestaciones=".$id_amonestacion."");;
+		}						
 
 }
 ?>

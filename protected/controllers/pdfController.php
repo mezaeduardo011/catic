@@ -6,6 +6,7 @@
 			parent::__construct();
 			$this->_pdf = $this->getLibrary('dompdf','dompdf_config.inc');
 			$this->_personal = $this->loadModel('personal');
+			$this->_amonestacion = $this->loadModel('amonestacion');
 	
 		}
 		
@@ -23,5 +24,11 @@
 			$this->_view->render('pdfDetallePersona', 'personal', 'pdf','');
 
 		}
+
+		function pdfAmonestacion($id_persona,$id_amonestacion){
+			$datos = $this->_amonestacion->amonestacionPersona($id_persona,$id_amonestacion);
+			$this->_view->_datos = $datos;					
+			$this->_view->render('pdfAmonestacion', 'amonestacion', 'pdf','');
+		}			
 
 }?>

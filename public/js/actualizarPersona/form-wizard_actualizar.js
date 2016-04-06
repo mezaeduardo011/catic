@@ -180,13 +180,13 @@ $('#my-wizard')
 
      var isValidStep = fv.isValidContainer($container);
       
-     // if (isValidStep === false || isValidStep === null) {
-     // e.preventDefault();
-     // }else{
-        //send_registro_persona();
-        //showElementos('modificarDatos');
-        //send_consulta_info();
-     // }
+     if (isValidStep === false || isValidStep === null) {
+     e.preventDefault();
+     }else{
+        send_registro_persona();
+        showElementos('modificarDatos');
+        send_consulta_info();
+     }
 })
 
 function show(idObj, effectType, time){//effectType can be:'blind','bounce','clip','drop','explode','fold','highlight','puff','pulsate','scale','shake','size' ó 'slide'
@@ -217,3 +217,4 @@ function hide(idObj, effectType, time){//effectType can be:'blind','bounce','cli
 function IsNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
+

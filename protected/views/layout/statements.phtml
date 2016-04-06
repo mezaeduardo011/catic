@@ -43,6 +43,32 @@
                                             </a>
                                         </div>
                             </div><!-- /.navbar-container -->
+     <ul class="nav navbar-nav pull-center">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                                    <i class="fa fa-user"></i>
+                                    <?php echo  utf8_decode(Session::get('user') );?>
+                                    <span class="caret"></span>
+                                </a>
+                                
+                                <ul class="dropdown-menu" role="menu">
+ 
+                                    <li>
+                                        <a href="page-settings.html">
+                                            <i class="fa fa-cogs"></i>
+                                           Cambiar contraseña
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="<?php echo $_view_params['login']['href'];?>">
+                                            <i class="fa <?php echo $_view_params['login']['icon'];?>"></i>
+                                            <?php echo $_view_params['login']['name']; ?>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>                                
                     </div><?php // echo '<pre>';print_r($_view_params['menu'][0]['submenu'][3]['submenuHijo']);echo '</pre>';die();    ?>
 
                                 <ul id="nav">
@@ -54,7 +80,7 @@
 
                                     <li>
                                     <a href="<?php echo $_view_params['menu'][$i]['link'] ;?>"><?php  echo $_view_params['menu'][$i]['title']; ?></a>
-                                    <?php  if ($_view_params['menu'][$i]['submenu']):?>
+                                    <?php  if (isset($_view_params['menu'][$i]['submenu'])):?>
                                      <ul class="submenu">
                                     
                                     <?php  for ($j= 0; $j < count($_view_params['menu'][$i]['submenu']); $j++):?>
