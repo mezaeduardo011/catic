@@ -23,7 +23,18 @@
 				$this->registroPdo($query,$correspondencia);			
 		}
 
-		public function getCorrespondencia(){
+		public function getCorrespondencia($id=false){
+			if (isset($id) && $id!=false) {
+		$query = "SELECT ROW_NUMBER() OVER (ORDER BY id_correspondencia) AS numeracion,
+				*,referencia as Coordinacion, (select referencia from referencial where id_referencial = 23) as Status 
+				FROM correspondencia
+				inner join referencial on id_referencial= id_coordinacion
+				WHERE id_correspondencia =".$id."
+				ORDER BY id_correspondencia DESC";
+
+				$result=$this->selectPdo($query);
+				return $result;			
+			}else{
 		$query = "SELECT ROW_NUMBER() OVER (ORDER BY id_correspondencia) AS numeracion,
 				*,referencia as Coordinacion, (select referencia from referencial where id_referencial = 23) as Status 
 				FROM correspondencia
@@ -32,6 +43,8 @@
 
 				$result=$this->selectPdo($query);
 				return $result;			
+			}
+		
 		}
 
 
@@ -47,6 +60,8 @@
 				return $result;			
 		}
 
-
+		public function arvhivarModel($id){			
+					    return $result=$this->selectPdo($query = "UPDATE correspondencia SET estatus=106 WHERE id_correspondencia = $id");
+				}
 
 }?>

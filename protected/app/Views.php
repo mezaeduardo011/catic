@@ -226,7 +226,7 @@
 						      ),array(
 					            'id' => 'adiministracion',
 					            'title'   => 'Sistema',
-					            'link'=> BASE_URL . 'administracion'
+					            'link'=> BASE_URL . 'administracion' . DS . 'usuarios'
 						      )				      
 					  	 );	
 					 }

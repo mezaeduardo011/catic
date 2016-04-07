@@ -22,6 +22,8 @@ $(document).ready(function () {
                     { label:'Tipo', name: 'tipo', width: 50 },  
                     { label:'Estatus', name: 'estatus', width: 50 },                                     
                     { label:'Coordinacion encargada', name: 'coordinacion', width: 120 },
+                    { label:'Coordinacion encargada', name: 'id_correspondencia', width: 1 },
+
                 ],
 
                 jsonReader: {repeatitems:false, root:"correspondencia"},
@@ -32,6 +34,7 @@ $(document).ready(function () {
                 pager: grid_pager,
                 multiselect: true,
                 loadComplete : function() {
+                        $(grid_selector).jqGrid("hideCol", "id_correspondencia");
                         var table = this;
                         setTimeout(function(){
                             updatePagerIcons(table);
@@ -57,11 +60,11 @@ $(document).ready(function () {
                         addicon: 'ace-icon fa fa-plus-circle purple',
                         del: false,
                         delicon: 'ace-icon fa fa-trash-o red',
-                        search: true,
+                        search: false,
                         searchicon : 'ace-icon fa fa-search orange',
-                        refresh: true,
+                        refresh: false,
                         refreshicon : 'ace-icon fa fa-refresh green',
-                        view: true,
+                        view: false,
                         viewicon : 'ace-icon fa fa-search-plus grey',
                     },
                     {
@@ -107,6 +110,38 @@ $(document).ready(function () {
                         if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
                     })
                 }
+    $(grid_selector).navButtonAdd(grid_pager,
+    {
+        buttonicon: "ace-icon fa fa-search-plus grey",
+        title: "Archivar correspondencia",
+        caption: 'Archivar correspondencia',
+        position: "last",
+        onClickButton: archivar
+    });
+
+    function archivar() {
+        var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
+                                
+        if(columna_check.length>0){
+            var id_correspondencia = [];
+            for(var i=0,ids=columna_check.length;i<ids; i++){
+                id_correspondencia.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_correspondencia'));
+            }
+        }
+
+    if (id_correspondencia!=undefined && id_correspondencia!=null) {
+              pickOpen('prod', 'id_prod',BASE_URL+'correspondencia/archivar/'+id_correspondencia,
+
+        90, 96, 85, 1);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
+
+        llenarEstado(id_correspondencia);
+    }else{
+        alert('Por favor seleccione una fila');
+    }
+
+
+
+    }                
 
 
         });

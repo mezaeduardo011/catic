@@ -28,8 +28,9 @@ $(document).ready(function () {
                     { label: 'Nombres', name: 'nombres', width: 120 ,"search":true},
                     { label:'Desde', name: 'desde', width: 50,"search":true },
                     { label:'Hasta', name: 'hasta', width: 50 ,"search":true},
-                    { label:'Dias', name: 'dias', width: 20,"search":true },
-                    { label:'Horas', name: 'horas', width: 20,"search":true },
+                    { label:'Duracion', name: 'duracion_total', width: 25,"search":true },
+                    { label: 'Estatus', name: 'estatus', key: true, width: 40,"search":true },
+                     { label: '#', name: 'id_permisos', key: true, width: 1,"search":false },
 
                 ],
 
@@ -37,6 +38,8 @@ $(document).ready(function () {
                 pager: grid_pager,
                 multiselect: true,
                 loadComplete : function() {
+
+                     $(grid_selector).jqGrid("hideCol", "id_permisos");
                         var table = this;
                         setTimeout(function(){
                             updatePagerIcons(table);
@@ -56,11 +59,11 @@ $(document).ready(function () {
                         addicon: 'ace-icon fa fa-plus-circle purple',
                         del: false,
                         delicon: 'ace-icon fa fa-trash-o red',
-                        search: true,
+                        search: false,
                         searchicon : 'ace-icon fa fa-search orange',
-                        refresh: true,
+                        refresh: false,
                         refreshicon : 'ace-icon fa fa-refresh green',
-                        view: true,
+                        view: false,
                         viewicon : 'ace-icon fa fa-search-plus grey',
                     },
                     {
@@ -106,6 +109,44 @@ $(document).ready(function () {
                         if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
                     })
                 }
+
+
+    $(grid_selector).navButtonAdd(grid_pager,
+    {
+        buttonicon: "ace-icon fa fa-times-circle red",
+        title: "Finalizar permiso o reposo",
+        caption: 'Finalizar permiso o reposo',
+        position: "last",
+        onClickButton: finalizar_actividad
+    });
+
+    function finalizar_actividad() {
+        var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
+                                
+        if(columna_check.length>0){
+            var id_permisos = [];
+            var status_actividad = [];
+            for(var i=0,ids=columna_check.length;i<ids; i++){
+                id_permisos.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_permisos'));
+                status_actividad.push($(grid_selector).jqGrid('getCell', columna_check[i], 'status_actividad'));
+            }
+        }
+        if (id_permisos!=undefined && id_permisos!=null) {
+            if (status_actividad=="Actividada finalizada") {
+               alert('Este permiso ya fue finalizado');
+            }
+            else if(status_actividad=="Cancelada"){
+               alert('Este permiso fue cancelado');
+            }
+            else{ 
+                 pickOpen('prod', 'id_prod',BASE_URL+'permisos/finPermiso/'+id_permisos+"/TRUE",
+                60, 30, 300, 80);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);                     
+            }
+
+        }else{
+            alert('Seleccione un permiso o reposo');
+        }
+    }                 
 
 
         });

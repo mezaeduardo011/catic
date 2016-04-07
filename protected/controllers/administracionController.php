@@ -53,5 +53,10 @@
 			$this->_view->render('personalCompleto','','pickList');
 		}
 
+	function agregar($id= FALSE){			
+
+			$this->_administracion->agregarUsuario($id);			
+		}			
+
 	}
 ?>

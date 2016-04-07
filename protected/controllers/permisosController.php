@@ -50,4 +50,15 @@
 			$listado = $this->_permisos->getPermisos();
 			echo json_encode(array("vacaciones"=>$listado)); 
 		}		
+
+	function finPermiso($id= FALSE){
+		if(isset($id)&& !empty($id)){	
+				$this->_view->setJs(array("pickList"));		
+				$datos = $this->_permisos->getPermisos($id);
+				$this->_view->_datos = $datos;				
+				$this->_view->render('finalizar_permiso','','pickList');		
+		}else {
+			$this->_permisos->finalizarPermiso($_POST['id_permiso'],true);			
+		}
+	}		
 }?>

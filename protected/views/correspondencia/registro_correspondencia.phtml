@@ -6,7 +6,7 @@
 			<h4>Registro de correspondencia <i class="fa fa-envelope fa-lg"></i></h4>
 		</div>
 		<!-- PAGE CONTENT BEGINS -->
-		<form class="form-inline center" role="form"  method="post" id="formulario">
+		<form class="form-inline center" role="form"  method="post" id="formularioCorrespondencia" name="formularioCorrespondencia">
 			<br>
 					
 
@@ -96,7 +96,7 @@
 
 				<div class="clearfix form-actions" align="center">
 				<div>
-					<a class="btn btn-success" type="submit" onclick="send_correspondencia();" id="registroCorrespondencia">
+					<a class="btn btn-success" type="submit" onclick="send_correspondencia();closePickList();enviar();" id="registroCorrespondencia">
 						<i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
 					Registrar
 					</a>

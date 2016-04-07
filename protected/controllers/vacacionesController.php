@@ -136,6 +136,28 @@
 			$cancelada = $this->_vacaciones->cancelar_vacaciones($vacaciones_persona);
 			echo json_encode($vacaciones_persona);
 		}
+
+	function finVacaciones($id= FALSE){					
+		if(isset($id)&& !empty($id)){	
+				$this->_view->setJs(array("pickList"));		
+				$datos = $this->_vacaciones->getVacaciones($id);
+				$this->_view->_datos = $datos;				
+				$this->_view->render('finalizar_vacaciones','','pickList');		
+		}else {
+			$this->_vacaciones->finalizarVacaciones($_POST['id_vacaciones'],TRUE);			
+		}
+	}
+
+	function cancelarVacaciones($id= FALSE){					
+		if(isset($id)&& !empty($id)){	
+				$this->_view->setJs(array("pickList"));		
+				$datos = $this->_vacaciones->getVacaciones($id);
+				$this->_view->_datos = $datos;				
+				$this->_view->render('finalizar_vacaciones','','pickList');		
+		}else {
+			$this->_vacaciones->finalizarVacaciones($_POST['id_vacaciones'],false);			
+		}
+	}	
 	
 	}
 ?>

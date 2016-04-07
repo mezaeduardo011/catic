@@ -25,16 +25,18 @@ $(document).ready(function () {
 
         colModel: [
 
-            { label: 'id', name: 'id_persona', key: true, width: 1,"search":false },
-            { label: '#', name: 'numeracion', key: true, width: 20,"search":false },
-            { label: 'Coordinacion', name: 'coordinacion', width: 110 ,"search":true},
-            { label: 'Nombres', name: 'nombres', width: 120 ,"search":true},
-            { label:'Fecha de solicitud', name: 'fecha_solicitud', width: 110,"search":true },
-            { label:'Inicio', name: 'desde', width: 70,"search":true },
-            { label:'Fin', name: 'hasta', width: 70 ,"search":true},
-            { label:'Reincorporacion', name: 'reincorporacion', width: 100,"search":true },
-            { label:'Dias hábiles', name: 'dias_correspondientes', width: 70,"search":true },
-
+            { label: 'id', name: 'id_persona', key: true, width: 10,"search":false },
+             
+            { label: '#', name: 'numeracion', key: true, width: 150,"search":false },            
+            { label: 'Nombres', name: 'nombres', width: 800 ,"search":true},
+            { label: 'Coordinacion', name: 'coordinacion', width: 800 ,"search":true},
+            { label:'Fecha de solicitud', name: 'fecha_solicitud', width: 600,"search":true },
+            { label:'Inicio', name: 'desde', width: 600,"search":true },
+            { label:'Fin', name: 'hasta', width: 600 ,"search":true},
+            { label:'Reincorporacion', name: 'reincorporacion', width: 600,"search":true },
+            { label:'Dias hábiles', name: 'dias_correspondientes', width: 600,"search":true },
+            { label:'Estatus', name: 'estatus', width: 600,"search":true },
+            { label: 'id', name: 'id_vacaciones', key: false, width: 0,"search":false },
         ],
 
         jsonReader: {repeatitems:false, root:"vacaciones"},
@@ -46,6 +48,7 @@ $(document).ready(function () {
 
             var table = this;
             $(grid_selector).jqGrid("hideCol", "id_persona");
+            $(grid_selector).jqGrid("hideCol", "id_vacaciones");
 
             //Para asignarle a la tabla estilo de botones bootstrap
             setTimeout(function(){
@@ -59,6 +62,7 @@ $(document).ready(function () {
         multiboxonly: true
 
     });
+ 
 
     //Funcionamiento del filtro de busqueda para que no distinga mayusculas ni minusculas
     jQuery(grid_selector).jqGrid('filterToolbar',{"stringResult":true});
@@ -72,14 +76,14 @@ $(document).ready(function () {
         addicon: 'ace-icon fa fa-plus-circle purple',
         del: false,
         delicon: 'ace-icon fa fa-trash-o red',
-        search: true,
+        search: false,
         searchicon : 'ace-icon fa fa-search orange',
-        refresh: true,
+        refresh: false,
         refreshicon : 'ace-icon fa fa-refresh green',
-        view: true,
+        view: false,
         viewicon : 'ace-icon fa fa-search-plus grey',
         position: 'left',
-        cloneToTop: true
+        cloneToTop: false
     },
     {
         //Parametros de los campos de busqueda
@@ -111,15 +115,6 @@ $(document).ready(function () {
         }
     })
 
-    // Primer Boton Personalizado para cancelar vacaciones
-    $(grid_selector).navButtonAdd(grid_pager,
-    {
-        buttonicon: "ace-icon fa fa-trash-o red",
-        title: "Cancelar Vacaciones",
-        caption: '',
-        position: "last",
-        onClickButton: CancelarVacaciones
-    });
 
     //Botones de Bootstrap
     function updatePagerIcons(table) {
@@ -139,78 +134,76 @@ $(document).ready(function () {
         })
     }
 
-    //Se ejecuta cuando se pulsa el boton cancelar vacaciones
-    function CancelarVacaciones() {
+    $(grid_selector).navButtonAdd(grid_pager,
+    {
+        buttonicon: "ace-icon fa fa-times-circle red",
+        title: "Finalizar vacaciones",
+        caption: 'Finalizar vacaciones',
+        position: "last",
+        onClickButton: finalizar_vacaciones
+    });
+
+    function finalizar_vacaciones() {
         var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
                                 
         if(columna_check.length>0){
-            var vacaciones_canceladas = [];
+            var id_vacaciones = [];
+            var estatus = [];
             for(var i=0,ids=columna_check.length;i<ids; i++){
-                var personas = $(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona');
-                vacaciones_canceladas.push(personas);
+                id_vacaciones.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_vacaciones'));
+                estatus.push($(grid_selector).jqGrid('getCell', columna_check[i], 'estatus'));
             }
         }
-
-        //alert ("id de la personas: " + vacaciones_canceladas.join(", ") + "; Columna Seleccionadas: " + columna_check.join(", "));
-
-        $("#vacaciones_canceladas").html(vacaciones_canceladas.join(", "));
-
-        $("#dialog-confirm").dialog({
-            height:100,
-            modal:true,
-            buttons:{
-
-                'Cancel': function(){
-
-                    $(this).dialog('close');
-
-                },
-
-                'Confirm': function(){
-
-                    //alert(vacaciones_canceladas);
-                    
-                    $.ajax({
-
-                        type: "POST",
-                        url:  BASE_URL +'vacaciones/cancelar_vacaciones',
-
-                        data: 
-                        { 
-                            Columna: JSON.stringify(columna_check),
-                            id_persona: JSON.stringify(vacaciones_canceladas)
-                        },
-
-                        dataType: "json",
-
-                        success: function(msg){
-                            $("#dialog-confirm").dialog('close');
-
-                            $(grid_selector).jqGrid('setGridParam', {
-                                url: BASE_URL+"vacaciones/personal_vacaciones",
-                                datatype: "json"
-                            }).trigger("reloadGrid");
-
-                            alert('Vacacion Cancelada');
-
-                        },
-
-                        error: function(res, status, exeption) {
-                            alert(JSON.stringify(res));
-                            $("#dialog-confirm").dialog('close');
-                        }
-
-                    });
-                }
-            },
-            show:{
-                effect:"blind",
-                duration: 300
-            },
-            hide:{
-                effect:"explode",
-                duration: 500
+        if (id_vacaciones!=undefined && id_vacaciones!=null) {
+            if (estatus=="Finalizadas") {
+               alert('Estas vacaciones ya fueron finalizadas');
             }
-        });
-    }
+            else if(estatus=="Canceladas"){
+               alert('Estas vacaciones fueron canceladas');
+            }
+            else{ 
+                 pickOpen('prod', 'id_prod',BASE_URL+'vacaciones/finVacaciones/'+id_vacaciones+"/TRUE",
+                60, 30, 300, 80);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);                     
+            }
+
+        }else{
+            alert('Seleccione una de las vacaciones registradas');
+        }
+    } 
+    $(grid_selector).navButtonAdd(grid_pager,
+    {
+        buttonicon: "ace-icon fa fa-times-circle red",
+        title: "Cancelar vacaciones",
+        caption: 'Cancelar vacaciones',
+        position: "last",
+        onClickButton: cancelar_vacaciones
+    });
+
+    function cancelar_vacaciones() {
+        var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
+                                
+        if(columna_check.length>0){
+            var id_vacaciones = [];
+            var estatus = [];
+            for(var i=0,ids=columna_check.length;i<ids; i++){
+                id_vacaciones.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_vacaciones'));
+                estatus.push($(grid_selector).jqGrid('getCell', columna_check[i], 'estatus'));
+            }
+        }
+        if (id_vacaciones!=undefined && id_vacaciones!=null) {
+            if (estatus=="Finalizadas") {
+               alert('Estas vacaciones ya fueron finalizadas');
+            }
+            else if(estatus=="Canceladas"){
+               alert('Estas vacaciones fueron canceladas');
+            }
+            else{ 
+                 pickOpen('prod', 'id_prod',BASE_URL+'vacaciones/cancelarVacaciones/'+id_vacaciones+"/TRUE",
+                60, 30, 300, 80);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);                     
+            }
+
+        }else{
+            alert('Seleccione una de las vacaciones registradas');
+        }
+    }    
 });

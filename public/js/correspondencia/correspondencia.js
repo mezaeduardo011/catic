@@ -37,3 +37,6 @@ $("#registroCorrespondencia").click(function() {
             datatype: "json"
         }).trigger("reloadGrid");
 });
+
+
+

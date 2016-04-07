@@ -25,7 +25,7 @@ $(document).ready(function () {
 
         colModel: [
 
-            { label: 'id', name: 'id_persona', key: true, width: 1,"search":false },
+            { label: 'id', name: 'id_persona', key: true, width: 25,"search":false },
             { label: 'id_persona_empleada', name: 'id_persona_empleada', key: true, width: 1,"search":false },
             { label: 'cedula', name: 'cedula', key: true, width: 20,"search":true },
             { label: 'Nombres', name: 'nombres', key: true, width: 20,"search":true },
@@ -44,7 +44,7 @@ $(document).ready(function () {
         loadComplete : function() {
 
             var table = this;
-            $(grid_selector).jqGrid("hideCol", "id_persona");
+             $(grid_selector).jqGrid("hideCol", "id_persona");
              $(grid_selector).jqGrid("hideCol", "id_persona_empleada");
 
             //Para asignarle a la tabla estilo de botones bootstrap
@@ -56,7 +56,10 @@ $(document).ready(function () {
 
             },
         beforeSelectRow: function(rowid,e){
+
             jQuery(grid_selector).jqGrid('resetSelection');
+            
+            enviar_id_persona()
             return (true);
         },
 
@@ -121,6 +124,54 @@ $(document).ready(function () {
         }
     })
 
+
+    $(grid_selector).navButtonAdd(grid_pager,
+    {
+        buttonicon: "ace-icon fa fa-trash-o red",
+        title: "Agregar usuario",
+        caption: 'Agregar usuario',
+        position: "last",
+        onClickButton: agregar
+    });
+
+    function agregar() {
+        var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
+                                
+        if(columna_check.length>0){
+            var id_persona = [];
+            for(var i=0,ids=columna_check.length;i<ids; i++){
+                var personas = $(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona');
+                id_persona.push(personas);
+            }
+        }
+
+    if (id_persona!=undefined && id_persona!=null) {
+        closePickList();
+              pickOpen('prod', 'id_prod',BASE_URL+'administracion/agregar/'+id_persona,
+
+        93, 30, 50, 16);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
+             
+    }else{
+        alert('Por favor seleccione una fila');
+    }
+
+    }
+
+function enviar_id_persona() {  
+    var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")               
+    if(columna_check!=null){        
+        var id_persona = [];
+        for(var i=0,ids=columna_check.length;i<ids; i++){
+        id_persona.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona'));
+        alert(id_persona);
+        }
+    }
+      
+
+        //  window.open(BASE_URL+'pdf/pdfDetallePersona/'+id_persona+'/'+id_persona_empleada);
+
+
+}  
                 function updatePagerIcons(table) {
                     var replacement = 
                     {

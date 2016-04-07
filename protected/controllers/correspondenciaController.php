@@ -63,7 +63,18 @@
 						$data[$i] = array("value"=>$result[$i]['id_carpeta_correspondencia'],"option"=>$result[$i]['carpeta']);
 					}
 					echo json_encode($data);
-		}		
+		}
+
+	function archivar($id= FALSE){				
+		if(isset($id)&& !empty($id)){	
+				$this->_view->setJs(array("pickList"));		
+				$datos = $this->_correspondencia->getCorrespondencia($id);
+				$this->_view->_datos = $datos;				
+				$this->_view->render('archivar','','pickList');		
+		}else {
+			$this->_correspondencia->arvhivarModel($_POST['id_correspondencia'],TRUE);			
+		}
+	}				
 
 
 }?>

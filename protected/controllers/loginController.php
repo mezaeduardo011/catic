@@ -26,8 +26,13 @@
 				 	exit();
 			    }			    				
 
+				$usuario = $this->_login->getUser($_POST['user_name'], false);
+
+				if ($usuario['contraseña']=="nueva") {
+					$this->_login->updatePass($_POST['password'], $usuario[0]);
+				}
+
 				$data = $this->_login->getUser($_POST['user_name'], $_POST['password']);
-						
 				if ($data==null || $data=="") {
 			 		$this->_view->_error = 'El usuario o contraseña no existen.';
 				 	$this->_view->render('access', '','login');
@@ -43,11 +48,11 @@
 				
 				Session::set('time', time());
 
-				 switch ($data['perfil_referencial']) {
-					case 60:						
+				 //switch ($data['perfil_referencial']) {
+				//	case 60:						
 						$this->_view->redirect('personal');
-					break;
-				 }
+				//	break;
+				// }
 			}else {
 		
 				$this->_view->render('access', '','login');

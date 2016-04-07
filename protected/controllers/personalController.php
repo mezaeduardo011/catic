@@ -108,6 +108,11 @@
 				unset($_POST['estado']);
 				unset($_POST['municipio']);
 				$persona= $this->ConvertirArray($_POST);
+				if(isset($persona[':fecha_nacimiento_hijo'])){
+					$persona[':fecha_nacimiento']=$persona[':fecha_nacimiento_hijo'];
+					unset($persona[':fecha_nacimiento_hijo']);
+				}
+
 				//$this->imprimirArreglo($persona);
 				$this->_personal->insertPersonModel($persona);
 		}
