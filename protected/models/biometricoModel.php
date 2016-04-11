@@ -13,8 +13,8 @@
 
 		public function insertHorario($horario){						
 			$query=$this->query = "INSERT INTO horario_diario
-							( cedula ,  fecha ,   hora ,  id_biometrico)  VALUES 
-							(:cedula,:fecha,:hora,:id_biometrico)";
+							( cedula ,hora,pulsador)  VALUES 
+							(:cedula,:hora,:pulsador)";
 				$this->registroPdo($query,$horario);		
 		}
 
@@ -24,5 +24,9 @@
 				$result=$this->selectPdo($query);
 				return $result;
 		}
+
+		public function getPulsador($pulsador){			 
+				return $this->selectPdo($query = "SELECT pulsador FROM horario_diario WHERE pulsador = $pulsador");
+		}		
 
 }?>

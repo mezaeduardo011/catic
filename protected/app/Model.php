@@ -19,7 +19,12 @@
 						echo "Error :: ".$e->getMessage();
 						exit();
 					}
-					return $result[0][0];
+					if(isset($result[0][0])){
+						return $result[0][0];
+					}else{
+						return $result;
+					}
+					
 		}
 
 		public function registroPdoArray($query,$datos){

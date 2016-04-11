@@ -117,15 +117,15 @@
 					            'link'=> BASE_URL . 'correspondencia'
 						      ),array(
 					            'id' => 'biometrico',
-					            'title'   => 'Biometrico',
+					            'title'   => 'Control de asistencias',
 					            'link'=> BASE_URL . 'biometrico'
 						      ),array(
 					            'id' => 'actividad_institucional',
-					            'title'   => 'Sistema',
+					            'title'   => 'Usuarios',
 					            'link'=> BASE_URL . 'administracion' . DS . 'usuarios'
 						      )	      
 					  	 );	
-				}else{
+				}elseif(Session::get('level')==62){
 			$menu = array(
 								array(
 					            'id' => 'personal',
@@ -221,11 +221,11 @@
 					            'link'=> BASE_URL . 'correspondencia'
 						      ),array(
 					            'id' => 'biometrico',
-					            'title'   => 'Biometrico',
+					            'title'   => 'Control de asistencias',
 					            'link'=> BASE_URL . 'biometrico'
 						      ),array(
 					            'id' => 'adiministracion',
-					            'title'   => 'Sistema',
+					            'title'   => 'Usuarios',
 					            'link'=> BASE_URL . 'administracion' . DS . 'usuarios'
 						      )				      
 					  	 );	

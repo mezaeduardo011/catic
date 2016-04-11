@@ -31,54 +31,41 @@
 				$explode = explode("|", $linea);
 				$arrayOrdenado[]=$linea;
 				} 
+
 				$j=0;
-				for($i=0;$i<count($arrayOrdenado);$i++){
+				for($i=0;$i<count($arrayOrdenado)-1;$i++){
 					 $nuevoArreglo[$i]=$arrayOrdenado[$i];									
-					 $var[$i] = str_replace(" ",",",$nuevoArreglo[$i] );
-					 $var[$i]= explode(",", $var[$i] );
-					 if($var[$i][5]!="OTIC"){
+					//$var[$i] = str_replace(" ",",",$nuevoArreglo[$i] );
+					 $var[$i]= explode(",", $nuevoArreglo[$i] );
+					 if(rtrim($var[$i][5])!="OTIC"){
 					 	unset($var[$i]);
 					 }else{
 						 $arregloValido[$j]=$var[$i];
-						 $j++;
+						  $j++;
 					 }
 				}	
-
-
 			 $cont=0;
 			 for($i=0;$i<count($arregloValido);$i++){
 			 	if(isset($arregloValido[$i][1])){
 			 		$cont++;
 			 	}
-			 	//echo '<pre>';print_r($arregloValido[$i][1]);echo '</pre>';
 			 }
-			 	echo $cont;
-				die();
 			return $arregloValido;		
 		}
 
 		function guardarHorarioDiario(){
 
 				$datosValidos=$this->leerTxt();
-				
 				for($k=0;$k<count($datosValidos);$k++){
-							$cedula = number_format($datosValidos[$k][1], 0, '.', '.');
-							$fechaBiometrico = $datosValidos[$k][0];
-							$año=substr($fechaBiometrico, 0, 2);$mes = substr($fechaBiometrico, 2, 2);$dias = substr($fechaBiometrico, 4, 2);
-							$horaBiometrico=$datosValidos[$k][4];
-						    $hora = substr($horaBiometrico, 0, 2);$minutos = substr($horaBiometrico, 2, 2);
-
-						$horario= array(
-									':fecha' => $dias.'/'.$mes.'/'.$año,
-									':cedula' => $cedula,
-									':hora' => $hora.':'.$minutos,
-									':id_biometrico' => $datosValidos[$k][7]
-						);					
-						
-						$this->imprimirArreglo($horario);
-						//$this->_biometrico->insertHorario($horario);
+					   if($this->_biometrico->getPulsador($datosValidos[$k][0])==null){
+							$horario= array(
+										':pulsador' => $datosValidos[$k][0],
+										':cedula' => number_format(rtrim($datosValidos[$k][7]), 0, '.', '.'),
+										':hora' => $datosValidos[$k][1],
+							);
+							$this->_biometrico->insertHorario($horario);
+						}							
 				}
-				//$this->imprimirArreglo($datosValidos);			
 		}
 
 		function consulta_biometrico(){
