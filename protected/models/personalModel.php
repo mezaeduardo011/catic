@@ -30,17 +30,18 @@
 						case 'Adjunta':
 						case 'Director General':
 							if($cedula==true){
-								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE cedula='".$cedula."'");
+								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE cedula='".$cedula."'
+								AND id_persona != ".Session::get("id_persona")."");
 							}else{
-								return $this->selectPdo($query="SELECT * FROM personal_completo");
+								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE id_persona != ".Session::get("id_persona")."");
 							}	
 						break;
 						case 'Director de linea':
 							if($cedula==true){
 								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE cedula='".$cedula."'
-								AND coordinacion ='".Session::get('coordinacion')."'");
+								AND coordinacion ='".Session::get('coordinacion')."' AND id_persona != ".Session::get("id_persona")."");
 							}else{
-								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE coordinacion ='".Session::get('coordinacion')."'");
+								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE coordinacion ='".Session::get('coordinacion')."' AND id_persona != ".Session::get("id_persona")."");
 							}
 						break;
 					}		
@@ -105,10 +106,10 @@
 						case 'Secretaria':
 						case 'Adjunta':
 						case 'Director General':
-							return $this->selectPdo($query = "SELECT * FROM personal_disponible");
+							return $this->selectPdo($query = "SELECT * FROM personal_disponible WHERE id_persona != ".Session::get("id_persona")."");
 						break;
 						case 'Director de linea':
-							return $this->selectPdo($query = "SELECT * FROM personal_disponible WHERE coordinacion ='".Session::get('coordinacion')."'");
+							return $this->selectPdo($query = "SELECT * FROM personal_disponible WHERE coordinacion ='".Session::get('coordinacion')."' AND id_persona != ".Session::get("id_persona")."");
 						break;
 					}		
 			
