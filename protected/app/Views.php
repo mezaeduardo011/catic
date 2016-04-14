@@ -21,8 +21,8 @@
 				'href'	=> BASE_URL . 'login/close'
 			);
 			
-			if(Session::get('level')==60){
-			$menu = array(
+			if(Session::get('perfil')=='Director General' || Session::get('perfil')=='Adjunta'){
+				$menu = array(
 								array(
 					            'id' => 'personal',
 					            'title'   => 'Personas',
@@ -123,10 +123,11 @@
 					            'id' => 'actividad_institucional',
 					            'title'   => 'Usuarios',
 					            'link'=> BASE_URL . 'administracion' . DS . 'usuarios'
-						      )	      
+						      ) 
 					  	 );	
-				}elseif(Session::get('level')==62){
-			$menu = array(
+			}
+			if(Session::get('perfil')=='Secretaria'){
+				$menu = array(
 								array(
 					            'id' => 'personal',
 					            'title'   => 'Personas',
@@ -136,12 +137,7 @@
 										'id' => 'insert_new',
 										'title' => 'Registrar persona',
 										'link' => BASE_URL . 'personal' . DS . 'index'
-												),
-									 		array(
-									 	'id' => 'listar',
-									 	'title' => 'Consultar personal registrado',
-									 	'link' => BASE_URL . 'personal' . DS . 'listing'
-									 			)				            	
+												)				            	
 					            )//Fin del submenu									 			
 						      ),
 						      
@@ -154,12 +150,7 @@
 										'id' => 'insert_new',
 										'title' => 'Registrar vacaciones',
 										'link' => BASE_URL . 'vacaciones' . DS . 'index'
-												),
-									 		array(
-									 	'id' => 'listar',
-									 	'title' => 'Consultar vacaciones',
-									 	'link' => BASE_URL . 'vacaciones' . DS . 'consulta_vacaciones'
-									 			)					            	
+												)				            	
 					            )//Fin del submenu	
 						      ),
 						      
@@ -172,30 +163,7 @@
 										'id' => 'insert_new',
 										'title' => 'Registrar permiso/reposo',
 										'link' => BASE_URL . 'permisos' . DS . 'index'
-												),
-									 		array(
-									 	'id' => 'listar',
-									 	'title' => 'Consultar permiso/reposo',
-									 	'link' => BASE_URL . 'permisos' . DS . 'listar_permisos'
-									 			)					            	
-					            )//Fin del submenu	
-						      ),
-						      
-						      array(
-					            'id' => 'actividad_institucional',
-					            'title'   => 'Amonestaciones',
-					            'link'=> '',
-					       	    'submenu' => array(
-										array(
-										'id' => 'insert_new',
-										'title' => 'Asignar amonestacion',
-										'link' => BASE_URL . 'amonestacion' . DS . 'index'
-												),
-									 		array(
-									 	'id' => 'listar',
-									 	'title' => 'Consultar amonestaciones',
-									 	'link' => BASE_URL . 'amonestacion' . DS . 'listar_amonestaciones'
-									 			)						            	
+												)					            	
 					            )//Fin del submenu	
 						      ),
 
@@ -208,29 +176,15 @@
 										'id' => 'insert_new',
 										'title' => 'Registrar nueva actividad',
 										'link' => BASE_URL . 'actividad_institucional' . DS . 'index'
-												),
-									 		array(
-									 	'id' => 'listar',
-									 	'title' => 'Consultar actividades',
-									 	'link' => BASE_URL . 'actividad_institucional' . DS . 'consultaDeActividad'
-									 			)					            	
+												)					            	
 					            )//Fin del submenu	
-						      ),array(
-					            'id' => 'correspondencia',
-					            'title'   => 'Correspondencias',
-					            'link'=> BASE_URL . 'correspondencia'
 						      ),array(
 					            'id' => 'biometrico',
 					            'title'   => 'Control de asistencias',
 					            'link'=> BASE_URL . 'biometrico'
-						      ),array(
-					            'id' => 'adiministracion',
-					            'title'   => 'Usuarios',
-					            'link'=> BASE_URL . 'administracion' . DS . 'usuarios'
-						      )				      
+						      )
 					  	 );	
-					 }
-
+			}
 			$js = array();
 			$css = array();
 			
@@ -297,13 +251,19 @@
 							
 
 					default:
+					if(Session::get('level')!=null){
 						include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'statements.phtml';
 						 //include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'header.phtml';
 						 // include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'imagalery.phtml';
 						include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'sidebar.phtml';
 						 include_once $view_route;
 						include_once ROOT . 'protected' . DS . 'views' . DS . 'layout' . DS . 'footer.phtml';
-					break;
+					}else{
+						include_once ROOT . 'protected' . DS . 'views' . DS . 'login'. DS . 'access.phtml';
+					}
+					break;						
+					
+
 				}
 				
 			}else{

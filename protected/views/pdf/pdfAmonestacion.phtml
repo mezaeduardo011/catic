@@ -16,9 +16,9 @@
 <p class="acta"> 
 
 En el día de hoy <?php 
-
-	echo date("d")." de ";
-	switch(date("M")) {
+	$fecha = $this->_datos[0]['fecha'];
+	echo date("d",strtotime($fecha))." de ";
+	switch(date("M",strtotime($fecha))) {
 			case "Jan" : echo "Enero";
 						break;
 			case "Feb" : echo "Febrero";
@@ -44,8 +44,8 @@ En el día de hoy <?php
 			case "Dec" : echo "Diciembre";
 				}
 
-?><?php echo " del ".date("y");?>, siendo las <?php  echo date("H:i");?> aproximadamente, yo, <?php echo  utf8_decode(Session::get('user') );?>,
-titular de la cédula de identidad Nº <?php echo  utf8_decode(Session::get('cedula') );?>, en mi condición de <?php echo  utf8_decode(Session::get('perfil') );?> , adscrito a la Oficina de Tecnología, Información y Comunicación, 
+?><?php echo " del ".date("Y",strtotime($fecha));?>, siendo las <?php  echo $this->_datos[0]['hora'];?> aproximadamente, yo, <?php echo  $this->_datos[0]['nombres_amonestador'];?>,
+titular de la cédula de identidad Nº <?php echo  $this->_datos[0]['cedula_amonestador'];?>, en mi condición de <?php echo  $this->_datos[0]['cargo_amonestador'];?> , adscrito a la Oficina de Tecnología, Información y Comunicación, 
 del Ministerio del Poder Popular para Industria y Comercio, cumpliendo con mis funciones de supervisión, pude constatar 
 que el ciudadano(a) <?php echo $this->_datos[0]['nombres'];?>,  titular de la cédula de identidad Nº <?php echo $this->_datos[0]['cedula'];?>, quien se desempeña 
 como <?php echo $this->_datos[0]['cargo'];?>, al momento de la supervisión realizada por quien suscribe a las <?php  echo date("H:i");?>, no se encontraba en 

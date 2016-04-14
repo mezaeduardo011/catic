@@ -16,16 +16,24 @@
 		}
 
 		public function registroAmonestacion($amonestacion){
-				$query=$this->query = "INSERT INTO amonestaciones(tipo_amonestacion_referencial,coordinacion_referencial,fecha,motivo,id_persona)
+				$query=$this->query = "INSERT INTO amonestaciones(tipo_amonestacion_referencial,coordinacion_referencial,fecha, hora,motivo,id_persona,id_amonestador)
 						                VALUES
-						                ( :tipo_amonestacion,:coordinacion,:fecha,:motivo,:id_persona); ";
+						                ( :tipo_amonestacion,:coordinacion,:fecha,:hora,:motivo,:id_persona,:id_amonestador); ";
 				$this->registroPdo($query,$amonestacion);
 		}
 
 		public function getAmonestaciones(){			 
-				$query = "SELECT * FROM total_amonestaciones";
-				$result=$this->selectPdo($query);
-				return $result;
+					switch(Session::get('perfil')){
+						case 'Secretaria':
+						case 'Adjunta':
+						case 'Director General':
+						    return $this->selectPdo($query ="SELECT * FROM total_amonestaciones");
+						break;
+						case 'Director de linea':
+						    return  $this->selectPdo($query = "SELECT * FROM total_amonestaciones WHERE coordinacion ='".Session::get('coordinacion')."'");						
+						break;
+					}	
+								
 		}
 			
 		public function amonestacionPersona($id_persona,$id_amonestacion){				

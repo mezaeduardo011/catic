@@ -5,6 +5,7 @@
 		public function __construct() {
 			$this->_db = new DataBase();
 		}
+		
 		public function registroPdo($query,$datos){
 				
 					try {

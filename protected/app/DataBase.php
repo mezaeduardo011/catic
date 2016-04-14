@@ -8,9 +8,7 @@
 					  );
 			
 			parent::__construct(
-					'pgsql:host=' . DB_HOST . ';dbname=' . DB_NAME, 
-					DB_USER, 
-					DB_PASS, 
+					'pgsql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS, 
 					$options
 			);
 		}

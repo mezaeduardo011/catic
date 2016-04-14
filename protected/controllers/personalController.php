@@ -208,6 +208,7 @@
 
 
 		function personasTabla(){
+
 			$listado = $this->_personal->getPersonal();
 			$this->_view->_listado = $listado;
 			echo json_encode(array("personal"=>$listado)); 

@@ -18,6 +18,7 @@ $(document).ready(function () {
         loadonce: true,
         rowNum:10,
         height:200,
+
         autowidth:true,
         sortname:"OrderID",
         rowList:[10,30,40],
@@ -27,7 +28,7 @@ $(document).ready(function () {
 
             { label: 'id', name: 'id_persona', key: true, width: 10,"search":false },
              
-            { label: '#', name: 'numeracion', key: true, width: 150,"search":false },            
+            { label: '#', name: 'numeracion', key: true, width: 150,"search":false,},            
             { label: 'Nombres', name: 'nombres', width: 800 ,"search":true},
             { label: 'Coordinacion', name: 'coordinacion', width: 800 ,"search":true},
             { label:'Fecha de solicitud', name: 'fecha_solicitud', width: 600,"search":true },
@@ -37,6 +38,7 @@ $(document).ready(function () {
             { label:'Dias hábiles', name: 'dias_correspondientes', width: 600,"search":true },
             { label:'Estatus', name: 'estatus', width: 600,"search":true },
             { label: 'id', name: 'id_vacaciones', key: false, width: 0,"search":false },
+            
         ],
 
         jsonReader: {repeatitems:false, root:"vacaciones"},
@@ -45,6 +47,7 @@ $(document).ready(function () {
 
         //Cuando los datos se cargan se realiza la funcion para ocultar la columna de id_persona
         loadComplete : function() {
+
 
             var table = this;
             $(grid_selector).jqGrid("hideCol", "id_persona");
@@ -56,6 +59,10 @@ $(document).ready(function () {
                 updatePagerIcons(table);
 
             }, 0);
+
+
+
+
 
             },
 
@@ -114,7 +121,7 @@ $(document).ready(function () {
 
         }
     })
-
+//cellattr: function () { return ' title="Here is my tooltip on colCell!"'; }
 
     //Botones de Bootstrap
     function updatePagerIcons(table) {

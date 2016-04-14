@@ -27,7 +27,8 @@
 
 		function pdfAmonestacion($id_persona,$id_amonestacion){
 			$datos = $this->_amonestacion->amonestacionPersona($id_persona,$id_amonestacion);
-			$this->_view->_datos = $datos;					
+			$this->_view->_datos = $datos;		
+			//$this->imprimirArreglo($datos);			
 			$this->_view->render('pdfAmonestacion', 'amonestacion', 'pdf','');
 		}			
 

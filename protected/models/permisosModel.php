@@ -17,11 +17,25 @@
 
 
 		public function getPermisos($id=false){
-			if (isset($id) && $id!=false) {
-				return $result=$this->selectPdo($query = "SELECT * FROM consulta_permisos WHERE id_permisos=".$id."");
-			}else{
-				return $result=$this->selectPdo($query = "SELECT * FROM consulta_permisos");
-			}
+					switch(Session::get('perfil')){
+						case 'Secretaria':
+						case 'Adjunta':
+						case 'Director General':
+						if (isset($id) && $id!=false) {
+								return $result=$this->selectPdo($query = "SELECT * FROM consulta_permisos WHERE id_permisos=".$id."");
+							}else{
+								return $result=$this->selectPdo($query = "SELECT * FROM consulta_permisos");
+							}
+						break;
+						case 'Director de linea':
+						if (isset($id) && $id!=false) {
+								return $result=$this->selectPdo($query = "SELECT * FROM consulta_permisos WHERE id_permisos=".$id."
+								AND coordinacion ='".Session::get('coordinacion')."'");
+							}else{
+								return $result=$this->selectPdo($query = "SELECT * FROM consulta_permisos WHERE coordinacion ='".Session::get('coordinacion')."'");
+							}						
+						break;
+					}			
 		}
 
 		public function finalizarPermiso($id = FALSE,$finalizar=FALSE){			

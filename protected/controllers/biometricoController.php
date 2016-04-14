@@ -55,14 +55,16 @@
 
 		function guardarHorarioDiario(){
 
-				$datosValidos=$this->leerTxt();
+				$datosValidos=$this->leerTxt();				
 				for($k=0;$k<count($datosValidos);$k++){
 					   if($this->_biometrico->getPulsador($datosValidos[$k][0])==null){
 							$horario= array(
+										':registro' => $datosValidos[$k][2],
 										':pulsador' => $datosValidos[$k][0],
 										':cedula' => number_format(rtrim($datosValidos[$k][7]), 0, '.', '.'),
 										':hora' => $datosValidos[$k][1],
 							);
+
 							$this->_biometrico->insertHorario($horario);
 						}							
 				}

@@ -25,11 +25,26 @@
 	}
 		
 	public function getPersonal($cedula=false){
-			if($cedula==true){
-				return $this->selectPdo($query="SELECT * FROM personal_completo WHERE cedula='".$cedula."'");
-			}else{
-				return $this->selectPdo($query="SELECT * FROM personal_completo");
-			}			
+					switch(Session::get('perfil')){
+						case 'Secretaria':
+						case 'Adjunta':
+						case 'Director General':
+							if($cedula==true){
+								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE cedula='".$cedula."'");
+							}else{
+								return $this->selectPdo($query="SELECT * FROM personal_completo");
+							}	
+						break;
+						case 'Director de linea':
+							if($cedula==true){
+								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE cedula='".$cedula."'
+								AND coordinacion ='".Session::get('coordinacion')."'");
+							}else{
+								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE coordinacion ='".Session::get('coordinacion')."'");
+							}
+						break;
+					}		
+		
 	}
 
 	public function getInfoDatosModel(){				
@@ -86,7 +101,17 @@
 	}
 
 	public function getPersonalDisponible(){
-			return $this->selectPdo($query = "SELECT * FROM personal_disponible");
+					switch(Session::get('perfil')){
+						case 'Secretaria':
+						case 'Adjunta':
+						case 'Director General':
+							return $this->selectPdo($query = "SELECT * FROM personal_disponible");
+						break;
+						case 'Director de linea':
+							return $this->selectPdo($query = "SELECT * FROM personal_disponible WHERE coordinacion ='".Session::get('coordinacion')."'");
+						break;
+					}		
+			
 	}
 
 	public function getUnicaPersona($id){

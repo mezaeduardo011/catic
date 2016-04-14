@@ -1,0 +1,1 @@
+UPDATE vacaciones SET fecha_actual = current_date;

@@ -13,8 +13,8 @@
 
 		public function insertHorario($horario){						
 			$query=$this->query = "INSERT INTO horario_diario
-							( cedula ,hora,pulsador)  VALUES 
-							(:cedula,:hora,:pulsador)";
+							( cedula ,hora,pulsador,registro)  VALUES 
+							(:cedula,:hora,:pulsador,:registro)";
 				$this->registroPdo($query,$horario);		
 		}
 

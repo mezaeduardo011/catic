@@ -10,16 +10,31 @@
 		
 		public function registroVacaciones($vacaciones){
 
-				$this->registroPdo($query=$this->query ="SELECT registrar_vacaciones(:desde,:hasta,:dias_habiles,:fecha_solicitud,:reincorporacion,:id_persona);",$vacaciones);
+				$this->registroPdo($query=$this->query ="SELECT registrar_vacaciones(:desde,:hasta,:dias_habiles,:reincorporacion,:fecha_solicitud,:id_persona);",$vacaciones);
 
 		}
 
 		public function getVacaciones($id=false){
-			if($id==false){
-				return $this->selectPdo($query = "SELECT * FROM vacaciones_registradas");
-			}else{
-				return $this->selectPdo($query = "SELECT * FROM vacaciones_registradas WHERE id_vacaciones=$id");
-			}
+					switch(Session::get('perfil')){
+						case 'Secretaria':
+						case 'Adjunta':
+						case 'Director General':
+							if($id==false){
+								return $this->selectPdo($query = "SELECT * FROM vacaciones_registradas");
+							}else{
+								return $this->selectPdo($query = "SELECT * FROM vacaciones_registradas WHERE id_vacaciones=$id");
+							}
+						break;
+						case 'Director de linea':
+							if($id==false){
+								return $this->selectPdo($query = "SELECT * FROM vacaciones_registradas WHERE coordinacion ='".Session::get('coordinacion')."'");
+							}else{
+								return $this->selectPdo($query = "SELECT * FROM vacaciones_registradas WHERE id_vacaciones=$id
+								AND coordinacion ='".Session::get('coordinacion')."'");
+							}						
+						break;
+					}			
+
 		}
 
 		public function finalizarVacaciones($id = FALSE,$finalizar=FALSE){		
