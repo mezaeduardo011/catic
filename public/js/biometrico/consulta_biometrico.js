@@ -16,12 +16,11 @@ $(document).ready(function () {
                 colModel: [
                     { label: 'Nombre y Apellido', name: 'nombres', width: 150 },
                     { label: 'Hora de llegada', name: 'hora_llegada', width: 70 },
-                    { label: 'Hora de salida almuerzo', name: 'hora_llegada', width: 100 },
-                    { label: 'Hora de llegada almuerzo', name: 'hora_llegada', width: 100 },
-                    { label: 'Hora de salida', name: 'hora_llegada', width: 50 },
+                    { label: 'Hora de salida almuerzo', name: 'hora_salida_almuerzo', width: 100 },
+                    { label: 'Hora de llegada almuerzo', name: 'hora_llegada_almuerzo', width: 100 },
+                    { label: 'Hora de salida', name: 'hora_salida', width: 50 },
                     { label:'Coordinacion', name: 'coordinacion', width: 90 },
-                    { label:'Fecha', name: 'fecha', width: 50 },
-                    { label:'Hora', name: 'hora', width: 50 }
+                    { label:'Fecha', name: 'fecha', width: 50 }
                 ],
 
                 jsonReader: {repeatitems:false, root:"biometrico"},
@@ -42,7 +41,7 @@ $(document).ready(function () {
                 loadonce:true
 
             });
-
+            jQuery(grid_selector).jqGrid('filterToolbar',{"stringResult":true});
             jQuery(grid_selector).jqGrid('navGrid',grid_pager,
                     {   //navbar options
                         edit:false,

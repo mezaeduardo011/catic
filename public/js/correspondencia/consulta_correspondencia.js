@@ -14,7 +14,7 @@ $(document).ready(function () {
                 styleUI : 'Bootstrap',
                 datatype: "json",
                 colModel: [
-                    { label: 'N°', name: 'numeracion',key: true, width: 20 },
+                    { label: 'N°', name: 'numeracion',key: true, width: 20, "search":false},
                     { label: 'Asunto', name: 'asunto',key: true, width: 150 ,"search":true},
                     { label: 'Oficina', name: 'oficina',key: true, width: 150 ,"search":true},
                     { label:'Instrucción', name: 'instruccion',key: true, width: 90 ,"search":true},
@@ -45,7 +45,7 @@ $(document).ready(function () {
                 loadonce:true
 
             });
-
+jQuery(grid_selector).jqGrid('filterToolbar',{"stringResult":true});
             $(window).on("resize", function () {
     var $grid = $(grid_selector),
         newWidth = $grid.closest(".ui-jqgrid").parent().width();
@@ -66,6 +66,7 @@ $(document).ready(function () {
                         refreshicon : 'ace-icon fa fa-refresh green',
                         view: false,
                         viewicon : 'ace-icon fa fa-search-plus grey',
+
                     },
                     {
                         //search form

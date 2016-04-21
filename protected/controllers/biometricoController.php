@@ -24,6 +24,12 @@
 								
 		}
 
+		function actualizarAsistencia(){
+			$this->guardarHorarioDiario();
+			$this->guardarHorarioFinal();
+		}
+
+
 		function leerTxt(){
 				$file = file('/home/emeza/Documentos/prueba.txt');
 				foreach ($file as $linea)
@@ -50,7 +56,8 @@
 			 		$cont++;
 			 	}
 			 }
-			return $arregloValido;		
+			return $arregloValido;	
+			//$this->imprimirArreglo($arregloValido);	
 		}
 
 		function guardarHorarioDiario(){
@@ -69,6 +76,96 @@
 						}							
 				}
 		}
+
+
+		function guardarHorarioFinal(){
+
+			$cedulas = $this->_biometrico->getCedulas();			
+			
+			for($i = 0; $i< count($cedulas); $i++){
+
+					$horasEntrada=array();
+					$horasSalidas=array();
+					$horasSalidaAlmuerzo=array();
+					$horasLlegadasAlmuerzo=array();
+					$horaSalidaAlmuerzo=array();				
+					$k=0;$l=0;$h=0;$m=0;
+
+					$horarioTotal = $this->_biometrico->horariosTotales($cedulas[$i]['cedula']);
+								
+
+						for($j = 0; $j<count($horarioTotal); $j++){
+
+							if($horarioTotal[$j]['registro']=='P01-ENTRADA-OTIC'){
+
+								$horasEntrada[$k] = $horarioTotal[$j]['hora'];
+								
+									if($horasEntrada[$k] >= '11:45:00' && $horasEntrada[$k]<= '12:30:00'){
+
+											$horasSalidaAlmuerzo[$h]=$horasEntrada[$k];
+											$h++;
+									}
+
+								$k++;
+							}elseif($horarioTotal[$j]['registro']=='P01-SALIDA-OTIC'){
+
+								$horasSalidas[$l] = $horarioTotal[$j]['hora'];							
+
+									if($horasSalidas[$l] >= '13:00:00' && $horasSalidas[$l]<= '13:30:00'){
+											$horasLlegadasAlmuerzo[$m]=$horasSalidas[$l];
+											$m++;
+									}
+
+								$l++;														
+							}
+
+						}
+
+								if(count($horasEntrada)>0){
+									$horaEntrada = min($horasEntrada); 
+								}
+								if(count($horasSalidas)>0){
+									$horaSalida = max($horasSalidas);
+								}
+								
+								if(count($horasSalidaAlmuerzo)>0 ){
+									$horaSalidaAlmuerzo = min($horasSalidaAlmuerzo); 
+								}				
+								if(count($horasLlegadasAlmuerzo)>0){
+									$horaLLegadaAlmuerzo = max($horasLlegadasAlmuerzo);
+								}
+								if($horasSalidaAlmuerzo==null){
+									$horaSalidaAlmuerzo="Sin registro";
+								}
+								if($horasLlegadasAlmuerzo==null){
+									$horaLLegadaAlmuerzo="Sin registro";
+								}
+								if($horaEntrada==null){
+									$horaEntrada="Sin registro";
+								}
+								if($horaSalida==null){
+									$horaSalida="Sin registro";
+								}									
+
+
+								
+								$horarioFinal= array(
+											':hora_llegada' => $horaEntrada,
+											':hora_salida' => $horaSalida,
+											':hora_salida_almuerzo' => $horaSalidaAlmuerzo,
+											':hora_llegada_almuerzo' => $horaLLegadaAlmuerzo,
+											':cedula' => $cedulas[$i]['cedula'],
+											':fecha' => date('d/m/Y'),
+								);
+
+
+				//$this->imprimirArreglo($horaLLegadaAlmuerzo);
+				$this->_biometrico->insertHorarioFinal($horarioFinal);			
+
+			}
+
+		}
+
 
 		function consulta_biometrico(){
 			$listado = $this->_biometrico->getBiometrico();
