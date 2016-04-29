@@ -1,6 +1,7 @@
-function enviar_datos(cedula,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9,destino10,destino11,destino12,destino13,destino14,destino15,destino16){
+function enviar_datos(cedula,destino,destino2,destino3,destino4,destino5,destino6,destino7,destino8,destino9,destino10,destino11,destino12,destino13,destino14,destino15,destino16,destino17){
 
         //alert("destino: "+destino+" destino2: "+destino2+" destino3: "+destino3+" destino4: "+destino4+" destino5: "+destino5+" destino6: "+destino6+" destino7: "+destino7+" destino8: "+destino8+" destino9:"+destino9+"Destino 10:"+destino10);
+        persona = document.getElementById('persona_empleada_auxiliar').value;
         cedular= document.getElementById(cedula).value;
         destino= document.getElementById(destino).value;
         destino2= document.getElementById(destino2).value;
@@ -18,8 +19,10 @@ function enviar_datos(cedula,destino,destino2,destino3,destino4,destino5,destino
         destino14= document.getElementById(destino14).value;
         destino15= document.getElementById(destino15).value;
         destino16= document.getElementById(destino16).value;
+        destino17= document.getElementById(destino17).value;
 
         datos =[{
+            "id_persona" : persona,
             "cedula": cedular,
             "primer_nombre": destino,
             "segundo_nombre": destino2,
@@ -36,10 +39,11 @@ function enviar_datos(cedula,destino,destino2,destino3,destino4,destino5,destino
             "estado": destino13,
             "municipio": destino14,
             "parroquia": destino15,
-            "ubicacion": destino16
+            "ubicacion": destino16,
+            "tipo_persona":destino17
         }];
 
-        //alert(datos);
+        //console.log(datos);
 
             $.ajax({
                 type: 'post',
@@ -51,7 +55,7 @@ function enviar_datos(cedula,destino,destino2,destino3,destino4,destino5,destino
                 error : function(XMLHttpRequest, textStatus, errorThrown) {
                     alert(textStatus);
                 }
-            });         
+            });        
        
   
     }

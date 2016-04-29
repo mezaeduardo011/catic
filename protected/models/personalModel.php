@@ -20,7 +20,7 @@
 	}
 
 	public function actualizarEmpleado($persona){
-		$query=$this->query = "SELECT update_persona(:0,:cedula,:nombre1,:nombre2,:apellido1,:apellido2,:sexo,:fecha_nacimiento,:fecha_ingreso,:telefono,:otro_telefono,:correo,:cargo,:coordinacion,:parroquia,:ubicacion);";
+		$query=$this->query = "SELECT update_persona(:id_empleado,:cedula,:nombre1,:nombre2,:apellido1,:apellido2,:sexo,:fecha_nacimiento,:fecha_ingreso,:telefono,:otro_telefono,:correo,:cargo,:coordinacion,:parroquia,:ubicacion);";
 		return $this->registroPdo($query,$persona);
 	}
 		
@@ -48,16 +48,32 @@
 		
 	}
 
-	public function getInfoDatosModel(){				
-			return $this->selectPdo($query=" SELECT nombre,apellido,id_persona FROM persona ORDER BY id_persona DESC LIMIT 1;");
+	public function getInfoDatosModel($id = false){
+		if($id == false){		
+			return $this->selectPdo(
+				$query="SELECT p.nombre,p.apellido,p.id_persona,pe.id_persona_empleada 
+				FROM persona as p INNER JOIN persona_empleada AS pe ON pe.id_persona = p.id_persona ORDER BY p.id_persona DESC LIMIT 1;"
+				);
+		}else{
+			return $this->selectPdo(
+				$query="SELECT p.sexo_referencial,pe.coordinacion_referencial,pe.id_persona_empleada,pe.cargo,direccion.estado,direccion.municipio,direccion.parroquia
+						FROM persona as p INNER JOIN persona_empleada AS pe ON pe.id_persona = p.id_persona
+						INNER JOIN parroquias as direccion ON direccion.id_direccion = p.direccion_referencial");
+		}
 	}
 
-	public function getHijosModel(){				
-			return $this->selectPdo($query = "SELECT * FROM hijos_registro");	
+	public function getHijosModel($id_persona_empleada=false){
+			if ($id_persona_empleada != false){
+			return $this->selectPdo($query = "SELECT * FROM hijos_registro WHERE id_persona_empleada =
+				$id_persona_empleada");	
+		}
 	}
 
-	public function getPadresModel(){				
-			return $this->selectPdo($query = "SELECT * FROM padres_registro");	
+	public function getPadresModel($id_persona_empleada=false){				
+			if ($id_persona_empleada != false){
+			return $this->selectPdo($query = "SELECT * FROM padres_registro WHERE id_persona_empleada =
+				$id_persona_empleada");	
+		}				
 	}
 			
 	public function getDireccionEstado(){

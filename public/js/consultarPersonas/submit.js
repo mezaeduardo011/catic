@@ -1,5 +1,4 @@
 function submitEdit(valor){
-	alert("asdas"+valor);
     relocateBlank('../solicitud_pendiente/', {'id':valor});    
 }
 

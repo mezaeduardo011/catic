@@ -103,7 +103,36 @@ $('#registro_persona').formValidation({
                      message: 'Debe introducir una ubicación.'
                  }               
              }
-         }                   
+         },
+        telefono:{
+            validators: {
+                        notEmpty:{
+                            message:'Rellene este campo'
+                        },
+                        phone: {
+                            country: 'VE',
+                            message: 'Introduzca numero venezolano valido'
+                        }
+                    }
+            },
+        otro_telefono:{
+            validators:{
+                phone:{
+                    country: 'VE',
+                    message: 'Introduzca numero venezolano valido'
+                }
+            }
+        },
+        correo:{
+            validators:{
+                emailAddress:{
+                    message: 'Correo Invalido'
+                },
+                notEmpty:{
+                    message: 'Debe introducir un correo'
+                }
+            }
+        }                  
 
 }
 });
