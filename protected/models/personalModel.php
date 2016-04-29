@@ -129,6 +129,14 @@
 
 	public function deletePersona($id){
 			return $this->selectPdo($query = "UPDATE persona_empleada SET status_referencial= 99 where id_persona='".$id."'");	
+	}
+
+	public function getReporte(){
+			return $this->selectPdo($query = "SELECT p.*,per.desde as desde_permiso,per.hasta as hasta_permiso,per.tipo_registro,
+												vac.dias_correspondientes,vac.desde as desde_vacaciones, vac.hasta as hasta_vacaciones
+												FROM personal_completo as P 
+												LEFT JOIN permisos AS Per ON per.id_persona = p.id_persona 
+												LEFT JOIN vacaciones as Vac ON Vac.id_persona = p.id_persona");
 	}				
 }
 ?>

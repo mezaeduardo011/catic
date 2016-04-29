@@ -1,0 +1,129 @@
+<?php ob_start(); ?>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>Reporte</title>
+     <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>css/pdf.css" />
+</head>
+<div class="cintillo">
+        <img  src="/var/www/catic/public/img/cintillo.jpg" width="100%" height="60">
+</div> 
+<body>
+<br><br><br>
+<div class="cuerpo">
+    <div class="page-header" align="center">
+        <h7>
+        Relación De Asistencia Mensual Del Mes "Mes" "Año"
+        </h7>
+        <br>
+        <h7>
+        Oficinas De Tecnologías De La Información Y La Comunicación
+        </h7>        
+    </div>	
+    <br><br>
+	<table id="dynamic-table" align="center" class="tablaReporte">
+        <tr >
+        <th class="center" ><h5>Status</h5></th>
+        <th class="center" ><h5>Cédula</h5></th>
+        <th class="center"><h5>Apellido Y Nombre</h5></th>
+        <th class="center" ><h5>Fecha De Ingreso</h5></th>
+        <th class="center"><h5>Cargo</h5></th>
+        <th class="center" colspan="2"><h5>Reposo</h5></th>
+        <th class="center" colspan="2"><h5>Comisión De Servicio / Permiso Remunerado o No Remunerado</h5>  </th>
+        <th class="center" colspan="3"><h5>Vacaciones/ Permiso Remunerado o No Remunerado</h5> </th>
+        <th class="center" ><h5>Inasistencias</h5></th>
+        </tr>
+		<tr>
+			<th></th>
+		  	<th></th>
+		  	<th></th>
+		  	<th></th>
+		  	<th></th>
+		  	<th><h5>Desde</h5></th>
+		  	<th><h5>Hasta</h5></th>
+		  	<th><h5>Desde</h5></th>
+		  	<th><h5>Hasta</h5></th>
+		  	<th><h5>Periodos En Disfrute</h5></th>
+		  	<th><h5>Desde</h5> </th>
+		  	<th><h5>Hasta</h5></th>
+		  	<th></th>
+		  				
+	
+		</tr>
+		<?php  for ($i=0; $i < count($this->_reporte); $i++):?>
+	        <tr>
+	        <td align="center">
+	        <?php if($this->_reporte[$i]['cargo']=='Contratado'):?>
+	        		CONT
+	    	<?php else:?>
+	    			EMP
+	   	    <?php endif?>
+	        </td>
+	        <td align="center"><?php echo $this->_reporte[$i]['cedula'];?></td>
+	        <td align="center" ><?php echo $this->_reporte[$i]['apellidos'];?>&nbsp;<?php echo $this->_reporte[$i]['nombres'];?></td>
+	        <td align="center" width="43"><?php echo $this->_reporte[$i]['fecha_ingreso'];?></td>
+	        <td align="center" ><?php echo $this->_reporte[$i]['cargo'];?></td>
+			
+	        <td align="center" width="43">
+				 <?php if($this->_reporte[$i]['tipo_registro']==6):?>
+
+		        			<?php echo $this->_reporte[$i]['desde_permiso'];?>	
+
+				 <?php endif?>
+	        </td>
+
+	        <td align="center" width="43">
+				<?php if($this->_reporte[$i]['tipo_registro']==6):?>
+
+		       			 <?php echo $this->_reporte[$i]['hasta_permiso'];?>	
+
+				 <?php endif?>
+	        </td>	  
+
+	        <td align="center" width="43" >
+				<?php if($this->_reporte[$i]['tipo_registro']==7):?>
+
+		       			 <?php echo $this->_reporte[$i]['desde_permiso'];?>	 
+
+				 <?php endif?>
+	        </td>	 
+
+	        <td align="center" width="43">
+				<?php if($this->_reporte[$i]['tipo_registro']==7):?>
+
+		       			 <?php echo $this->_reporte[$i]['hasta_permiso'];?>	 
+
+				 <?php endif?>
+	        </td>		                     
+
+	       
+	        <td align="center" ><?php echo $this->_reporte[$i]['dias_correspondientes'];?></td>
+	        <td align="center" width="43"><?php echo $this->_reporte[$i]['desde_vacaciones'];?></td>
+	        <td align="center" width="43"><?php echo $this->_reporte[$i]['hasta_vacaciones'];?></td>
+	        
+	        <td align="center" >      
+	        <?php if(isset($this->_inasistencias[$this->_reporte[$i]['id_persona_empleada']])):?>
+		        <?php echo $this->_inasistencias[$this->_reporte[$i]['id_persona_empleada']];?>	  
+		    <?php endif?>    
+	        </td>
+
+	        </tr>
+	        </tr>
+   	    <?php endfor?>
+    </table>
+	
+</div>
+   
+</body>
+
+
+
+
+
+<?php
+$dompdf = new DOMPDF();
+$dompdf->load_html(ob_get_clean());
+$dompdf->render();
+$pdf = $dompdf->output();
+$dompdf->stream('Detalles_de:'. $this->_persona[0]['nombre'].'_'. $this->_persona[0]['apellido'],array('Attachment'=>0));
+?>
