@@ -20,7 +20,7 @@ $(document).ready(function () {
                     { label:'Instrucción', name: 'instruccion',key: true, width: 90 ,"search":true},
                     { label:'Fecha', name: 'fecha',key: true, width: 50 ,"search":true},
                     { label:'Tipo', name: 'tipo',key: true, width: 50 ,"search":true},  
-                    { label:'Estatus', name: 'estatus',key: true, width: 50 ,"search":true},                                     
+                    { label:'Estatus', name: 'status',key: true, width: 50 ,"search":true},                                     
                     { label:'Coordinacion encargada', name: 'coordinacion',key: true, width: 120 ,"search":true},
                     { label:'Coordinacion encargada', name: 'id_correspondencia',key: true, width: 1 ,"search":true},
 
