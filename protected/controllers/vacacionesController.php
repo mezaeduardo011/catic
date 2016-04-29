@@ -153,7 +153,7 @@
 				$this->_view->setJs(array("pickList"));		
 				$datos = $this->_vacaciones->getVacaciones($id);
 				$this->_view->_datos = $datos;				
-				$this->_view->render('finalizar_vacaciones','','pickList');		
+				$this->_view->render('cancelar_vacaciones','','pickList');		
 		}else {
 			$this->_vacaciones->finalizarVacaciones($_POST['id_vacaciones'],false);			
 		}

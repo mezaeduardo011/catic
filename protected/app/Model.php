@@ -28,7 +28,7 @@
 					
 		}
 
-		public function registroPdoArray($query,$datos){
+		public function registroPdoArray($query){
 					try {
 
 						$this->_db->beginTransaction();
