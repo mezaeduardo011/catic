@@ -44,6 +44,7 @@
 
 		public function getInasistencias($mes,$año){
 				return $this->selectPdo($query = "SELECT * FROM vista_inasistencias WHERE mes = '".$mes."' AND año = '".$año."'");
+
 		}	
 
 }?>

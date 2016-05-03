@@ -7,8 +7,7 @@
 			$this->_pdf = $this->getLibrary('dompdf','dompdf_config.inc');
 			$this->_personal 		= $this->loadModel('personal');
 			$this->_biometrico 		= $this->loadModel('biometrico');
-			$this->_amonestacion 	= $this->loadModel('amonestacion');
-	
+			$this->_amonestacion 	= $this->loadModel('amonestacion');	
 		}
 		
 		function index(){
@@ -33,13 +32,13 @@
 			$this->_view->_reporte  = $reporte;
 			$inasistencias = $this->_biometrico->getInasistencias($parametros[0],$parametros[1]);
 			//$this->imprimirArreglo($inasistencias);
+
 			$aux=array();
 			for($i=0; $i<count($inasistencias); $i++){
 				$aux[$i]=$inasistencias[$i]['id_persona_empleada'];
 			}
 			$auxiliar = array_count_values($aux);
 			$this->_view->_inasistencias = $auxiliar;
-			
 			$this->_view->render('pdfReporteCompleto', 'personal', 'pdf','');
 		}		
 

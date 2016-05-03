@@ -1,6 +1,6 @@
 function send_registro_persona() {
 
-    //alert("/catic/personal/insertPerson?" + request(document.getElementById('divPersona')));
+    alert("/catic/personal/insertPerson?" + request(document.getElementById('divPersona')));
     if (request(document.getElementById('divPersona')) != "") {
         send_ajax('POST', '../../catic/personal/insertPerson', 'response_registro_persona', request(document.getElementById('divPersona')), null, true);
     };
@@ -23,7 +23,7 @@ function send_registro_InfoAdicional() {
 }
 
 function response_registro_persona(response) {
-   // alert("Registro Exitoso");
+   alert("Registro Exitoso");
 
 }
 
@@ -131,19 +131,7 @@ $("#registrarHijo").click(function() {
     });
 });
 
-jQuery(function($) {
-    $.mask.definitions['~'] = '[+-]';
-    $('.input-mask-date').mask('99/99/9999');
-    $('.input-mask-phone').mask('(9999) 999-9999');
-    $('.input-mask-eyescript').mask('~9.99 ~9.99 999');
-    $(".input-mask-product").mask("a*-999-a999", {
-        placeholder: " ",
-        completed: function() {
-            alert("You typed the following: " + this.val());
-        }
-    });
 
-});
 
 $(document).ready(function() {
 
