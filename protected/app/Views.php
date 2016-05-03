@@ -123,7 +123,11 @@
 					            'id' => 'actividad_institucional',
 					            'title'   => 'Usuarios',
 					            'link'=> BASE_URL . 'administracion' . DS . 'usuarios'
-						      ) 
+						      ) ,array(
+					            'id' => 'reporte',
+					            'title'   => 'Reporte',
+					            'link'=> BASE_URL . 'pdf' . DS . 'generar'
+						      ) 						      
 					  	 );	
 			}
 			if(Session::get('perfil')=='Secretaria'){

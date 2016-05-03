@@ -8,6 +8,7 @@
 		public function __construct(){	
 			parent::__construct();
 			$this->_biometrico = $this->loadModel('biometrico');
+			$this->_personas = $this->loadModel('personal');
 						$this->_sidebar_menu =array(
 					array(
 				'id' => 'insert_new',
@@ -25,8 +26,44 @@
 		}
 
 		function actualizarAsistencia(){
-			$this->guardarHorarioDiario();
-			$this->guardarHorarioFinal();
+				if($this->_biometrico->getBiometrico()[0]['fecha']!=date('d-m-Y')){				
+						$this->imprimirArreglo($this->_biometrico->getBiometrico());
+						$this->guardarHorarioDiario();
+						$this->guardarHorarioFinal();
+						$horario = $this->_biometrico->getBiometrico();
+						$personas = $this->_personas->getPersonal();
+						$fecha = $horario[0]['fecha'];			
+						$aux=array();
+						$k=0;
+
+						for($i=0; $i<count($horario); $i++){
+							for($j=0; $j<count($personas); $j++){
+									if($personas[$j]['cedula']==$horario[$i]['cedula']){
+										$aux[$k] = $j;
+										$k++;
+									}
+							}	
+						}
+
+						for($i=0; $i<count($aux);$i++){				
+							unset($personas[$aux[$i]]);
+						}
+						
+						for($j=0; $j<count(array_keys($personas)); $j++){					
+							$this->_biometrico->insertInasistencia($personas[array_keys($personas)[$j]]['id_persona_empleada'],$fecha);
+						}
+						$this->_view->redirect('biometrico/index');
+			}elseif($this->_biometrico->getBiometrico()[0]['fecha']==date('d-m-Y')){
+
+						$this->_view->_error = 'La Asistencia Ya Esta Actualizada A La Fecha Actual.';
+						$this->_view->redirect('biometrico/index');
+
+						 // echo "<script language='JavaScript'>"; 
+						 // 	echo "alert('La Asistencia Ya Esta Actualizada A La Fecha Actual');"; 
+						 // echo "</script>";
+			}else{
+						 echo "Error";				
+			}
 		}
 
 

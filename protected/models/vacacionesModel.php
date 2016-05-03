@@ -10,7 +10,7 @@
 		
 		public function registroVacaciones($vacaciones){
 
-				$this->registroPdo($query=$this->query ="SELECT registrar_vacaciones(:desde,:hasta,:dias_habiles,:reincorporacion,:fecha_solicitud,:id_persona);",$vacaciones);
+				$this->registroPdo($query=$this->query ="SELECT registrar_vacaciones(:desde,:hasta,:dias_habiles,:periodos_disfrute,:reincorporacion,:fecha_solicitud,:id_persona);",$vacaciones);
 
 		}
 

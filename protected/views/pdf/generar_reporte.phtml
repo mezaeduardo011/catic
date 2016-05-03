@@ -1,0 +1,54 @@
+	
+    <div class    ="page-content"><!-- /.page-content -->
+
+	<div class="widget-box">
+		<div class="alert alert-info" align="center">
+			<h4>Conulstar Reporte Mensual <i class="fa fa-file-pdf-o fa-lg"></i></h4>
+		</div>
+		<!-- PAGE CONTENT BEGINS -->
+		<form action="<?php  echo BASE_URL;?>pdf/pdfReporteCompleto" class="form-inline center" role="form"  method="post" id="reporte" name="reporte">
+			<br>
+					
+
+				<div id="correspondencia">					
+				
+
+
+					
+	
+						<div class="form-group">
+						<label>Seleccion el mes:</label>
+							<select  class="selectpicker show-tick input-sm form-control" id="fecha" name="fecha">
+								<option value="" default selected>Seleccione una opción</option>
+								<?php foreach ($this->_fechas as $fecha):?>
+								<option value ="<?php  echo $fecha['mes'].'-'.$fecha['año']; ?>"><?php  echo $fecha['fecha']; ?> </option>
+
+								<?php endforeach ?>
+							</select>							
+						</div>
+
+			
+
+					
+				
+					
+				</div>
+					<hr>
+
+				<div class="clearfix form-actions" align="center">
+				<div>
+					<button class="btn btn-success" type="submit">
+						<i class      ="ace-icon fa fa-search fa-lg"></i>
+					Consultar
+					</button>
+					
+				</div>
+			</div>
+		</form>
+		<!-- PAGE CONTENT ENDS -->
+		</div><!-- /.page-content -->
+	</div>
+</body>
+</html>
+
+

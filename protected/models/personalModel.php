@@ -129,6 +129,10 @@
 
 	public function deletePersona($id){
 			return $this->selectPdo($query = "UPDATE persona_empleada SET status_referencial= 99 where id_persona='".$id."'");	
+	}
+
+	public function getReporte($mes){
+			return $this->selectPdo($query = "SELECT  * from reporte WHERE extract(MONTH from fecha_asistencia) = ".$mes." ");
 	}				
 }
 ?>

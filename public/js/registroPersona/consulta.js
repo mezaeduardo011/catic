@@ -181,25 +181,24 @@ $(document).ready(function () {
     });
 
     function imprimir_detalles() {
-        var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
-                                
-        if(columna_check.length>0){
-            var id_persona = [];
-            var id_persona_empleada = [];
-            for(var i=0,ids=columna_check.length;i<ids; i++){
-                id_persona.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona'));
-                id_persona_empleada.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona_empleada'));
+                var columna_check = $(grid_selector).jqGrid("getGridParam", "selarrrow")
+                                        
+                if(columna_check.length>0){
+                    var id_persona = [];
+                    var id_persona_empleada = [];
+                    for(var i=0,ids=columna_check.length;i<ids; i++){
+                        id_persona.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona'));
+                        id_persona_empleada.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_persona_empleada'));
+                    }
+                }
+            if (id_persona!=undefined && id_persona!=null) {
+                      window.open(BASE_URL+'pdf/pdfDetallePersona/'+id_persona+'/'+id_persona_empleada);
+            }else{
+                alert('Por favor seleccione una fila');
             }
-        }
-    if (id_persona!=undefined && id_persona!=null) {
-              window.open(BASE_URL+'pdf/pdfDetallePersona/'+id_persona+'/'+id_persona_empleada);
-    }else{
-        alert('Por favor seleccione una fila');
-    }
-
-
-
     }  
+
+  
 
     $(grid_selector).navButtonAdd(grid_pager,
     {
