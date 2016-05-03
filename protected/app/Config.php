@@ -16,7 +16,7 @@
 	define('APP_NAME', ' Control Administrativo De Tecnología Información y Comunicación');
 	define('APP_LOGO', '');
 	define('APP_OTHER', '');
-	define('SESSION_TIME', 20);
+	define('SESSION_TIME', 1);
 
 	define("DB_HOST", "localhost"); 
 	define("DB_USER", "postgres"); 

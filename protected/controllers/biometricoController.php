@@ -26,8 +26,8 @@
 		}
 
 		function actualizarAsistencia(){
-				if($this->_biometrico->getBiometrico()[0]['fecha']!=date('d-m-Y')){				
-						$this->imprimirArreglo($this->_biometrico->getBiometrico());
+				// if($this->_biometrico->getBiometrico()[0]['fecha']!=date('d-m-Y')){				
+						//$this->imprimirArreglo($this->_biometrico->getBiometrico());
 						$this->guardarHorarioDiario();
 						$this->guardarHorarioFinal();
 						$horario = $this->_biometrico->getBiometrico();
@@ -53,17 +53,17 @@
 							$this->_biometrico->insertInasistencia($personas[array_keys($personas)[$j]]['id_persona_empleada'],$fecha);
 						}
 						$this->_view->redirect('biometrico/index');
-			}elseif($this->_biometrico->getBiometrico()[0]['fecha']==date('d-m-Y')){
+			// }elseif($this->_biometrico->getBiometrico()[0]['fecha']==date('d-m-Y')){
 
-						$this->_view->_error = 'La Asistencia Ya Esta Actualizada A La Fecha Actual.';
-						$this->_view->redirect('biometrico/index');
+			// 			$this->_view->_error = 'La Asistencia Ya Esta Actualizada A La Fecha Actual.';
+			// 			$this->_view->redirect('biometrico/index');
 
-						 // echo "<script language='JavaScript'>"; 
-						 // 	echo "alert('La Asistencia Ya Esta Actualizada A La Fecha Actual');"; 
-						 // echo "</script>";
-			}else{
-						 echo "Error";				
-			}
+			// 			 // echo "<script language='JavaScript'>"; 
+			// 			 // 	echo "alert('La Asistencia Ya Esta Actualizada A La Fecha Actual');"; 
+			// 			 // echo "</script>";
+			// }else{
+			// 			 echo "Error";				
+			// }
 		}
 
 
@@ -192,7 +192,7 @@
 											':hora_salida_almuerzo' => $horaSalidaAlmuerzo,
 											':hora_llegada_almuerzo' => $horaLLegadaAlmuerzo,
 											':cedula' => $cedulas[$i]['cedula'],
-											':fecha' => date('d/m/Y'),
+											':fecha' =>  date('d-m-Y'),
 								);
 
 

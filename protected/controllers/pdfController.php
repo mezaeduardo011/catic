@@ -27,17 +27,23 @@
 
 		function pdfReporteCompleto(){
 			$parametros=explode("-",$_POST['fecha']);
+			$mes=$parametros[0]; 
+			$año=$parametros[1];
 			$reporte = $this->_personal->getReporte($parametros[0]);
 			
 			$this->_view->_reporte  = $reporte;
-			$inasistencias = $this->_biometrico->getInasistencias($parametros[0],$parametros[1]);
-			//$this->imprimirArreglo($inasistencias);
+			$inasistencias = $this->_biometrico->getInasistencias($mes,$año);
+			
 
 			$aux=array();
 			for($i=0; $i<count($inasistencias); $i++){
 				$aux[$i]=$inasistencias[$i]['id_persona_empleada'];
 			}
+
+
 			$auxiliar = array_count_values($aux);
+
+			$this->imprimirArreglo($reporte);
 			$this->_view->_inasistencias = $auxiliar;
 			$this->_view->render('pdfReporteCompleto', 'personal', 'pdf','');
 		}		
