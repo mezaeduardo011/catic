@@ -161,12 +161,18 @@
 								<label class="control-label" for="ubicacion">Ubicación: </label>
 											<input autocomplete="off" class  ="input-sm form-control" type="text" id="ubicacion" name="ubicacion" placeholder="Zona donde vive la persona" size="80" />
 						
-							</div>							
-							<div  id="modificarDatos" hidden align="center">
-								<button class="btn btn-primary" onclick="enviar_datos('cedula','nombre','nombre2','apellido','apellido2','sexo_empleado','fecha_nacimiento','fecha_ingreso','telefono','otro_telefono','correo','cargo','coordinacion','estado','municipio','direccion','ubicacion')">
+							</div>
+							<br><br>
+							<br>													
+							<div  id="modificarDatos"  align="center">
+								<button hidden class="btn btn-primary" onclick="enviar_datos('cedula','nombre','nombre2','apellido','apellido2','sexo_empleado','fecha_nacimiento','fecha_ingreso','telefono','otro_telefono','correo','cargo','coordinacion','estado','municipio','direccion','ubicacion')">
 								Actualizar
 								<i class="glyphicon glyphicon-search"></i>
 								</button>
+								<button hidden class="btn btn-primary" onclick="send_registro_persona();">
+								Guardar
+								<i class="glyphicon glyphicon-search"></i>
+								</button>								
 							</div>
 						</form>
 					</div>

@@ -20,8 +20,9 @@ $(document).ready(function () {
                     { label:'Instrucción', name: 'instruccion',key: true, width: 90 ,"search":true},
                     { label:'Fecha', name: 'fecha',key: true, width: 50 ,"search":true},
                     { label:'Tipo', name: 'tipo',key: true, width: 50 ,"search":true},  
-                    { label:'Estatus', name: 'status',key: true, width: 50 ,"search":true},                                     
+                    { label:'Estatus', name: 'estatus',key: true, width: 50 ,"search":true},                                     
                     { label:'Coordinacion encargada', name: 'coordinacion',key: true, width: 120 ,"search":true},
+                    { label:'Carpeta', name: 'carpeta',key: true, width: 60 ,"search":true},
                     { label:'Coordinacion encargada', name: 'id_correspondencia',key: true, width: 1 ,"search":true},
 
                 ],
@@ -125,17 +126,24 @@ jQuery(grid_selector).jqGrid('filterToolbar',{"stringResult":true});
                                 
         if(columna_check.length>0){
             var id_correspondencia = [];
+             var estatus = [];
             for(var i=0,ids=columna_check.length;i<ids; i++){
                 id_correspondencia.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_correspondencia'));
+                estatus.push($(grid_selector).jqGrid('getCell', columna_check[i], 'estatus'));
             }
         }
 
     if (id_correspondencia!=undefined && id_correspondencia!=null) {
+        if(estatus=='Archivada'){
+            alert('Esta correspondencia ya esta archivada');
+        }else{
               pickOpen('prod', 'id_prod',BASE_URL+'correspondencia/archivar/'+id_correspondencia,
 
-        90, 96, 85, 1);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
+        90, 30, 60, 70);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
 
-        llenarEstado(id_correspondencia);
+        llenarEstado(id_correspondencia);            
+        }
+
     }else{
         alert('Por favor seleccione una fila');
     }

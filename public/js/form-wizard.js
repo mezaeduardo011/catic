@@ -164,7 +164,7 @@ $('#my-wizard')
      e.preventDefault();
      }else{
       if (step==1) { 
-         send_registro_persona();
+         
       };
         showElementos('modificarDatos');
         send_consulta_info();

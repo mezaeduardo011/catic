@@ -25,9 +25,8 @@
 	
 
 		function registrarFechas(){
-		$fechas=$this->ConvertirArraySql($_POST);
-		$this->_administracion->insertFechas($fechas);
-
+			$fechas=$this->ConvertirArraySql($_POST);
+			$this->_administracion->insertFechas($fechas);
 		}
 
 		function usuarios(){

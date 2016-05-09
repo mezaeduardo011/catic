@@ -43,7 +43,7 @@
 
 			$auxiliar = array_count_values($aux);
 
-			$this->imprimirArreglo($reporte);
+			//$this->imprimirArreglo($reporte);
 			$this->_view->_inasistencias = $auxiliar;
 			$this->_view->render('pdfReporteCompleto', 'personal', 'pdf','');
 		}		

@@ -26,8 +26,10 @@
 		}
 
 		function actualizarAsistencia(){
-				// if($this->_biometrico->getBiometrico()[0]['fecha']!=date('d-m-Y')){				
-						//$this->imprimirArreglo($this->_biometrico->getBiometrico());
+				  //si la fecha del ultimo horario insertado es distinta a la fecha actual o si la no hay horarios insertados.....
+				 if($this->_biometrico->getBiometrico()[ count($this->_biometrico->getBiometrico())-1 ][ 'fecha' ] != date('d-m-Y') || $this->_biometrico->getBiometrico()==null){				
+				 	
+				 	//$this->imprimirArreglo($this->_biometrico->getBiometrico()[count($this->_biometrico->getBiometrico())-1]['fecha']);
 						$this->guardarHorarioDiario();
 						$this->guardarHorarioFinal();
 						$horario = $this->_biometrico->getBiometrico();
@@ -53,17 +55,10 @@
 							$this->_biometrico->insertInasistencia($personas[array_keys($personas)[$j]]['id_persona_empleada'],$fecha);
 						}
 						$this->_view->redirect('biometrico/index');
-			// }elseif($this->_biometrico->getBiometrico()[0]['fecha']==date('d-m-Y')){
+				}else{
+						$this->_view->redirect('biometrico/index');
+				}
 
-			// 			$this->_view->_error = 'La Asistencia Ya Esta Actualizada A La Fecha Actual.';
-			// 			$this->_view->redirect('biometrico/index');
-
-			// 			 // echo "<script language='JavaScript'>"; 
-			// 			 // 	echo "alert('La Asistencia Ya Esta Actualizada A La Fecha Actual');"; 
-			// 			 // echo "</script>";
-			// }else{
-			// 			 echo "Error";				
-			// }
 		}
 
 

@@ -278,8 +278,7 @@
 
 		}		
 
-		function SelectEstado() {
-			
+		function SelectEstado() {			
 					$result = $this->_personal->getDireccionEstado();
 					$data = array();
 
@@ -288,7 +287,6 @@
 					}
 
 					echo json_encode($data);
-
 		}
 
 
