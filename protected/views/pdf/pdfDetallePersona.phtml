@@ -18,7 +18,7 @@
 
 </script>  
 <div class="cintillo">
-        <img src="/var/www/html/catic/public/img/cintillo.jpg" width="100%" height="80">
+        <img src="/var/www/html/catic/public/img/cintillo.jpg" width="100%" height="60">
 </div> 
 <div class="cuerpo">
     <div class="page-header" align="center">
@@ -26,7 +26,7 @@
         Datos completos de la persona
         </h2>
     </div>
-    <table id="dynamic-table" align="center" class="CSSTableGenerator">
+    <table id="dynamic-table" align="center" class="tablaReporte">
 
         <tr >
         <th class="center" >Cedula</th>
@@ -71,7 +71,7 @@
         <tr>
         <td align="center" ><?php echo $this->_persona[0]['fecha_ingreso'] ?></td>
         <td align="center" ><?php echo $this->_persona[0]['coordinacion'] ?></td>
-        <td align="center">FALTA</td>
+        <td align="center"><?php echo $this->_persona[0]['coordinacion'] ?></td>
         </tr>
     </table>
 
@@ -81,7 +81,7 @@
         Dirección
         </h2>
     </div>
-    <table id="dynamic-table" align="center" class="CSSTableGenerator">
+    <table id="dynamic-table" align="center" class="tablaReporte">
         <tr >
         <th class="center" >Estado</th>
         <th class="center">Municipio</th>
@@ -94,7 +94,7 @@
         </tr>
         </tr>
     </table>  
-   <table id="dynamic-table" align="center" class="CSSTableGenerator">
+   <table id="dynamic-table" align="center" class="tablaReporte">
         <tr >
         <th class="center" >Ubicación</th>
         </tr>
@@ -108,7 +108,7 @@
         Información de los hijos
         </h2>
     </div>
-    <table id="dynamic-table" align="center" class="CSSTableGenerator">
+    <table id="dynamic-table" align="center" class="tablaReporte">
         <tr >
         <th class="center" >Nombres</th>
         <th class="center">Apellidos</th>
@@ -133,7 +133,7 @@
         Información adicional
         </h2>
     </div>
-    <table id="dynamic-table" align="center" class="CSSTableGenerator">
+    <table id="dynamic-table" align="center" class="tablaReporte">
         <tr >
         <th class="center">¿Posee vehiculo?</th>
         <th class="center">Tipo de vivienda</th>
@@ -143,7 +143,7 @@
         <td align="center"><?php echo $this->_deporte[0]['vivienda'] ?></td>   
         </tr>       
     </table>
-    <table id="dynamic-table" align="center" class="CSSTableGenerator">
+    <table id="dynamic-table" align="center" class="tablaReporte">
         <tr >
         <th class="center" >Medicamentos que toma de por vida</th>
         </tr>
@@ -151,7 +151,7 @@
         <td align="center" ><?php echo $this->_deporte[0]['medicamentos'] ?></td>
         </tr>               
     </table> 
-    <table id="dynamic-table" align="center" class="CSSTableGenerator">
+    <table id="dynamic-table" align="center" class="tablaReporte">
         <tr >
         <th class="center" >Deportes que practica</th>
         </tr>

@@ -26,6 +26,7 @@
 				$query = "SELECT * from vista_usuarios";
 				$result=$this->selectPdo($query);
 				return $result;		
+
 		}	
 
 		public function agregarUsuario($id){

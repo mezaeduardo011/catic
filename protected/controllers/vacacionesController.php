@@ -97,7 +97,6 @@
 			$data['fechaHasta']= $fechaHastaFinal;		
 			echo json_encode($data);
 
-		}
-	
+		}	
 	}
 ?>

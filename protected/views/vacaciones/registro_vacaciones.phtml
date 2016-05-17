@@ -5,7 +5,7 @@
 <div class="widget-box">
 	<form action="<?php  echo BASE_URL;?>vacaciones/registro_vacaciones" method="post">
 		<div class="alert alert-info" align="center">
-			<h4>Asignacion de vacaciones <i class="glyphicon glyphicon-calendar"></i></h4>
+			<h4>Asignacion De Vacaciones <i class="glyphicon glyphicon-calendar"></i></h4>
 		</div>
 		<br>
 			<div class="row">
@@ -22,10 +22,9 @@
 										<label>Fecha de inicio:</label>
 											<input autocomplete="off" type="text" class="input-sm form-control date-picker" name="desde" id="desde" placeholder="Desde"  data-date-format="yyyy-mm-dd"/>
 									</div>								
-									<div class="col-sm-3" align="center">
-									
+									<div class="col-sm-2" align="center">									
 										<label>Días hábiles correspondientes:</label>
-										<div class="col-sm-4 input-group">
+										<div class="col-sm-6 input-group">
 											<input autocomplete="off"  class  ="input-sm form-control" name="dias_habiles" id="dias_habiles" type="text"  />
 											<span class   ="input-group-addon" style="cursor:pointer;">
 												<i class      ="fa 	fa-calculator bigger-110"></i>
@@ -33,6 +32,16 @@
 										</div>
 										<br>
 									</div>
+									<div class="col-sm-2" align="center">						
+										<label>Periodos en disfrute:</label>
+										<div class="col-sm-6 input-group">
+											<input autocomplete="off"  class  ="input-sm form-control" name="periodos_disfrute" id="periodos_disfrute" type="text"  />
+											<span class   ="input-group-addon" style="cursor:pointer;">
+												<i class      ="fa 	fa-calculator bigger-110"></i>
+											</span>
+										</div>
+										<br>
+									</div>									
 									<div class="col-sm-2" align="center">
 										<label>Fecha final:</label>
 											<input  onkeypress="return letras(event)" autocomplete="off" class  ="input-sm form-control date-picker" name="hasta" id="hasta" type="date" data-date-format="yyyy-mm-dd" readonly="" />
@@ -112,4 +121,3 @@
 
 </div>
 </div>	
-<!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido -->	

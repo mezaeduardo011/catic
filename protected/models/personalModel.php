@@ -34,22 +34,48 @@
 	}
 
 	public function actualizarEmpleado($persona){
-		$query=$this->query = "SELECT update_persona(:0,:cedula,:nombre1,:nombre2,:apellido1,:apellido2,:sexo,:fecha_nacimiento,:fecha_ingreso,:telefono,:otro_telefono,:correo,:cargo,:coordinacion,:parroquia,:ubicacion);";
+
+		$query=$this->query = "SELECT update_persona(:id_empleado,:cedula,:nombre1,:nombre2,:apellido1,:apellido2,:sexo,:fecha_nacimiento,:fecha_ingreso,:telefono,:otro_telefono,:correo,:cargo,:coordinacion,:parroquia,:ubicacion);";
 		return $this->registroPdo($query,$persona);
 	}
 		
 	public function getPersonal($cedula=false){
-			if($cedula==true){
-				return $this->selectPdo($query="SELECT * FROM personal_completo WHERE cedula='".$cedula."'");
-			}else{
-				return $this->selectPdo($query="SELECT * FROM personal_completo");
-			}			
+
+					switch(Session::get('perfil')){
+						case 'Secretaria':
+						case 'Adjunta':
+						case 'Director General':
+							if($cedula==true){
+								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE cedula='".$cedula."'
+								AND id_persona != ".Session::get("id_persona")."");
+							}else{
+								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE id_persona != ".Session::get("id_persona")."");
+							}	
+						break;
+						case 'Director de linea':
+							if($cedula==true){
+								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE cedula='".$cedula."'
+								AND coordinacion ='".Session::get('coordinacion')."' AND id_persona != ".Session::get("id_persona")."");
+							}else{
+								return $this->selectPdo($query="SELECT * FROM personal_completo WHERE coordinacion ='".Session::get('coordinacion')."' AND id_persona != ".Session::get("id_persona")."");
+							}
+						break;
+					}		
+		
 	}
 
-	public function getInfoDatosModel(){				
+	public function getInfoDatosModel($id = false){
+		if($id == false){		
 			return $this->selectPdo(
 				$query="SELECT p.nombre,p.apellido,p.id_persona,pe.id_persona_empleada 
-				FROM persona as p INNER JOIN persona_empleada AS pe ON pe.id_persona = p.id_persona ORDER BY id_persona DESC LIMIT 1;");
+				FROM persona as p INNER JOIN persona_empleada AS pe ON pe.id_persona = p.id_persona ORDER BY p.id_persona DESC LIMIT 1;"
+				);
+		}else{
+			return $this->selectPdo(
+				$query="SELECT p.sexo_referencial,pe.coordinacion_referencial,pe.id_persona_empleada,pe.cargo,direccion.estado,direccion.municipio,direccion.parroquia
+						FROM persona as p INNER JOIN persona_empleada AS pe ON pe.id_persona = p.id_persona
+						INNER JOIN parroquias as direccion ON direccion.id_direccion = p.direccion_referencial");
+		}
 	}
 
 	public function getHijosModel($id_persona_empleada=false){
@@ -108,7 +134,17 @@
 	}
 
 	public function getPersonalDisponible(){
-			return $this->selectPdo($query = "SELECT * FROM personal_disponible");
+					switch(Session::get('perfil')){
+						case 'Secretaria':
+						case 'Adjunta':
+						case 'Director General':
+							return $this->selectPdo($query = "SELECT * FROM personal_disponible WHERE id_persona != ".Session::get("id_persona")."");
+						break;
+						case 'Director de linea':
+							return $this->selectPdo($query = "SELECT * FROM personal_disponible WHERE coordinacion ='".Session::get('coordinacion')."' AND id_persona != ".Session::get("id_persona")."");
+						break;
+					}		
+			
 	}
 
 	public function getUnicaPersona($id){
@@ -125,6 +161,10 @@
 
 	public function deletePersona($id){
 			return $this->selectPdo($query = "UPDATE persona_empleada SET status_referencial= 99 where id_persona='".$id."'");	
+	}
+
+	public function getReporte($mes){
+			return $this->selectPdo($query = "SELECT  * from reporte WHERE extract(MONTH from fecha_asistencia) = ".$mes." ");
 	}				
 }
 ?>

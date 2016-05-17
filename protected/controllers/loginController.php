@@ -38,13 +38,14 @@
 				 	$this->_view->render('access', '','login');
 				 	exit();
 			    }
-			    
 
 				Session::set('authenticated', true);
+				Session::set('id_persona', $data['id_persona']);
 				Session::set('level', $data['perfil_referencial']);
 				Session::set('user', $data['nombre'].' '.$data['apellido']);
 				Session::set('cedula', $data['cedula']);
 				Session::set('perfil', $data['perfil']);	
+				Session::set('coordinacion', $data['coordinacion']);
 				
 				Session::set('time', time());
 

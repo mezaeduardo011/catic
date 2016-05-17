@@ -1,20 +1,14 @@
 <?php
-// define — Define una constante con nombre.
-// Se utiliza para crear una constante
-// la cual es global, para luego ser utilizada en cualquier parte de la aplicacion.
-//Por esto es que mas adelante se notara la utilizacion de la constante BASE_URL.
-
-	define('DEFAULT_CONTROLLER', 'personal');
+	define('DEFAULT_CONTROLLER', 'login');
 	define('DEFAULT_METHOD', 'index');
 	
 	define('BASE_URL', 'http://localhost/catic/');
 	define('PUBLIC_URL', BASE_URL . 'public/');
 	define('CSS_PATH', PUBLIC_URL. 'css'.DS);
 	define('JS_PATH', PUBLIC_URL.'js'.DS);
-	define('FONTS_PATH', PUBLIC_URL.'fonts'.DS);
-	define('IMG_PATH', PUBLIC_URL.'img'.DS);
-	define('UPLOAD_IMG_PATH', PUBLIC_URL.'img'.DS.'partners'.DS);
-
+	//define('FONTS_PATH', PUBLIC_URL.'fonts'.DS);
+	//define('IMG_PATH', PUBLIC_URL.'img'.DS);
+	//define('UPLOAD_IMG_PATH', PUBLIC_URL.'img'.DS.'partners'.DS);
 	define('SIZE_PAPER', 'LEGAL');
 	define('SHEET_ORIENTATION', 'P');
 	define('LANGUAJE_PDF', 'en');
@@ -22,7 +16,7 @@
 	define('APP_NAME', ' Control Administrativo De Tecnología Información y Comunicación');
 	define('APP_LOGO', '');
 	define('APP_OTHER', '');
-	define('SESSION_TIME', 20);
+	define('SESSION_TIME', 1);
 
 	define("DB_HOST", "localhost"); 
 	define("DB_USER", "postgres"); 

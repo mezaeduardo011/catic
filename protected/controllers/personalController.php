@@ -56,8 +56,7 @@
 			"Librerias/jquery.maskedinput","Librerias/jquery.gritter", 
 			"registroPersona/registroPersona",
 			"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion",
-			"Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","registroPersona/tablaHijos",
-			"registroPersona/consultaPadres","registroPersona/tablaPadres","registroPersona/actualizar_persona"));
+			"Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src","registroPersona/tablaHijos","registroPersona/tablaPadres","registroPersona/actualizar_persona"));
 
 			$this->_view->setCss(array(
 			"datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter","bootstrap-datepicker",
@@ -104,17 +103,19 @@
 		}
 
 		function insertPerson(){
-			//$_POST=$_GET;
-			unset($_POST['url']);
-			unset($_POST['estado']);
-			unset($_POST['municipio']);
-			$persona= $this->ConvertirArray($_POST);
-			//$this->imprimirArreglo($persona);
-			if(isset($persona[':fecha_nacimiento_hijo'])){
-				$persona[':fecha_nacimiento'] = $persona[':fecha_nacimiento_hijo'];
-				unset($persona[':fecha_nacimiento_hijo']);
-			}
-			return $this->_personal->insertPersonModel($persona);
+
+				//$_POST=$_GET;
+				unset($_POST['url']);
+				unset($_POST['estado']);
+				unset($_POST['municipio']);
+				$persona= $this->ConvertirArray($_POST);
+				if(isset($persona[':fecha_nacimiento_hijo'])){
+					$persona[':fecha_nacimiento']=$persona[':fecha_nacimiento_hijo'];
+					unset($persona[':fecha_nacimiento_hijo']);
+				}
+
+				//$this->imprimirArreglo($persona);
+				$this->_personal->insertPersonModel($persona);
 		}
 
 		function Insert_InfoAdicional(){
@@ -140,16 +141,13 @@
 		$datos = $_POST;
 		unset($datos['datos'][0]['estado']);
 		unset($datos['datos'][0]['municipio']);
-		$id = $this->_personal->getInfoDatosModel();
-		unset($id[0]['nombre']);
-		unset($id[0][0]);
-		unset($id[0]['apellido']);
-		unset($id[0][1]);
-		unset($id[0][2]);
+
 
 		$personal = 
 
 			array(
+
+					'id_empleado' => $datos['datos'][0]['id_persona'],
 					'cedula' => $datos['datos'][0]['cedula'],		
 					'nombre1' => $datos['datos'][0]['primer_nombre'],
 					'nombre2' => $datos['datos'][0]['segundo_nombre'],
@@ -164,44 +162,51 @@
 					'cargo' => $datos['datos'][0]['cargo'],		
 					'coordinacion' => $datos['datos'][0]['coordinacion'],
 					'parroquia' => $datos['datos'][0]['parroquia'],
-					'ubicacion' => $datos['datos'][0]['ubicacion']
+
+					'ubicacion' => $datos['datos'][0]['ubicacion'],
+					//'tipo_persona' => $datos['datos'][0]['tipo_persona']
 			);
 
-		$empleado =
-
-			array(
-					'id_empleado' => $id[0]['id_persona']
-			);
-		array_push($personal, $empleado['id_empleado']);
 		$personal = $this->ConvertirArray($personal);
-		$id_empleado = $this->ConvertirArray($empleado);
 		$response= $this->_personal->actualizarEmpleado($personal);
 		print_r($response);
 	}
 
 		function getInfoDatos(){
-		
-			$datosPersona = $this->_personal->getInfoDatosModel();
+			$id = $_POST['id_persona'];
+			$datosPersona = $this->_personal->getInfoDatosModel($id);
+			if(isset($datosPersona[0]['sexo_referencial'])){
+				$datos_personal = array (
+					'sexo' => $datosPersona[0]['sexo_referencial'],
+					'direccion' => $datosPersona[0]['parroquia'],			
+					'coordinacion' => $datosPersona[0]['coordinacion_referencial'],
+					'cargo' => $datosPersona[0]['cargo'],
+					'estado' => $datosPersona[0]['estado'],
+					'municipio' => $datosPersona[0]['municipio']
+				);
+			}
 			$this->_view->_datosPersona = $datosPersona;
-			echo json_encode($datosPersona);
+			if(isset($datos_personal)){
+				echo json_encode($datos_personal);
+			}else{
+				print_r($datosPersona);
+			}
 
 		}
 
-		function getHijos(){
+
+		function getHijos($id = false){
+			if ($id == false){
 			$result = $this->_personal->getInfoDatosModel();
 			$listado = $this->_personal->getHijosModel($result[0]['id_persona_empleada']);
+			}else{
+			$listado = $this->_personal->getHijosModel($id);
+			}
 			echo json_encode($listado);
 		}
 
-		function getHijosEmpleado($id_persona_empleada){
-			echo $id_persona_empleada;
-			// $listado = $this->_personal->getHijosModel($result[0]['id_persona_empleada']);
-			// echo json_encode($listado);
-		}
-
 		function getPadres(){		
-			$result = $this->_personal->getInfoDatosModel();
-			$listado = $this->_personal->getPadresModel($result[0]['id_persona_empleada']);
+			$listado = $this->_personal->getPadresModel();
 			echo json_encode($listado);
 		}
 
@@ -216,6 +221,7 @@
 
 
 		function personasTabla(){
+
 			$listado = $this->_personal->getPersonal();
 			$this->_view->_listado = $listado;
 			echo json_encode(array("personal"=>$listado)); 
@@ -229,13 +235,17 @@
 				}else{	
 				$this->_view->setJs(array(
 				"Librerias/formValidation","Librerias/bootstrapValidator.min","validaciones",
+				"Librerias/jqGrid/i18n/grid.locale-es","Librerias/jqGrid/jquery.jqGrid.src",
 				"Librerias/fuelux.wizard","actualizarPersona/form-wizard_actualizar",
 				"Librerias/bootstrap-datepicker","Librerias/locales/bootstrap-datepicker.es.min",
-				"Librerias/jquery.maskedinput",
 				"registroPersona/registroPersona",
-				"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion","pickList"));
 
-				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter","bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone"));	
+				"utilidades","Librerias/bootstrap-select","SIGESP","selectDireccion","pickList",
+				"registroPersona/actualiza_y_llena","registroPersona/hijoActualizar",
+				"registroPersona/actualizar_persona"));
+
+				$this->_view->setCss(array("datepicker","bootstrapValidator.min","bootstrap-select","jquery.gritter",
+											"bootstrap-datepicker","bootstrap-datepicker.standalone","bootstrap-datepicker3","bootstrap-datepicker3.standalone","ui.jqgrid"));	
 							
 				$persona = $this->_personal->getUnicaPersona($id);
 				$hijos = $this->_personal->getHijosModel($persona[0]['id_persona_empleada']);
@@ -244,6 +254,8 @@
 				$this->_view->_persona = $persona;
 				$this->_view->_hijos = $hijos;
 				$this->_view->_hijos = $padres;
+
+				//print_r($persona);die();
 				$this->_view->render('actualizar_persona','','pickList');
 				
 				}
@@ -288,8 +300,7 @@
 			echo ("Eliminado con exito"); 
 		}
 
-		function SelectEstado() {
-			
+		function SelectEstado() {			
 					$result = $this->_personal->getDireccionEstado();
 					$data = array();
 
@@ -298,7 +309,6 @@
 					}
 
 					echo json_encode($data);
-
 		}
 
 

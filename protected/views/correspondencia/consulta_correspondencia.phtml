@@ -4,10 +4,12 @@
 			<div class="widget-box">
 				<div class="alert alert-info" align="center">
 					<h4>
-					Consulta de correspondencias <i class="fa fa-envelope fa-lg"></i></h4>
+
+					Consulta De Correspondencias <i class="fa fa-envelope fa-lg"></i></h4>
 					</h4>
 				</div>
 				<br>
+				
 				<div align="center" id="AgregarOtro" >
 					<button class="btn btn-success" onclick="pickOpen('prod', 'id_prod',
 					'<?php echo BASE_URL."correspondencia/registro" ?>',
@@ -15,6 +17,16 @@
 					<i class      ="glyphicon glyphicon-plus"></i>
 					Registrar una correspondencia
 					</button>
+
+					<!--
+					<button class="btn btn-success" onclick="pickOpen('prod', 'id_prod',
+					'<?php echo BASE_URL."carpeta/registro" ?>',
+					90, 60, 90, 60);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);">
+					<i class      ="glyphicon glyphicon-plus"></i>
+					Agregar carpeta
+					</button>	
+					-->	
+
 				</div>
 				<br>
 						<div class="row">
@@ -23,6 +35,7 @@
 									<div class="col-xs-12">
 										<div class="table-header">
 											Correspondencias registradas
+
 										</div>
 												<div>
 												<div id="tabla_consulta" class="col-xs-12" align="center">
@@ -40,7 +53,7 @@
 											<br>
 	</div>
 </div>	
-<!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido --><!-- fin_contenido -->			
+		
 
 			<div id="prod"></div>
 			<div id="resultado" align="center"></div>

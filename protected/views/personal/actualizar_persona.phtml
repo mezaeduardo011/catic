@@ -1,25 +1,12 @@
-<!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido -->
-<input type="text" hidden="" value="<?php echo $this->_persona[0]['id_persona_empleada'] ?>" id="persona_empleada_auxiliar">
+<input type="text"  value="<?php echo $this->_persona[0]['id_persona'] ?>" id="persona_empleada_auxiliar" hidden>
+<input type="text"  value="<?php echo $this->_persona[0]['id_persona_empleada'] ?>" id="persona_empleada" hidden>
 <div class="main-content" >
   <div class="main-content-inner">
 <form class   ="form-inline center" role="form"  method="post"  id="registro_persona" name="registro_persona" >
   <div class="widget-box">
     <div class="alert alert-info ">
       <div class  id="inicio" align="center">
-        <h4 class="widget-title">Registro de persona.</h4>
-      </div>
-      <div id="infoDatosDiv" hidden >
-        <div  class="col-sm-3">
-          <h5 class="widget-title">
-          <table id="infoDatos">
-            <td class="center" >Registrando datos de: </td>
-          </table>          
-          </h5>
-
-        </div>
-        <br>
-        <br>
-        <br>
+        <h4 class="widget-title">Actualizando Persona</h4>
       </div>
     </div>
     <div class="widget-body">
@@ -36,26 +23,13 @@
                 <span class="step" style=cursor:pointer;>2</span>
                 <span class="title">Información de los hijos</span>
               </li>
-              
-              <li data-step="3">
-                <span class="step" style=cursor:pointer;>3</span>
-                <span class="title">Información de los padres</span>
-              </li>
-              
-              <li data-step="4">
-                <span class="step" style=cursor:pointer;>4</span>
-                <span class="title">Otra información</span>
-              </li>
             </ul>
           </div>
           <br>
           <div class="step-content pos-rel">
             <div class="step-pane active" data-step="1" id="divPersona">
-              <input type="text" name="tipo_persona" value="empleada" hidden></input>
                   <div class="form-group">
-
-<!-- EMPLEADO -->
-
+<!-- EMPLEADO -->            
                 <label for="cedula">Cédula: </label>
                   <input onkeypress="return numeros(event);" maxlength="10" onkeyup="format(this)" autocomplete="off" type="text" name="cedula" id="cedula" class="input-sm form-control" value="<?php echo $this->_persona[0]['cedula'] ?>" />
                   </div>
@@ -95,8 +69,6 @@
                         <span class="lbl"> Femenino</span>
                       </label>                        
                       </div>
-
-                
               </div>  
               &nbsp;&nbsp;
               <div class="form-group">
@@ -155,11 +127,13 @@
               <div class="form-group">
                 <label class="control-label" for="ubicacion">Ubicación: </label>
                       <input autocomplete="off" class  ="input-sm form-control" type="text" id="ubicacion" name="ubicacion" placeholder="Zona donde vive la persona" size="80" value="<?php echo $this->_persona[0]['ubicacion'] ?>"/>
-            
-              </div>    
+              </div> 
+              <div class="form-group">
+              <input type="text" name="tipo_persona" id="tipo_persona" value="Empleado" hidden>
+              </div>
               <br><br>          
               <div  id="modificarDatos"  align="center">
-                <button class="btn btn-primary" onclick="send_consulta_info();hiddenElementos('registrarPersona');enviar_datos('cedula','nombre','nombre2','apellido','apellido2','sexo_empleado','fecha_nacimiento','fecha_ingreso','telefono','otro_telefono','correo','cargo','coordinacion','estado','municipio','direccion','ubicacion')">
+                <button class="btn btn-primary" onclick="hiddenElementos('registrarPersona');enviar_datos('cedula','nombre','nombre2','apellido','apellido2','sexo_empleado','fecha_nacimiento','fecha_ingreso','telefono','otro_telefono','correo','cargo','coordinacion','estado','municipio','direccion','ubicacion','tipo_persona')">
                 Actualizar
                 <i class="glyphicon glyphicon-search"></i>
                 </button>
@@ -168,58 +142,20 @@
             </form>
           </div>
 <!-- FIN EMPLEADO -->
+          <div class="step-pane" data-step="2">    
+          <div>
 
-          <div class="step-pane" data-step="2">
-                        <div id="tablaHijos">                 
-                              <div id="tabla_consulta" align="center" class="widget-box">
-                                  <table  id="tablaInfoHijos"></table>
-                                  <div id="tablaInfoHijosDiv"></div>
-                              </div>
-                        </div>
-
-                  <div id="preguntaHijos" >
-                        <div id="pregunta">
-                          <label for="">¿Esta persona tiene hijos?</label>
-                        </div>
-                  
-                        <label class="blue">
-                          <input autocomplete="off"  value="16" type="radio" class="ace" name="Padres"
-                          onchange="showElementos('infoHijos');hiddenElementos('preguntaHijos');showElementos('CancelarRegistro');" value="16" />
-                          <span class="lbl"> Si</span>
-                        </label>
-                      
-                        <label class="blue">
-                          <input autocomplete="off"  value="16" type="radio" class="ace" name="Padres" onchange="hiddenElementos('infoHijos');" />
-                          <span class="lbl"> No</span>
-                        </label>
-                  </div>  
-              <div align="center" id="CancelarRegistro" hidden>
-                <button class="btn btn-primary" onclick="showElementos('preguntaHijos');hiddenElementos('CancelarRegistro');hiddenElementos('infoHijos');">
-                <i class      ="glyphicon glyphicon-plus"></i>
-                Cancelar
-                </button>
-              </div>      
-            <div>
-
-              <div id="infoHijos" hidden class="col-sm-16"><!-- informacion de los hijos -->
-              <div id="infoExtra" >
-                <hr>
-                <h3 align="center" class="lighter block blue">Ahora podrá registrar un máximo de 5 hijos</h3>
-              </div>              
-                <br>
-                
-                <div class="form-group">
-                  <input type="text" name="tipo_persona" value="hijo" hidden></input>
-                  <input autocomplete="off" type="hidden" name="cedula" value="-">
-                  <input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
-                  <input autocomplete="off" type="hidden" name="telefono" value="-">
-                  <input autocomplete="off" type="hidden" name="otro_telefono" value="-">
-                  <input autocomplete="off" type="hidden" name="correo" value="-">
-                  <input autocomplete="off" type="hidden" name="direccion" value="0">
-                  <input autocomplete="off" type="hidden" name="ubicacion" value="-">
-                  <input autocomplete="off" type="hidden" name="cargo" value="0">
-                  <input autocomplete="off" type="hidden" name="coordinacion" value="0">
-                </div>
+              <div id="infoHijosActualizar" hidden class="col-sm-16">
+              <input type="text" name="tipo_persona" value="hijo" hidden></input>
+              <input autocomplete="off" type="hidden" name="cedula" value="-">
+              <input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
+              <input autocomplete="off" type="hidden" name="telefono" value="-">
+              <input autocomplete="off" type="hidden" name="otro_telefono" value="-">
+              <input autocomplete="off" type="hidden" name="correo" value="-">
+              <input autocomplete="off" type="hidden" name="direccion" value="0">
+              <input autocomplete="off" type="hidden" name="ubicacion" value="-">
+              <input autocomplete="off" type="hidden" name="cargo" value="0">
+              <input autocomplete="off" type="hidden" name="coordinacion" value="0">
               <div class="form-group">
                 <label class="control-label ">Nombres:</label>
                     <input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
@@ -252,8 +188,6 @@
                         <span class="lbl"> Femenino</span>
                       </label>                        
                       </div>
-
-                
               </div>  
               &nbsp;&nbsp;
               <div class="form-group">
@@ -263,21 +197,20 @@
                             <hr>
 
                 <div align="center">
-                  <button class="btn btn-success" onclick="send_consulta_hijo();send_registro_persona('empleada');hiddenElementos('CancelarRegistro');" id="registrarHijo">
+                  <button class="btn btn-success" onclick="send_registro_persona();" id="registrarHijoActualizar">
                   <i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
                   Registrar
                   </button>
-                  
                 </div>
                 <hr>
               </div><!--  Fin informacion de los hijos -->
-              <div align="center" id="AgregarOtro" hidden>
-                <button class="btn btn-primary" onclick="showElementos('infoHijos');hiddenElementos('AgregarOtro');hiddenElementos('CancelarRegistro');">
+              <div align="center" id="AgregarOtro" >
+                <button class="btn btn-primary" onclick="showElementos('infoHijosActualizar');hiddenElementos('AgregarOtro');">
                 <i class      ="glyphicon glyphicon-plus"></i>
-                Agregar otro hijo
+                Agregar Hijo
                 </button>
               </div>
-              <div id="tablaHijos" hidden="">                 
+              <div id="tablaHijos">                 
                     <div id="tabla_consulta" align="center" class="widget-box">
                         <table  id="tablaInfoHijos"></table>
                         <div id="tablaInfoHijosDiv"></div>
@@ -306,8 +239,6 @@
                         </label>
                   
                   <div id="saltos">
-                
-                    
                   </div>
                 </div>
               <div align="center" id="CancelarRegistroPadres" hidden>
@@ -321,19 +252,8 @@
                 <div id="infoPadresAmbos" class="col-sm-16" hidden><!-- informacion de los Padres -->
                   <h3 align="center" class="lighter block blue">Información del padre de la persona</h3>
                   <br>
-                  <div id="infoPadre">
-                    <input type="text" name="tipo_persona" value="padre" hidden></input>
-                    <input autocomplete="off" type="hidden" name="cedula" value="-">
-                    <input autocomplete="off" type="hidden" name="fecha_ingreso" value="2016-01-01">
-                    <input autocomplete="off" type="hidden" name="fecha_nacimiento" value="2016-01-01">
-                    <input autocomplete="off" type="hidden" name="telefono" value="-">
-                    <input autocomplete="off" type="hidden" name="otro_telefono" value="-">
-                    <input autocomplete="off" type="hidden" name="correo" value="-">
-                    <input autocomplete="off" type="hidden" name="direccion" value="0">
-                    <input autocomplete="off" type="hidden" name="ubicacion" value="-">
-                    <input autocomplete="off" type="hidden" name="sexos" value="0">
-                    <input autocomplete="off" type="hidden" name="cargo" value="0">
-                    <input autocomplete="off" type="hidden" name="coordinacion" value="0">                    
+
+                  <div id="infoPadre">                  
                     <div class="form-group">
                       <label class="control-label ">Nombres:</label>
                           <input style="text-transform: capitalize;" onkeypress="return letras(event)" autocomplete="off"
@@ -396,8 +316,7 @@
                       </div>
                         <hr>
                   <div align="center">
-                    <button class="btn btn-success" onclick="send_consulta_hijo();
-                    showElementos('tablaPadres');hiddenElementos('infoPadres');hiddenElementos('CancelarRegistroPadres');hiddenElementos('infoExtra');hiddenElementos('infoPadresAmbos');send_registro_persona('hijo')" id="registrarAmbosPadres">
+                    <button class="btn btn-success" onclick="showElementos('tablaPadres');hiddenElementos('infoPadres');hiddenElementos('CancelarRegistroPadres');hiddenElementos('infoExtra');hiddenElementos('infoPadresAmbos');send_registro_persona()" id="registrarAmbosPadres">
                     <i class      ="ace-icon fa fa-floppy-o fa-lg"></i>
                     Registrar
                     </button>
@@ -455,7 +374,8 @@
                       <hr>
                 </div><!--  Fin infoPadreUnico -->
                 
-                    <div id="tablaPadresAdd" hidden="">                 
+
+                    <div id="tablaPadresAdd">                 
                           <div id="tabla_consulta_padres" align="center" class="widget-box">
                               <table  id="tablaInfoPadres"></table>
                               <div id="tablaInfoPadresDiv"></div>

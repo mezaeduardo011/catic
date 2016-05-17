@@ -14,15 +14,16 @@ $(document).ready(function () {
                 styleUI : 'Bootstrap',
                 datatype: "json",
                 colModel: [
-                    { label: 'N°', name: 'numeracion', width: 20 },
-                    { label: 'Asunto', name: 'asunto', width: 150 },
-                    { label: 'Oficina', name: 'oficina', width: 150 },
-                    { label:'Instrucción', name: 'instruccion', width: 90 },
-                    { label:'Fecha', name: 'fecha', width: 50 },
-                    { label:'Tipo', name: 'tipo', width: 50 },  
-                    { label:'Estatus', name: 'estatus', width: 50 },                                     
-                    { label:'Coordinacion encargada', name: 'coordinacion', width: 120 },
-                    { label:'Coordinacion encargada', name: 'id_correspondencia', width: 1 },
+                    { label: 'N°', name: 'numeracion',key: true, width: 20, "search":false},
+                    { label: 'Asunto', name: 'asunto',key: true, width: 150 ,"search":true},
+                    { label: 'Oficina', name: 'oficina',key: true, width: 150 ,"search":true},
+                    { label:'Instrucción', name: 'instruccion',key: true, width: 90 ,"search":true},
+                    { label:'Fecha', name: 'fecha',key: true, width: 50 ,"search":true},
+                    { label:'Tipo', name: 'tipo',key: true, width: 50 ,"search":true},  
+                    { label:'Estatus', name: 'estatus',key: true, width: 50 ,"search":true},                                     
+                    { label:'Coordinacion encargada', name: 'coordinacion',key: true, width: 120 ,"search":true},
+                    { label:'Carpeta', name: 'carpeta',key: true, width: 60 ,"search":true},
+                    { label:'Coordinacion encargada', name: 'id_correspondencia',key: true, width: 1 ,"search":true},
 
                 ],
 
@@ -45,7 +46,7 @@ $(document).ready(function () {
                 loadonce:true
 
             });
-
+jQuery(grid_selector).jqGrid('filterToolbar',{"stringResult":true});
             $(window).on("resize", function () {
     var $grid = $(grid_selector),
         newWidth = $grid.closest(".ui-jqgrid").parent().width();
@@ -66,6 +67,7 @@ $(document).ready(function () {
                         refreshicon : 'ace-icon fa fa-refresh green',
                         view: false,
                         viewicon : 'ace-icon fa fa-search-plus grey',
+
                     },
                     {
                         //search form
@@ -124,17 +126,24 @@ $(document).ready(function () {
                                 
         if(columna_check.length>0){
             var id_correspondencia = [];
+             var estatus = [];
             for(var i=0,ids=columna_check.length;i<ids; i++){
                 id_correspondencia.push($(grid_selector).jqGrid('getCell', columna_check[i], 'id_correspondencia'));
+                estatus.push($(grid_selector).jqGrid('getCell', columna_check[i], 'estatus'));
             }
         }
 
     if (id_correspondencia!=undefined && id_correspondencia!=null) {
+        if(estatus=='Archivada'){
+            alert('Esta correspondencia ya esta archivada');
+        }else{
               pickOpen('prod', 'id_prod',BASE_URL+'correspondencia/archivar/'+id_correspondencia,
 
-        90, 96, 85, 1);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
+        90, 30, 60, 70);show('prod',500);show('id_aceptar',500);hide('id_buscar',500); 
 
-        llenarEstado(id_correspondencia);
+        llenarEstado(id_correspondencia);            
+        }
+
     }else{
         alert('Por favor seleccione una fila');
     }

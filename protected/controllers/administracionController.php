@@ -25,9 +25,8 @@
 	
 
 		function registrarFechas(){
-		$fechas=$this->ConvertirArraySql($_POST);
-		$this->_administracion->insertFechas($fechas);
-
+			$fechas=$this->ConvertirArraySql($_POST);
+			$this->_administracion->insertFechas($fechas);
 		}
 
 		function usuarios(){
@@ -52,6 +51,7 @@
 
 			$this->_view->render('personalCompleto','','pickList');
 		}
+
 	function agregar($id= FALSE){			
 
 			$this->_administracion->agregarUsuario($id);			

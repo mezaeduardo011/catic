@@ -17,11 +17,14 @@
 		}
 		
 		public function index() {
-			
-			
-			
+			$this->_view->render('access', 'error');	
 		}
 		
+
+		public function acessNull() {
+			$this->_view->render('access', 'error');	
+		}
+
 		public function access($code) {
 			
 			$this->_view->type_layout = 'error';

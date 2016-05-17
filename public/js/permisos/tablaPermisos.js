@@ -28,10 +28,9 @@ $(document).ready(function () {
                     { label: 'Nombres', name: 'nombres', width: 120 ,"search":true},
                     { label:'Desde', name: 'desde', width: 50,"search":true },
                     { label:'Hasta', name: 'hasta', width: 50 ,"search":true},
-                    { label:'Dias', name: 'dias', width: 25,"search":true },
-                    { label:'Horas', name: 'horas', width: 25,"search":true },
-                    { label: 'Estatus', name: 'estatus', key: true, width: 40,"search":false },
-                     { label: '#', name: 'id_permisos', key: true, width: 20,"search":false },
+                    { label:'Duracion', name: 'duracion_total', width: 25,"search":true },
+                    { label: 'Estatus', name: 'estatus', key: true, width: 40,"search":true },
+                     { label: '#', name: 'id_permisos', key: true, width: 1,"search":false },
 
                 ],
 
@@ -39,6 +38,7 @@ $(document).ready(function () {
                 pager: grid_pager,
                 multiselect: true,
                 loadComplete : function() {
+
                      $(grid_selector).jqGrid("hideCol", "id_permisos");
                         var table = this;
                         setTimeout(function(){
@@ -110,6 +110,7 @@ $(document).ready(function () {
                     })
                 }
 
+
     $(grid_selector).navButtonAdd(grid_pager,
     {
         buttonicon: "ace-icon fa fa-times-circle red",
@@ -138,7 +139,7 @@ $(document).ready(function () {
                alert('Este permiso fue cancelado');
             }
             else{ 
-                 pickOpen('prod', 'id_prod',BASE_URL+'permisos/fin/'+id_permisos+"/TRUE",
+                 pickOpen('prod', 'id_prod',BASE_URL+'permisos/finPermiso/'+id_permisos+"/TRUE",
                 60, 30, 300, 80);show('prod',500);show('id_aceptar',500);hide('id_buscar',500);                     
             }
 

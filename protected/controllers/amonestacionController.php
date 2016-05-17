@@ -40,6 +40,8 @@
 		function registro_amonestacion(){
 			unset($_POST['dynamic-table_length']);			
 			$amonestacion = $this->ConvertirArray($_POST);
+
+			$amonestacion[':id_amonestador']=utf8_decode(Session::get("id_persona"));
 			//$this->imprimirArreglo($amonestacion);
 			$this->_amonestacion->registroAmonestacion($amonestacion);					
 			$this->_view->redirect('amonestacion/listar_amonestaciones');

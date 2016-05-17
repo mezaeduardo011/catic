@@ -18,16 +18,16 @@ $(document).ready(function () {
         loadonce: true,
         rowNum:10,
         height:200,
-        autowidth:true,
+        autowidth:false,
         sortname:"OrderID",
         rowList:[10,30,40],
         datatype:"json",
 
         colModel: [
 
-            { label: 'id', name: 'id_persona', key: true, width: 25,"search":false },
+            { label: 'id', name: 'id_persona', key: true, width: 0,"search":false },
             { label: 'id_persona_empleada', name: 'id_persona_empleada', key: true, width: 1,"search":false },
-            { label: 'cedula', name: 'cedula', key: true, width: 20,"search":true },
+            { label: 'cedudsadasdla', name: 'cedula', key: true, width: 20,"search":true },
             { label: 'Nombres', name: 'nombres', key: true, width: 20,"search":true },
             { label: 'Apellidos', name: 'apellidos', key: true, width: 20,"search":true },
             { label: 'Coordinación', name: 'coordinacion', key: true, width: 20,"search":true },
@@ -44,7 +44,7 @@ $(document).ready(function () {
         loadComplete : function() {
 
             var table = this;
-            // $(grid_selector).jqGrid("hideCol", "id_persona");
+             $(grid_selector).jqGrid("hideCol", "id_persona");
              $(grid_selector).jqGrid("hideCol", "id_persona_empleada");
 
             //Para asignarle a la tabla estilo de botones bootstrap
@@ -123,6 +123,7 @@ $(document).ready(function () {
 
         }
     })
+
 
     $(grid_selector).navButtonAdd(grid_pager,
     {

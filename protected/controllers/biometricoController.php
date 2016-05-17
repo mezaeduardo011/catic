@@ -8,6 +8,7 @@
 		public function __construct(){	
 			parent::__construct();
 			$this->_biometrico = $this->loadModel('biometrico');
+			$this->_personas = $this->loadModel('personal');
 						$this->_sidebar_menu =array(
 					array(
 				'id' => 'insert_new',
@@ -24,6 +25,43 @@
 								
 		}
 
+		function actualizarAsistencia(){
+				  //si la fecha del ultimo horario insertado es distinta a la fecha actual o si la no hay horarios insertados.....
+				 if($this->_biometrico->getBiometrico()[ count($this->_biometrico->getBiometrico())-1 ][ 'fecha' ] != date('d-m-Y') || $this->_biometrico->getBiometrico()==null){				
+				 	
+				 	//$this->imprimirArreglo($this->_biometrico->getBiometrico()[count($this->_biometrico->getBiometrico())-1]['fecha']);
+						$this->guardarHorarioDiario();
+						$this->guardarHorarioFinal();
+						$horario = $this->_biometrico->getBiometrico();
+						$personas = $this->_personas->getPersonal();
+						$fecha = $horario[0]['fecha'];			
+						$aux=array();
+						$k=0;
+
+						for($i=0; $i<count($horario); $i++){
+							for($j=0; $j<count($personas); $j++){
+									if($personas[$j]['cedula']==$horario[$i]['cedula']){
+										$aux[$k] = $j;
+										$k++;
+									}
+							}	
+						}
+
+						for($i=0; $i<count($aux);$i++){				
+							unset($personas[$aux[$i]]);
+						}
+						
+						for($j=0; $j<count(array_keys($personas)); $j++){					
+							$this->_biometrico->insertInasistencia($personas[array_keys($personas)[$j]]['id_persona_empleada'],$fecha);
+						}
+						$this->_view->redirect('biometrico/index');
+				}else{
+						$this->_view->redirect('biometrico/index');
+				}
+
+		}
+
+
 		function leerTxt(){
 				$file = file('/home/emeza/Documentos/prueba.txt');
 				foreach ($file as $linea)
@@ -31,55 +69,135 @@
 				$explode = explode("|", $linea);
 				$arrayOrdenado[]=$linea;
 				} 
+
 				$j=0;
-				for($i=0;$i<count($arrayOrdenado);$i++){
+				for($i=0;$i<count($arrayOrdenado)-1;$i++){
 					 $nuevoArreglo[$i]=$arrayOrdenado[$i];									
-					 $var[$i] = str_replace(" ",",",$nuevoArreglo[$i] );
-					 $var[$i]= explode(",", $var[$i] );
-					 if($var[$i][5]!="OTIC"){
+					//$var[$i] = str_replace(" ",",",$nuevoArreglo[$i] );
+					 $var[$i]= explode(",", $nuevoArreglo[$i] );
+					 if(rtrim($var[$i][5])!="OTIC"){
 					 	unset($var[$i]);
 					 }else{
 						 $arregloValido[$j]=$var[$i];
-						 $j++;
+						  $j++;
 					 }
 				}	
-
-
 			 $cont=0;
 			 for($i=0;$i<count($arregloValido);$i++){
 			 	if(isset($arregloValido[$i][1])){
 			 		$cont++;
 			 	}
-			 	//echo '<pre>';print_r($arregloValido[$i][1]);echo '</pre>';
 			 }
-			 	echo $cont;
-				die();
-			return $arregloValido;		
+			return $arregloValido;	
+			//$this->imprimirArreglo($arregloValido);	
 		}
 
 		function guardarHorarioDiario(){
 
-				$datosValidos=$this->leerTxt();
-				
+				$datosValidos=$this->leerTxt();				
 				for($k=0;$k<count($datosValidos);$k++){
-							$cedula = number_format($datosValidos[$k][1], 0, '.', '.');
-							$fechaBiometrico = $datosValidos[$k][0];
-							$año=substr($fechaBiometrico, 0, 2);$mes = substr($fechaBiometrico, 2, 2);$dias = substr($fechaBiometrico, 4, 2);
-							$horaBiometrico=$datosValidos[$k][4];
-						    $hora = substr($horaBiometrico, 0, 2);$minutos = substr($horaBiometrico, 2, 2);
+					   if($this->_biometrico->getPulsador($datosValidos[$k][0])==null){
+							$horario= array(
+										':registro' => $datosValidos[$k][2],
+										':pulsador' => $datosValidos[$k][0],
+										':cedula' => number_format(rtrim($datosValidos[$k][7]), 0, '.', '.'),
+										':hora' => $datosValidos[$k][1],
+							);
 
-						$horario= array(
-									':fecha' => $dias.'/'.$mes.'/'.$año,
-									':cedula' => $cedula,
-									':hora' => $hora.':'.$minutos,
-									':id_biometrico' => $datosValidos[$k][7]
-						);					
-						
-						$this->imprimirArreglo($horario);
-						//$this->_biometrico->insertHorario($horario);
+							$this->_biometrico->insertHorario($horario);
+						}							
 				}
-				//$this->imprimirArreglo($datosValidos);			
 		}
+
+
+		function guardarHorarioFinal(){
+
+			$cedulas = $this->_biometrico->getCedulas();			
+			
+			for($i = 0; $i< count($cedulas); $i++){
+
+					$horasEntrada=array();
+					$horasSalidas=array();
+					$horasSalidaAlmuerzo=array();
+					$horasLlegadasAlmuerzo=array();
+					$horaSalidaAlmuerzo=array();				
+					$k=0;$l=0;$h=0;$m=0;
+
+					$horarioTotal = $this->_biometrico->horariosTotales($cedulas[$i]['cedula']);
+								
+
+						for($j = 0; $j<count($horarioTotal); $j++){
+
+							if($horarioTotal[$j]['registro']=='P01-ENTRADA-OTIC'){
+
+								$horasEntrada[$k] = $horarioTotal[$j]['hora'];
+								
+									if($horasEntrada[$k] >= '11:45:00' && $horasEntrada[$k]<= '12:30:00'){
+
+											$horasSalidaAlmuerzo[$h]=$horasEntrada[$k];
+											$h++;
+									}
+
+								$k++;
+							}elseif($horarioTotal[$j]['registro']=='P01-SALIDA-OTIC'){
+
+								$horasSalidas[$l] = $horarioTotal[$j]['hora'];							
+
+									if($horasSalidas[$l] >= '13:00:00' && $horasSalidas[$l]<= '13:30:00'){
+											$horasLlegadasAlmuerzo[$m]=$horasSalidas[$l];
+											$m++;
+									}
+
+								$l++;														
+							}
+
+						}
+
+								if(count($horasEntrada)>0){
+									$horaEntrada = min($horasEntrada); 
+								}
+								if(count($horasSalidas)>0){
+									$horaSalida = max($horasSalidas);
+								}
+								
+								if(count($horasSalidaAlmuerzo)>0 ){
+									$horaSalidaAlmuerzo = min($horasSalidaAlmuerzo); 
+								}				
+								if(count($horasLlegadasAlmuerzo)>0){
+									$horaLLegadaAlmuerzo = max($horasLlegadasAlmuerzo);
+								}
+								if($horasSalidaAlmuerzo==null){
+									$horaSalidaAlmuerzo="Sin registro";
+								}
+								if($horasLlegadasAlmuerzo==null){
+									$horaLLegadaAlmuerzo="Sin registro";
+								}
+								if($horaEntrada==null){
+									$horaEntrada="Sin registro";
+								}
+								if($horaSalida==null){
+									$horaSalida="Sin registro";
+								}									
+
+
+								
+								$horarioFinal= array(
+											':hora_llegada' => $horaEntrada,
+											':hora_salida' => $horaSalida,
+											':hora_salida_almuerzo' => $horaSalidaAlmuerzo,
+											':hora_llegada_almuerzo' => $horaLLegadaAlmuerzo,
+											':cedula' => $cedulas[$i]['cedula'],
+											':fecha' =>  date('d-m-Y'),
+								);
+
+
+				//$this->imprimirArreglo($horaLLegadaAlmuerzo);
+				$this->_biometrico->insertHorarioFinal($horarioFinal);			
+
+			}
+
+		}
+
 
 		function consulta_biometrico(){
 			$listado = $this->_biometrico->getBiometrico();

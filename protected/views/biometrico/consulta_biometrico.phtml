@@ -1,12 +1,21 @@
 <!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido --><!-- contenido -->
 <div class="main-content" >
 	<div class="main-content-inner">	
+
+			<div align="center">
+					<form action="<?php  echo BASE_URL;?>biometrico/actualizarAsistencia" method="post" >						
+					    <button class="btn btn-success" >Actualizar Asistencias</button>
+					</form>			
+				
+			</div>	
+			<br>
 	<div class="widget-box" id="caja">
 		<div class="alert alert-info" align="center">
-			<h4>Consulta del sistema biometrico <i class="fa fa-users fa-lg"></i></h4>
+			<h4>Consulta De Asistencias <i class="fa fa-users fa-lg"></i></h4>
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
+
 				<div class="row">
 					<div id="tabla_consulta" class="col-xs-12">
 							<table id="consulta_biometrico"></table>

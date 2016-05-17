@@ -5,6 +5,7 @@
 		public function __construct() {
 			$this->_db = new DataBase();
 		}
+		
 		public function registroPdo($query,$datos){
 				
 					try {
@@ -19,10 +20,16 @@
 						echo "Error :: ".$e->getMessage();
 						exit();
 					}
-					return $result[0][0];
+
+					if(isset($result[0][0])){
+						return $result[0][0];
+					}else{
+						return $result;
+					}
+					
 		}
 
-		public function registroPdoArray($query,$datos){
+		public function registroPdoArray($query){
 					try {
 
 						$this->_db->beginTransaction();
